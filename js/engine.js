@@ -63,8 +63,9 @@ function doStep(st,s,sty,start,d,forced,shift){
   const oth=st[o], cur=st[f], neutral=add(oth,lf,w*side);
   let to=neutral, weight=true, kind='step', kickAt=null;
   switch(s.dir){
-    case 'vor': to=add(neutral,fw,len); break;
-    case 'rueck': to=add(neutral,fw,-len); break;
+    case 'vor': case 'vorAussen': to=add(neutral,fw,len); break;
+    case 'rueck': case 'rueckAussen': to=add(neutral,fw,-len); break;
+    case 'ferse': break;   // schließen; die Füße drehen auf den Fersen (siehe unten)
     case 'seit': to=add(neutral,lf,side*len); break;
     case 'diagVor': to=add(add(neutral,fw,len*.7),lf,side*len*.7); break;
     case 'diagRueck': to=add(add(neutral,fw,-len*.7),lf,side*len*.7); break;
@@ -95,6 +96,7 @@ function doStep(st,s,sty,start,d,forced,shift){
     else { land=dist>.03?.13:0; oEnd=sepS>.28?.2:0; }
   } else if(kind==='platz'){ const rel=dot(sub(oth,cur),fw); oEnd=rel<-.1?.35:rel>.1?-.15:0; }
   else if(kind==='tap') endP=.55;
+  if(s.dir==='ferse'){ land=-.3; oEnd=-.22; }   // Fersendrehung: Fußspitzen heben ab
   else if(kind==='halt'){ endP=pc; oEnd=po; }
   let riseA=0, late=false;
   if(sty.rise){ const t=RISE[String(s.c??'').trim()]??.5; riseA=t*sty.rise; late=t===0&&st.rise>.3; }
@@ -124,9 +126,12 @@ function simBlock(b,H,D,beat,extra,hs,ds){
   let tH=beat,tD=beat,out=0;
   for(const s of F.steps){
     const d=Math.max(.25,+s.d||1), hold=HOLDS[s.hold]?s.hold:'zu';
-    const r=Object.assign(doStep(H,tw(s),sty,tH,d),meta,{hold,holdPrev:H.hold||hold,turn:s.turn}); H.hold=hold; hs.push(r); tH+=d;
+    // Führungshinweis: eigener Text des Schritts, sonst automatisch bei Haltungswechsel oder Solodrehung des Herrn
+    const tip=s.tip||(hold!==(H.hold||'zu')?HOLD_TIP[hold]:'')||(own&&Math.abs(+s.turn||0)>=135?'Herr dreht '+(s.turn>0?'links':'rechts'):'');
+    const r=Object.assign(doStep(H,tw(s),sty,tH,d),meta,{hold,holdPrev:H.hold||hold,turn:s.turn,tip}); H.hold=hold; hs.push(r); tH+=d;
     if(!own){
-      const g=holdGeo(hold,sty), v=dirv(r.hA); let to=add(add(r.to,v.fw,g.gap),v.lf,-g.off);
+      const g=holdGeo(hold,sty), v=dirv(r.hA), aus=/Aussen$/.test(r.dir)?.16:0;   // außenseitlich: der Herr geht rechts an der Dame vorbei
+      let to=add(add(r.to,v.fw,g.gap),v.lf,-g.off-aus);
       if(r.dir==='kreuzSeit') to=add(to,dirv(r.hB).fw,-.08);   // auch die Dame kreuzt vor dem Körper
       else if(r.dir==='kreuzSeitHinter') to=add(to,dirv(r.hB).fw,.08);
       // Blickrichtung der Dame; bei einer halben Drehung entscheidet die Haltung (ein-/ausdrehen) oder die Drehung des Herrn über den Drehsinn
@@ -139,7 +144,7 @@ function simBlock(b,H,D,beat,extra,hs,ds){
   }
   if(own){
     const half=Math.floor(F.dame.length/2);   // nachgeführt wird erst in der zweiten Hälfte der Figur – der Anfang (z. B. Ausweichen) bleibt, wie er ist
-    const run=(Dx,sh,rec)=>{ let t=beat; F.dame.forEach((s,i)=>{ const d=Math.max(.25,+s.d||1), r=doStep(Dx,tw(s),sty,t,d,null,sh&&i>=half?sh:null); if(rec) rec.push(Object.assign(r,meta,{turn:s.turn})); t+=d; }); return t; };
+    const run=(Dx,sh,rec)=>{ let t=beat; F.dame.forEach((s,i)=>{ const d=Math.max(.25,+s.d||1), r=doStep(Dx,tw(s),sty,t,d,null,sh&&i>=half?sh:null); if(rec) rec.push(Object.assign(r,meta,{turn:s.turn,tip:s.tip})); t+=d; }); return t; };
     // Probeläufe: Landet die Dame zu weit weg, zu nah oder seitlich versetzt, werden ihre Schritte ein wenig nachgeführt
     const v=dirv(H.h), g=holdGeo(H.hold,sty), near0=g.face===0;   // nebeneinander (Körbchen, Schatten): genau an den Platz, sonst nur grob
     const n=Math.max(1,F.dame.filter((s,i)=>i>=half&&s.dir!=='halt'&&s.dir!=='platz').length-.5);
@@ -151,7 +156,9 @@ function simBlock(b,H,D,beat,extra,hs,ds){
       sh=add(sh,v.fw,(clamp(gap,near0?g.gap-.08:open?.6:.4,near0?g.gap+.08:.95)-gap)/n); sh=add(sh,v.lf,(clamp(lat,near0?-g.off-.08:-.1,near0?-g.off+.08:.1)-lat)/n);
       const l=Math.hypot(sh[0],sh[1]); if(l>.25) sh=[sh[0]*.25/l,sh[1]*.25/l];
     }
-    tD=run(D,Math.hypot(sh[0],sh[1])>.004?sh:null,ds);
+    const d0=ds.length; tD=run(D,Math.hypot(sh[0],sh[1])>.004?sh:null,ds);
+    for(let i=d0;i<ds.length;i++){ const r=ds[i]; if(r.tip||Math.abs(+r.turn||0)>=135){ // Hinweise der Dame beim passenden Schritt des Herrn zeigen
+      const h=hs.findLast(x=>x.start<=r.start+1e-6); if(h&&h.blockStart===beat&&(!h.tip||h.tip===HOLD_TIP.hoch)) h.tip=r.tip||'Dame dreht '+(r.turn>0?'links':'rechts')+(h.hold==='hoch'?' unter seiner erhobenen Hand':''); } }
   }
   const end=Math.max(tH,tD);
   if(end-tH>1e-6) hs.push(Object.assign(doStep(H,{f:'L',dir:'halt',c:''},sty,tH,end-tH),meta,{hold:H.hold,holdPrev:H.hold}));

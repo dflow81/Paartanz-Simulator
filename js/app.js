@@ -37,6 +37,11 @@ $('backbtn').onclick=()=>{ if(!tl) return; setPlaying(false);
 /* Bereich [a,b) einer Figur der Folge in Schlägen */
 const itemRange=i=>{ const r=tl.H.filter(s=>s.item===i); return r.length?[r[0].start,r.at(-1).start+r.at(-1).d]:null; };
 $('seqlist').onclick=e=>{ const d=e.target.closest('[data-i]'); if(!d||!tl) return; const r=itemRange(+d.dataset.i); if(r){ jumpTo(r[0]); clearPrints(); } };
+$('trainer').onchange=()=>{ if($('trainer').checked){ $('loopFig').checked=true; speedEl.value=60; updBpm(); } };
+/* „Hier ist die 1“: Tanz auf die nächstgelegene Eins des Takts schieben; mit Musik liegt der Schlag ab jetzt auf diesem Moment */
+$('oneBtn').onclick=()=>{ if(!tl) return; const s=evalDancer(tl.H,beat).step, m=s.meter;
+  if(hasMusic()) mOff=music.currentTime;
+  const pos=(((beat-s.blockStart+s.off)%m)+m)%m; beat=Math.max(0,beat+(pos>m/2?m-pos:-pos)); lastBeatIdx=-1; flash($('oneBtn'),'✔ Eins gesetzt'); };
 $('minBtn').onclick=()=>{ $('ui').classList.toggle('min'); $('minBtn').textContent=$('ui').classList.contains('min')?'▴':'▾'; };
 $('cam').onchange=()=>{ if($('cam').value==='frei') overview(); };
 $('show').onchange=()=>{ const v=$('show').value; herr.setGhost(v==='D'); dame.setGhost(v==='H'); };
@@ -177,6 +182,7 @@ function renderFigSteps(){
     rm.onclick=()=>{list.splice(i,1); if(figWho==='D'&&!list.length){$('figOwn').checked=false; delete figEdit.dame; setWho('H');} else renderFigSteps();};
     tb.appendChild(tr);
   });
+  if(typeof guiRefresh==='function') guiRefresh();   // grafischer Editor zeigt dieselbe Figur
 }
 function readFig(){ if(!hasOwn()) delete figEdit.dame; figEdit.name=$('figName').value.trim()||'Ohne Namen'; figEdit.dance=$('figDance').value.trim()||'Sonstige'; figEdit.bpm=+$('figBpm').value||100; return figEdit; }
 $('figSel').onchange=()=>loadFig($('figSel').value);
@@ -198,6 +204,25 @@ $('figSave').onclick=()=>{ readFig(); if(!figEdit.steps.length){alert('Die Figur
 $('figPlay').onclick=()=>{ readFig(); if(!figEdit.steps.length) return;
   const tmp='__preview'; user.figures[tmp]=structuredClone(figEdit);
   setSource({name:figEdit.name,bpm:figEdit.bpm,items:[{fig:tmp,rep:1}]}); delete user.figures[tmp]; setPlaying(true); gotoPlay(); };
+
+/* ================= Teilen per Link =================
+   Die Folge steckt (mit den darin benutzten eigenen Figuren) als Text in der Adresse hinter „#folge=“. */
+const SHARE_BASE=location.protocol==='file:'?'https://dflow81.github.io/Paartanz-Simulator/tanzsimulator.html':location.origin+location.pathname;   // lokal geöffnet: Link auf die Online-Version
+const b64e=s=>btoa(String.fromCharCode(...new TextEncoder().encode(s))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+const b64d=s=>new TextDecoder().decode(Uint8Array.from(atob(s.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0)));
+$('shareBtn').onclick=async()=>{ readSeq(); const f={}; for(const it of seqEdit.items) if(user.figures[it.fig]) f[it.fig]=user.figures[it.fig];
+  const url=SHARE_BASE+'#folge='+b64e(JSON.stringify({n:seqEdit.name,b:seqEdit.bpm,i:seqEdit.items.map(it=>[it.fig,it.rep]),f}));
+  try{ await navigator.clipboard.writeText(url); flash($('shareBtn'),'✔ Link kopiert'); }catch(e){ prompt('Link zum Kopieren:',url); } };
+/* Beim Öffnen eines geteilten Links: Folge übernehmen und gleich abspielen */
+function importShared(){
+  const m=location.hash.match(/^#folge=([\w-]+)/); if(!m) return null;
+  try{ const d=JSON.parse(b64d(m[1])); if(!Array.isArray(d.i)) return null;
+    let h=0; for(const ch of m[1]) h=(h*31+ch.charCodeAt(0))>>>0; const key='s_link'+h.toString(36);
+    for(const [k,fig] of Object.entries(d.f||{})) if(!user.figures[k]&&!BUILTIN[k]&&fig&&Array.isArray(fig.steps)) user.figures[k]=fig;
+    user.seqs[key]={name:String(d.n||'Geteilte Folge'),bpm:+d.b||100,items:d.i.map(([fig,rep])=>({fig:String(fig),rep:Math.max(1,+rep||1)}))};
+    user.dance='*'; saveStore(); history.replaceState(null,'',location.pathname+location.search); return key;
+  }catch(e){ return null; }
+}
 
 /* ================= Export / Import ================= */
 $('exportBtn').onclick=()=>{
@@ -223,7 +248,9 @@ function applyDance(play){
   if(play&&$('source').options.length){ $('source').selectedIndex=0; const s=sourceFromKey($('source').value); if(s){ setSource(s); setPlaying(true); } }
 }
 $('danceSel').onchange=()=>{ user.dance=curDance(); saveStore(); applyDance(true); };
+const sharedKey=importShared();
 fillDance(); applyDance(true);
+if(sharedKey){ fillSource('seq:'+sharedKey); const s=sourceFromKey('seq:'+sharedKey); if(s){ setSource(s); setPlaying(true); } loadSeq(sharedKey); fillSeqSel(); }
 
 /* ================= Hauptschleife ================= */
 const clock=new THREE.Clock();
@@ -305,7 +332,8 @@ function animate(){
     else if(stepTarget!==null){ beat=Math.min(stepTarget,beat+dt*bps); if(beat>=stepTarget) stepTarget=null; }
     syncMusic(dt);
     if($('loopFig').checked&&curItem>=0){ // nur die aktuelle Figur üben: am Ende zurück an ihren Anfang
-      const r=itemRange(curItem); if(r&&beat>=r[1]-1e-6){ const b=r[0]+Math.min(beat-r[1],.5); if(stepTarget!==null) stepTarget=null; jumpTo(b); lastBeatIdx=-1; clearPrints(); } }
+      const r=itemRange(curItem); if(r&&beat>=r[1]-1e-6){ const b=r[0]+Math.min(beat-r[1],.5); if(stepTarget!==null) stepTarget=null; jumpTo(b); lastBeatIdx=-1; clearPrints();
+        if($('trainer').checked&&+speedEl.value<100){ speedEl.value=Math.min(100,+speedEl.value+10); updBpm(); } } }
     if(beat>=tl.total){ // Folge beginnt von vorn – weitertanzen ab aktueller Position
       markStep(tl.H.at(-1),'H'); markStep(tl.D.at(-1),'D');
       beat=Math.min(beat-tl.total,tl.total*.5); if(stepTarget!==null) stepTarget=Math.max(0,stepTarget-tl.total);
@@ -343,6 +371,10 @@ function animate(){
     $('count').textContent=s.c||'';
     $('stepname').textContent='Herr: '+stepText(s);
     $('damename').textContent='Dame: '+stepText(pD.step);
+    let tp=''; if($('tips').checked){ // Hinweis des laufenden Schritts (bleibt zwei Schläge stehen), sonst Vorschau auf den nächsten
+      for(let i=pH.idx;i>=0&&tl.H[i].start>beat-2&&!tp;i--) tp=tl.H[i].tip||'';
+      if(!tp){ const nx=tl.H[pH.idx+1]; if(nx&&nx.tip&&nx.start-beat<1.5) tp='gleich: '+nx.tip; } }
+    $('tip').textContent=tp?'💡 '+tp:'';
     $('figname').textContent=s.fig+(s.reps>1?` (${s.rep}/${s.reps})`:'')+' · '+HOLDS[s.hold][0];
 
     const c=herr.P.clone().add(dame.P).multiplyScalar(.5); c.y=.9;

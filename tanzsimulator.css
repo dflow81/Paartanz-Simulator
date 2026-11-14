@@ -55,3 +55,19 @@ summary{cursor:pointer;font-size:13px;color:#cfd6ff;user-select:none}
   #count{font-size:44px} #stepname{font-size:15px} #damename{font-size:13px} #figname{font-size:12px}
   #legend{display:none} #hud{top:6px;right:8px}
 }
+
+#tip{font-size:15px;margin-top:6px;color:#ffe29a;max-width:46vw;margin-left:auto;text-shadow:0 1px 6px #000}
+/* Grafischer Figuren-Editor */
+#gui{position:fixed;inset:0;z-index:20;background:#15171ef5;display:none;flex-direction:column}
+#gui.on{display:flex}
+.gbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;background:#1d2029;border-bottom:1px solid #333}
+.gbar button{flex:0 0 auto} .gbar .tabs{margin:0} .gbar .chk{margin:0}
+.gbar .gsp{flex:1} #guiName{color:#9fb4ff;font-size:14px}
+.gmain{flex:1;display:flex;min-height:0}
+#plan{flex:1;min-width:0;height:100%;touch-action:none;cursor:grab;background:#12141b}
+#guiSide{width:340px;box-sizing:border-box;padding:10px 12px;overflow-y:auto;border-left:1px solid #333;background:#1a1c24}
+.glist div{padding:4px 6px;border-radius:4px;font-size:13px;cursor:pointer}
+.glist div:hover{background:#ffffff14} .glist div.cur{background:#4b6bfb55}
+.glist span{color:#999;font-size:12px}
+.gprop{margin-top:10px;border-top:1px solid #333}
+@media (max-width:800px){ .gmain{flex-direction:column} #guiSide{width:auto;max-height:45%;border-left:0;border-top:1px solid #333} }

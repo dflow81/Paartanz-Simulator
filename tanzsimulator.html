@@ -29,10 +29,12 @@
       <button id="reset" class="sec" title="von vorn beginnen">↺</button>
     </div>
     <div class="chk"><input type="checkbox" id="loopFig"><span>Aktuelle Figur wiederholen (zum Üben)</span></div>
+    <div class="chk"><input type="checkbox" id="trainer"><span>Tempo-Trainer: bei 60 % beginnen, jede Runde 10 % schneller</span></div>
     <details>
       <summary>Ansicht</summary>
       <label>Kamera</label>
       <select id="cam" class="full"><option value="frei">Übersicht (mit der Maus drehbar)</option><option value="folgen">folgt dem Paar</option><option value="oben">von oben</option><option value="herr">hinter dem Herrn</option><option value="dame">hinter der Dame</option></select>
+      <div class="chk"><input type="checkbox" id="tips" checked><span>Führungshinweise einblenden</span></div>
       <label>Wer ist zu sehen?</label>
       <select id="show" class="full"><option value="HD">Herr und Dame</option><option value="H">nur Herr (Dame durchsichtig)</option><option value="D">nur Dame (Herr durchsichtig)</option></select>
       <div class="chk"><input type="checkbox" id="mirror"><span>Spiegelbild (seitenverkehrt, zum Mittanzen vor dem Bildschirm)</span></div>
@@ -48,6 +50,7 @@
     <details>
       <summary>Ton und Musik</summary>
       <div class="chk"><input type="checkbox" id="tick" checked><span>Takt hörbar (Metronom, die „1“ betont)</span></div>
+      <div class="row"><button id="oneBtn" class="sec" title="Im richtigen Moment drücken: Der Tanz springt auf die nächste Eins, bei Musik wird der Schlag dorthin gelegt">Hier ist die „1“ (im Takt drücken)</button></div>
       <div class="chk"><input type="checkbox" id="say"><span>Figuren ansagen (kurz vor dem Wechsel)</span></div>
       <label>Eigene Musik</label>
       <div class="row" style="margin-top:0">
@@ -86,11 +89,12 @@
     </div>
     <hr>
     <div class="row">
+      <button id="shareBtn" class="sec">🔗 Link zum Teilen</button>
       <button id="exportBtn" class="sec">⬇ Exportieren</button>
       <button id="importBtn" class="sec">⬆ Importieren</button>
       <input type="file" id="importFile" accept=".json" style="display:none">
     </div>
-    <div class="info">Export speichert alle eigenen Figuren und Tanzfolgen als Datei, z.&nbsp;B. zum Teilen mit dem Tanzpartner.</div>
+    <div class="info">„Link zum Teilen“ kopiert eine Adresse, die genau diese Tanzfolge enthält (mit deinen eigenen Figuren darin) – der Tanzpartner öffnet sie einfach im Browser. Export speichert alle eigenen Figuren und Tanzfolgen als Datei.</div>
   </div>
 
   <!-- FIGUREN -->
@@ -108,6 +112,7 @@
       <div style="flex:2"><label>Tanz</label><input id="figDance" class="full"></div>
       <div style="flex:1"><label>Tempo</label><input id="figBpm" type="number" min="30" max="220" class="full"></div>
     </div>
+    <div class="row"><button id="guiBtn">🖊 Grafischer Editor (Schritte mit der Maus setzen)</button></div>
     <div class="chk"><input type="checkbox" id="figOwn"><span>Dame tanzt eigene Schritte (sonst gegengleich)</span></div>
     <div class="tabs" id="whoTabs" style="margin:8px 0 0"><button data-who="H" class="on">Schritte Herr</button><button data-who="D">Schritte Dame</button></div>
     <table id="figTable">
@@ -129,7 +134,18 @@
   </div>
 </div>
 
-<div id="hud"><div id="count">1</div><div id="stepname"></div><div id="damename"></div><div id="figname"></div></div>
+<!-- Grafischer Figuren-Editor (Vollbild) -->
+<div id="gui">
+  <div class="gbar">
+    <b>🖊 Figuren-Editor</b><span id="guiName"></span><span class="gsp"></span>
+    <label class="chk"><input type="checkbox" id="guiOwn"><span>Dame tanzt eigene Schritte</span></label>
+    <div class="tabs"><button id="guiH" class="on">Schritte Herr</button><button id="guiD">Schritte Dame</button></div>
+    <button id="guiPlay">▶ Ausprobieren</button><button id="guiSave">💾 Speichern</button><button id="guiClose" class="sec">✕ Schließen</button>
+  </div>
+  <div class="gmain"><canvas id="plan"></canvas><div id="guiSide"></div></div>
+</div>
+
+<div id="hud"><div id="count">1</div><div id="stepname"></div><div id="damename"></div><div id="figname"></div><div id="tip"></div></div>
 <div id="legend"><span class="dot" style="background:#3d7bff;margin-left:0"></span>Herr (führt)
   <span class="dot" style="background:#ff4d6d"></span>Dame &nbsp;|&nbsp; Maus: drehen / zoomen</div>
 
@@ -147,5 +163,6 @@
 <script src="lib/Reflector.js"></script>
 <script src="js/szene.js"></script>
 <script src="js/app.js"></script>
+<script src="js/editor.js"></script>
 </body>
 </html>

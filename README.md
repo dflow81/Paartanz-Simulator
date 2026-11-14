@@ -16,7 +16,11 @@ Ein 3D-Simulator im Browser zum Lernen und Üben von Paartänzen. Herr und Dame 
 - **Nur Herr oder nur Dame zeigen** (der Partner wird durchsichtig) und **Spiegelbild-Ansicht** zum Mittanzen vor dem Bildschirm
 - **Ton:** Metronom mit betonter „1“, Ansage der nächsten Figur, eigene Musikdatei – Tempo und Takt werden automatisch erkannt, das Paar tanzt zur Musik
 - **Tanzfläche** in drei Größen – das Paar tanzt automatisch in Kurven und bleibt im Raum
-- **Export und Import** eigener Figuren und Folgen als Datei, z. B. zum Teilen mit dem Tanzpartner
+- **Grafischer Figuren-Editor:** Schritte im Schrittplan von oben mit der Maus setzen und ziehen
+- **Führungshinweise** beim Tanzen („Herr hebt die linke Hand – die Dame dreht darunter"), auch eigene je Schritt
+- **Tempo-Trainer:** eine Figur in Schleife, jede Runde etwas schneller
+- **Teilen per Link:** Eine Tanzfolge steckt in der Adresse – der Tanzpartner öffnet sie einfach im Browser
+- **Export und Import** eigener Figuren und Folgen als Datei
 
 ## Bedienung
 
@@ -42,6 +46,7 @@ Repository herunterladen und `tanzsimulator.html` (oder `index.html`) im Browser
 | `js/engine.js` | Schritt-Engine: Fußpositionen, Gewicht, Drehungen, Raumbegrenzung |
 | `js/szene.js` | 3D-Szene, Tänzer, Arme und Haltungen, Schrittdiagramm |
 | `js/app.js` | Wiedergabe, Editoren, Musik und Ansagen |
+| `js/editor.js` | grafischer Figuren-Editor (Schrittplan) |
 | `lib/` | three.js r160 (MIT-Lizenz) für die 3D-Darstellung, als normale Skripte verpackt |
 
 Neue Figuren lassen sich auch direkt in `figuren/*.js` ergänzen, z. B.:
