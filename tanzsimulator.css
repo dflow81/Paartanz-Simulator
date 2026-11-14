@@ -1,0 +1,57 @@
+html,body{margin:0;height:100%;overflow:hidden;font-family:system-ui,sans-serif;background:#1b1d24;color:#eee}
+#ui{position:absolute;top:12px;left:12px;background:rgba(20,22,30,.92);padding:12px 14px;border-radius:12px;width:450px;max-width:calc(100vw - 24px);box-sizing:border-box;max-height:calc(100% - 70px);overflow-y:auto;box-shadow:0 4px 20px #0006}
+#ui h1{font-size:17px;margin:0 0 8px}
+.tabs{display:flex;gap:4px;margin-bottom:10px}
+.tabs button{background:#2a2d38}
+.tabs button.on{background:#4b6bfb}
+label{display:block;font-size:12px;margin:8px 0 3px;color:#bbb}
+select,input{box-sizing:border-box;padding:4px;border-radius:5px;background:#2a2d38;color:#eee;border:1px solid #444;font-size:13px}
+.full{width:100%}
+input[type=range]{width:100%;padding:0}
+.row{display:flex;gap:6px;margin-top:8px}
+button{flex:1;padding:6px 8px;border:0;border-radius:6px;background:#4b6bfb;color:#fff;cursor:pointer;font-size:13px}
+button:hover{filter:brightness(1.15)}
+button.sec{background:#3a3e4c} button.del{background:#a33}
+button.mini{flex:0;padding:3px 7px;font-size:12px}
+.chk{display:flex;align-items:center;gap:6px;font-size:13px;margin-top:6px;color:#ccc}
+.info{font-size:12px;color:#aaa;margin-top:8px;line-height:1.4}
+table{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px}
+th{color:#999;font-weight:normal;text-align:left;padding:2px}
+td{padding:2px}
+td input,td select{width:100%;padding:3px}
+.seqlist div{padding:3px 6px;border-radius:4px;font-size:13px}
+.seqlist div.cur{background:#4b6bfb55;color:#fff}
+.item{display:flex;gap:4px;align-items:center;margin-top:4px}
+.item select{flex:1}
+.panel{display:none} .panel.on{display:block}
+.noHold .hc{display:none}
+.tabs button:disabled{opacity:.4;cursor:default}
+hr{border:0;border-top:1px solid #333;margin:10px 0}
+#hud{position:absolute;top:12px;right:16px;text-align:right;pointer-events:none}
+#count{font-size:72px;font-weight:700;line-height:1;color:#ffd166;text-shadow:0 2px 10px #000}
+#stepname{font-size:20px;margin-top:4px}
+#damename{font-size:16px;margin-top:2px;color:#ff9db0}
+#figname{font-size:15px;color:#9fb4ff;margin-top:4px}
+#legend{position:absolute;bottom:12px;right:12px;font-size:13px;background:rgba(20,22,30,.8);padding:8px 12px;border-radius:8px}
+.dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin:0 4px 0 10px;vertical-align:middle}
+
+.dance{margin:0 0 10px;align-items:center}
+.dance span{font-size:13px;color:#bbb}
+.dance select{flex:1;font-size:14px;padding:5px}
+
+#ui h1{display:flex;justify-content:space-between;align-items:center}
+#ui.min>:not(h1){display:none}
+details{margin-top:8px;border-top:1px solid #333;padding-top:6px}
+summary{cursor:pointer;font-size:13px;color:#cfd6ff;user-select:none}
+.seqlist div{cursor:pointer}
+.seqlist div:hover{background:#ffffff14}
+.item .grip{cursor:grab;color:#888;width:22px;font-size:12px;white-space:nowrap}
+.item.over{outline:1px dashed #4b6bfb}
+.item .bad{color:#ffb347;font-size:12px}
+.item select{min-width:0}
+/* Handy und schmale Fenster: Menü als Leiste unten */
+@media (max-width:700px){
+  #ui{left:0;right:0;top:auto;bottom:0;width:auto;max-width:none;max-height:48vh;border-radius:12px 12px 0 0}
+  #count{font-size:44px} #stepname{font-size:15px} #damename{font-size:13px} #figname{font-size:12px}
+  #legend{display:none} #hud{top:6px;right:8px}
+}

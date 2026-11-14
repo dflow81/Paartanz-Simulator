@@ -1,0 +1,189 @@
+/* ================= Schritt-Engine =================
+   Beide Tänzer werden einzeln simuliert (Füße, Blickrichtung, Gewicht). Tanzt die Dame gegengleich,
+   wird ihr Schrittziel aus dem Schritt des Herrn und der Tanzhaltung abgeleitet. */
+const RAD=Math.PI/180, W=0.2;
+const dirv=h=>({fw:[Math.sin(h),Math.cos(h)],lf:[Math.cos(h),-Math.sin(h)]});
+const add=(a,b,s=1)=>[a[0]+b[0]*s,a[1]+b[1]*s];
+const sub=(a,b)=>[a[0]-b[0],a[1]-b[1]];
+const dot=(a,b)=>a[0]*b[0]+a[1]*b[1];
+const lerp=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t];
+const mix=(a,b,t)=>a+(b-a)*t;
+const clamp=(x,a,b)=>Math.min(b,Math.max(a,x));
+const sm=t=>{t=clamp(t,0,1);return t*t*(3-2*t);};
+const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+const wrap=a=>{a=(a+Math.PI)%(2*Math.PI); if(a<0) a+=2*Math.PI; return a-Math.PI;};
+const near=(a,ref)=>ref+wrap(a-ref);
+
+/* Bewegungsstil je Tanz: gap/off = Abstand und seitlicher Versatz in geschlossener Haltung, rise = Heben/Senken,
+   bounce = Federn, hip = Hüftbewegung, fe = Anteil des Schlags für den Fußweg, heel = Fersenschritt vorwärts,
+   drop = tiefere Knie, mid = Becken zwischen den Füßen, std = Standardhaltung, turnout = Fußöffnung */
+const STYLES={
+  swing:{gap:.38,off:.07,rise:1,bounce:0,hip:0,fe:.72,lift:.03,heel:true,drop:0,mid:.3,std:true,turnout:.1},
+  wiener:{gap:.38,off:.07,rise:.55,bounce:0,hip:0,fe:.75,lift:.03,heel:true,drop:0,mid:.3,std:true,turnout:.1},
+  tango:{gap:.36,off:.09,rise:0,bounce:0,hip:0,fe:.5,lift:.025,heel:true,drop:.05,mid:.3,std:true,turnout:.05},
+  paso:{gap:.38,off:.05,rise:0,bounce:0,hip:0,fe:.6,lift:.03,heel:true,drop:0,mid:.3,std:true,turnout:.08},
+  latin:{gap:.5,off:0,rise:0,bounce:0,hip:1,fe:.6,lift:.018,heel:false,drop:0,mid:.1,std:false,turnout:.22},
+  bounce:{gap:.5,off:0,rise:0,bounce:.03,hip:.5,fe:.7,lift:.05,heel:false,drop:.02,mid:.15,std:false,turnout:.15},
+  social:{gap:.5,off:.04,rise:0,bounce:.014,hip:.25,fe:.7,lift:.03,heel:true,drop:.01,mid:.25,std:false,turnout:.1},
+};
+function styleOf(d){ d=(d||'').toLowerCase();
+  if(/wiener/.test(d)) return STYLES.wiener;
+  if(/tango/.test(d)) return STYLES.tango;
+  if(/paso/.test(d)) return STYLES.paso;
+  if(/disco|hustle/.test(d)) return STYLES.social;
+  if(/walzer|waltz|slow|fox|quick/.test(d)) return STYLES.swing;
+  if(/jive|samba|boogie|rock|swing|lindy|charleston|polka/.test(d)) return STYLES.bounce;
+  if(/cha|rumba|salsa|bachata|mambo|merengue|latein|latin|kizomba/.test(d)) return STYLES.latin;
+  return STYLES.social; }
+/* Wo steht die Dame zum Herrn? gap = vor ihm, off = rechts von ihm, face = ihre Blickrichtung relativ zu seiner
+   (π = gegenüber, 0 = gleiche Richtung), spin = Drehsinn, mit dem sie in diese Position eindreht */
+const holdGeo=(hold,sty)=>hold==='zu'||hold==='prom'?{gap:sty.gap,off:sty.off,face:Math.PI}:hold==='hoch'?{gap:.62,off:0,face:Math.PI}:
+  hold==='offen'||hold==='kreuz'?{gap:.8,off:0,face:Math.PI}:hold==='korb'?{gap:.1,off:.37,face:0,spin:1}:hold==='schatten'?{gap:.32,off:.12,face:0,spin:-1}:{gap:.85,off:0,face:Math.PI};
+const RISE={'1':.15,'2':1,'3':0,'4':.15,'5':1,'6':0,S:.2,Q:.75,'&':1,a:1};
+
+const startH=()=>({L:[.1,0],R:[-.1,0],yL:0,yR:0,pL:0,pR:0,h:0,sup:[0,0],side:0,rise:0,hold:null});
+function startD(H,sty,hold){
+  const {fw,lf}=dirv(H.h), g=holdGeo(hold,sty), m=p=>add(add(p,fw,g.gap),lf,-g.off), same=g.face===0, R=m(same?H.R:H.L), L=m(same?H.L:H.R), h=H.h+g.face;
+  return {L,R,yL:h,yR:h,pL:0,pR:0,h,sup:lerp(L,R,.5),side:0,rise:0};
+}
+function flatten(src){
+  const figs=allFigs(), out=[];
+  src.items.forEach((it,i)=>{const F=figs[it.fig]; if(!F||!F.steps||!F.steps.length) return;
+    const n=Math.max(1,it.rep||1); for(let r=0;r<n;r++) out.push({F,item:i,rep:r+1,reps:n});});
+  return out;
+}
+/* Ein Schritt eines Tänzers. Die Richtung gilt aus der Blickrichtung VOR der Drehung; gedreht wird auf dem gesetzten Fuß.
+   forced = {to,h2}: Ziel und Blickrichtung werden vom Partner vorgegeben (gegengleiche Dame).
+   shift = kleine Verschiebung des Schrittziels (hält die Dame bei eigenen Schritten beim Herrn). */
+function doStep(st,s,sty,start,d,forced,shift){
+  const f=s.f==='R'?'R':'L', o=f==='L'?'R':'L', side=f==='L'?1:-1;
+  const h=st.h, h2=forced?forced.h2:h+(+s.turn||0)*RAD;
+  const {fw,lf}=dirv(h), len=Math.max(0,+s.len||0)/100;
+  const w=W*clamp(1.5-Math.abs(h2-h)/(60*RAD),0,1);   // bei großen Drehungen stehen die Füße auf einer Linie
+  const oth=st[o], cur=st[f], neutral=add(oth,lf,w*side);
+  let to=neutral, weight=true, kind='step', kickAt=null;
+  switch(s.dir){
+    case 'vor': to=add(neutral,fw,len); break;
+    case 'rueck': to=add(neutral,fw,-len); break;
+    case 'seit': to=add(neutral,lf,side*len); break;
+    case 'diagVor': to=add(add(neutral,fw,len*.7),lf,side*len*.7); break;
+    case 'diagRueck': to=add(add(neutral,fw,-len*.7),lf,side*len*.7); break;
+    case 'kreuz': to=add(add(oth,fw,Math.max(len,.12)),lf,-side*.04); break;
+    case 'kreuzHinter': to=add(add(oth,fw,-Math.max(len,.12)),lf,-side*.04); break;
+    case 'kreuzSeit': to=add(add(oth,lf,-side*Math.max(len,.15)),fw,.12); break;
+    case 'kreuzSeitHinter': to=add(add(oth,lf,-side*Math.max(len,.15)),fw,-.12); break;
+    case 'platz': to=[...cur]; kind='platz'; break;
+    case 'halt': to=[...cur]; kind='halt'; weight=false; break;
+    case 'tap': to=add(neutral,fw,len); kind='tap'; weight=false; break;
+    case 'tapSeit': to=add(neutral,lf,side*len); kind='tap'; weight=false; break;
+    case 'tapRueck': to=add(neutral,fw,-Math.max(len,.15)); kind='tap'; weight=false; break;
+    case 'kick': kind='kick'; weight=false; break;
+  }
+  if(forced&&kind!=='halt') to=forced.to;
+  else if(shift&&kind!=='halt'&&kind!=='platz') to=add(to,shift);
+  const mv=sub(to,cur), dist=Math.hypot(mv[0],mv[1]);
+  if(kind==='platz'&&dist>.03) kind='step';
+  if(kind==='kick') kickAt=add(add(to,fw,Math.max(len,.3)),lf,side*.05);
+  const yc=st['y'+f], yo=st['y'+o], pc=st['p'+f], po=st['p'+o];
+  // Fußabrollen: land = Neigung beim Aufsetzen (− Ferse zuerst, + Ballen zuerst), oEnd = Standfuß am Ende (+ Ferse hebt ab)
+  const sepF=dot(sub(to,oth),fw), sepS=Math.abs(dot(sub(to,oth),lf));
+  let land=0,endP=0,oEnd=0;
+  if(kind==='step'){
+    if(sepF>.1){ land=sty.heel?-.4*Math.min(1,dist/.3):.25; oEnd=.5*Math.min(1,sepF/.45); }
+    else if(sepF<-.1){ land=.4; oEnd=-.2*Math.min(1,-sepF/.45); }
+    else { land=dist>.03?.13:0; oEnd=sepS>.28?.2:0; }
+  } else if(kind==='platz'){ const rel=dot(sub(oth,cur),fw); oEnd=rel<-.1?.35:rel>.1?-.15:0; }
+  else if(kind==='tap') endP=.55;
+  else if(kind==='halt'){ endP=pc; oEnd=po; }
+  let riseA=0, late=false;
+  if(sty.rise){ const t=RISE[String(s.c??'').trim()]??.5; riseA=t*sty.rise; late=t===0&&st.rise>.3; }
+  const yTo=kind==='halt'?yc:(Math.abs(h2-yc)<=Math.PI+.01?h2:yc+wrap(h2-yc));
+  const dY=wrap(yo-h2), yoTo=yo+(clamp(dY,-.9,.9)-dY);
+  const fe=kind==='platz'||kind==='halt'?.6:clamp(Math.min(d*sty.fe,.85)/d,.3,.85);
+  const r={f,o,dir:s.dir,len:s.len,turn:s.turn,c:s.c,d,start,kind,weight,fe,dist,from:[...cur],to,kickAt,other:[...oth],
+    yaw:[yc,yTo],oyaw:[yo,yoTo],pit:[pc,land,endP],opit:[po,oEnd],supB:st.sup,supA:weight?to:st.sup,
+    sideB:st.side,sideA:weight?side:st.side,hB:h,hA:h2,rise:[st.rise,riseA],late,
+    warn:!forced&&weight&&kind==='step'&&st.side===side};
+  st[f]=to; st['y'+f]=yTo; st['y'+o]=yoTo; st['p'+f]=endP; st['p'+o]=oEnd; st.h=h2; st.rise=riseA;
+  if(weight){ st.sup=to; st.side=side; }
+  return r;
+}
+/* Raum: Das Paar bleibt auf der Tanzfläche. Vor jeder Figur wird geprüft, wohin sie (und die beiden folgenden) führen würde;
+   droht das Paar die Fläche zu verlassen, wird jeder Schritt etwas mitgedreht – wie beim Tanzen entlang der Tanzrichtung. */
+const ROOM={w:8,d:6,margin:1.25};
+const STEER=[0,8,-8,16,-16,24,-24,32,-32,42,-42];
+let lastSteer=0;
+const pairCtr=(H,D)=>[(H.L[0]+H.R[0]+D.L[0]+D.R[0])/4,(H.L[1]+H.R[1]+D.L[1]+D.R[1])/4];
+const outside=p=>Math.max(0,Math.abs(p[0])-(ROOM.w/2-ROOM.margin))+Math.max(0,Math.abs(p[1])-(ROOM.d/2-ROOM.margin));
+function simBlock(b,H,D,beat,extra,hs,ds){
+  const F=b.F, sty=styleOf(F.dance), c0=parseInt(F.steps[0].c);
+  // Takt: Die Figur beginnt auf Zählzeit c0 (z. B. Cha-Cha auf „2“), betont wird die „1“ jedes Takts
+  const meta={fig:figTitle(F),item:b.item,rep:b.rep,reps:b.reps,sty,name:F.name,blockStart:beat,meter:/walzer|waltz/i.test(F.dance||'')?3:4,off:c0>0?c0-1:0};
+  const own=Array.isArray(F.dame)&&F.dame.length>0, tw=s=>extra&&s.dir!=='halt'?{...s,turn:(+s.turn||0)+extra}:s;
+  let tH=beat,tD=beat,out=0;
+  for(const s of F.steps){
+    const d=Math.max(.25,+s.d||1), hold=HOLDS[s.hold]?s.hold:'zu';
+    const r=Object.assign(doStep(H,tw(s),sty,tH,d),meta,{hold,holdPrev:H.hold||hold,turn:s.turn}); H.hold=hold; hs.push(r); tH+=d;
+    if(!own){
+      const g=holdGeo(hold,sty), v=dirv(r.hA); let to=add(add(r.to,v.fw,g.gap),v.lf,-g.off);
+      if(r.dir==='kreuzSeit') to=add(to,dirv(r.hB).fw,-.24);   // auch die Dame kreuzt vor dem Körper
+      else if(r.dir==='kreuzSeitHinter') to=add(to,dirv(r.hB).fw,.24);
+      // Blickrichtung der Dame; bei einer halben Drehung entscheidet die Haltung (ein-/ausdrehen) oder die Drehung des Herrn über den Drehsinn
+      let dh=wrap(r.hA+g.face-D.h);
+      if(Math.abs(Math.abs(dh)-Math.PI)<.5){ const sp=g.spin||-(D.spin||0)||Math.sign(r.hA-r.hB); if(sp) dh=sp*Math.abs(dh); }
+      D.spin=g.spin||0;
+      ds.push(Object.assign(doStep(D,{f:r.o,dir:g.face===0?r.dir:(MIRROR[r.dir]||r.dir),len:s.len,turn:s.turn,c:s.c},sty,r.start,d,{to,h2:D.h+dh}),meta));
+      tD=tH; out=Math.max(out,outside(pairCtr(H,D)));
+    }
+  }
+  if(own){
+    const run=(Dx,sh,rec)=>{ let t=beat; for(const s of F.dame){ const d=Math.max(.25,+s.d||1), r=doStep(Dx,tw(s),sty,t,d,null,sh); if(rec) rec.push(Object.assign(r,meta,{turn:s.turn})); t+=d; } return t; };
+    // Probelauf: Landet die Dame zu weit weg, zu nah oder seitlich versetzt, wird jeder ihrer Schritte ein wenig nachgeführt
+    const trial=structuredClone(D); run(trial,null);
+    const v=dirv(H.h), rel=sub(lerp(trial.L,trial.R,.5),lerp(H.L,H.R,.5)), gap=dot(rel,v.fw), lat=dot(rel,v.lf);
+    const n=Math.max(1,F.dame.filter(s=>s.dir!=='halt'&&s.dir!=='platz').length-.5);
+    const g=holdGeo(H.hold,sty), near0=g.face===0;   // nebeneinander (Körbchen, Schatten): genau an den Platz, sonst nur grob
+    let sh=add([0,0],v.fw,(clamp(gap,near0?g.gap-.08:.4,near0?g.gap+.08:.95)-gap)/n); sh=add(sh,v.lf,(clamp(lat,near0?-g.off-.08:-.1,near0?-g.off+.08:.1)-lat)/n);
+    const l=Math.hypot(sh[0],sh[1]); if(l>.2) sh=[sh[0]*.2/l,sh[1]*.2/l];
+    tD=run(D,l>.004?sh:null,ds);
+  }
+  const end=Math.max(tH,tD);
+  if(end-tH>1e-6) hs.push(Object.assign(doStep(H,{f:'L',dir:'halt',c:''},sty,tH,end-tH),meta,{hold:H.hold,holdPrev:H.hold}));
+  if(end-tD>1e-6) ds.push(Object.assign(doStep(D,{f:'L',dir:'halt',c:''},sty,tD,end-tD),meta));
+  return {end,out:Math.max(out,outside(pairCtr(H,D)))};
+}
+function simulate(blocks,st){
+  const H=structuredClone(st.H), F0=blocks[0].F;
+  const D=st.D?structuredClone(st.D):startD(H,styleOf(F0.dance),HOLDS[F0.steps[0].hold]?F0.steps[0].hold:'zu');
+  const hs=[],ds=[]; let beat=0;
+  for(let i=0;i<blocks.length;i++){
+    let best=0, bc=Infinity;
+    for(const e of STEER){
+      const h=structuredClone(H), d=structuredClone(D); let c=Math.abs(e)*.002+(e*lastSteer<0?.03:0);
+      for(let k=0;k<3;k++) c+=simBlock(blocks[(i+k)%blocks.length],h,d,0,e,[],[]).out*(k?5:10);   // Annahme: die Kurve wird beibehalten
+      const p=pairCtr(h,d); c+=Math.hypot(p[0],p[1])*.004;
+      if(c<bc-1e-9){ bc=c; best=e; }
+    }
+    if(best) lastSteer=best;
+    beat=simBlock(blocks[i],H,D,beat,best,hs,ds).end;
+  }
+  return {H:hs,D:ds,total:beat,end:{H,D}};
+}
+/* Haltung eines Tänzers zum Zeitpunkt tb (in Schlägen) */
+function evalDancer(steps,tb){
+  let i=steps.length-1;
+  for(let k=0;k<steps.length;k++) if(tb<steps[k].start+steps[k].d){i=k;break;}
+  const s=steps[i], u=clamp((tb-s.start)/s.d,0,1), ue=Math.min(1,u/s.fe), ef=ease(ue), bump=Math.sin(Math.PI*ue), e=ease(u);
+  const wt=sm((u-.25*s.fe)/(Math.min(1,s.fe+.3)-.25*s.fe));      // Gewichtsübertragung folgt dem Fuß
+  let p=lerp(s.from,s.to,ef), lift=0, pitch=s.pit[0]*(1-sm(ue/.5))+s.pit[2]*sm((ue-.5)/.5);
+  if(s.kind==='halt') pitch=s.pit[0];
+  else if(s.kind==='step'){ lift=(s.dist>.03?s.sty.lift+s.dist*.05:.01)*bump;
+    pitch+=s.pit[1]*sm((ue-.45)/.55)*(1-sm((u-s.fe)/Math.max(.08,Math.min(.25,1-s.fe)))); }
+  else if(s.kind==='tap') lift=.04*bump;
+  else if(s.kind==='kick'){ const kb=Math.sin(Math.PI*sm(ue)); p=lerp(p,s.kickAt,kb); lift=.22*kb; pitch+=.5*kb; }
+  const feet={};
+  feet[s.f]={p,lift,pitch,yaw:mix(s.yaw[0],s.yaw[1],ef)};
+  feet[s.o]={p:s.other,lift:0,pitch:mix(s.opit[0],s.opit[1],sm((wt-.3)/.7)),yaw:mix(s.oyaw[0],s.oyaw[1],e)};
+  return {feet,sup:lerp(s.supB,s.supA,wt),side:mix(s.sideB,s.sideA,wt),h:mix(s.hB,s.hA,e),
+    rise:mix(s.rise[0],s.rise[1],s.late?sm((u-.45)/.55):sm(u)),idx:i,step:s,u};
+}

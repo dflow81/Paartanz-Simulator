@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Paartanz-Simulator 3D – mit eigenen Tanzfolgen</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="tanzsimulator.css">
+</head>
+<body>
+<div id="ui">
+  <h1>💃 Paartanz-Simulator <button id="minBtn" class="mini sec" title="Menü ein- und ausklappen">▾</button></h1>
+  <div class="row dance"><span>Tanz</span><select id="danceSel" title="Zeigt in allen Listen nur Figuren und Tanzfolgen dieses Tanzes"></select></div>
+  <div class="tabs">
+    <button data-tab="play" class="on">▶ Abspielen</button>
+    <button data-tab="seq">Tanzfolgen</button>
+    <button data-tab="fig">Figuren</button>
+  </div>
+
+  <!-- ABSPIELEN -->
+  <div class="panel on" id="p-play">
+    <label>Was soll getanzt werden?</label>
+    <select id="source" class="full"></select>
+    <label>Tempo: <span id="speedv">100</span>% (<span id="bpmv"></span> Schläge/min)</label>
+    <input type="range" id="speed" min="20" max="150" value="100">
+    <div class="row">
+      <button id="backbtn" class="sec" title="einen Schritt zurück">⏮</button>
+      <button id="play" style="flex:2">⏸ Pause</button>
+      <button id="stepbtn" class="sec" title="einen Schritt weiter">⏭</button>
+      <button id="reset" class="sec" title="von vorn beginnen">↺</button>
+    </div>
+    <div class="chk"><input type="checkbox" id="loopFig"><span>Aktuelle Figur wiederholen (zum Üben)</span></div>
+    <details>
+      <summary>Ansicht</summary>
+      <label>Kamera</label>
+      <select id="cam" class="full"><option value="frei">Übersicht (mit der Maus drehbar)</option><option value="folgen">folgt dem Paar</option><option value="oben">von oben</option><option value="herr">hinter dem Herrn</option><option value="dame">hinter der Dame</option></select>
+      <label>Schritte am Boden</label>
+      <div class="row" style="margin-top:0">
+        <select id="prints" style="flex:3"><option value="spur">Fußspur</option><option value="diagramm">Schrittdiagramm der Figur (nummeriert)</option><option value="aus">aus</option></select>
+        <select id="printWho" style="flex:2"><option value="HD">Herr und Dame</option><option value="H">nur Herr</option><option value="D">nur Dame</option></select>
+      </div>
+      <label>Tanzfläche</label>
+      <select id="room" class="full"><option value="5x4">klein (5 × 4 m)</option><option value="8x6" selected>mittel (8 × 6 m)</option><option value="12x9">groß (12 × 9 m)</option></select>
+    </details>
+    <details>
+      <summary>Ton und Musik</summary>
+      <div class="chk"><input type="checkbox" id="tick" checked><span>Takt hörbar (Metronom, die „1“ betont)</span></div>
+      <div class="chk"><input type="checkbox" id="say"><span>Figuren ansagen (kurz vor dem Wechsel)</span></div>
+      <label>Eigene Musik</label>
+      <div class="row" style="margin-top:0">
+        <button id="musicBtn" class="sec">🎵 Musikdatei wählen</button>
+        <button id="musicOff" class="mini del" title="Musik entfernen">✕</button>
+        <input type="file" id="musicFile" accept="audio/*" style="display:none">
+      </div>
+      <div class="row">
+        <input id="musicBpm" type="number" min="40" max="260" placeholder="Schläge/min der Musik" style="flex:1;min-width:0">
+        <button id="tapBtn" class="sec" style="flex:1">Tempo tippen</button>
+      </div>
+      <div class="info" id="musicInfo">Musik wählen, dann im Takt mindestens viermal auf „Tempo tippen“ drücken. Die Musik wird so schnell oder langsam abgespielt, dass sie zum eingestellten Tanztempo passt.</div>
+    </details>
+    <label>Ablauf (anklicken zum Springen)</label>
+    <div class="seqlist" id="seqlist"></div>
+  </div>
+
+  <!-- TANZFOLGEN -->
+  <div class="panel" id="p-seq">
+    <div class="info" style="margin-top:0">Eine Tanzfolge ist eine Kette von Figuren, z.&nbsp;B. so, wie du sie in der Tanzschule gelernt hast. Jede Figur muss mit dem Fuß beginnen, der gerade frei ist: ⚠ zeigt, wo das nicht passt – auch in der Auswahlliste. Zum Umsortieren die Zeile am Griff ⠿ ziehen.</div>
+    <label>Gespeicherte Tanzfolgen</label>
+    <div class="row" style="margin-top:0">
+      <select id="seqSel" style="flex:3"></select>
+      <button id="seqNew" class="mini sec">+ Neu</button>
+      <button id="seqDel" class="mini del">🗑</button>
+    </div>
+    <hr>
+    <label>Name</label><input id="seqName" class="full">
+    <label>Grundtempo (Schläge pro Minute)</label><input id="seqBpm" type="number" min="30" max="220" class="full">
+    <label>Figuren in Reihenfolge (× = Wiederholungen)</label>
+    <div id="seqItems"></div>
+    <div class="row"><button id="seqAdd" class="sec">+ Figur anhängen</button></div>
+    <div class="row">
+      <button id="seqPlay">▶ Ausprobieren</button>
+      <button id="seqSave">💾 Speichern</button>
+    </div>
+    <hr>
+    <div class="row">
+      <button id="exportBtn" class="sec">⬇ Exportieren</button>
+      <button id="importBtn" class="sec">⬆ Importieren</button>
+      <input type="file" id="importFile" accept=".json" style="display:none">
+    </div>
+    <div class="info">Export speichert alle eigenen Figuren und Tanzfolgen als Datei, z.&nbsp;B. zum Teilen mit dem Tanzpartner.</div>
+  </div>
+
+  <!-- FIGUREN -->
+  <div class="panel" id="p-fig">
+    <div class="info" style="margin-top:0">Hier legst du eigene Figuren Schritt für Schritt an. Ohne eigene Schritte tanzt die Dame gegengleich und wird geführt; für Solodrehungen, Platzwechsel usw. bekommt sie eigene Schritte. Vorgegebene Figuren kannst du als Kopie bearbeiten.</div>
+    <label>Figur</label>
+    <div class="row" style="margin-top:0">
+      <select id="figSel" style="flex:3"></select>
+      <button id="figNew" class="mini sec">+ Neu</button>
+      <button id="figDel" class="mini del">🗑</button>
+    </div>
+    <hr>
+    <label>Name</label><input id="figName" class="full">
+    <div class="row" style="margin-top:0">
+      <div style="flex:2"><label>Tanz</label><input id="figDance" class="full"></div>
+      <div style="flex:1"><label>Tempo</label><input id="figBpm" type="number" min="30" max="220" class="full"></div>
+    </div>
+    <div class="chk"><input type="checkbox" id="figOwn"><span>Dame tanzt eigene Schritte (sonst gegengleich)</span></div>
+    <div class="tabs" id="whoTabs" style="margin:8px 0 0"><button data-who="H" class="on">Schritte Herr</button><button data-who="D">Schritte Dame</button></div>
+    <table id="figTable">
+      <thead><tr><th>Fuß</th><th>Richtung</th><th>cm</th><th>Dreh°</th><th>Schl.</th><th>Zähl.</th><th class="hc">Haltung</th><th></th></tr></thead>
+      <tbody id="figSteps"></tbody>
+    </table>
+    <div class="row"><button id="figAddStep" class="sec">+ Schritt</button></div>
+    <div class="info" id="figSum"></div>
+    <div class="info">
+      <b>cm</b> = Schrittlänge · <b>Dreh°</b> = Drehung dieses Tänzers (+ links, − rechts). Die Richtung gilt aus dem Blick <i>vor</i> der Drehung, gedreht wird auf dem gesetzten Fuß (2 × „vor“ mit −180° = ganze Rechtsdrehung). · <b>Schl.</b> = Dauer in Schlägen (0,5 = „&amp;“) · <b>Zähl.</b> = Anzeige (1, 2, 3, Q, S, &amp; …).<br>
+      <b>Haltung</b> gilt ab diesem Schritt: geschlossen, Promenade, beide Hände, eine Hand, Arm hoch (für Drehungen unter dem Arm), ohne Fassung.<br>
+      „Seitlich über Kreuz“ = der Fuß kreuzt vor bzw. hinter dem Standbein zur anderen Seite (New Yorker, Promenade, Hand to Hand). „Platz“ = Gewicht auf diesen Fuß, ohne ihn zu bewegen. „Tap“ = antippen ohne Gewicht – der nächste Schritt kommt mit demselben Fuß. „Pause“ = stehen bleiben.<br>
+      Der <b>Tanz</b>-Name bestimmt den Bewegungsstil: Walzer/Foxtrott mit Heben und Senken, Tango flach und tief, Cha-Cha/Rumba/Salsa mit Hüfte, Jive/Samba federnd.
+    </div>
+    <div class="row">
+      <button id="figPlay">▶ Ausprobieren</button>
+      <button id="figSave">💾 Speichern</button>
+    </div>
+  </div>
+</div>
+
+<div id="hud"><div id="count">1</div><div id="stepname"></div><div id="damename"></div><div id="figname"></div></div>
+<div id="legend"><span class="dot" style="background:#3d7bff;margin-left:0"></span>Herr (führt)
+  <span class="dot" style="background:#ff4d6d"></span>Dame &nbsp;|&nbsp; Maus: drehen / zoomen</div>
+
+<!-- Figuren-Bibliothek und Schritt-Engine (normale Skripte, damit die Seite auch direkt von der Festplatte läuft) -->
+<script src="js/basis.js"></script>
+<script src="figuren/standard.js"></script>
+<script src="figuren/latein.js"></script>
+<script src="figuren/gesellschaft.js"></script>
+<script src="figuren/karibik.js"></script>
+<script src="figuren/folgen.js"></script>
+<script src="js/speicher.js"></script>
+<script src="js/engine.js"></script>
+<script src="lib/three.js"></script>
+<script src="lib/OrbitControls.js"></script>
+<script src="js/szene.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
