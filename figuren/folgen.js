@@ -6,6 +6,7 @@ folge('s_wiener','Wiener Walzer – rechts und links',174,[['b_ww_rechts',4],['b
 folge('s_tango','Tango-Folge',128,[['b_t_geh',2],['b_t_wiege'],['b_t_prom']]);
 folge('s_tango2','Tango – Grundschritt, Drehung, Corté',128,[['b_t_gs'],['b_t_links'],['b_t_prom'],['b_t_corte'],['b_t_geh']]);
 folge('s_slowfox','Slowfox-Folge',116,[['b_sf_feder'],['b_sf_links'],['b_sf_dreier'],['b_sf_rechts']]);
+folge('s_slowfox2','Slowfox – Tanzschul-Folge (Entwurf)',116,[['b_sf_ts_r'],['b_sf_ts_v']]);
 folge('s_quick','Quickstep-Folge',200,[['b_q_viertel',2],['b_q_lock'],['b_q_rechts'],['b_q_geh']]);
 folge('s_foxtrott','Foxtrott-Folge',120,[['b_f_gs',2],['b_f_links',2],['b_f_kreuz'],['b_f_rechts',2]]);
 folge('s_foxtrott2','Foxtrott – Promenade und Damendrehung',120,[['b_f_gs'],['b_f_prom'],['b_f_solo'],['b_f_wiege'],['b_f_seit'],['b_f_rueck']]);
