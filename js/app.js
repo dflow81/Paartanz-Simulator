@@ -30,6 +30,9 @@ const itemRange=i=>{ const r=tl.H.filter(s=>s.item===i); return r.length?[r[0].s
 $('seqlist').onclick=e=>{ const d=e.target.closest('[data-i]'); if(!d||!tl) return; const r=itemRange(+d.dataset.i); if(r){ jumpTo(r[0]); clearPrints(); } };
 $('minBtn').onclick=()=>{ $('ui').classList.toggle('min'); $('minBtn').textContent=$('ui').classList.contains('min')?'▴':'▾'; };
 $('cam').onchange=()=>{ if($('cam').value==='frei') overview(); };
+$('show').onchange=()=>{ const v=$('show').value; herr.setGhost(v==='D'); dame.setGhost(v==='H'); };
+$('mirror').onchange=()=>setMirror($('mirror').checked);
+$('gloss').onchange=()=>{ gloss.visible=$('gloss').checked; };
 $('prints').onchange=$('printWho').onchange=()=>{ clearPrints(); clearDiagram(); };
 
 /* ---------- Tanz-Auswahl: filtert alle Listen ---------- */
@@ -284,7 +287,12 @@ function animate(){
     herr.update(pH,sty,dt,beat,{prom:.3*prom,closed}); dame.update(pD,sty,dt,beat,{prom:-.3*prom,closed});
     aimHead(herr,dame,sty,closed,prom,.35,.75,dt); aimHead(dame,herr,sty,closed,prom,.5,-.75,dt);
     const t=handTargets(s.hold,sty);
-    if(s.holdPrev!==s.hold&&hb<1){ const a=handTargets(s.holdPrev,sty); for(const k in t) t[k]=a[k].lerp(t[k],hb); }
+    if(s.holdPrev!==s.hold&&hb<1){ // Haltungswechsel: Hände wandern in einem kleinen Bogen statt auf gerader Linie
+      const a=handTargets(s.holdPrev,sty), arc=Math.sin(Math.PI*hb)*.07; for(const k in t){ t[k]=a[k].lerp(t[k],hb); t[k].y+=arc; } }
+    // Hände folgen ihrem Ziel leicht verzögert (relativ zum Paar), das macht Armwege bei Drehungen weich
+    const pc=herr.P.clone().add(dame.P).multiplyScalar(.5), ka=1-Math.exp(-dt/.085);
+    if(!herr.hs||!dame.hs){ herr.hs={}; dame.hs={}; for(const k in t) (k[0]==='H'?herr:dame).hs[k]=t[k].clone().sub(pc); }
+    for(const k in t){ const h=(k[0]==='H'?herr:dame).hs[k]; h.lerp(t[k].sub(pc),ka); t[k].copy(h).add(pc); }
     herr.arms(t.HL,t.HR,closed); dame.arms(t.DL,t.DR,closed);
 
     if(pH.idx!==lastH){
@@ -300,12 +308,13 @@ function animate(){
     $('figname').textContent=s.fig+(s.reps>1?` (${s.rep}/${s.reps})`:'')+' · '+HOLDS[s.hold][0];
 
     const c=herr.P.clone().add(dame.P).multiplyScalar(.5); c.y=.9;
+    sun.position.set(c.x+3,6,c.z+2); sun.target.position.copy(c);
+    const mx=v=>{ if(mirrored) v.x=-v.x; return v; }; mx(c);   // die Kamera steht außerhalb der gespiegelten Welt
     const cm=$('cam').value;
     if(cm==='folgen'){ const d=c.clone().sub(controls.target); controls.target.add(d); camera.position.add(d); }
     else if(cm!=='frei'){ // feste Blickwinkel, die dem Paar nachgeführt werden
-      const pos=c.clone(); if(cm==='oben'){ pos.y=7; pos.z-=.02; } else { const dn=cm==='herr'?herr:dame; pos.copy(dn.P).addScaledVector(dn.fw,-2.6); pos.y=2; }
+      const pos=c.clone(); if(cm==='oben'){ pos.y=7; pos.z-=.02; } else { const dn=cm==='herr'?herr:dame; mx(pos.copy(dn.P).addScaledVector(dn.fw,-2.6)); pos.y=2; }
       const k=Math.min(1,dt*(cm==='oben'?4:2)); camera.position.lerp(pos,k); controls.target.lerp(cm==='oben'?c.clone().setY(0):c,Math.min(1,dt*5)); }
-    sun.position.set(c.x+3,6,c.z+2); sun.target.position.copy(c);
   }
   controls.update(); renderer.render(scene,camera);
 }

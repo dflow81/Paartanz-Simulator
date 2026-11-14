@@ -33,6 +33,10 @@
       <summary>Ansicht</summary>
       <label>Kamera</label>
       <select id="cam" class="full"><option value="frei">Übersicht (mit der Maus drehbar)</option><option value="folgen">folgt dem Paar</option><option value="oben">von oben</option><option value="herr">hinter dem Herrn</option><option value="dame">hinter der Dame</option></select>
+      <label>Wer ist zu sehen?</label>
+      <select id="show" class="full"><option value="HD">Herr und Dame</option><option value="H">nur Herr (Dame durchsichtig)</option><option value="D">nur Dame (Herr durchsichtig)</option></select>
+      <div class="chk"><input type="checkbox" id="mirror"><span>Spiegelbild (seitenverkehrt, zum Mittanzen vor dem Bildschirm)</span></div>
+      <div class="chk"><input type="checkbox" id="gloss" checked><span>Spiegelndes Parkett</span></div>
       <label>Schritte am Boden</label>
       <div class="row" style="margin-top:0">
         <select id="prints" style="flex:3"><option value="spur">Fußspur</option><option value="diagramm">Schrittdiagramm der Figur (nummeriert)</option><option value="aus">aus</option></select>
@@ -140,6 +144,7 @@
 <script src="js/engine.js"></script>
 <script src="lib/three.js"></script>
 <script src="lib/OrbitControls.js"></script>
+<script src="lib/Reflector.js"></script>
 <script src="js/szene.js"></script>
 <script src="js/app.js"></script>
 </body>
