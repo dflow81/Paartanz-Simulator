@@ -20,7 +20,7 @@
   <div class="panel on" id="p-play">
     <label>Was soll getanzt werden?</label>
     <select id="source" class="full"></select>
-    <label>Tempo: <span id="speedv">100</span>% (<span id="bpmv"></span> Schläge/min)</label>
+    <label>Tempo: <span id="speedv">100</span>% (<span id="bpmv"></span>)</label>
     <input type="range" id="speed" min="20" max="150" value="100">
     <div class="row">
       <button id="backbtn" class="sec" title="einen Schritt zurück">⏮</button>
@@ -56,10 +56,10 @@
         <input type="file" id="musicFile" accept="audio/*" style="display:none">
       </div>
       <div class="row">
-        <input id="musicBpm" type="number" min="40" max="260" placeholder="Schläge/min der Musik" style="flex:1;min-width:0">
+        <input id="musicBpm" type="number" min="40" max="260" step="0.1" placeholder="Schläge/min der Musik" style="flex:1;min-width:0">
         <button id="tapBtn" class="sec" style="flex:1">Tempo tippen</button>
       </div>
-      <div class="info" id="musicInfo">Musik wählen, dann im Takt mindestens viermal auf „Tempo tippen“ drücken. Die Musik wird so schnell oder langsam abgespielt, dass sie zum eingestellten Tanztempo passt.</div>
+      <div class="info" id="musicInfo">Musikdatei wählen – das Paar tanzt dann im Tempo der Musik. Der Tempo-Regler macht Musik und Tanz gemeinsam langsamer oder schneller.</div>
     </details>
     <label>Ablauf (anklicken zum Springen)</label>
     <div class="seqlist" id="seqlist"></div>

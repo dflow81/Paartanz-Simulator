@@ -14,7 +14,7 @@ Ein 3D-Simulator im Browser zum Lernen und Üben von Paartänzen. Herr und Dame 
 - **Zum Üben:** Schritt vor und zurück, eine Figur in Schleife, Tempo von 20 bis 150 %, Klick in den Ablauf zum Springen
 - **Ansichten:** Übersicht, von oben, hinter dem Herrn oder der Dame; Fußspur oder nummeriertes Schrittdiagramm
 - **Nur Herr oder nur Dame zeigen** (der Partner wird durchsichtig) und **Spiegelbild-Ansicht** zum Mittanzen vor dem Bildschirm
-- **Ton:** Metronom mit betonter „1“, Ansage der nächsten Figur, eigene Musikdatei (wird ans Tanztempo angepasst)
+- **Ton:** Metronom mit betonter „1“, Ansage der nächsten Figur, eigene Musikdatei – Tempo und Takt werden automatisch erkannt, das Paar tanzt zur Musik
 - **Tanzfläche** in drei Größen – das Paar tanzt automatisch in Kurven und bleibt im Raum
 - **Export und Import** eigener Figuren und Folgen als Datei, z. B. zum Teilen mit dem Tanzpartner
 

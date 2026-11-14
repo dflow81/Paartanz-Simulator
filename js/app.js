@@ -2,6 +2,13 @@
 const $=id=>document.getElementById(id);
 let src=null, blocks=[], tl=null, beat=0, playing=true, lastH=-1, lastD=-1, lastBeatIdx=-1, stepTarget=null, curItem=-1, lastSaid=-1;
 const speedEl=$('speed');
+/* Musik-Zustand (steht oben, weil schon beim ersten Laden einer Folge das Tempo gebraucht wird) */
+const music=new Audio(); music.loop=true; music.preservesPitch=true;
+let mBpm=0, mOff=0, taps=[], mBusy=false;
+const hasMusic=()=>!!music.src;
+/* Tanztempo zur Musik: erkannte Schläge, bei Bedarf halbiert oder verdoppelt, damit es zum Tanz passt */
+function danceBpm(){ if(!hasMusic()||!mBpm||!src) return 0; let best=mBpm, e=9;
+  for(const f of [.5,1,2]){ const d=Math.abs(Math.log(mBpm*f/src.bpm)); if(d<e){ e=d; best=mBpm*f; } } return best; }
 
 function setSource(s){
   src=s; blocks=flatten(s);
@@ -11,7 +18,9 @@ function setSource(s){
   $('seqlist').innerHTML=s.items.map((it,i)=>`<div data-i="${i}">${i+1}. ${figs[it.fig]?esc(figLabel(figs[it.fig])):'(fehlt)'}${it.rep>1?' ×'+it.rep:''}${warn.has(i)?' <span title="Ein Schritt beginnt mit dem Fuß, auf dem gerade das Gewicht steht.">⚠ falscher Fuß</span>':''}</div>`).join('');
   updBpm();
 }
-const updBpm=()=>{$('speedv').textContent=speedEl.value; $('bpmv').textContent=src?Math.round(src.bpm*speedEl.value/100):'';};
+/* Tanztempo in Schlägen pro Minute: mit Musik gibt die Musik das Tempo vor, sonst die Folge */
+const baseBpm=()=>danceBpm()||(src?src.bpm:0);
+const updBpm=()=>{$('speedv').textContent=speedEl.value; $('bpmv').textContent=src?Math.round(baseBpm()*speedEl.value/100)+(danceBpm()?' Schläge/min, Musik gibt das Tempo vor':' Schläge/min'):'';};
 speedEl.oninput=updBpm;
 $('room').onchange=()=>{ const [w,d]=$('room').value.split('x').map(Number); buildRoom(w,d); if(src) setSource(src); };
 const playBtn=$('play');
@@ -233,39 +242,68 @@ function click(accent){
 function say(txt){ if(!('speechSynthesis' in window)) return; try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(txt); u.lang='de-DE'; u.rate=1.15; speechSynthesis.speak(u); }catch(e){} }
 $('say').onchange=()=>{ lastSaid=-1; if(!$('say').checked&&'speechSynthesis' in window) speechSynthesis.cancel(); };
 
-/* Eigene Musik: Die Abspielgeschwindigkeit wird ans Tanztempo angepasst, die Schläge werden laufend aufeinander geschoben */
-const music=new Audio(); music.loop=true; music.preservesPitch=true;
-let mBpm=0, mOff=0, taps=[];
-const hasMusic=()=>!!music.src;
-function musicInfo(){ $('musicInfo').textContent=!hasMusic()?'Musik wählen, dann im Takt mindestens viermal auf „Tempo tippen“ drücken. Die Musik wird so schnell oder langsam abgespielt, dass sie zum eingestellten Tanztempo passt.':
-  !mBpm?'Jetzt im Takt der Musik mindestens viermal auf „Tempo tippen“ drücken (oder die Schläge pro Minute eintragen).':
-  `Musik: ${Math.round(mBpm)} Schläge/min, läuft mit ${Math.round(music.playbackRate*100)} % Geschwindigkeit.`+(music.playbackRate<=.5||music.playbackRate>=2?' Das Tempo liegt zu weit auseinander – anderes Stück oder Tanztempo wählen.':''); }
+/* Eigene Musik: Das Paar folgt der Musik. Tempo und Schlag werden aus der Datei erkannt; der Tempo-Regler verlangsamt
+   Musik und Tanz gemeinsam. Passt die Erkennung nicht, lässt sie sich durch Mittippen oder Eintragen korrigieren. */
+const MUSIC_HELP='Musikdatei wählen – das Paar tanzt dann im Tempo der Musik. Der Tempo-Regler macht Musik und Tanz gemeinsam langsamer oder schneller.';
+function musicInfo(){ const db=danceBpm();
+  $('musicInfo').textContent=!hasMusic()?MUSIC_HELP:mBusy?'Tempo der Musik wird erkannt …':
+    !mBpm?'Das Tempo wurde nicht erkannt. Bitte im Takt mindestens viermal auf „Tempo tippen“ drücken oder die Schläge pro Minute eintragen.':
+    `Erkannt: ${mBpm.toFixed(1)} Schläge/min – das Paar tanzt mit ${Math.round(db)} Schlägen/min zur Musik.`+
+    (Math.abs(Math.log(db/src.bpm))>.3?` Für diesen Tanz sind etwa ${src.bpm} üblich; das Stück passt nur bedingt.`:'')+' Stimmt der Takt nicht, mittippen.';
+  updBpm(); }
+/* Tempo und Lage der Schläge aus der Datei bestimmen: Lautstärke-Anstiege suchen und prüfen, in welchem Abstand sie sich wiederholen */
+async function analyseMusic(file){
+  wakeAudio(); const ab=await actx.decodeAudioData(await file.arrayBuffer());
+  const sr=ab.sampleRate, hop=Math.round(sr/200), fr=sr/hop, n=Math.min(ab.length,sr*120), m=Math.floor(n/hop);
+  const ch=[]; for(let i=0;i<ab.numberOfChannels;i++) ch.push(ab.getChannelData(i));
+  const env=new Float32Array(m), on=new Float32Array(m);
+  for(let i=0;i<m;i++){ let e=0; for(let j=i*hop,end=j+hop;j<end;j++){ let s=0; for(const c of ch) s+=c[j]; e+=s*s; } env[i]=Math.log(1e-7+e); }
+  for(let i=2;i<m-1;i++) on[i]=Math.max(0,env[i]-env[i-1])+.5*Math.max(0,env[i+1]-env[i]);
+  let mean=0; for(let i=0;i<m;i++) mean+=on[i]; mean/=m; for(let i=0;i<m;i++) on[i]-=mean;
+  // grob: Autokorrelation zwischen 60 und 200 Schlägen/min, mit leichter Vorliebe für mittlere Tempi
+  let bestB=0, bestS=-1e9;
+  for(let lag=Math.floor(fr*60/200); lag<=Math.ceil(fr*60/60); lag++){ let s=0; for(let i=0;i+lag<m;i++) s+=on[i]*on[i+lag];
+    const bpm=fr*60/lag, w=Math.exp(-.5*Math.pow(Math.log2(bpm/118)/.9,2)); s=s/(m-lag)*w; if(s>bestS){ bestS=s; bestB=bpm; } }
+  if(!bestB||bestS<=0) return null;
+  // fein: Raster aus Schlägen über das ganze Stück legen und Tempo und Versatz mit der besten Übereinstimmung nehmen
+  let res=null, top=-1e9;
+  for(let bpm=bestB-2.5; bpm<=bestB+2.5; bpm+=.02){ const P=fr*60/bpm;
+    for(let k=0;k<32;k++){ const ph=k*P/32; let s=0, c=0; for(let x=ph;x<m-1;x+=P){ const i=Math.round(x); s+=on[i]+.5*(on[i-1]||0)+.5*on[i+1]; c++; }
+      s/=c; if(s>top){ top=s; res={bpm,off:ph/fr}; } } }
+  return res;
+}
 $('musicBtn').onclick=()=>$('musicFile').click();
-$('musicFile').onchange=e=>{ const f=e.target.files[0]; if(!f) return; if(music.src) URL.revokeObjectURL(music.src);
-  music.src=URL.createObjectURL(f); mBpm=+$('musicBpm').value||0; mOff=0; taps=[]; $('musicBtn').textContent='🎵 '+f.name; if(playing) music.play().catch(()=>{}); musicInfo(); e.target.value=''; };
-$('musicOff').onclick=()=>{ music.pause(); if(music.src) URL.revokeObjectURL(music.src); music.removeAttribute('src'); music.load(); mBpm=0; taps=[]; $('musicBtn').textContent='🎵 Musikdatei wählen'; musicInfo(); };
+$('musicFile').onchange=async e=>{ const f=e.target.files[0]; if(!f) return; e.target.value='';
+  if(music.src) URL.revokeObjectURL(music.src);
+  music.src=URL.createObjectURL(f); mBpm=0; mOff=0; taps=[]; $('musicBpm').value=''; $('musicBtn').textContent='🎵 '+f.name; mBusy=true; musicInfo();
+  let r=null; try{ r=await analyseMusic(f); }catch(err){}
+  mBusy=false; if(r&&!mBpm){ mBpm=r.bpm; mOff=r.off; $('musicBpm').value=mBpm.toFixed(1); }
+  musicInfo(); };
+$('musicOff').onclick=()=>{ music.pause(); if(music.src) URL.revokeObjectURL(music.src); music.removeAttribute('src'); music.load(); mBpm=0; taps=[]; $('musicBpm').value=''; $('musicBtn').textContent='🎵 Musikdatei wählen'; musicInfo(); };
 $('musicBpm').onchange=()=>{ mBpm=+$('musicBpm').value||0; musicInfo(); };
 $('tapBtn').onclick=()=>{ if(!hasMusic()) { musicInfo(); return; }
   const now=music.currentTime; if(taps.length&&(now-taps.at(-1)>2.5||now<taps.at(-1))) taps=[]; taps.push(now); if(taps.length>12) taps.shift();
-  if(taps.length>=4){ mBpm=60*(taps.length-1)/(taps.at(-1)-taps[0]); mOff=now; $('musicBpm').value=Math.round(mBpm); }
+  if(taps.length>=4){ mBpm=60*(taps.length-1)/(taps.at(-1)-taps[0]); mOff=now; $('musicBpm').value=mBpm.toFixed(1); }
+  else if(mBpm) mOff=now;   // schon ein Tipp verschiebt den Schlag auf diesen Moment
   $('tapBtn').textContent=taps.length<4?`noch ${4-taps.length}×`:'Tempo tippen'; musicInfo(); };
-function syncMusic(dt,bps){
+/* Musik starten/anhalten wie der Tanz und den Tanz Schlag für Schlag an die Musik heranführen */
+function syncMusic(dt){
   if(!hasMusic()) return;
-  const moving=playing||stepTarget!==null;
+  const moving=playing||stepTarget!==null, rate=clamp(speedEl.value/100,.25,2);
+  if(Math.abs(music.playbackRate-rate)>.002) music.playbackRate=rate;
   if(moving&&music.paused) music.play().catch(()=>{}); else if(!moving&&!music.paused) music.pause();
-  if(!mBpm) return;
-  const rate=clamp(bps*60/mBpm,.5,2); if(Math.abs(music.playbackRate-rate)>.002){ music.playbackRate=rate; musicInfo(); }
-  if(playing&&!music.paused){ const f=x=>x-Math.floor(x), err=f(f((music.currentTime-mOff)*mBpm/60)-f(beat)+.5)-.5; beat=Math.max(0,beat+err*Math.min(1,dt*3)); }
+  const db=danceBpm();
+  if(db&&playing&&!music.paused){ const f=x=>x-Math.floor(x), err=f(f((music.currentTime-mOff)*db/60)-f(beat)+.5)-.5; beat=Math.max(0,beat+err*Math.min(1,dt*4)); }
 }
 const isClosed=h=>h==='zu'||h==='prom'?1:0, isProm=h=>h==='prom'?1:0;
 function animate(){
   requestAnimationFrame(animate);
   const dt=Math.min(clock.getDelta(),.05);
   if(tl){
-    const bps=src.bpm/60*speedEl.value/100;
+    const bps=baseBpm()/60*speedEl.value/100;
     if(playing) beat+=dt*bps;
     else if(stepTarget!==null){ beat=Math.min(stepTarget,beat+dt*bps); if(beat>=stepTarget) stepTarget=null; }
-    syncMusic(dt,bps);
+    syncMusic(dt);
     if($('loopFig').checked&&curItem>=0){ // nur die aktuelle Figur üben: am Ende zurück an ihren Anfang
       const r=itemRange(curItem); if(r&&beat>=r[1]-1e-6){ const b=r[0]+Math.min(beat-r[1],.5); if(stepTarget!==null) stepTarget=null; jumpTo(b); lastBeatIdx=-1; clearPrints(); } }
     if(beat>=tl.total){ // Folge beginnt von vorn – weitertanzen ab aktueller Position
