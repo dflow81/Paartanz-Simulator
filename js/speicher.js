@@ -10,6 +10,7 @@ const saveStore=()=>{try{localStorage.setItem(STORE,JSON.stringify(user));}catch
   if(user.seqs.s_tango&&user.seqs.s_tango.bpm===64){ user.seqs.s_tango.bpm=128; ch=true; }   // Tango wurde früher im halben Tempo gezählt
   for(const k of ['s_walzer','s_disco','s_chacha','s_disco2','s_chacha2','s_walzer2','s_wiener','s_tango','s_salsa'])   // alte Beispielnamen angleichen
     if(user.seqs[k]&&/\(Beispiel\)|^(Wiener Walzer|Discofox mit|Cha-Cha mit|Walzer mit|Salsa mit)/.test(user.seqs[k].name)&&JSON.stringify(user.seqs[k].items)===JSON.stringify(DEFAULT_SEQS[k].items)){ user.seqs[k].name=DEFAULT_SEQS[k].name; ch=true; }
+  if(user.seqs.s_slowfox2&&user.seqs.s_slowfox2.items.some(i=>/^b_sf_ts_/.test(i.fig))){ delete user.seqs.s_slowfox2; ch=true; }   // erster Entwurf, durch s_slowfox3 ersetzt
   if(ch){ user.seen=[...seen]; saveStore(); }
 }
 const allFigs=()=>({...BUILTIN,...user.figures});

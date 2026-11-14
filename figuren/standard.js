@@ -42,24 +42,21 @@ tanz('Tango',128,{
 });
 
 tanz('Slowfox',116,{
-  // Entwurf nach Beschreibung: Anfang wie im Walzer (vor, seit, ran), dann ein Schritt, links vorbei, rechts vorbei, links zur Seite, ran
-  b_sf_ts_r:['Tanzschul-Folge, Entwurf (Walzerschritt, dann rückwärts vorbei)',[S('L','vor',38,2,'S'),S('R','seit',24,1,'Q'),S('L','schliessen',0,1,'Q'),
-     S('R','rueck',38,2,'S'),{...S('L','rueck',40,2,'S'),tip:'Links vorbei: der linke Fuß geht am rechten vorbei, nicht schließen'},{...S('R','rueck',40,2,'S'),tip:'Rechts vorbei'},
-     S('L','seit',24,1,'Q'),S('R','schliessen',0,1,'Q')]],
-  b_sf_ts_v:['Tanzschul-Folge, Entwurf (Walzerschritt, dann vorwärts vorbei)',[S('L','vor',38,2,'S'),S('R','seit',24,1,'Q'),S('L','schliessen',0,1,'Q'),
-     S('R','vor',38,2,'S'),{...S('L','vor',40,2,'S'),tip:'Links vorbei: der linke Fuß geht am rechten vorbei, nicht schließen'},{...S('R','vor',40,2,'S'),tip:'Rechts vorbei'},
-     S('L','seit',24,1,'Q'),S('R','schliessen',0,1,'Q')]],
+  // Tanzschul-Folge nach Beschreibung (Entwurf): Rechts-seit-ran mit Rechtsdrehung ×3, ein Schritt rück, Federschritt,
+  // links vorbei mit Linksdrehung, zwei Schritte zurück mit Linksdrehung – danach wieder von vorn
+  b_sf_rsr:['Rechts, seit, ran mit Rechtsdrehung (3×)',[S('R','vor',38,2,'S',-30),S('L','seit',24,1,'Q',-30),S('R','schliessen',0,1,'Q',-30),
+     S('L','rueck',38,2,'S',-30),S('R','seit',24,1,'Q',-30),S('L','schliessen',0,1,'Q',-30),
+     S('R','vor',38,2,'S',-30),S('L','seit',24,1,'Q',-30),S('R','schliessen',0,1,'Q',-30)]],
+  b_sf_rf:['Ein Schritt rück, dann Federschritt',[S('L','rueck',38,2,'S'),S('R','vor',45,2,'S'),S('L','vor',40,1,'Q'),{...S('R','vorAussen',36,1,'Q'),tip:'Dritter Schritt außenseitlich: rechts an der Dame vorbei'}]],
+  b_sf_lv:['Links vorbei mit Linksdrehung, dann zurück',[S('L','vor',42,2,'S',30),S('R','seit',28,1,'Q',60),{...S('L','rueck',32,1,'Q',45),tip:'Links vorbei: der linke Fuß geht am rechten vorbei nach hinten, nicht schließen'},
+     S('R','rueck',40,2,'S',30),S('L','rueck',40,2,'S',30)]],
   b_sf_feder:['Federschritt',[S('R','vor',50,2,'S'),S('L','vor',42,1,'Q'),{...S('R','vorAussen',38,1,'Q'),tip:'Dritter Schritt außenseitlich: rechts an der Dame vorbei'}]],
   b_sf_dreier:['Dreierschritt',[S('L','vor',50,2,'S'),S('R','vor',42,1,'Q'),S('L','vor',38,1,'Q')]],
-  // Die Dame tanzt auf 2 eine Fersendrehung: Füße schließen und auf den Fersen drehen, statt zur Seite zu gehen
-  b_sf_links:['Linksdrehung',[S('L','vor',45,2,'S',30),S('R','seit',30,1,'Q',60),S('L','rueck',32,1,'Q',45),
-     S('R','rueck',42,2,'S',30),S('L','seit',30,1,'Q',60),S('R','vorAussen',36,1,'Q',45)],
-    [S('R','rueck',42,2,'S',30),{...S('L','ferse',0,1,'Q',60),tip:'Dame: Fersendrehung – Füße schließen, auf den Fersen drehen'},S('R','vor',30,1,'Q',45),
-     S('L','vor',42,2,'S',30),S('R','seit',30,1,'Q',60),S('L','rueckAussen',36,1,'Q',45)]],
-  b_sf_rechts:['Rechtsdrehung',[S('R','vor',45,2,'S',-30),S('L','seit',30,1,'Q',-60),S('R','rueck',32,1,'Q',-45),
-     S('L','rueck',42,2,'S',-30),S('R','seit',30,1,'Q',-60),S('L','vor',36,1,'Q',-45)],
-    [S('L','rueck',42,2,'S',-30),{...S('R','ferse',0,1,'Q',-60),tip:'Dame: Fersendrehung – Füße schließen, auf den Fersen drehen'},S('L','vor',30,1,'Q',-45),
-     S('R','vor',42,2,'S',-30),S('L','seit',30,1,'Q',-60),S('R','rueck',46,1,'Q',-45)]],
+  // Die Dame tanzt auf 2 eine Fersendrehung (df:'ferse'): Sie schließt die Füße und dreht auf den Fersen, statt zur Seite zu gehen
+  b_sf_links:['Linksdrehung',[S('L','vor',45,2,'S',30),{...S('R','seit',30,1,'Q',60),df:'ferse',tip:'Dame: Fersendrehung – Füße schließen, auf den Fersen drehen'},S('L','rueck',32,1,'Q',45),
+     S('R','rueck',42,2,'S',30),S('L','seit',30,1,'Q',60),S('R','vorAussen',36,1,'Q',45)]],
+  b_sf_rechts:['Rechtsdrehung',[S('R','vor',45,2,'S',-30),{...S('L','seit',30,1,'Q',-60),df:'ferse',tip:'Dame: Fersendrehung – Füße schließen, auf den Fersen drehen'},S('R','rueck',32,1,'Q',-45),
+     S('L','rueck',42,2,'S',-30),S('R','seit',30,1,'Q',-60),S('L','vor',36,1,'Q',-45)]],
 });
 
 tanz('Quickstep',200,{

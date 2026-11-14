@@ -81,7 +81,7 @@ function doStep(st,s,sty,start,d,forced,shift){
     case 'tapRueck': to=add(neutral,fw,-Math.max(len,.15)); kind='tap'; weight=false; break;
     case 'kick': kind='kick'; weight=false; break;
   }
-  if(forced&&kind!=='halt') to=forced.to;
+  if(forced&&forced.to&&kind!=='halt') to=forced.to;
   else if(shift&&kind!=='halt'&&kind!=='platz') to=add(to,shift);
   const mv=sub(to,cur), dist=Math.hypot(mv[0],mv[1]);
   if(kind==='platz'&&dist>.03) kind='step';
@@ -138,7 +138,8 @@ function simBlock(b,H,D,beat,extra,hs,ds){
       let dh=wrap(r.hA+g.face-D.h);
       if(Math.abs(Math.abs(dh)-Math.PI)<.5){ const sp=g.spin||-(D.spin||0)||Math.sign(r.hA-r.hB); if(sp) dh=sp*Math.abs(dh); }
       D.spin=g.spin||0;
-      ds.push(Object.assign(doStep(D,{f:r.o,dir:g.face===0?r.dir:(MIRROR[r.dir]||r.dir),len:s.len,turn:s.turn,c:s.c},sty,r.start,d,{to,h2:D.h+dh}),meta));
+      // df: besondere Fußarbeit der Dame bei diesem Schritt (z. B. 'ferse' = Fersendrehung: sie schließt, statt mitzugehen; der nächste Schritt holt sie wieder heran)
+      ds.push(Object.assign(doStep(D,{f:r.o,dir:s.df||(g.face===0?r.dir:(MIRROR[r.dir]||r.dir)),len:s.len,turn:s.turn,c:s.c},sty,r.start,d,{to:s.df?null:to,h2:D.h+dh}),meta));
       tD=tH; out=Math.max(out,outside(pairCtr(H,D)));
     }
   }
