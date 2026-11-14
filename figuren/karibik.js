@@ -15,8 +15,9 @@ tanz('Salsa',170,{
      [S('L','kreuz',15,1,'1',-180,'frei'),S('R','vor',15,1,'2',-180,'frei'),S('L','schliessen',0,2,'3',0,'offen'),...s2],
      [...spiegel(s1),...spiegel(s2)]],
   b_s_cbl:['Platzwechsel (Cross Body Lead)',
-     [S('L','vor',20,1,'1'),S('R','diagRueck',30,1,'2',90,'LR'),S('L','schliessen',0,2,'3',0,'LR'),S('R','platz',0,1,'5',0,'LR'),S('L','platz',0,1,'6',90,'LR'),S('R','schliessen',0,2,'7')],
-     [S('R','rueck',20,1,'1'),S('L','platz',0,1,'2'),S('R','vor',25,2,'3'),S('L','vor',40,1,'5'),S('R','vor',35,1,'6',180),S('L','schliessen',0,2,'7')]],
+     // Herr macht die Bahn frei (zur Seite, ¼ links), Dame geht an ihm vorbei und dreht sich zu ihm, er schließt wieder auf
+     [S('L','vor',20,1,'1'),S('R','seit',45,1,'2',90,'LR'),S('L','schliessen',0,2,'3',0,'LR'),S('R','platz',0,1,'5',0,'LR'),S('L','vor',35,1,'6',90,'LR'),S('R','schliessen',0,2,'7')],
+     [S('R','rueck',20,1,'1'),S('L','platz',0,1,'2'),S('R','vor',25,2,'3'),S('L','vor',40,1,'5'),S('R','vor',20,1,'6',180),S('L','schliessen',0,2,'7')]],
 });
 
 /* Bachata: drei Schritte und ein Tap */

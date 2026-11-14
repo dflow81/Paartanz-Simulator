@@ -15,10 +15,11 @@ function latein(cha){
     ny:auf('kreuzSeit',1,['LR','RL']), hand:auf('kreuzSeitHinter',-1,['RL','LR']),
     solo:{steps:[...h1,S('R','rueck',30,1,'2',0,'hoch'),S('L','platz',0,1,'3',0,'hoch'),...T('R')],
           dame:[...spiegel(h1),S('L','vor',20,1,'2',-180),S('R','vor',20,1,'3',-180),...T('L')]},
-    spot:{steps:[S('L','kreuz',18,1,'2',-180,'frei'),S('R','vor',18,1,'3',-180,'frei'),...H(T('L'),'offen'),
-                 S('R','kreuz',18,1,'2',180,'frei'),S('L','vor',18,1,'3',180,'frei'),...H(T('R'),'offen')],
-          dame:[S('R','kreuz',18,1,'2',180),S('L','vor',18,1,'3',180),...T('R'),
-                S('L','kreuz',18,1,'2',-180),S('R','vor',18,1,'3',-180),...T('L')]}};
+    // Platzdrehung: seitlich über Kreuz setzen, halbe Drehung, zurück an den Platz, halbe Drehung – ohne aufeinander zuzugehen
+    spot:{steps:[S('L','kreuzSeit',15,1,'2',-180,'frei'),S('R','seit',15,1,'3',-180,'frei'),...H(T('L'),'offen'),
+                 S('R','kreuzSeit',15,1,'2',180,'frei'),S('L','seit',15,1,'3',180,'frei'),...H(T('R'),'offen')],
+          dame:[S('R','kreuzSeit',15,1,'2',180),S('L','seit',15,1,'3',180),...T('R'),
+                S('L','kreuzSeit',15,1,'2',-180),S('R','seit',15,1,'3',-180),...T('L')]}};
 }
 const c=latein(true), r=latein(false);
 
@@ -70,8 +71,8 @@ tanz('Jive',150,{
      [...rock,...H(tripel('L','3','4'),'hoch'),...H(tripel('R','5','6'),'offen')],
      [...spiegel(rock),S('R','vor',10,.75,'3',-180),S('L','vor',10,.25,'a',-180),S('R','platz',0,1,'4'),...tripel('L','5','6')]],
   b_j_pw:['Platzwechsel (Dame dreht links unter dem Arm)',
-     [...rock,S('L','vor',35,.75,'3',0,'hoch'),S('R','schliessen',0,.25,'a',0,'hoch'),S('L','vor',35,1,'4',180,'hoch'),...H(tripel('R','5','6'),'LR')],
-     [...spiegel(rock),S('R','diagVor',45,.75,'3'),S('L','schliessen',0,.25,'a'),S('R','diagVor',40,1,'4',180),...tripel('L','5','6')]],
+     [...rock,S('L','kreuz',35,.75,'3',0,'hoch'),S('R','schliessen',0,.25,'a',0,'hoch'),S('L','vor',35,1,'4',180,'hoch'),...H(tripel('R','5','6'),'LR')],
+     [...spiegel(rock),S('R','diagVor',60,.75,'3'),S('L','diagVor',60,.25,'a'),S('R','schliessen',0,1,'4',180),...tripel('L','5','6')]],
 });
 
 /* Paso Doble: ein Schritt pro Schlag, beginnt rechts */

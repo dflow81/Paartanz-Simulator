@@ -13,7 +13,7 @@ tanz('Foxtrott',120,{
   b_f_lock:['Kreuzschritt C (vorwärts, rechts kreuzt hinten ein)',[S('L','vor',40,2,'S'),S('R','vor',40,2,'S'),S('L','vor',30,1,'Q'),S('R','kreuzHinter',10,1,'Q')]],
   b_f_solo:['Damendrehung rechts unter dem Arm',
      [S('L','platz',0,2,'S',0,'hoch'),S('R','platz',0,2,'S',0,'hoch'),S('L','seit',25,1,'Q'),S('R','schliessen',0,1,'Q')],
-     [S('R','vor',20,2,'S',-180),S('L','vor',20,2,'S',-180),S('R','seit',25,1,'Q'),S('L','schliessen',0,1,'Q')]],
+     [S('R','vor',8,2,'S',-180),S('L','vor',8,2,'S',-180),S('R','seit',25,1,'Q'),S('L','schliessen',0,1,'Q')]],
 });
 
 /* Discofox: Schritt, Schritt, Tap – der Tap-Fuß macht den nächsten Schritt */
@@ -38,8 +38,8 @@ tanz('Discofox',120,{
      [S('L','vor',15,1,'1',180,'frei'),S('R','vor',15,1,'2',180,'frei'),S('L','tap',0,1,'3',0,'offen')],
      [S('R','platz',0,1,'1'),S('L','platz',0,1,'2'),S('R','tap',0,1,'3')]],
   b_d_pw:['Platzwechsel (Dame dreht links unter dem Arm)',
-     [S('L','vor',30,1,'1',0,'hoch'),S('R','vor',30,1,'2',180,'hoch'),S('L','tap',0,1,'3',0,'LR')],
-     [S('R','diagVor',45,1,'1'),S('L','diagVor',35,1,'2',180),S('R','tap',0,1,'3')]],
+     [S('L','kreuz',30,1,'1',0,'hoch'),S('R','vor',30,1,'2',180,'hoch'),S('L','tap',0,1,'3',0,'LR')],   // Herr weicht leicht nach rechts aus
+     [S('R','diagVor',60,1,'1'),S('L','diagVor',60,1,'2',180),S('R','tap',0,1,'3')]],   // Dame geht im Bogen um den Herrn: schräg hinaus, schräg wieder herein
 });
 
 tanz('Blues',80,{

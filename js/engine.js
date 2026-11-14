@@ -70,8 +70,9 @@ function doStep(st,s,sty,start,d,forced,shift){
     case 'diagRueck': to=add(add(neutral,fw,-len*.7),lf,side*len*.7); break;
     case 'kreuz': to=add(add(oth,fw,Math.max(len,.12)),lf,-side*.04); break;
     case 'kreuzHinter': to=add(add(oth,fw,-Math.max(len,.12)),lf,-side*.04); break;
-    case 'kreuzSeit': to=add(add(oth,lf,-side*Math.max(len,.15)),fw,.12); break;
-    case 'kreuzSeitHinter': to=add(add(oth,lf,-side*Math.max(len,.15)),fw,-.12); break;
+    // seitlich über Kreuz: nur 4 cm vor bzw. hinter dem Standfuß, damit das Paar dabei nicht aufeinander zuläuft
+    case 'kreuzSeit': to=add(add(oth,lf,-side*Math.max(len,.15)),fw,.04); break;
+    case 'kreuzSeitHinter': to=add(add(oth,lf,-side*Math.max(len,.15)),fw,-.04); break;
     case 'platz': to=[...cur]; kind='platz'; break;
     case 'halt': to=[...cur]; kind='halt'; weight=false; break;
     case 'tap': to=add(neutral,fw,len); kind='tap'; weight=false; break;
@@ -126,8 +127,8 @@ function simBlock(b,H,D,beat,extra,hs,ds){
     const r=Object.assign(doStep(H,tw(s),sty,tH,d),meta,{hold,holdPrev:H.hold||hold,turn:s.turn}); H.hold=hold; hs.push(r); tH+=d;
     if(!own){
       const g=holdGeo(hold,sty), v=dirv(r.hA); let to=add(add(r.to,v.fw,g.gap),v.lf,-g.off);
-      if(r.dir==='kreuzSeit') to=add(to,dirv(r.hB).fw,-.24);   // auch die Dame kreuzt vor dem Körper
-      else if(r.dir==='kreuzSeitHinter') to=add(to,dirv(r.hB).fw,.24);
+      if(r.dir==='kreuzSeit') to=add(to,dirv(r.hB).fw,-.08);   // auch die Dame kreuzt vor dem Körper
+      else if(r.dir==='kreuzSeitHinter') to=add(to,dirv(r.hB).fw,.08);
       // Blickrichtung der Dame; bei einer halben Drehung entscheidet die Haltung (ein-/ausdrehen) oder die Drehung des Herrn über den Drehsinn
       let dh=wrap(r.hA+g.face-D.h);
       if(Math.abs(Math.abs(dh)-Math.PI)<.5){ const sp=g.spin||-(D.spin||0)||Math.sign(r.hA-r.hB); if(sp) dh=sp*Math.abs(dh); }
@@ -137,15 +138,20 @@ function simBlock(b,H,D,beat,extra,hs,ds){
     }
   }
   if(own){
-    const run=(Dx,sh,rec)=>{ let t=beat; for(const s of F.dame){ const d=Math.max(.25,+s.d||1), r=doStep(Dx,tw(s),sty,t,d,null,sh); if(rec) rec.push(Object.assign(r,meta,{turn:s.turn})); t+=d; } return t; };
-    // Probelauf: Landet die Dame zu weit weg, zu nah oder seitlich versetzt, wird jeder ihrer Schritte ein wenig nachgeführt
-    const trial=structuredClone(D); run(trial,null);
-    const v=dirv(H.h), rel=sub(lerp(trial.L,trial.R,.5),lerp(H.L,H.R,.5)), gap=dot(rel,v.fw), lat=dot(rel,v.lf);
-    const n=Math.max(1,F.dame.filter(s=>s.dir!=='halt'&&s.dir!=='platz').length-.5);
-    const g=holdGeo(H.hold,sty), near0=g.face===0;   // nebeneinander (Körbchen, Schatten): genau an den Platz, sonst nur grob
-    let sh=add([0,0],v.fw,(clamp(gap,near0?g.gap-.08:.4,near0?g.gap+.08:.95)-gap)/n); sh=add(sh,v.lf,(clamp(lat,near0?-g.off-.08:-.1,near0?-g.off+.08:.1)-lat)/n);
-    const l=Math.hypot(sh[0],sh[1]); if(l>.2) sh=[sh[0]*.2/l,sh[1]*.2/l];
-    tD=run(D,l>.004?sh:null,ds);
+    const half=Math.floor(F.dame.length/2);   // nachgeführt wird erst in der zweiten Hälfte der Figur – der Anfang (z. B. Ausweichen) bleibt, wie er ist
+    const run=(Dx,sh,rec)=>{ let t=beat; F.dame.forEach((s,i)=>{ const d=Math.max(.25,+s.d||1), r=doStep(Dx,tw(s),sty,t,d,null,sh&&i>=half?sh:null); if(rec) rec.push(Object.assign(r,meta,{turn:s.turn})); t+=d; }); return t; };
+    // Probeläufe: Landet die Dame zu weit weg, zu nah oder seitlich versetzt, werden ihre Schritte ein wenig nachgeführt
+    const v=dirv(H.h), g=holdGeo(H.hold,sty), near0=g.face===0;   // nebeneinander (Körbchen, Schatten): genau an den Platz, sonst nur grob
+    const n=Math.max(1,F.dame.filter((s,i)=>i>=half&&s.dir!=='halt'&&s.dir!=='platz').length-.5);
+    let sh=[0,0];
+    for(let it=0;it<3;it++){
+      const trial=structuredClone(D); run(trial,sh);
+      const rel=sub(lerp(trial.L,trial.R,.5),lerp(H.L,H.R,.5)), gap=dot(rel,v.fw), lat=dot(rel,v.lf);
+      const open=H.hold!=='zu'&&H.hold!=='prom'&&H.hold!=='hoch';   // in offenen Haltungen etwas mehr Abstand
+      sh=add(sh,v.fw,(clamp(gap,near0?g.gap-.08:open?.6:.4,near0?g.gap+.08:.95)-gap)/n); sh=add(sh,v.lf,(clamp(lat,near0?-g.off-.08:-.1,near0?-g.off+.08:.1)-lat)/n);
+      const l=Math.hypot(sh[0],sh[1]); if(l>.25) sh=[sh[0]*.25/l,sh[1]*.25/l];
+    }
+    tD=run(D,Math.hypot(sh[0],sh[1])>.004?sh:null,ds);
   }
   const end=Math.max(tH,tD);
   if(end-tH>1e-6) hs.push(Object.assign(doStep(H,{f:'L',dir:'halt',c:''},sty,tH,end-tH),meta,{hold:H.hold,holdPrev:H.hold}));

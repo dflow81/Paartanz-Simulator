@@ -70,8 +70,8 @@ class Dancer{
     const pel=add(new THREE.SphereGeometry(.13*k,20,14),fem?top:legs,this.hipG); pel.scale.set(fem?.92:1.2,fem?.7:.78,fem?.78:.85);   // bei der Dame schmal, damit nichts durch den Rock sticht
     if(fem){ // Rock: schwingender Glockenrock mit hellerem Saum
       const sm_=M(color,.38,{side:THREE.DoubleSide});
-      this.skirt=add(lathe([[.1,.06],[.125,0],[.16,-.09],[.2,-.19],[.25,-.29],[.31,-.38],[.36,-.44]],1,40),sm_);
-      const hem=add(lathe([[.352,-.43],[.372,-.455]],1,40),M(new THREE.Color(color).lerp(new THREE.Color(0xffffff),.45),.4,{side:THREE.DoubleSide}),this.skirt);
+      this.skirt=add(lathe([[.1,.06],[.122,0],[.15,-.09],[.18,-.19],[.215,-.29],[.26,-.38],[.3,-.44]],1,40),sm_);
+      const hem=add(lathe([[.293,-.43],[.312,-.455]],1,40),M(new THREE.Color(color).lerp(new THREE.Color(0xffffff),.45),.4,{side:THREE.DoubleSide}),this.skirt);
       // Oberteil: Taille, Brust, darüber Schultern und Dekolleté in Hautfarbe
       const bod=add(lathe([[.001,-.03],[.1,-.03],[.086,.05],[.092,.13],[.118,.24],[.112,.31],[.09,.345]],k),top,this.chestG); bod.scale.set(1.2,1,.82);
       const shd=add(lathe([[.1,.29],[.116,.35],[.095,.405],[.05,.44],[.001,.45]],k),skin,this.chestG); shd.scale.set(1.3,1,.72);
