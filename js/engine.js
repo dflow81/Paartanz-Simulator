@@ -22,6 +22,7 @@ const STYLES={
   swing:{flow:1,gap:.38,off:.07,rise:1,bounce:0,hip:0,fe:.8,lift:.03,heel:true,drop:0,mid:.3,std:true,turnout:.1},
   wiener:{flow:1.5,gap:.38,off:.07,rise:.55,bounce:0,hip:0,fe:.95,lift:.03,heel:true,drop:0,mid:.3,std:true,turnout:.1},
   tango:{gap:.36,off:.09,rise:0,bounce:0,hip:0,fe:.5,lift:.025,heel:true,drop:.05,mid:.3,std:true,turnout:.05},
+  argentino:{gap:.34,off:.05,rise:0,bounce:0,hip:0,fe:.8,lift:.02,heel:true,drop:.03,mid:.3,std:true,turnout:.08,flow:.7},
   paso:{gap:.38,off:.05,rise:0,bounce:0,hip:0,fe:.6,lift:.03,heel:true,drop:0,mid:.3,std:true,turnout:.08},
   latin:{gap:.5,off:0,rise:0,bounce:0,hip:1,fe:.6,lift:.018,heel:false,drop:0,mid:.1,std:false,turnout:.22},
   bounce:{gap:.5,off:0,rise:0,bounce:.03,hip:.5,fe:.7,lift:.05,heel:false,drop:.02,mid:.15,std:false,turnout:.15},
@@ -31,7 +32,8 @@ function styleOf(d){ d=(d||'').toLowerCase();
   if(/wiener/.test(d)) return STYLES.wiener;
   if(/tango/.test(d)) return STYLES.tango;
   if(/paso/.test(d)) return STYLES.paso;
-  if(/disco|hustle/.test(d)) return STYLES.social;
+  if(/argentin/.test(d)) return STYLES.argentino;
+  if(/disco|hustle|west coast/.test(d)) return STYLES.social;
   if(/walzer|waltz|slow|fox|quick/.test(d)) return STYLES.swing;
   if(/jive|samba|boogie|rock|swing|lindy|charleston|polka/.test(d)) return STYLES.bounce;
   if(/cha|rumba|salsa|bachata|mambo|merengue|latein|latin|kizomba/.test(d)) return STYLES.latin;
@@ -43,7 +45,7 @@ const holdGeo=(hold,sty)=>hold==='zu'||hold==='prom'?{gap:sty.gap,off:sty.off,fa
   hold==='faecher'?{gap:.32,off:-.75,face:-Math.PI/2,exact:true}:{gap:.85,off:0,face:Math.PI};
 const RISE={'1':.15,'2':1,'3':0,'4':.15,'5':1,'6':0,S:.2,Q:.75,'&':1,a:1};
 
-const startH=()=>({L:[.1,0],R:[-.1,0],yL:0,yR:0,pL:0,pR:0,h:0,sup:[0,0],side:0,rise:0,hold:null});
+const startH=(x=0,z=0,h=0)=>{ const lf=dirv(h).lf; return {L:[x+lf[0]*.1,z+lf[1]*.1],R:[x-lf[0]*.1,z-lf[1]*.1],yL:h,yR:h,pL:0,pR:0,h,sup:[x,z],side:0,rise:0,hold:null}; };
 function startD(H,sty,hold){
   const {fw,lf}=dirv(H.h), g=holdGeo(hold,sty), h=H.h+g.face, c=add(add(lerp(H.L,H.R,.5),fw,g.gap),lf,-g.off), l2=dirv(h).lf, L=add(c,l2,.1), R=add(c,l2,-.1);
   return {L,R,yL:h,yR:h,pL:0,pR:0,h,sup:lerp(L,R,.5),side:0,rise:0};
@@ -127,6 +129,9 @@ function simBlock(b,H,D,beat,extra,hs,ds){
   // Takt: Die Figur beginnt auf Zählzeit c0 (z. B. Cha-Cha auf „2“), betont wird die „1“ jedes Takts
   const meta={fig:figTitle(F),item:b.item,rep:b.rep,reps:b.reps,sty,name:F.name,blockStart:beat,meter:/walzer|waltz/i.test(F.dance||'')?3:4,off:c0>0?c0-1:0};
   const own=Array.isArray(F.dame)&&F.dame.length>0, tw=s=>extra&&s.dir!=='halt'?{...s,turn:(+s.turn||0)+extra}:s;
+  if(own){ // Figur beginnt in einer festen Stellung (z. B. aus dem Fächer): Steht die Dame ganz woanders, etwa beim Üben in Schleife, beginnt sie dort
+    const h0=HOLDS[F.steps[0].hold]?F.steps[0].hold:'zu', g0=holdGeo(h0,sty);
+    if(g0.exact||g0.face===0){ const want=startD(H,sty,h0), c=lerp(D.L,D.R,.5), w=lerp(want.L,want.R,.5); if(Math.hypot(c[0]-w[0],c[1]-w[1])>.4) Object.assign(D,want); } }
   let tH=beat,tD=beat,out=0;
   for(const s of F.steps){
     const d=Math.max(.25,+s.d||1), hold=HOLDS[s.hold]?s.hold:'zu';

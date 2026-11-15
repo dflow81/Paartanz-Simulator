@@ -21,8 +21,10 @@ folge('s_chacha','Cha-Cha – Grundschritt',120,[['b_c_gs',4]]);
 folge('s_chacha2','Cha-Cha – New Yorker',120,[['b_c_gs',2],['b_c_ny',2]]);
 folge('s_chacha3','Cha-Cha – große Folge',120,[['b_c_gs'],['b_c_ny'],['b_c_solo'],['b_c_hand'],['b_c_spot'],['b_c_lock']]);
 folge('s_chacha4','Cha-Cha – Fächer und Hockeystick',120,[['b_c_gs'],['b_c_fan'],['b_c_hockey'],['b_c_gs']]);
+folge('s_chacha5','Cha-Cha – Fächer und Alemana',120,[['b_c_gs'],['b_c_fan'],['b_c_alemana'],['b_c_ny']]);
 folge('s_rumba','Rumba-Folge',100,[['b_r_box',2],['b_r_ny'],['b_r_cuca'],['b_r_solo'],['b_r_hand'],['b_r_spot']]);
 folge('s_rumba2','Rumba – Fächer und Hockeystick',100,[['b_r_box'],['b_r_fan'],['b_r_hockey'],['b_r_box']]);
+folge('s_rumba3','Rumba – Fächer und Alemana',100,[['b_r_box'],['b_r_fan'],['b_r_alemana'],['b_r_ny']]);
 folge('s_samba','Samba-Folge',100,[['b_sa_gs',2],['b_sa_wisch',2],['b_sa_volta'],['b_sa_solo'],['b_sa_seit']]);
 folge('s_jive','Jive-Folge',150,[['b_j_gs',2],['b_j_spin'],['b_j_gs'],['b_j_pw'],['b_j_kicks',2],['b_j_dreh',2]]);
 folge('s_paso','Paso-Doble-Folge',120,[['b_pd_platz'],['b_pd_marsch'],['b_pd_appel',2],['b_pd_chasse'],['b_pd_dreh']]);
@@ -30,3 +32,6 @@ folge('s_salsa','Salsa – Grundschritt und Damendrehung',170,[['b_s_gs',2],['b_
 folge('s_salsa2','Salsa – große Folge',170,[['b_s_gs'],['b_s_seit'],['b_s_herr'],['b_s_cbl'],['b_s_dreh'],['b_s_rueck']]);
 folge('s_bachata','Bachata-Folge',125,[['b_b_seit',2],['b_b_vor'],['b_b_dreh'],['b_b_platz'],['b_b_links',2]]);
 folge('s_merengue','Merengue-Folge',130,[['b_m_platz'],['b_m_seit'],['b_m_paar',2],['b_m_solo'],['b_m_vor']]);
+folge('s_boogie','Boogie-Folge',160,[['b_bw_gs',2],['b_bw_triple',2],['b_bw_kick'],['b_bw_dreh',2]]);
+folge('s_argentino','Tango Argentino – Folge',110,[['b_ta_geh'],['b_ta_cunita'],['b_ta_salida'],['b_ta_baldosa'],['b_ta_cambio']]);
+folge('s_wcs','West Coast Swing – Folge',105,[['b_wc_push',2],['b_wc_left'],['b_wc_push'],['b_wc_turn']]);

@@ -15,12 +15,16 @@ function latein(cha){
      Hockeystick: Aus dem Fächer geht sie vor ihm vorbei, dreht unter seiner Hand nach links und steht ihm wieder gegenüber. */
   const TB=(f,t=0)=>cha?[S(f,'rueck',12,.5,'4',t),S(O(f),'schliessen',0,.5,'&'),S(f,'rueck',12,1,'1')]:[S(f,'rueck',25,2,'4',t)];
   const TV=f=>cha?[S(f,'vor',14,.5,'4'),S(O(f),'schliessen',0,.5,'&'),S(f,'vor',14,1,'1')]:[S(f,'vor',28,2,'4')];
-  const fan={steps:[...h1,...H(h2,'faecher')],
-             dame:[...spiegel(h1),S('L','vor',22,1,'2'),S('R','diagVor',45,1,'3',45),...TB('L',45)]};
   const TP=f=>cha?[S(f,'schliessen',0,.5,'4'),S(O(f),'platz',0,.5,'&'),S(f,'platz',0,1,'1')]:[S(f,'schliessen',0,2,'4')];   // am Platz
+  const fan={steps:[...h1,...H(h2,'faecher')],
+             dame:[...spiegel(h1),S('L','vor',10,1,'2'),S('R','diagVor',45,1,'3',45),...TB('L',45)]};
   const hockey={steps:[...H([S('L','vor',12,1,'2'),S('R','platz',0,1,'3'),...TP('L')],'faecher'),S('R','rueck',12,1,'2',0,'hoch'),S('L','platz',0,1,'3',0,'hoch'),...H(T('R'),'LR')],
              dame:[S('R','schliessen',0,1,'2'),S('L','diagVor',32,1,'3'),...TV('R'),S('L','vor',28,1,'2',45),{...S('R','vor',25,1,'3',135),tip:'Dame dreht links unter seiner erhobenen Hand'},...TB('L',90)]};
-  return {gs,T,fan,hockey,
+  // Alemana: Aus dem Fächer kommt die Dame vor den Herrn und dreht unter seiner Hand 1¼ nach rechts, bis sie ihm gegenübersteht
+  const alemana={steps:[...H([S('L','vor',12,1,'2'),S('R','platz',0,1,'3'),...TP('L')],'faecher'),S('R','rueck',12,1,'2',0,'hoch'),S('L','platz',0,1,'3',0,'hoch'),...H(T('R'),'zu')],
+             dame:[S('R','schliessen',0,1,'2'),S('L','vor',25,1,'3'),...TV('R'),S('L','vor',15,1,'2',-225),{...S('R','vor',15,1,'3',-180),tip:'Dame dreht rechts unter seiner erhobenen Hand'},
+                   ...(cha?[S('L','seit',12,.5,'4',-45),S('R','schliessen',0,.5,'&'),S('L','seit',12,1,'1')]:[S('L','seit',25,2,'4',-45)])]};
+  return {gs,T,fan,hockey,alemana,
     ny:auf('kreuzSeit',1,['LR','RL']), hand:auf('kreuzSeitHinter',-1,['RL','LR']),
     solo:{steps:[...h1,S('R','rueck',30,1,'2',0,'hoch'),S('L','platz',0,1,'3',0,'hoch'),...T('R')],
           dame:[...spiegel(h1),S('L','vor',20,1,'2',-180),S('R','vor',20,1,'3',-180),...T('L')]},
@@ -43,6 +47,7 @@ tanz('Cha-Cha-Cha',120,{
   b_c_spot:['Platzdrehung (beide drehen solo)',c.spot.steps,c.spot.dame],
   b_c_fan:['Fächer (Fan)',c.fan.steps,c.fan.dame],
   b_c_hockey:['Hockeystick (aus dem Fächer)',c.hockey.steps,c.hockey.dame],
+  b_c_alemana:['Alemana (aus dem Fächer)',c.alemana.steps,c.alemana.dame],
 });
 
 tanz('Rumba',100,{
@@ -55,6 +60,7 @@ tanz('Rumba',100,{
   b_r_spot:['Platzdrehung (beide drehen solo)',r.spot.steps,r.spot.dame],
   b_r_fan:['Fächer (Fan)',r.fan.steps,r.fan.dame],
   b_r_hockey:['Hockeystick (aus dem Fächer)',r.hockey.steps,r.hockey.dame],
+  b_r_alemana:['Alemana (aus dem Fächer)',r.alemana.steps,r.alemana.dame],
 });
 
 /* Samba: „1 a 2“ = ¾, ¼, 1 Schlag */

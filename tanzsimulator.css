@@ -71,3 +71,9 @@ summary{cursor:pointer;font-size:13px;color:#cfd6ff;user-select:none}
 .glist span{color:#999;font-size:12px}
 .gprop{margin-top:10px;border-top:1px solid #333}
 @media (max-width:800px){ .gmain{flex-direction:column} #guiSide{width:auto;max-height:45%;border-left:0;border-top:1px solid #333} }
+
+.turtle{float:right;opacity:.28;filter:grayscale(1);padding:0 2px}
+.turtle.on{opacity:1;filter:none}
+#explain{font-size:12px;line-height:1.5;color:#ccc;margin-top:4px}
+#explain .ex{display:grid;grid-template-columns:22px 1fr 1fr;gap:2px 6px;padding:2px 0;border-bottom:1px solid #ffffff12}
+#explain .ex b{color:#ffd166} #explain .h{color:#9db8ff} #explain .d{color:#ff9db0} #explain .tp{grid-column:2/4;color:#aaa;font-style:italic}

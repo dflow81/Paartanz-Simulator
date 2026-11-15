@@ -1,10 +1,13 @@
 /* ================= Wiedergabe ================= */
 const $=id=>document.getElementById(id);
-let src=null, blocks=[], tl=null, beat=0, playing=true, lastH=-1, lastD=-1, lastBeatIdx=-1, stepTarget=null, curItem=-1, lastSaid=-1;
+let src=null, blocks=[], tl=null, beat=0, playing=true, lastH=-1, lastD=-1, lastBeatIdx=-99, stepTarget=null, curItem=-1, lastSaid=-1;
 const speedEl=$('speed');
 /* Musik-Zustand (steht oben, weil schon beim ersten Laden einer Folge das Tempo gebraucht wird) */
 const music=new Audio(); music.loop=true; music.preservesPitch=true;
 let mBpm=0, mOff=0, taps=[], mBusy=false;
+/* Zeitlupe: Figuren der Folge, die im halben Tempo laufen */
+const slow=new Set(), extra=[]; let exItem=-1;
+const spd=()=>speedEl.value/100*(slow.has(curItem)?.5:1);
 const hasMusic=()=>!!music.src;
 /* Tanztempo zur Musik: erkannte Schläge, bei Bedarf halbiert oder verdoppelt, damit es zum Tanz passt */
 function danceBpm(){ if(!hasMusic()||!mBpm||!src) return 0; let best=mBpm, e=9;
@@ -13,9 +16,9 @@ function danceBpm(){ if(!hasMusic()||!mBpm||!src) return 0; let best=mBpm, e=9;
 function setSource(s){
   src=s; blocks=flatten(s);
   if(!blocks.length){tl=null;$('seqlist').innerHTML='<div>Diese Folge enthält keine Schritte.</div>';return;}
-  tl=simulate(blocks,{H:startH()}); beat=0; lastH=lastD=-1; lastBeatIdx=-1; stepTarget=null; curItem=-1; lastSaid=-1; clearPrints(); clearDiagram(); herr.reset(); dame.reset();
+  tl=simulate(blocks,{H:startH()}); beat=$('countIn').checked?-tl.H[0].meter:0; slow.clear(); exItem=-1; extra.forEach((p,i)=>{ if(p.on){ p.tl=simulate(blocks,{H:startH(...startPos(i))}); p.H.reset(); p.D.reset(); } }); lastH=lastD=-1; lastBeatIdx=-99; stepTarget=null; curItem=-1; lastSaid=-1; clearPrints(); clearDiagram(); herr.reset(); dame.reset();
   const figs=allFigs(), warn=new Set(tl.H.concat(tl.D).filter(r=>r.warn).map(r=>r.item));
-  $('seqlist').innerHTML=s.items.map((it,i)=>`<div data-i="${i}">${i+1}. ${figs[it.fig]?esc(figLabel(figs[it.fig])):'(fehlt)'}${it.rep>1?' ×'+it.rep:''}${warn.has(i)?' <span title="Ein Schritt beginnt mit dem Fuß, auf dem gerade das Gewicht steht.">⚠ falscher Fuß</span>':''}</div>`).join('');
+  $('seqlist').innerHTML=s.items.map((it,i)=>`<div data-i="${i}">${i+1}. ${figs[it.fig]?esc(figLabel(figs[it.fig])):'(fehlt)'}${it.rep>1?' ×'+it.rep:''}${warn.has(i)?' <span title="Ein Schritt beginnt mit dem Fuß, auf dem gerade das Gewicht steht.">⚠ falscher Fuß</span>':''}<span class="turtle" data-slow="${i}" title="Diese Figur in Zeitlupe tanzen (halbes Tempo)">🐢</span></div>`).join('');
   updBpm();
 }
 /* Tanztempo in Schlägen pro Minute: mit Musik gibt die Musik das Tempo vor, sonst die Folge */
@@ -36,16 +39,26 @@ $('backbtn').onclick=()=>{ if(!tl) return; setPlaying(false);
   jumpTo(beat-s.start>.25*s.d||i<=0?s.start:tl.H[i-1].start); };
 /* Bereich [a,b) einer Figur der Folge in Schlägen */
 const itemRange=i=>{ const r=tl.H.filter(s=>s.item===i); return r.length?[r[0].start,r.at(-1).start+r.at(-1).d]:null; };
-$('seqlist').onclick=e=>{ const d=e.target.closest('[data-i]'); if(!d||!tl) return; const r=itemRange(+d.dataset.i); if(r){ jumpTo(r[0]); clearPrints(); } };
+$('seqlist').onclick=e=>{ const d=e.target.closest('[data-i]'); if(!d||!tl) return;
+  if(e.target.dataset.slow!==undefined){ const i=+e.target.dataset.slow; slow.has(i)?slow.delete(i):slow.add(i); e.target.classList.toggle('on',slow.has(i)); return; } const r=itemRange(+d.dataset.i); if(r){ jumpTo(r[0]); clearPrints(); } };
 $('trainer').onchange=()=>{ if($('trainer').checked){ $('loopFig').checked=true; speedEl.value=60; updBpm(); } };
 /* „Hier ist die 1“: Tanz auf die nächstgelegene Eins des Takts schieben; mit Musik liegt der Schlag ab jetzt auf diesem Moment */
 $('oneBtn').onclick=()=>{ if(!tl) return; const s=evalDancer(tl.H,beat).step, m=s.meter;
   if(hasMusic()) mOff=music.currentTime;
-  const pos=(((beat-s.blockStart+s.off)%m)+m)%m; beat=Math.max(0,beat+(pos>m/2?m-pos:-pos)); lastBeatIdx=-1; flash($('oneBtn'),'✔ Eins gesetzt'); };
+  const pos=(((beat-s.blockStart+s.off)%m)+m)%m; beat=Math.max(0,beat+(pos>m/2?m-pos:-pos)); lastBeatIdx=-99; flash($('oneBtn'),'✔ Eins gesetzt'); };
 $('minBtn').onclick=()=>{ $('ui').classList.toggle('min'); $('minBtn').textContent=$('ui').classList.contains('min')?'▴':'▾'; };
 $('cam').onchange=()=>{ if($('cam').value==='frei') overview(); };
 $('show').onchange=()=>{ const v=$('show').value; herr.setGhost(v==='D'); dame.setGhost(v==='H'); };
 $('mirror').onchange=()=>setMirror($('mirror').checked);
+/* Aussehen: Farben, Ambiente, Anzahl der Paare – wird im Browser gemerkt */
+const look=(()=>{ try{ return JSON.parse(localStorage.getItem('tanzsim_look'))||{}; }catch(e){ return {}; } })();
+const saveLook=()=>{ try{ localStorage.setItem('tanzsim_look',JSON.stringify(look)); }catch(e){} };
+function applyLook(){ $('colH').value=look.h||'#2f5fd0'; $('colD').value=look.d||'#e8365a'; $('ambiente').value=look.a||'schule';
+  herr.setColor($('colH').value); dame.setColor($('colD').value); setAmbience($('ambiente').value==='ball'); }
+$('colH').oninput=()=>{ look.h=$('colH').value; herr.setColor(look.h); saveLook(); };
+$('colD').oninput=()=>{ look.d=$('colD').value; dame.setColor(look.d); saveLook(); };
+$('ambiente').onchange=()=>{ look.a=$('ambiente').value; setAmbience(look.a==='ball'); saveLook(); };
+$('pairsN').onchange=()=>setPairs(+$('pairsN').value);
 $('gloss').onchange=()=>{ gloss.visible=$('gloss').checked; };
 $('prints').onchange=$('printWho').onchange=()=>{ clearPrints(); clearDiagram(); };
 
@@ -252,6 +265,54 @@ const sharedKey=importShared();
 fillDance(); applyDance(true);
 if(sharedKey){ fillSource('seq:'+sharedKey); const s=sourceFromKey('seq:'+sharedKey); if(s){ setSource(s); setPlaying(true); } loadSeq(sharedKey); fillSeqSel(); }
 
+/* ---------- Schritte der Figur erklären ---------- */
+const ZAHL={'1':'eins','2':'zwei','3':'drei','4':'vier','5':'fünf','6':'sechs','7':'sieben','8':'acht',S:'lang',Q:'schnell','&':'und',a:'a'};
+const figSteps=(t,item)=>({H:t.H.filter(s=>s.item===item&&s.rep===1&&s.kind!=='halt'),D:t.D.filter(s=>s.item===item&&s.rep===1&&s.kind!=='halt')});
+const cm=s=>/^(platz|schliessen|ferse|tap|halt)$/.test(s.dir)||!+s.len?'':`, ${s.len} cm`;
+function renderExplain(){
+  if(!tl||exItem<0){ $('explain').innerHTML=''; return; }
+  const {H,D}=figSteps(tl,exItem), n=Math.max(H.length,D.length); let h=`<div><b>${esc(H[0]?H[0].fig:'')}</b> – Haltung: ${H[0]?HOLDS[H[0].hold][1]:''}</div>`;
+  for(let i=0;i<n;i++){ const a=H[i], b=D[i];
+    h+=`<div class="ex"><b>${esc((a||b).c||i+1)}</b><span class="h">${a?'Herr: '+esc(stepText(a)+cm(a)):''}</span><span class="d">${b?'Dame: '+esc(stepText(b)+cm(b)):''}</span>${a&&a.tip?`<span class="tp">💡 ${esc(a.tip)}</span>`:''}</div>`; }
+  $('explain').innerHTML=h;
+}
+const readSteps=w=>{ if(!tl||exItem<0) return; const st=figSteps(tl,exItem)[w]; say((w==='H'?'Herr. ':'Dame. ')+st.map((s,i)=>`${ZAHL[String(s.c??'').trim()]||i+1}: ${stepText(s).replace(' · ',', ')}`).join('. '),1); };
+$('readH').onclick=()=>readSteps('H'); $('readD').onclick=()=>readSteps('D');
+
+/* ---------- Schrittplan zum Ausdrucken: jede Figur der Folge von oben, mit nummerierten Füßen und Schrittliste ---------- */
+function planImage(t){
+  const all=[...t.H,...t.D].filter(s=>s.kind!=='halt'), pts=all.flatMap(s=>[s.to,s.from,s.other]);
+  const x0=Math.min(...pts.map(p=>p[0]))-.25, x1=Math.max(...pts.map(p=>p[0]))+.25, z0=Math.min(...pts.map(p=>p[1]))-.25, z1=Math.max(...pts.map(p=>p[1]))+.25;
+  const sc=Math.min(260,900/(x1-x0),620/(z1-z0)), c=document.createElement('canvas'); c.width=Math.ceil((x1-x0)*sc); c.height=Math.ceil((z1-z0)*sc);
+  const g=c.getContext('2d'); g.fillStyle='#fff'; g.fillRect(0,0,c.width,c.height);
+  g.strokeStyle='#e4e4e4'; g.lineWidth=1; for(let x=Math.ceil(x0*2)/2;x<x1;x+=.5){ g.beginPath(); g.moveTo((x1-x)*sc,0); g.lineTo((x1-x)*sc,c.height); g.stroke(); }
+  for(let z=Math.ceil(z0*2)/2;z<z1;z+=.5){ g.beginPath(); g.moveTo(0,(z1-z)*sc); g.lineTo(c.width,(z1-z)*sc); g.stroke(); }
+  const foot=(p,yaw,fill,stroke,txt,dash)=>{ const X=(x1-p[0]-Math.sin(yaw)*.055)*sc, Y=(z1-p[1]-Math.cos(yaw)*.055)*sc;
+    g.save(); g.translate(X,Y); g.rotate(-yaw); g.beginPath(); g.ellipse(0,0,.045*sc,.115*sc,0,0,7); g.fillStyle=fill; g.fill(); g.setLineDash(dash?[4,3]:[]); g.strokeStyle=stroke; g.lineWidth=2; g.stroke(); g.restore();
+    if(txt){ g.fillStyle=stroke; g.font=`bold ${Math.round(.075*sc)}px sans-serif`; g.textAlign='center'; g.textBaseline='middle'; g.fillText(txt,X,Y); } };
+  for(const [w,fill,stroke] of [['D','#ffd9e0','#c92447'],['H','#d6e2ff','#2456c9']]){ const st=t[w].filter(s=>s.kind!=='halt'); if(!st.length) continue;
+    foot(st[0].from,st[0].yaw[0],'#f2f2f2','#999',st[0].f); foot(st[0].other,st[0].oyaw[0],'#f2f2f2','#999',st[0].o);   // Ausgangsstellung
+    st.forEach((s,i)=>{ if(i){ const a=st[i-1].to, b=s.to; g.strokeStyle=stroke+'55'; g.lineWidth=1; g.beginPath(); g.moveTo((x1-a[0])*sc,(z1-a[1])*sc); g.lineTo((x1-b[0])*sc,(z1-b[1])*sc); g.stroke(); } });
+    st.forEach((s,i)=>foot(s.to,s.yaw[1],fill,stroke,String(i+1),!s.weight)); }
+  return c.toDataURL('image/png');
+}
+$('printBtn').onclick=()=>{ if(!src) return;
+  const figs=allFigs(), room={...ROOM}, ls=lastSteer, seen=new Set(); ROOM.w=ROOM.d=400;   // ohne Raumbegrenzung, damit die Figur gerade bleibt
+  let h=`<h1>${esc(src.name)}</h1><p>${src.items.map((it,i)=>`${i+1}. ${figs[it.fig]?esc(figTitle(figs[it.fig])):'?'}${it.rep>1?' ×'+it.rep:''}`).join(' &nbsp;·&nbsp; ')}</p>`;
+  try{ for(const it of src.items){ const F=figs[it.fig]; if(!F||seen.has(it.fig)) continue; seen.add(it.fig);
+    const t=simulate(flatten({items:[{fig:it.fig,rep:1}]}),{H:startH()}), st=figSteps(t,0), n=Math.max(st.H.length,st.D.length);
+    h+=`<section><h2>${esc(figTitle(F))}</h2><img src="${planImage(t)}"><table><tr><th>Nr.</th><th>Zählzeit</th><th class="h">Herr</th><th class="d">Dame</th></tr>`;
+    for(let i=0;i<n;i++){ const a=st.H[i], b=st.D[i]; h+=`<tr><td>${i+1}</td><td>${esc((a||b).c||'')}</td><td>${a?esc(stepText(a)+cm(a)):''}${a&&a.tip?'<br><i>'+esc(a.tip)+'</i>':''}</td><td>${b?esc(stepText(b)+cm(b)):''}</td></tr>`; }
+    h+='</table></section>'; } } finally { ROOM.w=room.w; ROOM.d=room.d; lastSteer=ls; }
+  const w=open('','_blank'); if(!w){ alert('Bitte Pop-ups für diese Seite erlauben, dann öffnet sich der Schrittplan in einem neuen Fenster.'); return; }
+  w.document.write(`<!DOCTYPE html><html lang="de"><head><meta charset="UTF-8"><title>Schrittplan – ${esc(src.name)}</title><style>
+    body{font-family:system-ui,sans-serif;margin:24px;color:#111} h1{font-size:22px;margin:0 0 4px} h2{font-size:17px;margin:18px 0 6px} p{color:#444;font-size:13px}
+    section{page-break-inside:avoid} img{max-width:100%;max-height:520px;border:1px solid #ccc} table{border-collapse:collapse;font-size:13px;margin-top:8px;width:100%}
+    td,th{border:1px solid #ccc;padding:3px 6px;text-align:left;vertical-align:top} .h{color:#2456c9} .d{color:#c92447} i{color:#666} .leg{font-size:12px;color:#555}
+    @media print{button{display:none}}</style></head><body><button onclick="print()">Drucken</button>${h}
+    <p class="leg">Blau = Herr, Rot = Dame, Grau = Ausgangsstellung. Die Zahl ist die Schrittnummer; gestrichelt = Tap ohne Gewicht. Raster: 50 cm. Blick von oben, der Herr schaut am Anfang nach oben.</p></body></html>`);
+  w.document.close(); };
+
 /* ================= Hauptschleife ================= */
 const clock=new THREE.Clock();
 /* Takt (Metronom): ein Klick pro Schlag, die „1“ ist betont. Browser erlauben Ton erst nach dem ersten Klick/Tastendruck. */
@@ -266,7 +327,7 @@ function click(accent){
   o.connect(g).connect(actx.destination); o.start(t); o.stop(t+.13);
 }
 /* Ansage der nächsten Figur über die Sprachausgabe des Browsers */
-function say(txt){ if(!('speechSynthesis' in window)) return; try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(txt); u.lang='de-DE'; u.rate=1.15; speechSynthesis.speak(u); }catch(e){} }
+function say(txt,rate=1.15){ if(!('speechSynthesis' in window)) return; try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(txt); u.lang='de-DE'; u.rate=rate; speechSynthesis.speak(u); }catch(e){} }
 $('say').onchange=()=>{ lastSaid=-1; if(!$('say').checked&&'speechSynthesis' in window) speechSynthesis.cancel(); };
 
 /* Eigene Musik: Das Paar folgt der Musik. Tempo und Schlag werden aus der Datei erkannt; der Tempo-Regler verlangsamt
@@ -316,31 +377,58 @@ $('tapBtn').onclick=()=>{ if(!hasMusic()) { musicInfo(); return; }
 /* Musik starten/anhalten wie der Tanz und den Tanz Schlag für Schlag an die Musik heranführen */
 function syncMusic(dt){
   if(!hasMusic()) return;
-  const moving=playing||stepTarget!==null, rate=clamp(speedEl.value/100,.25,2);
+  const moving=playing||stepTarget!==null, rate=clamp(spd(),.25,2);
   if(Math.abs(music.playbackRate-rate)>.002) music.playbackRate=rate;
   if(moving&&music.paused) music.play().catch(()=>{}); else if(!moving&&!music.paused) music.pause();
   const db=danceBpm();
-  if(db&&playing&&!music.paused){ const f=x=>x-Math.floor(x), err=f(f((music.currentTime-mOff)*db/60)-f(beat)+.5)-.5; beat=Math.max(0,beat+err*Math.min(1,dt*4)); }
+  if(db&&playing&&!music.paused){ const f=x=>x-Math.floor(x), err=f(f((music.currentTime-mOff)*db/60)-f(beat)+.5)-.5; beat=Math.max(-8,beat+err*Math.min(1,dt*4)); }
+}
+/* Ein Paar zum aktuellen Zeitpunkt darstellen (Körper, Köpfe, Hände) */
+function drawPair(h,d,tlx,dt){
+  const {H:pH,D:pD}=evalPair(tlx,beat), s=pH.step, sty=s.sty;
+    // Übergang zwischen zwei Tanzhaltungen
+    const hb=sm(pH.u/.6), closed=mix(isClosed(s.holdPrev),isClosed(s.hold),hb), prom=mix(isProm(s.holdPrev),isProm(s.hold),hb);
+    h.update(pH,sty,dt,beat,{prom:.3*prom,closed}); d.update(pD,sty,dt,beat,{prom:-.3*prom,closed});
+    aimHead(h,d,sty,closed,prom,.35,.75,dt); aimHead(d,h,sty,closed,prom,.5,-.75,dt);
+    const t=handTargets(s.hold,sty,h,d);
+    if(s.holdPrev!==s.hold&&hb<1){ // Haltungswechsel: Hände wandern in einem kleinen Bogen statt auf gerader Linie
+      const a=handTargets(s.holdPrev,sty,h,d), arc=Math.sin(Math.PI*hb)*.07; for(const k in t){ t[k]=a[k].lerp(t[k],hb); t[k].y+=arc; } }
+    // Hände folgen ihrem Ziel leicht verzögert (relativ zum Paar), das macht Armwege bei Drehungen weich
+    const pc=h.P.clone().add(d.P).multiplyScalar(.5), ka=1-Math.exp(-dt/.085);
+    if(!h.hs||!d.hs){ h.hs={}; d.hs={}; for(const k in t) (k[0]==='H'?h:d).hs[k]=t[k].clone().sub(pc); }
+    for(const k in t){ const q=(k[0]==='H'?h:d).hs[k]; q.lerp(t[k].sub(pc),ka); t[k].copy(q).add(pc); }
+    h.arms(t.HL,t.HR,closed); d.arms(t.DL,t.DR,closed);
+
+  return {pH,pD,s,sty};
+}
+/* Weitere Paare auf der Tanzfläche: Sie tanzen dieselbe Folge, beginnen aber an einer anderen Stelle und in eine andere Richtung */
+const startPos=i=>i?[-ROOM.w*.24,-ROOM.d*.2,Math.PI/2]:[ROOM.w*.24,ROOM.d*.2,Math.PI];
+function setPairs(n){
+  while(extra.length<n-1){ const i=extra.length; extra.push({H:new Dancer([0x2f6b4f,0x6b4a2a][i],false),D:new Dancer([0xe2a21c,0x8a4fd0][i],true),tl:null,on:false}); }
+  extra.forEach((p,i)=>{ p.on=i<n-1; p.H.setVisible(p.on); p.D.setVisible(p.on); });
+  if(src) setSource(src);
 }
 const isClosed=h=>h==='zu'||h==='prom'?1:0, isProm=h=>h==='prom'?1:0;
 function animate(){
   requestAnimationFrame(animate);
   const dt=Math.min(clock.getDelta(),.05);
   if(tl){
-    const bps=baseBpm()/60*speedEl.value/100;
+    const bps=baseBpm()/60*spd();
     if(playing) beat+=dt*bps;
     else if(stepTarget!==null){ beat=Math.min(stepTarget,beat+dt*bps); if(beat>=stepTarget) stepTarget=null; }
     syncMusic(dt);
     if($('loopFig').checked&&curItem>=0){ // nur die aktuelle Figur üben: am Ende zurück an ihren Anfang
-      const r=itemRange(curItem); if(r&&beat>=r[1]-1e-6){ const b=r[0]+Math.min(beat-r[1],.5); if(stepTarget!==null) stepTarget=null; jumpTo(b); lastBeatIdx=-1; clearPrints();
+      const r=itemRange(curItem); if(r&&beat>=r[1]-1e-6){ const b=r[0]+Math.min(beat-r[1],.5); if(stepTarget!==null) stepTarget=null; jumpTo(b); lastBeatIdx=-99; clearPrints();
         if($('trainer').checked&&+speedEl.value<100){ speedEl.value=Math.min(100,+speedEl.value+10); updBpm(); } } }
     if(beat>=tl.total){ // Folge beginnt von vorn – weitertanzen ab aktueller Position
       markStep(tl.H.at(-1),'H'); markStep(tl.D.at(-1),'D');
       beat=Math.min(beat-tl.total,tl.total*.5); if(stepTarget!==null) stepTarget=Math.max(0,stepTarget-tl.total);
-      tl=tl.next||simulate(blocks,tl.end); lastH=lastD=-1; lastBeatIdx=-1; lastSaid=-1;
+      tl=tl.next||simulate(blocks,tl.end); for(const p of extra) if(p.on&&p.tl) p.tl=simulate(blocks,p.tl.end);
+      lastH=lastD=-1; lastBeatIdx=-99; lastSaid=-1;
     }
     if(!tl.next&&beat>tl.total-1){ tl.next=simulate(blocks,tl.end); chain(tl,tl.next); }   // Anschluss vorausberechnen: weicher Übergang beim Neubeginn
-    const {H:pH,D:pD}=evalPair(tl,beat), s=pH.step, sty=s.sty;
+    const {pH,pD,s,sty}=drawPair(herr,dame,tl,dt);
+    for(const p of extra) if(p.on&&p.tl) drawPair(p.H,p.D,p.tl,dt);
     curItem=s.item;
     if($('say').checked&&playing){ // etwa 1,3 Sekunden vor dem Wechsel die nächste Figur ansagen
       const la=beat+1.3*bps, nx=la<tl.total?evalDancer(tl.H,la).step:tl.H[0], key=nx.item+(la<tl.total?0:1000);
@@ -348,28 +436,18 @@ function animate(){
     if($('prints').value==='diagramm') showDiagram(tl,s.item,s.rep,$('printWho').value==='HD'?['H','D']:[$('printWho').value]);
     const bi=Math.floor(beat+1e-6);
     if(bi!==lastBeatIdx){ lastBeatIdx=bi;
-      if(playing||stepTarget!==null) click((bi-s.blockStart+s.off)%s.meter===0); }
-    // Übergang zwischen zwei Tanzhaltungen
-    const hb=sm(pH.u/.6), closed=mix(isClosed(s.holdPrev),isClosed(s.hold),hb), prom=mix(isProm(s.holdPrev),isProm(s.hold),hb);
-    herr.update(pH,sty,dt,beat,{prom:.3*prom,closed}); dame.update(pD,sty,dt,beat,{prom:-.3*prom,closed});
-    aimHead(herr,dame,sty,closed,prom,.35,.75,dt); aimHead(dame,herr,sty,closed,prom,.5,-.75,dt);
-    const t=handTargets(s.hold,sty);
-    if(s.holdPrev!==s.hold&&hb<1){ // Haltungswechsel: Hände wandern in einem kleinen Bogen statt auf gerader Linie
-      const a=handTargets(s.holdPrev,sty), arc=Math.sin(Math.PI*hb)*.07; for(const k in t){ t[k]=a[k].lerp(t[k],hb); t[k].y+=arc; } }
-    // Hände folgen ihrem Ziel leicht verzögert (relativ zum Paar), das macht Armwege bei Drehungen weich
-    const pc=herr.P.clone().add(dame.P).multiplyScalar(.5), ka=1-Math.exp(-dt/.085);
-    if(!herr.hs||!dame.hs){ herr.hs={}; dame.hs={}; for(const k in t) (k[0]==='H'?herr:dame).hs[k]=t[k].clone().sub(pc); }
-    for(const k in t){ const h=(k[0]==='H'?herr:dame).hs[k]; h.lerp(t[k].sub(pc),ka); t[k].copy(h).add(pc); }
-    herr.arms(t.HL,t.HR,closed); dame.arms(t.DL,t.DR,closed);
-
+      if(playing||stepTarget!==null) click((bi-s.blockStart+s.off)%s.meter===0);
+      if(bi<0&&playing) say(ZAHL[String((s.meter===3?7:9)+bi)]||'',1.5); }   // Einzählen: „fünf, sechs, sieben, acht“ (Walzer: „vier, fünf, sechs“)
+    if(s.item!==exItem){ exItem=s.item; renderExplain(); }
     if(pH.idx!==lastH){
+      if($('sayCount').checked&&playing&&beat>=0&&s.d>=.5&&s.kind!=='halt') say(ZAHL[String(s.c??'').trim()]||'',1.7);
       if(lastH>=0) markStep(tl.H[lastH],'H');
       lastH=pH.idx;
       document.querySelectorAll('#seqlist div').forEach(d=>d.classList.toggle('cur',+d.dataset.i===s.item));
     }
     if(pD.idx!==lastD){ if(lastD>=0) markStep(tl.D[lastD],'D'); lastD=pD.idx; }
     prints.forEach(p=>p.material.opacity=Math.max(0,p.material.opacity-dt*.06));
-    $('count').textContent=s.c||'';
+    $('count').textContent=beat<0?String((s.meter===3?7:9)+Math.floor(beat)):s.c||'';
     $('stepname').textContent='Herr: '+stepText(s);
     $('damename').textContent='Dame: '+stepText(pD.step);
     let tp=''; if($('tips').checked){ // Hinweis des laufenden Schritts (bleibt zwei Schläge stehen), sonst Vorschau auf den nächsten
@@ -379,7 +457,7 @@ function animate(){
     $('figname').textContent=s.fig+(s.reps>1?` (${s.rep}/${s.reps})`:'')+' · '+HOLDS[s.hold][0];
 
     const c=herr.P.clone().add(dame.P).multiplyScalar(.5); c.y=.9;
-    sun.position.set(c.x+3,6,c.z+2); sun.target.position.copy(c);
+    sun.position.set(c.x+3,6,c.z+2); sun.target.position.copy(c); spot.position.set(c.x*.6,3.1,c.z*.6-.4); spot.target.position.copy(c);
     const mx=v=>{ if(mirrored) v.x=-v.x; return v; }; mx(c);   // die Kamera steht außerhalb der gespiegelten Welt
     const cm=$('cam').value;
     if(cm==='folgen'){ const d=c.clone().sub(controls.target); controls.target.add(d); camera.position.add(d); }
@@ -389,5 +467,6 @@ function animate(){
   }
   controls.update(); renderer.render(scene,camera);
 }
+applyLook();
 animate();
 addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});

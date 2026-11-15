@@ -10,7 +10,7 @@ function setMirror(m){ mirrored=m; world.scale.x=m?-1:1; clearDiagram(); }
 const camera=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,0.05,100);
 const controls=new THREE.OrbitControls(camera,renderer.domElement);
 controls.enableDamping=true; controls.maxPolarAngle=Math.PI*.495;
-scene.add(new THREE.HemisphereLight(0xffffff,0x334455,0.9));
+const hemi=new THREE.HemisphereLight(0xffffff,0x334455,0.9); scene.add(hemi);
 const sun=new THREE.DirectionalLight(0xffffff,1.4); sun.position.set(3,6,2); sun.castShadow=true;
 sun.shadow.mapSize.set(2048,2048); Object.assign(sun.shadow.camera,{left:-4,right:4,top:4,bottom:-4});
 world.add(sun); world.add(sun.target);
@@ -36,10 +36,27 @@ function buildRoom(w,d){
   ROOM.w=w; ROOM.d=d;
   floor.scale.set(w,d,1); gloss.scale.set(w,d,1); tex.repeat.set(w/3,d/3);
   walls.scale.set(w,3.25,d); walls.position.y=1.575; skirting.scale.set(w-.05,.17,d-.05); skirting.position.y=.035;   // Böden der Kästen liegen 5 cm unter dem Parkett
+  leuchter.position.set(0,2.72,0); spiegel3d.scale.set(w-1,2.3,1); spiegel3d.position.set(0,1.32,d/2-.03); spiegelRahmen.scale.set(w-.84,2.46,1); spiegelRahmen.position.set(0,1.32,d/2-.02);
   overview();
 }
+/* Ballsaal: gedämpftes Licht, Scheinwerfer auf dem Paar, Kronleuchter und eine Spiegelwand */
+const spot=new THREE.SpotLight(0xfff1d6,0,0,.42,.6,1.2); spot.castShadow=true; spot.shadow.mapSize.set(1024,1024); world.add(spot); world.add(spot.target);
+const leuchter=new THREE.Group(); world.add(leuchter);
+{ const gold=new THREE.MeshStandardMaterial({color:0xc9a24a,roughness:.3,metalness:.6}), glow=new THREE.MeshBasicMaterial({color:0xffe9b8});
+  const rod=new THREE.Mesh(new THREE.CylinderGeometry(.012,.012,.5,8),gold); rod.position.y=.25; leuchter.add(rod);
+  for(const [r,y,n] of [[.5,0,12],[.3,-.14,8]]){ const ring=new THREE.Mesh(new THREE.TorusGeometry(r,.014,8,40),gold); ring.rotation.x=Math.PI/2; ring.position.y=y; leuchter.add(ring);
+    for(let i=0;i<n;i++){ const a=i/n*Math.PI*2, b=new THREE.Mesh(new THREE.SphereGeometry(.028,10,8),glow); b.position.set(Math.cos(a)*r,y+.05,Math.sin(a)*r); leuchter.add(b);
+      const dr=new THREE.Mesh(new THREE.ConeGeometry(.012,.07,6),new THREE.MeshStandardMaterial({color:0xffffff,roughness:.1,transparent:true,opacity:.6})); dr.position.set(Math.cos(a)*r,y-.06,Math.sin(a)*r); dr.rotation.x=Math.PI; leuchter.add(dr); } }
+  const pl=new THREE.PointLight(0xffd9a0,9,0,1.6); pl.position.y=-.2; leuchter.add(pl); }
+const spiegel3d=new THREE.Reflector(new THREE.PlaneGeometry(1,1),{textureWidth:Math.min(1024,innerWidth),textureHeight:Math.min(1024,innerHeight),clipBias:.003,color:0xb8bcc4});
+spiegel3d.rotation.y=Math.PI; scene.add(spiegel3d);
+const spiegelRahmen=new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.MeshStandardMaterial({color:0xb08d3c,roughness:.35,metalness:.5})); spiegelRahmen.rotation.y=Math.PI; world.add(spiegelRahmen);
+let ballsaal=false;
+function setAmbience(b){ ballsaal=b;
+  hemi.intensity=b?.32:.9; sun.intensity=b?.35:1.4; spot.intensity=b?55:0; leuchter.visible=spiegel3d.visible=spiegelRahmen.visible=b;
+  walls.material.color.set(b?0x4a2530:0x565d78); skirting.material.color.set(b?0x2a1418:0x2a2d3a); scene.background.set(b?0x0d0b10:0x1b1d24); }
 function overview(){ const w=ROOM.w,d=ROOM.d; camera.position.set(w*.5,Math.max(w,d)*.62+1.5,-d*.5-Math.max(w,d)*.75); controls.target.set(0,.7,0); }
-buildRoom(ROOM.w,ROOM.d);
+buildRoom(ROOM.w,ROOM.d); setAmbience(false);
 
 /* ---------- Tänzer ---------- */
 const UP=new THREE.Vector3(0,1,0), V3=THREE.Vector3;
@@ -63,15 +80,15 @@ class Dancer{
     const add=(geo,mat,parent)=>{ const m=mk(geo,mat,parent); this.meshes.push(m); return m; };
     const dark=new THREE.Color(color).multiplyScalar(.28);
     // Herr: Anzug (Jackett in seiner Farbe, dunkle Hose, weißes Hemd). Dame: Kleid in ihrer Farbe, Arme und Beine frei.
-    const top=M(color,fem?.38:.8), skin=M(0xf1c7a5,.65), legs=fem?skin:M(dark,.85), shoe=M(fem?0x7a1630:0x101014,.25), hair=M(fem?0x5a3418:0x2a1f16,.85), white=M(0xf4f4f0,.6), eye=M(0x1c1c22,.4);
+    const top=this.topM=M(color,fem?.38:.8), skin=M(0xf1c7a5,.65), legs=fem?skin:(this.legM=M(dark,.85)), shoe=M(fem?0x7a1630:0x101014,.25), hair=M(fem?0x5a3418:0x2a1f16,.85), white=M(0xf4f4f0,.6), eye=M(0x1c1c22,.4);
     this.P=new V3(); this.sh={L:new V3(),R:new V3()}; this.headPos=new V3(); this.fw=new V3(0,0,1); this.left=new V3(1,0,0);
     this.hipG=new THREE.Group(); this.chestG=new THREE.Group(); this.headG=new THREE.Group(); world.add(this.hipG,this.chestG);
     // Becken
     const pel=add(new THREE.SphereGeometry(.13*k,20,14),fem?top:legs,this.hipG); pel.scale.set(fem?.92:1.2,fem?.7:.78,fem?.78:.85);   // bei der Dame schmal, damit nichts durch den Rock sticht
     if(fem){ // Rock: schwingender Glockenrock mit hellerem Saum
-      const sm_=M(color,.38,{side:THREE.DoubleSide});
+      const sm_=this.skM=M(color,.38,{side:THREE.DoubleSide});
       this.skirt=add(lathe([[.1,.06],[.122,0],[.15,-.09],[.18,-.19],[.215,-.29],[.26,-.38],[.3,-.44]],1,40),sm_);
-      const hem=add(lathe([[.293,-.43],[.312,-.455]],1,40),M(new THREE.Color(color).lerp(new THREE.Color(0xffffff),.45),.4,{side:THREE.DoubleSide}),this.skirt);
+      const hem=add(lathe([[.293,-.43],[.312,-.455]],1,40),this.hemM=M(new THREE.Color(color).lerp(new THREE.Color(0xffffff),.45),.4,{side:THREE.DoubleSide}),this.skirt);
       // Oberteil: Taille, Brust, darüber Schultern und Dekolleté in Hautfarbe
       const bod=add(lathe([[.001,-.03],[.1,-.03],[.086,.05],[.092,.13],[.118,.24],[.112,.31],[.09,.345]],k),top,this.chestG); bod.scale.set(1.2,1,.82);
       const shd=add(lathe([[.1,.29],[.116,.35],[.095,.405],[.05,.44],[.001,.45]],k),skin,this.chestG); shd.scale.set(1.3,1,.72);
@@ -95,7 +112,12 @@ class Dancer{
       uaL:limb((fem?.036:.046)*k,arm),uaR:limb((fem?.036:.046)*k,arm),faL:limb((fem?.03:.038)*k,arm),faR:limb((fem?.03:.038)*k,arm)};
     this.meshes.push(...Object.values(this.limbs));
     this.j={}; const ball=(n,r,m,sc)=>{for(const s of 'LR'){ this.j[n+s]=add(new THREE.SphereGeometry(r*k,12,10),m); if(sc) this.j[n+s].scale.set(...sc); }};
-    ball('kn',.053,legs); ball('el',fem?.031:.04,arm); ball('ha',.04,skin,[.8,1.1,.8]); ball('so',fem?.045:.058,fem?skin:top);
+    ball('kn',.053,legs); ball('el',fem?.031:.04,arm); ball('so',fem?.045:.058,fem?skin:top);
+    // Hände: Handfläche, vier Finger (leicht gebeugt) und Daumen; sie zeigen in Richtung des Unterarms
+    for(const s of 'LR'){ const sg=s==='L'?1:-1, hg=new THREE.Group(); world.add(hg); this.j['ha'+s]=hg;
+      const palm=add(new THREE.SphereGeometry(.03*k,12,10),skin,hg); palm.scale.set(.95,1.3,.42); palm.position.y=.032*k;
+      for(let i=0;i<4;i++){ const f=add(new THREE.CapsuleGeometry(.0085*k,.036*k,3,8),skin,hg); f.position.set((i-1.5)*.0145*k,.085*k,.006); f.rotation.x=.3; f.scale.y=i===0||i===3?.86:1; }
+      const th=add(new THREE.CapsuleGeometry(.0095*k,.026*k,3,8),skin,hg); th.position.set(sg*.031*k,.04*k,.008); th.rotation.z=-sg*.65; }
     this.feet={}; for(const s of 'LR'){ const g=new THREE.Group(); world.add(g);
       if(fem){ // Tanzschuh der Dame: Fuß auf dem Ballen; Sohle, Zehen- und Fersenkappe, geschwungener Absatz, Spann- und Knöchelriemchen mit Schnalle
         const lack=this.lack??=M(0x121216,.2), silber=this.silber??=M(0xd8dade,.25,{metalness:.7}), sohle=this.sohle??=M(0xb89a78,.7);
@@ -116,13 +138,20 @@ class Dancer{
         const kr=add(new THREE.TorusGeometry(.037*k,.0035,6,20),lack,g); kr.rotation.x=Math.PI/2; kr.position.set(0,.02,0);
         add(new THREE.BoxGeometry(.005,.013,.013),silber,g).position.set(sg*.039*k,.02,.004);
         const hs=add(new THREE.BoxGeometry(.012,.05,.004),lack,g); hs.position.set(0,0,-.036*k); hs.rotation.x=.12;
-      } else { const sh=add(new THREE.CapsuleGeometry(.04*k,.15*k,4,10),shoe,g); sh.rotation.x=Math.PI/2; sh.scale.set(1,1,.62); sh.position.set(0,-.045,.055*k); }
+      } else { // Herrenschuh: glattes Oberleder, Sohlenrand, kleiner Absatz, Schnürung
+        const sh=add(new THREE.CapsuleGeometry(.04*k,.15*k,4,10),shoe,g); sh.rotation.x=Math.PI/2; sh.scale.set(1,1,.6); sh.position.set(0,-.043,.055*k);
+        const rand=this.rand??=M(0x3b2a1e,.6); add(new THREE.BoxGeometry(.076*k,.007,.215*k),rand,g).position.set(0,-.0665,.06*k);
+        add(new THREE.BoxGeometry(.07*k,.012,.065*k),rand,g).position.set(0,-.064,-.02*k);
+        for(let i=0;i<3;i++) add(new THREE.BoxGeometry(.03*k,.003,.004),this.band??=M(0x55555c,.5),g).position.set(0,-.019,(.05+i*.018)*k); }
       if(!fem) add(new THREE.CylinderGeometry(.05*k,.045*k,.05,10),legs,g).position.set(0,-.005,0);   // Hosensaum
       this.feet[s]=g; }
     this.reset();
   }
   /* Tänzer fast durchsichtig zeigen (damit man den Partner allein sieht) */
   setGhost(on){ for(const m of this.mats){ m.transparent=on; m.opacity=on?.12:1; m.depthWrite=!on; m.needsUpdate=true; } for(const m of this.meshes) m.castShadow=!on; }
+  setColor(c){ const col=new THREE.Color(c); this.topM.color.copy(col);
+    if(this.fem){ this.skM.color.copy(col); this.hemM.color.copy(col).lerp(new THREE.Color(0xffffff),.45); } else this.legM.color.copy(col).multiplyScalar(.28); }
+  setVisible(v){ for(const m of this.meshes) m.visible=v; }
   reset(){ this.lag=null; this.hyS=null; this.headYaw=0; this.skY=null; this.prevYaw=null; this.spin=0; this.hs=null; }
   /* po = Ergebnis von evalDancer, sty = Bewegungsstil, tb = Zeit in Schlägen, ex = {prom, closed} */
   update(po,sty,dt,tb,ex){
@@ -172,7 +201,8 @@ class Dancer{
       if(this.skY===null) this.skY=yaw;
       this.skY+=wrap(yaw-this.skY)*Math.min(1,dt*7);
       const fl_=1+Math.min(.45,this.spin*.1)+Math.min(.2,Math.abs(swing)*.35);
-      this.skirt.position.copy(P); this.skirt.rotation.set(0,this.skY,roll*.5,'YXZ'); this.skirt.scale.set(fl_,1-(fl_-1)*.3,fl_); }
+      this.skirt.position.copy(P); this.skirt.rotation.set(0,this.skY,roll*.5,'YXZ'); const ln=sty.hip>=.5?.7:1; this.skLen=(this.skLen??ln)+(ln-(this.skLen??ln))*Math.min(1,dt*3);   // Lateinkleid ist kürzer
+      this.skirt.scale.set(fl_,(1-(fl_-1)*.3)*this.skLen,fl_); }
   }
   freeHand(s,sty){ const sg=s==='L'?1:-1, k=this.k, p=this.sh[s].clone();
     const out=Math.min(.16,this.spin*.035);   // bei Drehungen zieht es den freien Arm nach außen und oben
@@ -184,14 +214,15 @@ class Dancer{
       const bend=new V3(0,-mix(.5,.45,closed),0).addScaledVector(this.left,sg*mix(.45,1,closed)).addScaledVector(this.fw,-mix(.8,.25,closed));
       const r=ik(this.sh[s],h,.29*k,.27*k,bend);
       placeLimb(this.limbs['ua'+s],this.sh[s],r.j); placeLimb(this.limbs['fa'+s],r.j,r.e);
-      this.j['el'+s].position.copy(r.j); this.j['ha'+s].position.copy(r.e); }
+      this.j['el'+s].position.copy(r.j);
+      const hd=this.j['ha'+s], dir=r.e.clone().sub(r.j); if(dir.lengthSq()>1e-8){ dir.normalize(); hd.quaternion.setFromUnitVectors(UP,dir); hd.position.copy(r.e).addScaledVector(dir,-.03*k); } }
   }
 }
 const herr=new Dancer(0x2f5fd0,false), dame=new Dancer(0xe8365a,true);
 
 /* Zielpunkte der Hände je Tanzhaltung */
 function reach(p,a,ra,b,rb){ for(let i=0;i<4;i++) for(const [c,r] of [[a,ra],[b,rb]]){ const d=p.clone().sub(c), l=d.length(); if(l>r) p.copy(c).addScaledVector(d,r/l); } return p; }
-function handTargets(hold,sty){
+function handTargets(hold,sty,herr,dame){
   const hr=.54*herr.k, dr=.54*dame.k;
   const join=(a,b)=>{ const p=a.clone().add(b).multiplyScalar(.5); p.y=dame.P.y+.14; return reach(p,a,hr,b,dr); };
   const t={HL:herr.freeHand('L',sty),HR:herr.freeHand('R',sty),DL:dame.freeHand('L',sty),DR:dame.freeHand('R',sty)};
