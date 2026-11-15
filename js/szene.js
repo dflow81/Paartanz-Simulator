@@ -98,7 +98,7 @@ class Dancer{
     ball('kn',.053,legs); ball('el',fem?.031:.04,arm); ball('ha',.04,skin,[.8,1.1,.8]); ball('so',fem?.045:.058,fem?skin:top);
     this.feet={}; for(const s of 'LR'){ const g=new THREE.Group(); world.add(g);
       if(fem){ // Tanzschuh der Dame: der Fuß steht auf dem Ballen, darunter Sohle, Zehenkappe, Fersenkappe, Absatz und ein Knöchelriemchen
-        const gold=this.gold??=M(0xe6c27a,.3,{metalness:.2}), B=[0,-.07,.11*k], q=new THREE.Group(); q.position.set(...B); q.rotation.x=.3; g.add(q);
+        const gold=this.gold??=M(0x121216,.22), B=[0,-.07,.11*k], q=new THREE.Group(); q.position.set(...B); q.rotation.x=.3; g.add(q);
         const at=(m,x,y,z)=>{ m.position.set(x-B[0],y-B[1],z-B[2]); return m; };
         const ft=at(add(new THREE.CapsuleGeometry(.036*k,.14*k,4,10),skin,q),0,-.04,.05*k); ft.rotation.x=Math.PI/2; ft.scale.set(.82,1,.6);
         at(add(new THREE.BoxGeometry(.058*k,.007,.2*k),gold,q),0,-.066,.05*k);
