@@ -97,7 +97,16 @@ class Dancer{
     this.j={}; const ball=(n,r,m,sc)=>{for(const s of 'LR'){ this.j[n+s]=add(new THREE.SphereGeometry(r*k,12,10),m); if(sc) this.j[n+s].scale.set(...sc); }};
     ball('kn',.053,legs); ball('el',fem?.031:.04,arm); ball('ha',.04,skin,[.8,1.1,.8]); ball('so',fem?.045:.058,fem?skin:top);
     this.feet={}; for(const s of 'LR'){ const g=new THREE.Group(); world.add(g);
-      const sh=add(new THREE.CapsuleGeometry(.04*k,.15*k,4,10),shoe,g); sh.rotation.x=Math.PI/2; sh.scale.set(fem?.85:1,1,.62); sh.position.set(0,-.045,.055*k);
+      if(fem){ // Tanzschuh der Dame: der Fuß steht auf dem Ballen, darunter Sohle, Zehenkappe, Fersenkappe, Absatz und ein Knöchelriemchen
+        const gold=this.gold??=M(0xe6c27a,.3,{metalness:.2}), B=[0,-.07,.11*k], q=new THREE.Group(); q.position.set(...B); q.rotation.x=.3; g.add(q);
+        const at=(m,x,y,z)=>{ m.position.set(x-B[0],y-B[1],z-B[2]); return m; };
+        const ft=at(add(new THREE.CapsuleGeometry(.036*k,.14*k,4,10),skin,q),0,-.04,.05*k); ft.rotation.x=Math.PI/2; ft.scale.set(.82,1,.6);
+        at(add(new THREE.BoxGeometry(.058*k,.007,.2*k),gold,q),0,-.066,.05*k);
+        at(add(new THREE.SphereGeometry(.036*k,12,8),gold,q),0,-.045,.125*k).scale.set(.9,.62,1.15);
+        at(add(new THREE.SphereGeometry(.036*k,12,8),gold,q),0,-.042,-.028*k).scale.set(.88,.8,.8);
+        at(add(new THREE.CylinderGeometry(.019*k,.011*k,.05,10),gold,q),0,-.094,-.03*k);
+        const st=add(new THREE.TorusGeometry(.033*k,.006,6,16),gold,g); st.rotation.x=Math.PI/2; st.position.set(0,.012,.004);
+      } else { const sh=add(new THREE.CapsuleGeometry(.04*k,.15*k,4,10),shoe,g); sh.rotation.x=Math.PI/2; sh.scale.set(1,1,.62); sh.position.set(0,-.045,.055*k); }
       if(!fem) add(new THREE.CylinderGeometry(.05*k,.045*k,.05,10),legs,g).position.set(0,-.005,0);   // Hosensaum
       this.feet[s]=g; }
     this.reset();
@@ -184,7 +193,7 @@ function handTargets(hold,sty){
       const arm=herr.sh.R.clone().addScaledVector(herr.fw,.03); arm.y-=.05;                                 // ihre Hand auf seinem Oberarm
       return {HL:j,DR:j.clone(),HR:back,DL:reach(arm,dame.sh.L,dr,dame.sh.L,dr)}; }
     case 'offen': { const a=join(herr.sh.L,dame.sh.R), b=join(herr.sh.R,dame.sh.L); return {HL:a,DR:a.clone(),HR:b,DL:b.clone()}; }
-    case 'LR': { const a=join(herr.sh.L,dame.sh.R); t.HL=a; t.DR=a.clone(); return t; }
+    case 'LR': case 'faecher': { const a=join(herr.sh.L,dame.sh.R); t.HL=a; t.DR=a.clone(); return t; }
     case 'RL': { const b=join(herr.sh.R,dame.sh.L); t.HR=b; t.DL=b.clone(); return t; }
     case 'kreuz': { const a=join(herr.sh.R,dame.sh.R), b=join(herr.sh.L,dame.sh.L); b.y-=.08; return {HR:a,DR:a.clone(),HL:b,DL:b.clone()}; }
     case 'korb': { // seine rechte Hand hält hinter ihrem Rücken ihre linke an ihrer rechten Hüfte, die anderen Hände sind vor ihr gefasst

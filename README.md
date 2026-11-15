@@ -6,10 +6,10 @@ Ein 3D-Simulator im Browser zum Lernen und Üben von Paartänzen. Herr und Dame 
 
 ## Was er kann
 
-- **18 Tänze, über 110 Figuren:** Langsamer Walzer, Wiener Walzer, Tango, Slowfox, Quickstep, Foxtrott, Discofox, Blues, Rock'n'Roll, Polka, Cha-Cha-Cha, Rumba, Samba, Jive, Paso Doble, Salsa, Bachata, Merengue
+- **18 Tänze, 120 Figuren:** Langsamer Walzer, Wiener Walzer, Tango, Slowfox, Quickstep, Foxtrott, Discofox, Blues, Rock'n'Roll, Polka, Cha-Cha-Cha, Rumba, Samba, Jive, Paso Doble, Salsa, Bachata, Merengue
 - **Fertige Tanzfolgen** für jeden Tanz, dazu eigene Folgen und eigene Figuren im Editor
 - **Realistische Bewegung:** Gewichtsverlagerung, Fußabrollen, Heben und Senken im Walzer, Hüftbewegung in Latein, Federn im Jive
-- **Tanzhaltungen:** geschlossen, Promenade, offen, eine Hand, Arm hoch, Kreuzhand, Körbchen, Schattenposition
+- **Tanzhaltungen:** geschlossen, Promenade, offen, eine Hand, Arm hoch, Kreuzhand, Körbchen, Schattenposition, Fächer
 - **Die Dame tanzt eigene Schritte** bei Solodrehungen, Platzwechseln, New Yorker usw. – sonst gegengleich
 - **Zum Üben:** Schritt vor und zurück, eine Figur in Schleife, Tempo von 20 bis 150 %, Klick in den Ablauf zum Springen
 - **Ansichten:** Übersicht, von oben, hinter dem Herrn oder der Dame; Fußspur oder nummeriertes Schrittdiagramm

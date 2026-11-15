@@ -39,12 +39,13 @@ function styleOf(d){ d=(d||'').toLowerCase();
 /* Wo steht die Dame zum Herrn? gap = vor ihm, off = rechts von ihm, face = ihre Blickrichtung relativ zu seiner
    (π = gegenüber, 0 = gleiche Richtung), spin = Drehsinn, mit dem sie in diese Position eindreht */
 const holdGeo=(hold,sty)=>hold==='zu'||hold==='prom'?{gap:sty.gap,off:sty.off,face:Math.PI}:hold==='hoch'?{gap:.62,off:0,face:Math.PI}:
-  hold==='offen'||hold==='kreuz'?{gap:.8,off:0,face:Math.PI}:hold==='korb'?{gap:.1,off:.37,face:0,spin:1}:hold==='schatten'?{gap:.32,off:.12,face:0,spin:-1}:{gap:.85,off:0,face:Math.PI};
+  hold==='offen'||hold==='kreuz'?{gap:.8,off:0,face:Math.PI}:hold==='korb'?{gap:.1,off:.37,face:0,spin:1}:hold==='schatten'?{gap:.32,off:.12,face:0,spin:-1}:
+  hold==='faecher'?{gap:.32,off:-.75,face:-Math.PI/2,exact:true}:{gap:.85,off:0,face:Math.PI};
 const RISE={'1':.15,'2':1,'3':0,'4':.15,'5':1,'6':0,S:.2,Q:.75,'&':1,a:1};
 
 const startH=()=>({L:[.1,0],R:[-.1,0],yL:0,yR:0,pL:0,pR:0,h:0,sup:[0,0],side:0,rise:0,hold:null});
 function startD(H,sty,hold){
-  const {fw,lf}=dirv(H.h), g=holdGeo(hold,sty), m=p=>add(add(p,fw,g.gap),lf,-g.off), same=g.face===0, R=m(same?H.R:H.L), L=m(same?H.L:H.R), h=H.h+g.face;
+  const {fw,lf}=dirv(H.h), g=holdGeo(hold,sty), h=H.h+g.face, c=add(add(lerp(H.L,H.R,.5),fw,g.gap),lf,-g.off), l2=dirv(h).lf, L=add(c,l2,.1), R=add(c,l2,-.1);
   return {L,R,yL:h,yR:h,pL:0,pR:0,h,sup:lerp(L,R,.5),side:0,rise:0};
 }
 function flatten(src){
@@ -150,7 +151,7 @@ function simBlock(b,H,D,beat,extra,hs,ds){
     const half=Math.floor(F.dame.length/2);   // nachgeführt wird erst in der zweiten Hälfte der Figur – der Anfang (z. B. Ausweichen) bleibt, wie er ist
     const run=(Dx,sh,rec)=>{ let t=beat; F.dame.forEach((s,i)=>{ const d=Math.max(.25,+s.d||1), r=doStep(Dx,tw(s),sty,t,d,null,sh&&i>=half?sh:null); if(rec) rec.push(Object.assign(r,meta,{turn:s.turn,tip:s.tip})); t+=d; }); return t; };
     // Probeläufe: Landet die Dame zu weit weg, zu nah oder seitlich versetzt, werden ihre Schritte ein wenig nachgeführt
-    const v=dirv(H.h), g=holdGeo(H.hold,sty), near0=g.face===0;   // nebeneinander (Körbchen, Schatten): genau an den Platz, sonst nur grob
+    const v=dirv(H.h), g=holdGeo(H.hold,sty), near0=g.face===0||g.exact;   // nebeneinander (Körbchen, Schatten): genau an den Platz, sonst nur grob
     const n=Math.max(1,F.dame.filter((s,i)=>i>=half&&s.dir!=='halt'&&s.dir!=='platz').length-.5);
     let sh=[0,0];
     for(let it=0;it<3;it++){
