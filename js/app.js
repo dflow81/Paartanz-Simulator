@@ -337,8 +337,9 @@ function animate(){
     if(beat>=tl.total){ // Folge beginnt von vorn – weitertanzen ab aktueller Position
       markStep(tl.H.at(-1),'H'); markStep(tl.D.at(-1),'D');
       beat=Math.min(beat-tl.total,tl.total*.5); if(stepTarget!==null) stepTarget=Math.max(0,stepTarget-tl.total);
-      tl=simulate(blocks,tl.end); lastH=lastD=-1; lastBeatIdx=-1; lastSaid=-1;
+      tl=tl.next||simulate(blocks,tl.end); lastH=lastD=-1; lastBeatIdx=-1; lastSaid=-1;
     }
+    if(!tl.next&&beat>tl.total-1){ tl.next=simulate(blocks,tl.end); chain(tl,tl.next); }   // Anschluss vorausberechnen: weicher Übergang beim Neubeginn
     const pH=evalDancer(tl.H,beat), pD=evalDancer(tl.D,beat), s=pH.step, sty=s.sty;
     curItem=s.item;
     if($('say').checked&&playing){ // etwa 1,3 Sekunden vor dem Wechsel die nächste Figur ansagen

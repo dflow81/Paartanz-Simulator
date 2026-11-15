@@ -183,8 +183,23 @@ function simulate(blocks,st){
   }
   return {H:hs,D:ds,total:beat,end:{H,D}};
 }
-/* Haltung eines Tänzers zum Zeitpunkt tb (in Schlägen) */
+/* Zwei aufeinanderfolgende Abläufe verbinden, damit die Bewegung über die Nahtstelle hinweg weich bleibt */
+function chain(a,b){
+  for(const k of 'HD'){ b[k].pre=a[k].slice(-3).map(s=>({...s,start:s.start-a.total})); a[k].post=b[k].slice(0,3).map(s=>({...s,start:s.start+a.total})); }
+}
+/* Haltung eines Tänzers zum Zeitpunkt tb (in Schlägen). Die Füße setzen genau auf den Schlag; der Körper (Schwerpunkt, Blickrichtung,
+   Heben/Senken) wird über ein kleines Zeitfenster gemittelt. So bleibt er zwischen zwei Schritten und Figuren nicht stehen,
+   sondern fließt durch – er ist schon auf dem Weg, bevor der Fuß aufsetzt. */
+const SMOOTH=[[-.4,1],[-.2,2],[.2,2],[.4,1]];
 function evalDancer(steps,tb){
+  const r=evalRaw(steps,tb); let sx=r.sup[0]*3, sy=r.sup[1]*3, h=r.h*3, rise=r.rise*3, n=3;
+  for(const [o,w] of SMOOTH){ const t=tb+o, end=steps.at(-1).start+steps.at(-1).d;
+    const q=t<0&&steps.pre?evalRaw(steps.pre,t):t>end&&steps.post?evalRaw(steps.post,t):evalRaw(steps,t);
+    sx+=q.sup[0]*w; sy+=q.sup[1]*w; h+=q.h*w; rise+=q.rise*w; n+=w; }
+  r.sup=[sx/n,sy/n]; r.h=h/n; r.rise=rise/n;
+  return r;
+}
+function evalRaw(steps,tb){
   let i=steps.length-1;
   for(let k=0;k<steps.length;k++) if(tb<steps[k].start+steps[k].d){i=k;break;}
   const s=steps[i], u=clamp((tb-s.start)/s.d,0,1), ue=Math.min(1,u/s.fe), ef=ease(ue), bump=Math.sin(Math.PI*ue), e=ease(u);
