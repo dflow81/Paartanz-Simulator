@@ -26,7 +26,7 @@ Ein 3D-Simulator im Browser zum Lernen und Üben von Paartänzen. Herr und Dame 
 - **Schritte erklärt:** zu jeder Figur die Schritte von Herr und Dame als Liste, auch zum Vorlesen
 - **Zeitlupe für einzelne Figuren** der Folge (🐢 im Ablauf)
 - **Schrittplan zum Ausdrucken:** jede Figur von oben mit nummerierten Füßen und Schrittliste
-- **Aussehen:** Farbe von Anzug und Kleid, Ballsaal mit Scheinwerfer, Kronleuchter und Spiegelwand, bis zu drei Paare auf der Fläche
+- **Aussehen:** Farbe von Anzug und Kleid, drei Räume (heller Übungsraum, Tanzschul-Saal mit Holzboden und Leuchtröhren, Ballsaal mit Scheinwerfer, Kronleuchter und Spiegelwand), bis zu drei Paare auf der Fläche
 
 ## Bedienung
 

@@ -34,7 +34,7 @@ walls.receiveShadow=true; world.add(walls);
 const skirting=new THREE.Mesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshStandardMaterial({color:0x2a2d3a,roughness:.8,side:THREE.BackSide})); world.add(skirting);
 function buildRoom(w,d){
   ROOM.w=w; ROOM.d=d;
-  floor.scale.set(w,d,1); gloss.scale.set(w,d,1); tex.repeat.set(w/3,d/3);
+  floor.scale.set(w,d,1); gloss.scale.set(w,d,1); tex.repeat.set(w/3,d/3); texHell.repeat.set(w/3.2,d/3.2); buildSaal(w,d);
   walls.scale.set(w,3.25,d); walls.position.y=1.575; skirting.scale.set(w-.05,.17,d-.05); skirting.position.y=.035;   // Böden der Kästen liegen 5 cm unter dem Parkett
   leuchter.position.set(0,2.72,0); spiegel3d.scale.set(w-1,2.3,1); spiegel3d.position.set(0,1.32,d/2-.03); spiegelRahmen.scale.set(w-.84,2.46,1); spiegelRahmen.position.set(0,1.32,d/2-.02);
   overview();
@@ -51,12 +51,61 @@ const leuchter=new THREE.Group(); world.add(leuchter);
 const spiegel3d=new THREE.Reflector(new THREE.PlaneGeometry(1,1),{textureWidth:Math.min(1024,innerWidth),textureHeight:Math.min(1024,innerHeight),clipBias:.003,color:0xb8bcc4});
 spiegel3d.rotation.y=Math.PI; scene.add(spiegel3d);
 const spiegelRahmen=new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.MeshStandardMaterial({color:0xb08d3c,roughness:.35,metalness:.5})); spiegelRahmen.rotation.y=Math.PI; world.add(spiegelRahmen);
-let ballsaal=false;
-function setAmbience(b){ ballsaal=b;
-  hemi.intensity=b?.32:.9; sun.intensity=b?.35:1.4; spot.intensity=b?55:0; leuchter.visible=spiegel3d.visible=spiegelRahmen.visible=b;
-  walls.material.color.set(b?0x4a2530:0x565d78); skirting.material.color.set(b?0x2a1418:0x2a2d3a); scene.background.set(b?0x0d0b10:0x1b1d24); }
+/* „Unsere Tanzschule“: der Saal aus dem Video – heller Holzboden, dunkle Decke mit Leuchtröhren, blau-violette Wände mit Holzband,
+   eine holzvertäfelte Wand mit Theke, eine weiße Wand mit gelb-schwarzem Streifen davor, Heizkörper, Türen und Lautsprecherboxen */
+const cv2=document.createElement('canvas'); cv2.width=cv2.height=1024; { const g=cv2.getContext('2d');
+  for(let y=0;y<24;y++)for(let x=-1;x<3;x++){ const px=x*400+(y%3)*133, py=y*43, l=72+Math.random()*8, hue=35+Math.random()*5;
+    g.fillStyle=`hsl(${hue},42%,${l}%)`; g.fillRect(px,py,400,43);
+    for(let i=0;i<6;i++){ g.strokeStyle=`hsla(${hue},40%,${l-8}%,.3)`; g.lineWidth=.6+Math.random(); const yy=py+3+Math.random()*37; g.beginPath(); g.moveTo(px,yy); g.bezierCurveTo(px+130,yy+Math.random()*4-2,px+270,yy+Math.random()*4-2,px+400,yy+Math.random()*3-1.5); g.stroke(); }
+    g.strokeStyle='#5a3c1c55'; g.lineWidth=1; g.strokeRect(px,py,400,43); } }
+const texHell=new THREE.CanvasTexture(cv2); texHell.wrapS=texHell.wrapT=THREE.RepeatWrapping; texHell.anisotropy=8; texHell.colorSpace=THREE.SRGBColorSpace;
+const cv3=document.createElement('canvas'); cv3.width=512; cv3.height=64; { const g=cv3.getContext('2d');   // Holzvertäfelung: senkrechte Bretter
+  for(let x=0;x<16;x++){ g.fillStyle=`hsl(${22+Math.random()*6},58%,${36+Math.random()*8}%)`; g.fillRect(x*32,0,32,64); g.fillStyle='#0004'; g.fillRect(x*32,0,1.5,64); } }
+const texPaneel=new THREE.CanvasTexture(cv3); texPaneel.wrapS=texPaneel.wrapT=THREE.RepeatWrapping; texPaneel.colorSpace=THREE.SRGBColorSpace;
+const cv4=document.createElement('canvas'); cv4.width=256; cv4.height=32; { const g=cv4.getContext('2d'); g.fillStyle='#f2c200'; g.fillRect(0,0,256,32); g.fillStyle='#161616';
+  for(let x=-32;x<256;x+=64){ g.beginPath(); g.moveTo(x,32); g.lineTo(x+32,0); g.lineTo(x+64,0); g.lineTo(x+32,32); g.fill(); } }
+const texWarn=new THREE.CanvasTexture(cv4); texWarn.wrapS=THREE.RepeatWrapping; texWarn.colorSpace=THREE.SRGBColorSpace;
+const saal=new THREE.Group(); world.add(saal);
+function buildSaal(w,d){
+  for(const m of [...saal.children]){ saal.remove(m); m.geometry.dispose(); }
+  const H=3.2, std=(c,r=.9,o={})=>new THREE.MeshStandardMaterial({color:c,roughness:r,...o});
+  /* Fläche innen an einer Wand: side N/S/W/E, a..b = Anteil der Wandbreite (0–1), y0..y1 = Höhe, e = Abstand vor der Wand */
+  const wand=(side,a,b,y0,y1,mat,e=.012)=>{ const L=side==='N'||side==='S'?w:d, m=new THREE.Mesh(new THREE.PlaneGeometry((b-a)*L,y1-y0),mat), u=((a+b)/2-.5)*L;
+    if(side==='N'){ m.position.set(-u,(y0+y1)/2,d/2-e); m.rotation.y=Math.PI; } else if(side==='S') m.position.set(u,(y0+y1)/2,-d/2+e);
+    else if(side==='W'){ m.position.set(-w/2+e,(y0+y1)/2,-u); m.rotation.y=Math.PI/2; } else { m.position.set(w/2-e,(y0+y1)/2,u); m.rotation.y=-Math.PI/2; }
+    m.receiveShadow=true; saal.add(m); return m; };
+  const kasten=(x,y,z,sx,sy,sz,mat)=>{ const m=new THREE.Mesh(new THREE.BoxGeometry(sx,sy,sz),mat); m.position.set(x,y,z); m.castShadow=m.receiveShadow=true; saal.add(m); return m; };
+  const paneel=L=>{ const t=texPaneel.clone(); t.needsUpdate=true; t.repeat.set(L/1.6,1); return std(0xffffff,.7,{map:t}); };
+  const dunkel=std(0x17181c,.8), weiss=std(0xf2f2ee,.85,{emissive:0x55554f}), holz=std(0xa9743c,.6), schwarz=std(0x101012,.6);
+  // Decke (von oben unsichtbar) und drei Reihen Leuchtröhren
+  const decke=new THREE.Mesh(new THREE.PlaneGeometry(w,d),std(0x14161d,1)); decke.rotation.x=Math.PI/2; decke.position.y=H-.01; saal.add(decke);
+  for(const z of [-d*.3,0,d*.3]){ const r=new THREE.Mesh(new THREE.PlaneGeometry(w*.82,.11),new THREE.MeshBasicMaterial({color:0xf4f8ff})); r.rotation.x=Math.PI/2; r.position.set(0,H-.16,z); saal.add(r);
+    const tr=new THREE.Mesh(new THREE.PlaneGeometry(w*.84,.2),std(0x8a8d93,.5)); tr.rotation.x=Math.PI/2; tr.position.set(0,H-.15,z); saal.add(tr); }
+  // Holzband oben rundum
+  for(const sd of 'NSWE') wand(sd,0,1,2.45,H,paneel(sd==='N'||sd==='S'?w:d));
+  // Nordwand: ganz in Holz, davor die Theke, links eine Tür
+  wand('N',0,1,0,2.45,paneel(w)); wand('N',.06,.06+.95/w,0,2.05,dunkel,.02); wand('N',.62,.62+.3/w,1.3,1.75,std(0x6d7076,.6),.03);
+  kasten(-w*.18,.52,d/2-.45,Math.min(2.6,w*.4),1.04,.6,holz); kasten(-w*.18,1.06,d/2-.45,Math.min(2.8,w*.43),.05,.72,std(0x7a4f24,.5));
+  // Westwand: blau, zwei dunkle Türen, zwei Heizkörper
+  for(const a of [.12,.7]) wand('W',a,a+.95/d,0,2.05,dunkel,.02);
+  for(const a of [.36,.52]){ wand('W',a,a+1.1/d,.14,.62,weiss,.05); }
+  // Ostwand: große weiße Fläche, davor der gelb-schwarze Streifen am Boden und zwei Holzkisten
+  wand('E',.14,.86,0,2.45,weiss,.02);
+  const tw=texWarn.clone(); tw.needsUpdate=true; tw.repeat.set(d*.72/.5,1);
+  const st=new THREE.Mesh(new THREE.PlaneGeometry(d*.72,.1),new THREE.MeshStandardMaterial({map:tw,roughness:.7})); st.rotation.set(-Math.PI/2,0,Math.PI/2); st.position.set(w/2-.35,.006,0); saal.add(st);
+  kasten(w/2-.32,.2,d*.3,.4,.4,.9,holz); kasten(w/2-.32,.2,d*.3-1,.4,.4,.9,holz);
+  // Südwand: blau, ein offener Durchgang in einen hellen Nebenraum, ein Heizkörper
+  wand('S',.42,.42+1.5/w,0,2.1,std(0xd9c9a8,.9,{emissive:0x6b5a3a}),.02); wand('S',.7,.7+1.1/w,.14,.62,weiss,.05);
+  // Lautsprecherboxen
+  kasten(-w/2+.45,.28,d*.18,.3,.56,.34,schwarz); kasten(w*.28,.28,d/2-.5,.34,.56,.3,schwarz);
+}
+let ambiente='schule';
+function setAmbience(a){ ambiente=a; const b=a==='ball', z=a==='saal';
+  hemi.intensity=b?.32:z?1.7:.9; sun.intensity=b?.35:z?1.3:1.4; spot.intensity=b?55:0; leuchter.visible=spiegel3d.visible=spiegelRahmen.visible=b; saal.visible=z;
+  floor.material.map=z?texHell:tex; floor.material.needsUpdate=true;
+  walls.material.color.set(b?0x4a2530:z?0x6d77b6:0x565d78); skirting.material.color.set(b?0x2a1418:z?0x3a3f5c:0x2a2d3a); scene.background.set(b?0x0d0b10:0x1b1d24); }
 function overview(){ const w=ROOM.w,d=ROOM.d; camera.position.set(w*.5,Math.max(w,d)*.62+1.5,-d*.5-Math.max(w,d)*.75); controls.target.set(0,.7,0); }
-buildRoom(ROOM.w,ROOM.d); setAmbience(false);
+buildRoom(ROOM.w,ROOM.d); setAmbience('schule');
 
 /* ---------- Tänzer ---------- */
 const UP=new THREE.Vector3(0,1,0), V3=THREE.Vector3;

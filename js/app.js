@@ -54,10 +54,10 @@ $('mirror').onchange=()=>setMirror($('mirror').checked);
 const look=(()=>{ try{ return JSON.parse(localStorage.getItem('tanzsim_look'))||{}; }catch(e){ return {}; } })();
 const saveLook=()=>{ try{ localStorage.setItem('tanzsim_look',JSON.stringify(look)); }catch(e){} };
 function applyLook(){ $('colH').value=look.h||'#2f5fd0'; $('colD').value=look.d||'#e8365a'; $('ambiente').value=look.a||'schule';
-  herr.setColor($('colH').value); dame.setColor($('colD').value); setAmbience($('ambiente').value==='ball'); }
+  herr.setColor($('colH').value); dame.setColor($('colD').value); setAmbience($('ambiente').value); }
 $('colH').oninput=()=>{ look.h=$('colH').value; herr.setColor(look.h); saveLook(); };
 $('colD').oninput=()=>{ look.d=$('colD').value; dame.setColor(look.d); saveLook(); };
-$('ambiente').onchange=()=>{ look.a=$('ambiente').value; setAmbience(look.a==='ball'); saveLook(); };
+$('ambiente').onchange=()=>{ look.a=$('ambiente').value; setAmbience(look.a); saveLook(); };
 $('pairsN').onchange=()=>setPairs(+$('pairsN').value);
 $('gloss').onchange=()=>{ gloss.visible=$('gloss').checked; };
 $('prints').onchange=$('printWho').onchange=()=>{ clearPrints(); clearDiagram(); };
