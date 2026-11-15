@@ -22,7 +22,7 @@ Ein 3D-Simulator im Browser zum Lernen und Üben von Paartänzen. Herr und Dame 
 - **Teilen per Link:** Eine Tanzfolge steckt in der Adresse – der Tanzpartner öffnet sie einfach im Browser
 - **Export und Import** eigener Figuren und Folgen als Datei
 - **Übungsmusik:** ein einfacher Rhythmus passend zum Tanz, ganz ohne eigene Musikdatei; bei eigener Musik schlägt der Simulator Tänze vor, die zum Tempo passen
-- **Spotify / Apple Music:** über den Kopfhörer-Knopf unten rechts lässt sich ein Player einblenden (Link einfügen); das Tanztempo wird durch Mittippen an die Musik angepasst
+- **Spotify / Apple Music:** über den Kopfhörer-Knopf unten rechts lässt sich ein Player einblenden. Mit Spotify Premium und einer eigenen (kostenlosen) Spotify-App: anmelden, Lieder und Playlists suchen und direkt abspielen. Ohne das: Link einfügen. Das Tanztempo wird durch Mittippen an die Musik angepasst
 - **Einzählen und Mitzählen:** „fünf, sechs, sieben, acht" vor dem Start, auf Wunsch werden die Zählzeiten mitgesprochen
 - **Schritte erklärt:** zu jeder Figur die Schritte von Herr und Dame als Liste, auch zum Vorlesen
 - **Zeitlupe für einzelne Figuren** der Folge (🐢 im Ablauf)

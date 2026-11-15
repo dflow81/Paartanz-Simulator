@@ -89,3 +89,10 @@ summary{cursor:pointer;font-size:13px;color:#cfd6ff;user-select:none}
 #streamFrame iframe{width:100%;border:0;border-radius:10px;margin-top:8px;display:block}
 #streamBpm{font-size:13px;color:#ffd166;align-self:center}
 @media (max-width:700px){ #streamBtn{top:6px;left:8px;right:auto;bottom:auto} #streamBox{top:54px;left:8px;right:8px;bottom:auto;width:auto;max-height:44vh} #streamBox.off{left:-9999px;right:auto} }
+#streamBox [hidden]{display:none!important}
+#spRedir{color:#ffd166;word-break:break-all;user-select:all}
+#spList{max-height:190px;overflow:auto;margin-top:6px}
+.spi{font-size:13px;padding:5px 6px;border-radius:6px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.spi:hover{background:#2c3350} .spi span{color:#888;font-size:11px}
+#spNow{display:flex;gap:8px;align-items:center;font-size:13px;margin-top:8px} #spNow img{width:44px;height:44px;border-radius:6px}
+#spInfo:empty{display:none}

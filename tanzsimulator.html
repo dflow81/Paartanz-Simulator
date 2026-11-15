@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Paartanz-Simulator 3D – mit eigenen Tanzfolgen</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="tanzsimulator.css?v=2611151938">
+<link rel="stylesheet" href="tanzsimulator.css?v=2611151945">
 </head>
 <body>
 <div id="ui">
@@ -166,31 +166,47 @@
 <div id="hud"><div id="count">1</div><div id="stepname"></div><div id="damename"></div><div id="figname"></div><div id="tip"></div></div>
 <button id="streamBtn" title="Player für Spotify und Apple Music ein- oder ausblenden">🎧</button>
 <div id="streamBox" class="off">
-  <div class="shead"><b>Spotify / Apple Music</b><button id="streamHide" class="mini" title="Ausblenden – die Musik läuft weiter">▾</button></div>
-  <div class="row" style="margin-top:0"><input id="streamLink" type="text" placeholder="Link einfügen" style="flex:1;min-width:0"><button id="streamGo" class="sec" style="flex:0 0 auto">Laden</button><button id="streamClear" class="mini del" title="Player leeren">✕</button></div>
-  <div id="streamFrame"></div>
+  <div class="shead"><b>Musik: Spotify</b><button id="streamHide" class="mini" title="Ausblenden – die Musik läuft weiter">▾</button></div>
+  <div id="spSetup">
+    <div class="info">Einmalig einrichten: auf developer.spotify.com eine App anlegen, dort als „Redirect URI“ diese Adresse eintragen:<br><b id="spRedir"></b><br>und die „Client ID“ der App hier einfügen.</div>
+    <div class="row"><input id="spClient" type="text" placeholder="Client ID (32 Zeichen)" style="flex:1;min-width:0"><button id="spSave" class="sec" style="flex:0 0 auto">Speichern</button></div>
+  </div>
+  <div id="spLogin"><div class="row" style="margin-top:0"><button id="spLoginBtn">Mit Spotify anmelden (Premium)</button><button id="spChange" class="mini del" title="Andere Client ID eintragen">✕</button></div></div>
+  <div id="spMain">
+    <div class="row" style="margin-top:0"><input id="spQ" type="text" placeholder="Lied, Künstler oder Playlist" style="flex:1;min-width:0"><button id="spGo" class="sec" style="flex:0 0 auto">Suchen</button></div>
+    <div class="row"><button id="spMine" class="sec">Meine Playlists</button><button id="spOut" class="sec" style="flex:0 0 auto">Abmelden</button></div>
+    <div id="spList"></div>
+    <div id="spNow"></div>
+    <div class="row"><button id="spPrev" class="sec" style="flex:0 0 auto">⏮</button><button id="spPP">▶</button><button id="spNext" class="sec" style="flex:0 0 auto">⏭</button><input id="spVol" type="range" min="0" max="100" value="80" title="Lautstärke" style="flex:1;min-width:0"></div>
+  </div>
+  <div class="info" id="spInfo"></div>
   <div class="row"><button id="streamTap" class="sec" style="flex:0 0 auto">Tempo tippen</button><span id="streamBpm"></span></div>
-  <div class="info" id="streamInfo"></div>
+  <details>
+    <summary>Mit Link abspielen (Spotify / Apple Music)</summary>
+    <div class="row"><input id="streamLink" type="text" placeholder="Link einfügen" style="flex:1;min-width:0"><button id="streamGo" class="sec" style="flex:0 0 auto">Laden</button><button id="streamClear" class="mini del" title="Player leeren">✕</button></div>
+    <div id="streamFrame"></div>
+    <div class="info" id="streamInfo"></div>
+  </details>
 </div>
 <div id="legend"><span class="dot" style="background:#3d7bff;margin-left:0"></span>Herr (führt)
   <span class="dot" style="background:#ff4d6d"></span>Dame &nbsp;|&nbsp; Maus: drehen / zoomen</div>
 
 <!-- Figuren-Bibliothek und Schritt-Engine (normale Skripte, damit die Seite auch direkt von der Festplatte läuft) -->
-<script src="js/basis.js?v=2611151938"></script>
-<script src="figuren/standard.js?v=2611151938"></script>
-<script src="figuren/latein.js?v=2611151938"></script>
-<script src="figuren/gesellschaft.js?v=2611151938"></script>
-<script src="figuren/karibik.js?v=2611151938"></script>
-<script src="figuren/weitere.js?v=2611151938"></script>
-<script src="figuren/folgen.js?v=2611151938"></script>
-<script src="js/speicher.js?v=2611151938"></script>
-<script src="js/engine.js?v=2611151938"></script>
-<script src="lib/three.js?v=2611151938"></script>
-<script src="lib/OrbitControls.js?v=2611151938"></script>
-<script src="lib/Reflector.js?v=2611151938"></script>
-<script src="js/szene.js?v=2611151938"></script>
-<script src="js/app.js?v=2611151938"></script>
-<script src="js/stream.js?v=2611151938"></script>
-<script src="js/editor.js?v=2611151938"></script>
+<script src="js/basis.js?v=2611151945"></script>
+<script src="figuren/standard.js?v=2611151945"></script>
+<script src="figuren/latein.js?v=2611151945"></script>
+<script src="figuren/gesellschaft.js?v=2611151945"></script>
+<script src="figuren/karibik.js?v=2611151945"></script>
+<script src="figuren/weitere.js?v=2611151945"></script>
+<script src="figuren/folgen.js?v=2611151945"></script>
+<script src="js/speicher.js?v=2611151945"></script>
+<script src="js/engine.js?v=2611151945"></script>
+<script src="lib/three.js?v=2611151945"></script>
+<script src="lib/OrbitControls.js?v=2611151945"></script>
+<script src="lib/Reflector.js?v=2611151945"></script>
+<script src="js/szene.js?v=2611151945"></script>
+<script src="js/app.js?v=2611151945"></script>
+<script src="js/stream.js?v=2611151945"></script>
+<script src="js/editor.js?v=2611151945"></script>
 </body>
 </html>
