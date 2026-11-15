@@ -84,12 +84,9 @@ function buildSaal(w,d){
   // Holzband oben rundum
   for(const sd of 'NSWE') wand(sd,0,1,2.45,H,paneel(sd==='N'||sd==='S'?w:d));
   const hell=std(0xc9a26a,.55), glas=std(0xbfd8e6,.3,{emissive:0x4a6470}), tuerW=std(0xe6e4dc,.7), teal=std(0x5f9a96,.7), lit=std(0xd9c9a8,.9,{emissive:0x6b5a3a});
-  /* Nordwand (Holz), von der Ecke zur weißen Wand aus: weiße Tür, Heizkörper, Vordach mit Stütze, Glastür ins Foyer, Theke mit Leiter, Durchgang */
+  /* Nordwand (Holz), von der Ecke zur weißen Wand aus: weiße Tür, Heizkörper, Glastür ins Foyer, Theke mit Leiter, Durchgang */
   wand('N',0,1,0,2.45,paneel(w));
   wand('N',.04,.04+.9/w,0,2.02,tuerW,.02); wand('N',.14,.14+1.1/w,.16,.62,weiss,.05);
-  { const x0=w/2-w*.2, x1=w/2-w*.36, dach=new THREE.Mesh(new THREE.BoxGeometry(Math.abs(x1-x0),.07,1.3),std(0x4a4038,.9)); dach.position.set((x0+x1)/2,2.2,d/2-.62); dach.rotation.x=-.3; dach.castShadow=true; saal.add(dach);
-    kasten(x1+.06,1.03,d/2-1.15,.12,2.06,.12,holz); kasten((x0+x1)/2,.01,d/2-.7,Math.abs(x1-x0),.012,1.2,std(0x4f7a45,1));   // Stütze und grüner Teppich darunter
-    kasten((x0+x1)/2,.55,d/2-.7,.5,.03,.5,dunkel); kasten((x0+x1)/2,.27,d/2-.7,.05,.54,.05,dunkel); }                    // Stehtisch
   wand('N',.4,.4+1.3/w,0,2.1,glas,.02); wand('N',.4,.4+.04/w,0,2.1,weiss,.03); wand('N',.4+1.26/w,.4+1.3/w,0,2.1,weiss,.03);
   { const cx=-w*.17, cw=Math.min(3,w*.34); kasten(cx,.52,d/2-.75,cw,1.04,.55,holz); kasten(cx,1.06,d/2-.75,cw+.15,.05,.68,std(0x7a4f24,.5));
     for(const sx of [-.2,.2]){ const l=kasten(cx+cw*.3+sx,1.05,d/2-.16,.035,2.1,.035,std(0xb9bcc2,.4,{metalness:.5})); l.rotation.x=.1; }
