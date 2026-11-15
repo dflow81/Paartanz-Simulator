@@ -91,21 +91,31 @@ class Dancer{
       const back=add(new THREE.SphereGeometry(.09*k,16,12),hair,this.headG); back.position.set(0,.08*k,-.035*k); back.scale.set(.98,1.05,.9); }
     // Gliedmaßen und Gelenke
     const arm=fem?skin:top;
-    this.limbs={thL:limb(.066*k,legs),thR:limb(.066*k,legs),shL:limb(.05*k,legs),shR:limb(.05*k,legs),
+    this.limbs={thL:limb(.066*k,legs),thR:limb(.066*k,legs),shL:limb((fem?.043:.05)*k,legs),shR:limb((fem?.043:.05)*k,legs),
       uaL:limb((fem?.036:.046)*k,arm),uaR:limb((fem?.036:.046)*k,arm),faL:limb((fem?.03:.038)*k,arm),faR:limb((fem?.03:.038)*k,arm)};
     this.meshes.push(...Object.values(this.limbs));
     this.j={}; const ball=(n,r,m,sc)=>{for(const s of 'LR'){ this.j[n+s]=add(new THREE.SphereGeometry(r*k,12,10),m); if(sc) this.j[n+s].scale.set(...sc); }};
     ball('kn',.053,legs); ball('el',fem?.031:.04,arm); ball('ha',.04,skin,[.8,1.1,.8]); ball('so',fem?.045:.058,fem?skin:top);
     this.feet={}; for(const s of 'LR'){ const g=new THREE.Group(); world.add(g);
-      if(fem){ // Tanzschuh der Dame: der Fuß steht auf dem Ballen, darunter Sohle, Zehenkappe, Fersenkappe, Absatz und ein Knöchelriemchen
-        const gold=this.gold??=M(0x121216,.22), B=[0,-.07,.11*k], q=new THREE.Group(); q.position.set(...B); q.rotation.x=.3; g.add(q);
+      if(fem){ // Tanzschuh der Dame: Fuß auf dem Ballen; Sohle, Zehen- und Fersenkappe, geschwungener Absatz, Spann- und Knöchelriemchen mit Schnalle
+        const lack=this.lack??=M(0x121216,.2), silber=this.silber??=M(0xd8dade,.25,{metalness:.7}), sohle=this.sohle??=M(0xb89a78,.7);
+        const B=[0,-.07,.11*k], q=new THREE.Group(), sg=s==='L'?1:-1; q.position.set(...B); q.rotation.x=.3; g.add(q);
         const at=(m,x,y,z)=>{ m.position.set(x-B[0],y-B[1],z-B[2]); return m; };
         const ft=at(add(new THREE.CapsuleGeometry(.036*k,.14*k,4,10),skin,q),0,-.04,.05*k); ft.rotation.x=Math.PI/2; ft.scale.set(.82,1,.6);
-        at(add(new THREE.BoxGeometry(.058*k,.007,.2*k),gold,q),0,-.066,.05*k);
-        at(add(new THREE.SphereGeometry(.036*k,12,8),gold,q),0,-.045,.125*k).scale.set(.9,.62,1.15);
-        at(add(new THREE.SphereGeometry(.036*k,12,8),gold,q),0,-.042,-.028*k).scale.set(.88,.8,.8);
-        at(add(new THREE.CylinderGeometry(.019*k,.011*k,.05,10),gold,q),0,-.094,-.03*k);
-        const st=add(new THREE.TorusGeometry(.033*k,.006,6,16),gold,g); st.rotation.x=Math.PI/2; st.position.set(0,.012,.004);
+        at(add(new THREE.BoxGeometry(.056*k,.005,.2*k),sohle,q),0,-.0665,.05*k);                              // helle Ledersohle
+        at(add(new THREE.SphereGeometry(.037*k,14,10),lack,q),0,-.044,.118*k).scale.set(.88,.64,1.35);        // Zehenkappe (spitz zulaufend)
+        at(add(new THREE.SphereGeometry(.037*k,14,10),lack,q),0,-.04,-.03*k).scale.set(.88,.85,.8);           // Fersenkappe
+        for(const sd of [-1,1]){ const w=at(add(new THREE.BoxGeometry(.004,.014,.1*k),lack,q),sd*.029*k,-.056,.04*k); w.rotation.y=sd*.03; }   // schmale Seitenteile
+        // Absatz: oben breit an der Ferse, nach unten schmal, mit kleinem Absatzfleck
+        at(add(new THREE.CylinderGeometry(.021*k,.009*k,.052,12),lack,q),0,-.092,-.032*k);
+        at(add(new THREE.CylinderGeometry(.0095*k,.0095*k,.004,10),sohle,q),0,-.119,-.032*k);
+        // Riemchen über den Spann mit Schnalle außen
+        const sp=at(add(new THREE.TorusGeometry(.03*k,.0035,6,20),lack,q),0,-.04,.035*k); sp.scale.set(.86,.66,1);
+        at(add(new THREE.BoxGeometry(.004,.012,.012),silber,q),sg*.027*k,-.036,.035*k);
+        // Knöchelriemchen (zum Zumachen) mit Schnalle außen, hinten an der Fersenkappe gehalten
+        const kr=add(new THREE.TorusGeometry(.037*k,.0035,6,20),lack,g); kr.rotation.x=Math.PI/2; kr.position.set(0,.02,0);
+        add(new THREE.BoxGeometry(.005,.013,.013),silber,g).position.set(sg*.039*k,.02,.004);
+        const hs=add(new THREE.BoxGeometry(.012,.05,.004),lack,g); hs.position.set(0,0,-.036*k); hs.rotation.x=.12;
       } else { const sh=add(new THREE.CapsuleGeometry(.04*k,.15*k,4,10),shoe,g); sh.rotation.x=Math.PI/2; sh.scale.set(1,1,.62); sh.position.set(0,-.045,.055*k); }
       if(!fem) add(new THREE.CylinderGeometry(.05*k,.045*k,.05,10),legs,g).position.set(0,-.005,0);   // Hosensaum
       this.feet[s]=g; }
