@@ -164,6 +164,14 @@
 </div>
 
 <div id="hud"><div id="count">1</div><div id="stepname"></div><div id="damename"></div><div id="figname"></div><div id="tip"></div></div>
+<button id="streamBtn" title="Player für Spotify und Apple Music ein- oder ausblenden">🎧</button>
+<div id="streamBox" class="off">
+  <div class="shead"><b>Spotify / Apple Music</b><button id="streamHide" class="mini" title="Ausblenden – die Musik läuft weiter">▾</button></div>
+  <div class="row" style="margin-top:0"><input id="streamLink" type="text" placeholder="Link einfügen" style="flex:1;min-width:0"><button id="streamGo" class="sec" style="flex:0 0 auto">Laden</button><button id="streamClear" class="mini del" title="Player leeren">✕</button></div>
+  <div id="streamFrame"></div>
+  <div class="row"><button id="streamTap" class="sec" style="flex:0 0 auto">Tempo tippen</button><span id="streamBpm"></span></div>
+  <div class="info" id="streamInfo"></div>
+</div>
 <div id="legend"><span class="dot" style="background:#3d7bff;margin-left:0"></span>Herr (führt)
   <span class="dot" style="background:#ff4d6d"></span>Dame &nbsp;|&nbsp; Maus: drehen / zoomen</div>
 
@@ -182,6 +190,7 @@
 <script src="lib/Reflector.js"></script>
 <script src="js/szene.js"></script>
 <script src="js/app.js"></script>
+<script src="js/stream.js"></script>
 <script src="js/editor.js"></script>
 </body>
 </html>
