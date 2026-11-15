@@ -35,3 +35,29 @@ folge('s_merengue','Merengue-Folge',130,[['b_m_platz'],['b_m_seit'],['b_m_paar',
 folge('s_boogie','Boogie-Folge',160,[['b_bw_gs',2],['b_bw_triple',2],['b_bw_kick'],['b_bw_dreh',2]]);
 folge('s_argentino','Tango Argentino – Folge',110,[['b_ta_geh'],['b_ta_cunita'],['b_ta_salida'],['b_ta_baldosa'],['b_ta_cambio']]);
 folge('s_wcs','West Coast Swing – Folge',105,[['b_wc_push',2],['b_wc_left'],['b_wc_push'],['b_wc_turn']]);
+
+/* Folgen mit den weiteren Figuren */
+folge('s_walzer4','Walzer – Kreisel und Zögerwechsel',90,[['b_w_vw'],['b_w_kreisel'],['b_w_rw'],['b_w_rev'],['b_w_vw'],['b_w_zwechsel'],['b_w_rev']]);
+folge('s_wiener2','Wiener Walzer – mit Kontra-Check',174,[['b_ww_rechts',2],['b_ww_wr'],['b_ww_check'],['b_ww_links',2],['b_ww_wl']]);
+folge('s_tango3','Tango – Wiegedrehung und Promenaden',128,[['b_t_geh'],['b_t_pss'],['b_t_rock'],['b_t_link'],['b_t_prom'],['b_t_vier'],['b_t_oprom']]);
+folge('s_slowfox2','Slowfox – Richtungswechsel',116,[['b_sf_feder'],['b_sf_cod'],['b_sf_feder'],['b_sf_dreier']]);
+folge('s_quick2','Quickstep – Kreisel und Zögern',200,[['b_q_viertel'],['b_q_kreisel'],['b_q_chasse'],['b_q_lock'],['b_q_zoeger'],['b_q_links'],['b_q_chasse'],['b_q_geh']]);
+folge('s_chacha6','Cha-Cha – Time Step, Brüche und Kreisel',120,[['b_c_gs'],['b_c_schulter'],['b_c_time'],['b_c_cuban',2],['b_c_drei'],['b_c_top']]);
+folge('s_rumba4','Rumba – Seitschritte und Kreisel',100,[['b_r_box'],['b_r_seit'],['b_r_schulter'],['b_r_top'],['b_r_cuca']]);
+folge('s_samba2','Samba – Gehschritte, Botafogos, Linksdrehung',100,[['b_sa_gs'],['b_sa_walk',2],['b_sa_bota',2],['b_sa_links',2],['b_sa_wisch']]);
+folge('s_jive2','Jive – Fallaway und Peitsche',150,[['b_j_tap',2],['b_j_gs'],['b_j_fall'],['b_j_whip'],['b_j_gs']]);
+folge('s_paso2','Paso Doble – Ecart und Promenade',120,[['b_pd_platz'],['b_pd_ecart'],['b_pd_prom'],['b_pd_chassel'],['b_pd_drehr'],['b_pd_marsch']]);
+folge('s_foxtrott3','Foxtrott – Vierteldrehungen und Karree',120,[['b_f_gs'],['b_f_viertel'],['b_f_box'],['b_f_rwiege'],['b_f_lock']]);
+folge('s_blues2','Blues – mit Damendrehung',80,[['b_bl_seit',2],['b_bl_lang'],['b_bl_solo'],['b_bl_wiege',2],['b_bl_drehr',4]]);
+folge('s_rr2',"Rock'n'Roll – Kick-Ball-Change und Damendrehung",150,[['b_rr_gs'],['b_rr_kbc',2],['b_rr_solo'],['b_rr_dreh',4]]);
+folge('s_polka2','Polka – Hacke, Spitze',120,[['b_p_gs',2],['b_p_hacke'],['b_p_drehl',4],['b_p_rueck',2]]);
+folge('s_salsa3','Salsa – Cumbia und Enchufla',170,[['b_s_gs'],['b_s_cumbia'],['b_s_gs'],['b_s_ench'],['b_s_gs'],['b_s_drehl']]);
+folge('s_bachata2','Bachata – Kreuzen und Linksdrehung',125,[['b_b_seit'],['b_b_kreuz'],['b_b_drehl'],['b_b_seit'],['b_b_rechts',2]]);
+folge('s_merengue2','Merengue – nach rechts',130,[['b_m_platz'],['b_m_seitr'],['b_m_paarr',2],['b_m_solol'],['b_m_seit']]);
+folge('s_boogie2','Boogie – Damensolo',160,[['b_bw_gs',2],['b_bw_solo'],['b_bw_gs'],['b_bw_drehl',2],['b_bw_kick']]);
+folge('s_argentino2','Tango Argentino – Giro',110,[['b_ta_geh'],['b_ta_giro',2],['b_ta_gehr'],['b_ta_pausa']]);
+folge('s_wcs2','West Coast Swing – Starter Step und Sugar Tuck',105,[['b_wc_start',2],['b_wc_push'],['b_wc_tuck'],['b_wc_left'],['b_wc_push']]);
+/* Nach dem Video aus der Tanzschule: Reihenfolge der erkennbaren Figuren, angenähert mit den Figuren des Simulators */
+folge('s_disco_video','Discofox – wie im Video (angenähert)',120,[['b_d_solo'],['b_d_doppel'],['b_d_offen'],['b_d_wickel'],['b_d_solo'],['b_d_offen'],['b_d_herr'],['b_d_solol'],['b_d_herr'],
+  ['b_d_korb'],['b_d_pw'],['b_d_dreh',2],['b_d_pw'],['b_d_solo'],['b_d_dreh',2],['b_d_offen'],['b_d_herrr'],['b_d_solo'],['b_d_kreuzh'],['b_d_doppel'],['b_d_herr'],['b_d_wickel'],['b_d_solo'],['b_d_offen']]);
+folge('s_disco5','Discofox – Promenade, Wickler, Herrensolo rechts',120,[['b_d_gs'],['b_d_prom'],['b_d_platz',2],['b_d_wickel'],['b_d_herrr'],['b_d_gs']]);

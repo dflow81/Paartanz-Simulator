@@ -24,7 +24,12 @@ function latein(cha){
   const alemana={steps:[...H([S('L','vor',12,1,'2'),S('R','platz',0,1,'3'),...TP('L')],'faecher'),S('R','rueck',12,1,'2',0,'hoch'),S('L','platz',0,1,'3',0,'hoch'),...H(T('R'),'zu')],
              dame:[S('R','schliessen',0,1,'2'),S('L','vor',25,1,'3'),...TV('R'),S('L','vor',15,1,'2',-225),{...S('R','vor',15,1,'3',-180),tip:'Dame dreht rechts unter seiner erhobenen Hand'},
                    ...(cha?[S('L','seit',12,.5,'4',-45),S('R','schliessen',0,.5,'&'),S('L','seit',12,1,'1')]:[S('L','seit',25,2,'4',-45)])]};
-  return {gs,T,fan,hockey,alemana,
+  /* Kreisel: das Paar dreht am Platz nach rechts – er kreuzt hinten und setzt seit, sie geht um ihn herum */
+  const topC=cha?['2','3','4','&','1','2','3','4','&','1']:['2','3','4','2','3','4'], topD=cha?[1,1,.5,.5,1,1,1,.5,.5,1]:[1,1,2,1,1,2];
+  const top0=topC.map((c,i)=>i%2?S('L','seit',20,topD[i],c,-360/topC.length):S('R','kreuzHinter',10,topD[i],c,-360/topC.length));
+  const top=[...h1,...top0,...h2];
+  const schulter=[{...S('L','vorAussen',28,1,'2'),tip:'Außenseitlich: Schulter an Schulter an der Dame vorbei'},S('R','platz',0,1,'3'),...T('L'),S('R','vorAussen',28,1,'2'),S('L','platz',0,1,'3'),...T('R')];
+  return {gs,T,fan,hockey,alemana,top,schulter,
     ny:auf('kreuzSeit',1,['LR','RL']), hand:auf('kreuzSeitHinter',-1,['RL','LR']),
     solo:{steps:[...h1,S('R','rueck',30,1,'2',0,'hoch'),S('L','platz',0,1,'3',0,'hoch'),...T('R')],
           dame:[...spiegel(h1),S('L','vor',20,1,'2',-180),S('R','vor',20,1,'3',-180),...T('L')]},
@@ -36,6 +41,7 @@ function latein(cha){
 }
 const c=latein(true), r=latein(false);
 
+const lockR=(f,c1,c2)=>[S(f,'rueck',15,.5,c1),S(O(f),'kreuz',8,.5,'&'),S(f,'rueck',15,1,c2)], lockV=(f,c1,c2)=>[S(f,'vor',15,.5,c1),S(O(f),'kreuzHinter',8,.5,'&'),S(f,'vor',15,1,c2)];
 tanz('Cha-Cha-Cha',120,{
   b_c_gs:['Grundschritt',c.gs],
   b_c_offen:['Grundschritt in offener Haltung',H(c.gs,'offen')],
@@ -48,6 +54,14 @@ tanz('Cha-Cha-Cha',120,{
   b_c_fan:['Fächer (Fan)',c.fan.steps,c.fan.dame],
   b_c_hockey:['Hockeystick (aus dem Fächer)',c.hockey.steps,c.hockey.dame],
   b_c_alemana:['Alemana (aus dem Fächer)',c.alemana.steps,c.alemana.dame],
+  b_c_schulter:['Schulter an Schulter',c.schulter],
+  b_c_time:['Time Step (am Platz)',[S('L','platz',0,1,'2'),S('R','platz',0,1,'3'),...c.T('L'),S('R','platz',0,1,'2'),S('L','platz',0,1,'3'),...c.T('R')]],
+  b_c_drei:['Drei Cha-Cha-Chas (rück und vor)',[S('L','vor',30,1,'2'),S('R','platz',0,1,'3'),...lockR('L','4','1'),...lockR('R','2','3'),...lockR('L','4','1'),
+     S('R','rueck',30,1,'2'),S('L','platz',0,1,'3'),...lockV('R','4','1'),...lockV('L','2','3'),...lockV('R','4','1')]],
+  b_c_cuban:['Kubanische Brüche (Cuban Breaks)',
+     H([S('L','kreuz',12,.5,'2'),S('R','platz',0,.5,'&'),S('L','seit',15,1,'3'),S('R','kreuz',12,.5,'4'),S('L','platz',0,.5,'&'),S('R','seit',15,1,'1')],'offen'),
+     [S('R','kreuz',12,.5,'2'),S('L','platz',0,.5,'&'),S('R','seit',15,1,'3'),S('L','kreuz',12,.5,'4'),S('R','platz',0,.5,'&'),S('L','seit',15,1,'1')]],
+  b_c_top:['Rechtskreisel (Natural Top)',c.top],
 });
 
 tanz('Rumba',100,{
@@ -61,6 +75,9 @@ tanz('Rumba',100,{
   b_r_fan:['Fächer (Fan)',r.fan.steps,r.fan.dame],
   b_r_hockey:['Hockeystick (aus dem Fächer)',r.hockey.steps,r.hockey.dame],
   b_r_alemana:['Alemana (aus dem Fächer)',r.alemana.steps,r.alemana.dame],
+  b_r_schulter:['Schulter an Schulter',r.schulter],
+  b_r_seit:['Seitschritte (links und rechts)',[S('L','seit',22,1,'2'),S('R','schliessen',0,1,'3'),S('L','seit',22,2,'4'),S('R','seit',22,1,'2'),S('L','schliessen',0,1,'3'),S('R','seit',22,2,'4')]],
+  b_r_top:['Rechtskreisel (Natural Top)',r.top],
 });
 
 /* Samba: „1 a 2“ = ¾, ¼, 1 Schlag */
