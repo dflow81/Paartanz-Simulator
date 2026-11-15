@@ -51,8 +51,8 @@ const leuchter=new THREE.Group(); world.add(leuchter);
 const spiegel3d=new THREE.Reflector(new THREE.PlaneGeometry(1,1),{textureWidth:Math.min(1024,innerWidth),textureHeight:Math.min(1024,innerHeight),clipBias:.003,color:0xb8bcc4});
 spiegel3d.rotation.y=Math.PI; scene.add(spiegel3d);
 const spiegelRahmen=new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.MeshStandardMaterial({color:0xb08d3c,roughness:.35,metalness:.5})); spiegelRahmen.rotation.y=Math.PI; world.add(spiegelRahmen);
-/* „Unsere Tanzschule“: der Saal aus dem Video – heller Holzboden, dunkle Decke mit Leuchtröhren, blau-violette Wände mit Holzband,
-   eine holzvertäfelte Wand mit Theke, eine weiße Wand mit gelb-schwarzem Streifen davor, Heizkörper, Türen und Lautsprecherboxen */
+/* „Unsere Tanzschule“: der Saal aus dem Video – heller Holzboden, dunkle Decke mit Leuchtröhren, blau-violette Wände mit braunem Band,
+   eine braun gestrichene Wand mit Holztheke, eine weiße Wand mit gelb-schwarzem Streifen davor, Heizkörper, Türen und Lautsprecherboxen */
 const cv2=document.createElement('canvas'); cv2.width=cv2.height=1024; { const g=cv2.getContext('2d');
   for(let y=0;y<24;y++)for(let x=-1;x<3;x++){ const px=x*400+(y%3)*133, py=y*43, l=72+Math.random()*8, hue=35+Math.random()*5;
     g.fillStyle=`hsl(${hue},42%,${l}%)`; g.fillRect(px,py,400,43);
@@ -75,20 +75,20 @@ function buildSaal(w,d){
     else if(side==='W'){ m.position.set(-w/2+e,(y0+y1)/2,-u); m.rotation.y=Math.PI/2; } else { m.position.set(w/2-e,(y0+y1)/2,u); m.rotation.y=-Math.PI/2; }
     m.receiveShadow=true; saal.add(m); return m; };
   const kasten=(x,y,z,sx,sy,sz,mat)=>{ const m=new THREE.Mesh(new THREE.BoxGeometry(sx,sy,sz),mat); m.position.set(x,y,z); m.castShadow=m.receiveShadow=true; saal.add(m); return m; };
-  const paneel=L=>{ const t=texPaneel.clone(); t.needsUpdate=true; t.repeat.set(L/1.6,1); return std(0xffffff,.7,{map:t}); };
+  const braun=std(0xa86a3c,.95), paneel=()=>braun;   // Wände glatt braun gestrichen (kein Holz); aus Holz ist nur die Theke
   const dunkel=std(0x17181c,.8), weiss=std(0xf2f2ee,.85,{emissive:0x55554f}), holz=std(0xa9743c,.6), schwarz=std(0x101012,.6);
   // Decke (von oben unsichtbar) und drei Reihen Leuchtröhren
   const decke=new THREE.Mesh(new THREE.PlaneGeometry(w,d),std(0x14161d,1)); decke.rotation.x=Math.PI/2; decke.position.y=H-.01; saal.add(decke);
   for(const z of [-d*.3,0,d*.3]){ const r=new THREE.Mesh(new THREE.PlaneGeometry(w*.82,.11),new THREE.MeshBasicMaterial({color:0xf4f8ff})); r.rotation.x=Math.PI/2; r.position.set(0,H-.16,z); saal.add(r);
     const tr=new THREE.Mesh(new THREE.PlaneGeometry(w*.84,.2),std(0x8a8d93,.5)); tr.rotation.x=Math.PI/2; tr.position.set(0,H-.15,z); saal.add(tr); }
-  // Holzband oben rundum
+  // braunes Band oben rundum
   for(const sd of 'NSWE') wand(sd,0,1,2.45,H,paneel(sd==='N'||sd==='S'?w:d));
   const hell=std(0xc9a26a,.55), glas=std(0xbfd8e6,.3,{emissive:0x4a6470}), tuerW=std(0xe6e4dc,.7), teal=std(0x5f9a96,.7), lit=std(0xd9c9a8,.9,{emissive:0x6b5a3a});
-  /* Nordwand (Holz), von der Ecke zur weißen Wand aus: weiße Tür, Heizkörper, Glastür ins Foyer, Theke mit Leiter, Durchgang */
+  /* Nordwand (braun), von der Ecke zur weißen Wand aus: weiße Tür, Heizkörper, Glastür ins Foyer, Theke mit Leiter, Durchgang */
   wand('N',0,1,0,2.45,paneel(w));
   wand('N',.04,.04+.9/w,0,2.02,tuerW,.02); wand('N',.14,.14+1.1/w,.16,.62,weiss,.05);
   wand('N',.4,.4+1.3/w,0,2.1,glas,.02); wand('N',.4,.4+.04/w,0,2.1,weiss,.03); wand('N',.4+1.26/w,.4+1.3/w,0,2.1,weiss,.03);
-  { const cx=-w*.17, cw=Math.min(3,w*.34); kasten(cx,.52,d/2-.75,cw,1.04,.55,holz); kasten(cx,1.06,d/2-.75,cw+.15,.05,.68,std(0x7a4f24,.5));
+  { const cx=-w*.17, cw=Math.min(3,w*.34); { const t=texPaneel.clone(); t.needsUpdate=true; t.repeat.set(cw/1.6,1); kasten(cx,.52,d/2-.75,cw,1.04,.55,std(0xffffff,.7,{map:t})); } kasten(cx,1.06,d/2-.75,cw+.15,.05,.68,std(0x7a4f24,.5));
     for(const sx of [-.2,.2]){ const l=kasten(cx+cw*.3+sx,1.05,d/2-.16,.035,2.1,.035,std(0xb9bcc2,.4,{metalness:.5})); l.rotation.x=.1; }
     for(let k=0;k<6;k++) kasten(cx+cw*.3,.3+k*.32,d/2-.19+k*.033,.4,.025,.03,std(0xb9bcc2,.4,{metalness:.5}));           // Leiter
     wand('N',.5+(.17*w-cw*.1)/w/1,.5+(.17*w-cw*.1+.34)/w,1.25,1.75,std(0x6d7076,.6),.04); }                                 // grauer Kasten an der Wand
@@ -99,7 +99,7 @@ function buildSaal(w,d){
   wand('W',.62,.62+1.5/d,0,2.15,teal,.02); wand('W',.62+.12/d,.62+1.38/d,0,2.05,lit,.03);
   /* Südwand (blau): zwei dunkle Türen, ein Heizkörper */
   wand('S',.08,.08+.95/w,0,2.05,dunkel,.02); wand('S',.82,.82+.95/w,0,2.05,dunkel,.02); wand('S',.45,.45+1.2/w,.14,.62,weiss,.05);
-  /* Ostwand: große weiße Fläche, davor die niedrige Bühne mit gelb-schwarzer Kante und Holzstufen; Holzpfeiler in den Ecken */
+  /* Ostwand: große weiße Fläche, davor die niedrige Bühne mit gelb-schwarzer Kante und Holzstufen; braune Flächen in den Ecken */
   wand('E',.1,.9,0,2.45,weiss,.02); wand('E',0,.1,0,2.45,paneel(d*.1),.02); wand('E',.9,1,0,2.45,paneel(d*.1),.02);
   const bt=Math.min(1,w*.09); kasten(w/2-bt/2,.075,0,bt,.15,d*.8,hell);
   const tw=texWarn.clone(); tw.needsUpdate=true; tw.repeat.set(d*.8/.5,1);
