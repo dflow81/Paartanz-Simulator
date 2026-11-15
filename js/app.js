@@ -340,7 +340,7 @@ function animate(){
       tl=tl.next||simulate(blocks,tl.end); lastH=lastD=-1; lastBeatIdx=-1; lastSaid=-1;
     }
     if(!tl.next&&beat>tl.total-1){ tl.next=simulate(blocks,tl.end); chain(tl,tl.next); }   // Anschluss vorausberechnen: weicher Übergang beim Neubeginn
-    const pH=evalDancer(tl.H,beat), pD=evalDancer(tl.D,beat), s=pH.step, sty=s.sty;
+    const {H:pH,D:pD}=evalPair(tl,beat), s=pH.step, sty=s.sty;
     curItem=s.item;
     if($('say').checked&&playing){ // etwa 1,3 Sekunden vor dem Wechsel die nächste Figur ansagen
       const la=beat+1.3*bps, nx=la<tl.total?evalDancer(tl.H,la).step:tl.H[0], key=nx.item+(la<tl.total?0:1000);

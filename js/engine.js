@@ -16,10 +16,11 @@ const near=(a,ref)=>ref+wrap(a-ref);
 
 /* Bewegungsstil je Tanz: gap/off = Abstand und seitlicher Versatz in geschlossener Haltung, rise = Heben/Senken,
    bounce = Federn, hip = Hüftbewegung, fe = Anteil des Schlags für den Fußweg, heel = Fersenschritt vorwärts,
+   flow = Zeitfenster (Schläge), über das das Paar gleichmäßig durch den Raum gleitet,
    drop = tiefere Knie, mid = Becken zwischen den Füßen, std = Standardhaltung, turnout = Fußöffnung */
 const STYLES={
-  swing:{gap:.38,off:.07,rise:1,bounce:0,hip:0,fe:.72,lift:.03,heel:true,drop:0,mid:.3,std:true,turnout:.1},
-  wiener:{gap:.38,off:.07,rise:.55,bounce:0,hip:0,fe:.75,lift:.03,heel:true,drop:0,mid:.3,std:true,turnout:.1},
+  swing:{flow:1,gap:.38,off:.07,rise:1,bounce:0,hip:0,fe:.8,lift:.03,heel:true,drop:0,mid:.3,std:true,turnout:.1},
+  wiener:{flow:1.5,gap:.38,off:.07,rise:.55,bounce:0,hip:0,fe:.95,lift:.03,heel:true,drop:0,mid:.3,std:true,turnout:.1},
   tango:{gap:.36,off:.09,rise:0,bounce:0,hip:0,fe:.5,lift:.025,heel:true,drop:.05,mid:.3,std:true,turnout:.05},
   paso:{gap:.38,off:.05,rise:0,bounce:0,hip:0,fe:.6,lift:.03,heel:true,drop:0,mid:.3,std:true,turnout:.08},
   latin:{gap:.5,off:0,rise:0,bounce:0,hip:1,fe:.6,lift:.018,heel:false,drop:0,mid:.1,std:false,turnout:.22},
@@ -55,7 +56,7 @@ function flatten(src){
 /* Ein Schritt eines Tänzers. Die Richtung gilt aus der Blickrichtung VOR der Drehung; gedreht wird auf dem gesetzten Fuß.
    forced = {to,h2}: Ziel und Blickrichtung werden vom Partner vorgegeben (gegengleiche Dame).
    shift = kleine Verschiebung des Schrittziels (hält die Dame bei eigenen Schritten beim Herrn). */
-function doStep(st,s,sty,start,d,forced,shift){
+function doStep(st,s,sty,start,d,forced,shift,piv){
   const f=s.f==='R'?'R':'L', o=f==='L'?'R':'L', side=f==='L'?1:-1;
   const h=st.h, h2=forced?forced.h2:h+(+s.turn||0)*RAD;
   const {fw,lf}=dirv(h), len=Math.max(0,+s.len||0)/100;
@@ -83,6 +84,8 @@ function doStep(st,s,sty,start,d,forced,shift){
   }
   if(forced&&forced.to&&kind!=='halt') to=forced.to;
   else if(shift&&kind!=='halt'&&kind!=='platz') to=add(to,shift);
+  // Paardrehung: In enger Haltung dreht das Paar um seine gemeinsame Mitte, nicht um den Fuß des Herrn – er geht dabei ein Stück um die Dame herum
+  if(piv&&!forced&&kind==='step'&&s.dir!=='schliessen'&&s.dir!=='ferse'&&h2!==h){ const f2=dirv(h2).fw; to=add(add(to,fw,piv),f2,-piv); }
   const mv=sub(to,cur), dist=Math.hypot(mv[0],mv[1]);
   if(kind==='platz'&&dist>.03) kind='step';
   if(kind==='kick') kickAt=add(add(to,fw,Math.max(len,.3)),lf,side*.05);
@@ -128,7 +131,7 @@ function simBlock(b,H,D,beat,extra,hs,ds){
     const d=Math.max(.25,+s.d||1), hold=HOLDS[s.hold]?s.hold:'zu';
     // Führungshinweis: eigener Text des Schritts, sonst automatisch bei Haltungswechsel oder Solodrehung des Herrn
     const tip=s.tip||(hold!==(H.hold||'zu')?HOLD_TIP[hold]:'')||(own&&Math.abs(+s.turn||0)>=135?'Herr dreht '+(s.turn>0?'links':'rechts'):'');
-    const r=Object.assign(doStep(H,tw(s),sty,tH,d),meta,{hold,holdPrev:H.hold||hold,turn:s.turn,tip}); H.hold=hold; hs.push(r); tH+=d;
+    const r=Object.assign(doStep(H,tw(s),sty,tH,d,null,null,!own&&sty.std&&(hold==='zu'||hold==='prom')?sty.gap/2:0),meta,{hold,holdPrev:H.hold||hold,turn:s.turn,tip}); H.hold=hold; hs.push(r); tH+=d;
     if(!own){
       const g=holdGeo(hold,sty), v=dirv(r.hA), aus=/Aussen$/.test(r.dir)?.16:0;   // außenseitlich: der Herr geht rechts an der Dame vorbei
       let to=add(add(r.to,v.fw,g.gap),v.lf,-g.off-aus);
@@ -185,7 +188,7 @@ function simulate(blocks,st){
 }
 /* Zwei aufeinanderfolgende Abläufe verbinden, damit die Bewegung über die Nahtstelle hinweg weich bleibt */
 function chain(a,b){
-  for(const k of 'HD'){ b[k].pre=a[k].slice(-3).map(s=>({...s,start:s.start-a.total})); a[k].post=b[k].slice(0,3).map(s=>({...s,start:s.start+a.total})); }
+  for(const k of 'HD'){ b[k].pre=a[k].slice(-6).map(s=>({...s,start:s.start-a.total})); a[k].post=b[k].slice(0,6).map(s=>({...s,start:s.start+a.total})); }
 }
 /* Haltung eines Tänzers zum Zeitpunkt tb (in Schlägen). Die Füße setzen genau auf den Schlag; der Körper (Schwerpunkt, Blickrichtung,
    Heben/Senken) wird über ein kleines Zeitfenster gemittelt. So bleibt er zwischen zwei Schritten und Figuren nicht stehen,
@@ -193,11 +196,22 @@ function chain(a,b){
 const SMOOTH=[[-.4,1],[-.2,2],[.2,2],[.4,1]];
 function evalDancer(steps,tb){
   const r=evalRaw(steps,tb); let sx=r.sup[0]*3, sy=r.sup[1]*3, h=r.h*3, rise=r.rise*3, n=3;
-  for(const [o,w] of SMOOTH){ const t=tb+o, end=steps.at(-1).start+steps.at(-1).d;
-    const q=t<0&&steps.pre?evalRaw(steps.pre,t):t>end&&steps.post?evalRaw(steps.post,t):evalRaw(steps,t);
+  for(const [o,w] of SMOOTH){ const t=tb+o;
+    const q=rawAt(steps,t);
     sx+=q.sup[0]*w; sy+=q.sup[1]*w; h+=q.h*w; rise+=q.rise*w; n+=w; }
   r.sup=[sx/n,sy/n]; r.h=h/n; r.rise=rise/n;
   return r;
+}
+/* Beide Tänzer zum Zeitpunkt tb. In den Schwungtänzen gleitet das Paar als Ganzes gleichmäßig weiter (flow):
+   Die Paarmitte wird über ein breiteres Zeitfenster gemittelt und beide werden gemeinsam verschoben – ihr Abstand zueinander bleibt gleich. */
+function rawAt(steps,t){ const end=steps.at(-1).start+steps.at(-1).d; return t<0&&steps.pre?evalRaw(steps.pre,t):t>end&&steps.post?evalRaw(steps.post,t):evalRaw(steps,t); }
+function evalPair(tl,tb){
+  const H=evalDancer(tl.H,tb), D=evalDancer(tl.D,tb), fl=H.step.sty.flow||0;
+  if(fl>.4){ let cx=0,cy=0,n=0; const m=Math.round(fl/.2), mid=H.step.sty.mid, g=p=>lerp(p.sup,lerp(p.feet.L.p,p.feet.R.p,.5),mid);
+    for(let i=-m;i<=m;i++){ const w=m+1-Math.abs(i), a=g(rawAt(tl.H,tb+i*.2)), b=g(rawAt(tl.D,tb+i*.2)); cx+=(a[0]+b[0])*w/2; cy+=(a[1]+b[1])*w/2; n+=w; }
+    const a=g(H), b=g(D);
+    H.flow=D.flow=[cx/n-(a[0]+b[0])/2,cy/n-(a[1]+b[1])/2]; }
+  return {H,D};
 }
 function evalRaw(steps,tb){
   let i=steps.length-1;

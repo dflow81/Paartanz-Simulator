@@ -118,6 +118,7 @@ class Dancer{
       A[s]=a; const g=this.feet[s]; g.position.copy(a); g.rotation.set(ph,fy,0,'YXZ'); }
     // Becken: über dem Standbein, Höhe aus Stil (Heben/Senken, Federn) und Beinlänge
     const fl=po.feet.L.p, fr=po.feet.R.p, g0=lerp(po.sup,lerp(fl,fr,.5),sty.mid);
+    if(po.flow){ g0[0]+=po.flow[0]; g0[1]+=po.flow[1]; }   // das Paar gleitet gemeinsam weiter
     const gx=g0[0]+left.x*po.side*.025*sty.hip, gz=g0[1]+left.z*po.side*.025*sty.hip;
     if(!this.lag) this.lag=[gx,gz];
     const kl=Math.min(1,dt*5); this.lag[0]+=(gx-this.lag[0])*kl; this.lag[1]+=(gz-this.lag[1])*kl;
