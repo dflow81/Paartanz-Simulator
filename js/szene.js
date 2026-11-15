@@ -83,21 +83,31 @@ function buildSaal(w,d){
     const tr=new THREE.Mesh(new THREE.PlaneGeometry(w*.84,.2),std(0x8a8d93,.5)); tr.rotation.x=Math.PI/2; tr.position.set(0,H-.15,z); saal.add(tr); }
   // Holzband oben rundum
   for(const sd of 'NSWE') wand(sd,0,1,2.45,H,paneel(sd==='N'||sd==='S'?w:d));
-  // Nordwand: ganz in Holz, davor die Theke, links eine Tür
-  wand('N',0,1,0,2.45,paneel(w)); wand('N',.06,.06+.95/w,0,2.05,dunkel,.02); wand('N',.62,.62+.3/w,1.3,1.75,std(0x6d7076,.6),.03);
-  kasten(-w*.18,.52,d/2-.45,Math.min(2.6,w*.4),1.04,.6,holz); kasten(-w*.18,1.06,d/2-.45,Math.min(2.8,w*.43),.05,.72,std(0x7a4f24,.5));
-  // Westwand: blau, zwei dunkle Türen, zwei Heizkörper
-  for(const a of [.12,.7]) wand('W',a,a+.95/d,0,2.05,dunkel,.02);
-  for(const a of [.36,.52]){ wand('W',a,a+1.1/d,.14,.62,weiss,.05); }
-  // Ostwand: große weiße Fläche, davor der gelb-schwarze Streifen am Boden und zwei Holzkisten
-  wand('E',.14,.86,0,2.45,weiss,.02);
-  const tw=texWarn.clone(); tw.needsUpdate=true; tw.repeat.set(d*.72/.5,1);
-  const st=new THREE.Mesh(new THREE.PlaneGeometry(d*.72,.1),new THREE.MeshStandardMaterial({map:tw,roughness:.7})); st.rotation.set(-Math.PI/2,0,Math.PI/2); st.position.set(w/2-.35,.006,0); saal.add(st);
-  kasten(w/2-.32,.2,d*.3,.4,.4,.9,holz); kasten(w/2-.32,.2,d*.3-1,.4,.4,.9,holz);
-  // Südwand: blau, ein offener Durchgang in einen hellen Nebenraum, ein Heizkörper
-  wand('S',.42,.42+1.5/w,0,2.1,std(0xd9c9a8,.9,{emissive:0x6b5a3a}),.02); wand('S',.7,.7+1.1/w,.14,.62,weiss,.05);
-  // Lautsprecherboxen
-  kasten(-w/2+.45,.28,d*.18,.3,.56,.34,schwarz); kasten(w*.28,.28,d/2-.5,.34,.56,.3,schwarz);
+  const hell=std(0xc9a26a,.55), glas=std(0xbfd8e6,.3,{emissive:0x4a6470}), tuerW=std(0xe6e4dc,.7), teal=std(0x5f9a96,.7), lit=std(0xd9c9a8,.9,{emissive:0x6b5a3a});
+  /* Nordwand (Holz), von der Ecke zur weißen Wand aus: weiße Tür, Heizkörper, Vordach mit Stütze, Glastür ins Foyer, Theke mit Leiter, Durchgang */
+  wand('N',0,1,0,2.45,paneel(w));
+  wand('N',.04,.04+.9/w,0,2.02,tuerW,.02); wand('N',.14,.14+1.1/w,.16,.62,weiss,.05);
+  { const x0=w/2-w*.2, x1=w/2-w*.36, dach=new THREE.Mesh(new THREE.BoxGeometry(Math.abs(x1-x0),.07,1.3),std(0x4a4038,.9)); dach.position.set((x0+x1)/2,2.2,d/2-.62); dach.rotation.x=-.3; dach.castShadow=true; saal.add(dach);
+    kasten(x1+.06,1.03,d/2-1.15,.12,2.06,.12,holz); kasten((x0+x1)/2,.01,d/2-.7,Math.abs(x1-x0),.012,1.2,std(0x4f7a45,1));   // Stütze und grüner Teppich darunter
+    kasten((x0+x1)/2,.55,d/2-.7,.5,.03,.5,dunkel); kasten((x0+x1)/2,.27,d/2-.7,.05,.54,.05,dunkel); }                    // Stehtisch
+  wand('N',.4,.4+1.3/w,0,2.1,glas,.02); wand('N',.4,.4+.04/w,0,2.1,weiss,.03); wand('N',.4+1.26/w,.4+1.3/w,0,2.1,weiss,.03);
+  { const cx=-w*.17, cw=Math.min(3,w*.34); kasten(cx,.52,d/2-.75,cw,1.04,.55,holz); kasten(cx,1.06,d/2-.75,cw+.15,.05,.68,std(0x7a4f24,.5));
+    for(const sx of [-.2,.2]){ const l=kasten(cx+cw*.3+sx,1.05,d/2-.16,.035,2.1,.035,std(0xb9bcc2,.4,{metalness:.5})); l.rotation.x=.1; }
+    for(let k=0;k<6;k++) kasten(cx+cw*.3,.3+k*.32,d/2-.19+k*.033,.4,.025,.03,std(0xb9bcc2,.4,{metalness:.5}));           // Leiter
+    wand('N',.5+(.17*w-cw*.1)/w/1,.5+(.17*w-cw*.1+.34)/w,1.25,1.75,std(0x6d7076,.6),.04); }                                 // grauer Kasten an der Wand
+  wand('N',.88,.88+1/w,0,2.05,dunkel,.02);
+  /* Westwand (blau), von der Holzwand aus: Lautsprecher, dunkler und weißer Heizkörper, Durchgang mit türkisem Rahmen in einen hellen Raum */
+  kasten(-w/2+.4,.28,d*.34,.34,.56,.3,schwarz); kasten(-w/2+.4,.28,d*.34-.5,.34,.56,.3,schwarz);
+  wand('W',.24,.24+1.1/d,.14,.62,dunkel,.05); wand('W',.4,.4+1.3/d,.14,.62,weiss,.05);
+  wand('W',.62,.62+1.5/d,0,2.15,teal,.02); wand('W',.62+.12/d,.62+1.38/d,0,2.05,lit,.03);
+  /* Südwand (blau): zwei dunkle Türen, ein Heizkörper */
+  wand('S',.08,.08+.95/w,0,2.05,dunkel,.02); wand('S',.82,.82+.95/w,0,2.05,dunkel,.02); wand('S',.45,.45+1.2/w,.14,.62,weiss,.05);
+  /* Ostwand: große weiße Fläche, davor die niedrige Bühne mit gelb-schwarzer Kante und Holzstufen; Holzpfeiler in den Ecken */
+  wand('E',.1,.9,0,2.45,weiss,.02); wand('E',0,.1,0,2.45,paneel(d*.1),.02); wand('E',.9,1,0,2.45,paneel(d*.1),.02);
+  const bt=Math.min(1,w*.09); kasten(w/2-bt/2,.075,0,bt,.15,d*.8,hell);
+  const tw=texWarn.clone(); tw.needsUpdate=true; tw.repeat.set(d*.8/.5,1);
+  const st=new THREE.Mesh(new THREE.PlaneGeometry(d*.8,.07),new THREE.MeshStandardMaterial({map:tw,roughness:.7})); st.rotation.set(-Math.PI/2,0,Math.PI/2); st.position.set(w/2-bt+.04,.152,0); saal.add(st);
+  kasten(w/2-bt-.2,.07,d*.3,.4,.14,1.0,holz); kasten(w/2-bt-.2,.07,d*.3-1.1,.4,.14,1.0,holz);
 }
 let ambiente='schule';
 function setAmbience(a){ ambiente=a; const b=a==='ball', z=a==='saal';
