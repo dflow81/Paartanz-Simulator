@@ -58,6 +58,7 @@
     <details>
       <summary>Ton und Musik</summary>
       <div class="chk"><input type="checkbox" id="tick" checked><span>Takt hörbar (Metronom, die „1“ betont)</span></div>
+      <div class="chk"><input type="checkbox" id="groove"><span>Übungsmusik: Rhythmus passend zum Tanz (ohne eigene Datei)</span></div>
       <div class="row"><button id="oneBtn" class="sec" title="Im richtigen Moment drücken: Der Tanz springt auf die nächste Eins, bei Musik wird der Schlag dorthin gelegt">Hier ist die „1“ (im Takt drücken)</button></div>
       <div class="chk"><input type="checkbox" id="say"><span>Figuren ansagen (kurz vor dem Wechsel)</span></div>
       <div class="chk"><input type="checkbox" id="countIn"><span>Einzählen vor dem Start („fünf, sechs, sieben, acht“)</span></div>
@@ -72,6 +73,7 @@
         <input id="musicBpm" type="number" min="40" max="260" step="0.1" placeholder="Schläge/min der Musik" style="flex:1;min-width:0">
         <button id="tapBtn" class="sec" style="flex:1">Tempo tippen</button>
       </div>
+      <div id="musicFit"></div>
       <div class="info" id="musicInfo">Musikdatei wählen – das Paar tanzt dann im Tempo der Musik. Der Tempo-Regler macht Musik und Tanz gemeinsam langsamer oder schneller.</div>
     </details>
     <label>Ablauf (anklicken zum Springen · 🐢 = diese Figur in Zeitlupe)</label>

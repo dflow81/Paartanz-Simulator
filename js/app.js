@@ -326,6 +326,58 @@ function click(accent){
   g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(accent?.5:.25,t+.003); g.gain.exponentialRampToValueAtTime(.001,t+(accent?.11:.07));
   o.connect(g).connect(actx.destination); o.start(t); o.stop(t+.13);
 }
+/* ---------- Übungsmusik: ein einfacher Rhythmus je Tanz, im Browser erzeugt und Schlag für Schlag zum Tanz gespielt ----------
+   Jeder Tanz hat ein Muster über einen Takt in halben Schlägen: K = große Trommel, S = kleine Trommel, H = Becken, C = Glocke,
+   G = Conga, B = Bass, A = Akkord. Die Harmonie wechselt taktweise (I – IV – V – I). */
+const GROOVES={
+  walzer:{m:3,p:['KBH','','AH','','AH','']},
+  wiener:{m:3,p:['KB','','A','','A','']},
+  tango:{m:4,p:['KBA','','A','','KA','','A','S']},
+  fox:{m:4,p:['KBH','','SAH','H','KBH','','SAH','H'],swing:.16},
+  quick:{m:4,p:['KBH','','SAH','','KBH','','SAH','']},
+  chacha:{m:4,p:['KBC','H','C','GH','KBC','H','GC','G']},
+  rumba:{m:4,p:['KB','H','C','BH','G','H','KBC','GH']},
+  samba:{m:4,p:['KB','H','H','BH','KS','H','H','BH']},
+  jive:{m:4,p:['KBH','H','SAH','H','KBH','H','SAH','H'],swing:.2},
+  disco:{m:4,p:['KB','H','KSA','H','KB','BH','KSA','H']},
+  salsa:{m:4,p:['KBC','G','C','GA','C','BG','CA','G']},
+  bachata:{m:4,p:['KBG','H','G','H','KG','BH','GS','H']},
+  polka:{m:4,p:['KB','','SA','','KB','','SA','H']},
+  blues:{m:4,p:['KBH','','H','H','SAH','','H','H'],swing:.2},
+  paso:{m:4,p:['KBA','','SA','S','KA','','SA','']},
+};
+function grooveOf(d){ d=(d||'').toLowerCase();
+  return /wiener/.test(d)?GROOVES.wiener:/walzer|waltz/.test(d)?GROOVES.walzer:/tango/.test(d)?GROOVES.tango:/quick/.test(d)?GROOVES.quick:/slow|foxtrott/.test(d)?GROOVES.fox:
+    /cha/.test(d)?GROOVES.chacha:/rumba/.test(d)?GROOVES.rumba:/samba/.test(d)?GROOVES.samba:/jive|boogie|rock/.test(d)?GROOVES.jive:/salsa|merengue/.test(d)?GROOVES.salsa:
+    /bachata/.test(d)?GROOVES.bachata:/polka/.test(d)?GROOVES.polka:/blues|west/.test(d)?GROOVES.blues:/paso/.test(d)?GROOVES.paso:GROOVES.disco; }
+let noiseBuf=null, gOut=null, lastHalf=-999;
+function drum(kind,t,root,chord){
+  const env=(node,peak,dur)=>{ const g=actx.createGain(); g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(peak,t+.004); g.gain.exponentialRampToValueAtTime(.001,t+dur); node.connect(g).connect(gOut); return g; };
+  const osc=(type,f,peak,dur,f2)=>{ const o=actx.createOscillator(); o.type=type; o.frequency.setValueAtTime(f,t); if(f2) o.frequency.exponentialRampToValueAtTime(f2,t+dur*.7); env(o,peak,dur); o.start(t); o.stop(t+dur+.02); };
+  const noise=(type,f,peak,dur)=>{ const n=actx.createBufferSource(); n.buffer=noiseBuf; const fl=actx.createBiquadFilter(); fl.type=type; fl.frequency.value=f; n.connect(fl); env(fl,peak,dur); n.start(t); n.stop(t+dur+.02); };
+  switch(kind){
+    case 'K': osc('sine',130,.9,.16,45); break;
+    case 'S': noise('bandpass',1900,.5,.13); osc('triangle',190,.2,.08); break;
+    case 'H': noise('highpass',7000,.16,.045); break;
+    case 'C': osc('square',560,.1,.09); osc('square',845,.08,.09); break;
+    case 'G': osc('sine',240,.4,.11,170); break;
+    case 'B': osc('triangle',root,.5,.3); break;
+    case 'A': for(const n of chord) osc('triangle',n,.11,.2); break;
+  }
+}
+/* hi = Nummer des halben Schlags, pos = Lage des Schlags im Takt (0 = die „1“) */
+function groove(hi,s,bps){
+  if(!$('groove').checked||hasMusic()||!actx||actx.state!=='running') return;
+  if(!gOut){ gOut=actx.createGain(); gOut.gain.value=.55; gOut.connect(actx.destination);
+    noiseBuf=actx.createBuffer(1,actx.sampleRate*.3,actx.sampleRate); const d=noiseBuf.getChannelData(0); for(let i=0;i<d.length;i++) d[i]=Math.random()*2-1; }
+  const G=grooveOf(s.name&&s.fig?s.fig.split(' – ')[0]:''), m=G.m, bi=Math.floor(hi/2), half=((hi%2)+2)%2;
+  const pos=(((bi-s.blockStart+s.off)%m)+m)%m, bar=Math.floor((bi-pos)/m), hits=G.p[(pos*2+half)%G.p.length]||'';
+  const deg=[0,5,7,0][((bar%4)+4)%4], root=55*Math.pow(2,(deg+5)/12), tri=[0,4,7].map(x=>root*4*Math.pow(2,x/12));
+  const t=actx.currentTime+(half&&G.swing?G.swing/Math.max(bps,.5):0);   // Swing: der Zwischenschlag kommt etwas später
+  for(const k of hits) drum(k,t,root,tri);
+}
+$('groove').onchange=()=>{ wakeAudio(); if($('groove').checked&&hasMusic()) flash($('musicBtn'),'Eigene Musik hat Vorrang'); };
+
 /* Ansage der nächsten Figur über die Sprachausgabe des Browsers */
 function say(txt,rate=1.15){ if(!('speechSynthesis' in window)) return; try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(txt); u.lang='de-DE'; u.rate=rate; speechSynthesis.speak(u); }catch(e){} }
 $('say').onchange=()=>{ lastSaid=-1; if(!$('say').checked&&'speechSynthesis' in window) speechSynthesis.cancel(); };
@@ -333,7 +385,17 @@ $('say').onchange=()=>{ lastSaid=-1; if(!$('say').checked&&'speechSynthesis' in 
 /* Eigene Musik: Das Paar folgt der Musik. Tempo und Schlag werden aus der Datei erkannt; der Tempo-Regler verlangsamt
    Musik und Tanz gemeinsam. Passt die Erkennung nicht, lässt sie sich durch Mittippen oder Eintragen korrigieren. */
 const MUSIC_HELP='Musikdatei wählen – das Paar tanzt dann im Tempo der Musik. Der Tempo-Regler macht Musik und Tanz gemeinsam langsamer oder schneller.';
-function musicInfo(){ const db=danceBpm();
+/* Welche Tänze passen zum Tempo der Musik? Verglichen wird mit dem üblichen Tempo jedes Tanzes, auch im halben und doppelten Zählmaß. */
+function musicFit(){
+  const box=$('musicFit'); if(!hasMusic()||!mBpm){ box.innerHTML=''; return; }
+  const usual={}; for(const F of Object.values(BUILTIN)) usual[F.dance]??=F.bpm;
+  const fit=Object.entries(usual).map(([d,b])=>{ let e=9; for(const f of [.5,1,2]) e=Math.min(e,Math.abs(Math.log(mBpm*f/b))); return [d,e]; }).filter(x=>x[1]<.1).sort((a,b)=>a[1]-b[1]).slice(0,7);
+  box.innerHTML=fit.length?'Zu diesem Tempo passen: '+fit.map(([d])=>`<button data-d="${esc(d)}" title="Diesen Tanz wählen">${esc(d)}</button>`).join('')+
+    '<div class="info" style="margin-top:4px">Geprüft wird nur das Tempo. Ob das Stück im ¾-Takt steht (Walzer) oder welchen Rhythmus es hat, erkennt der Simulator nicht.</div>'
+    :'Zu diesem Tempo passt keiner der Tänze genau.';
+}
+$('musicFit').onclick=e=>{ const d=e.target.dataset.d; if(!d) return; $('danceSel').value=d; $('danceSel').dispatchEvent(new Event('change')); };
+function musicInfo(){ const db=danceBpm(); musicFit();
   $('musicInfo').textContent=!hasMusic()?MUSIC_HELP:mBusy?'Tempo der Musik wird erkannt …':
     !mBpm?'Das Tempo wurde nicht erkannt. Bitte im Takt mindestens viermal auf „Tempo tippen“ drücken oder die Schläge pro Minute eintragen.':
     `Erkannt: ${mBpm.toFixed(1)} Schläge/min – das Paar tanzt mit ${Math.round(db)} Schlägen/min zur Musik.`+
@@ -434,6 +496,7 @@ function animate(){
       const la=beat+1.3*bps, nx=la<tl.total?evalDancer(tl.H,la).step:tl.H[0], key=nx.item+(la<tl.total?0:1000);
       if(key!==lastSaid&&!$('loopFig').checked){ if(lastSaid!==-1||beat<1) say(nx.name.replace(/\s*\(.*?\)/g,'')); lastSaid=key; } }
     if($('prints').value==='diagramm') showDiagram(tl,s.item,s.rep,$('printWho').value==='HD'?['H','D']:[$('printWho').value]);
+    const hi=Math.floor(beat*2+1e-6); if(hi!==lastHalf){ lastHalf=hi; if(playing||stepTarget!==null) groove(hi,s,bps); }
     const bi=Math.floor(beat+1e-6);
     if(bi!==lastBeatIdx){ lastBeatIdx=bi;
       if(playing||stepTarget!==null) click((bi-s.blockStart+s.off)%s.meter===0);

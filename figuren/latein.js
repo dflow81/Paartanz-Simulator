@@ -90,8 +90,8 @@ tanz('Jive',150,{
      [...rock,...H(tripel('L','3','4'),'hoch'),...H(tripel('R','5','6'),'offen')],
      [...spiegel(rock),S('R','vor',10,.75,'3',-180),S('L','vor',10,.25,'a',-180),S('R','platz',0,1,'4'),...tripel('L','5','6')]],
   b_j_pw:['Platzwechsel (Dame dreht links unter dem Arm)',
-     [...rock,S('L','kreuz',35,.75,'3',0,'hoch'),S('R','schliessen',0,.25,'a',0,'hoch'),S('L','vor',35,1,'4',180,'hoch'),...H(tripel('R','5','6'),'LR')],
-     [...spiegel(rock),S('R','diagVor',60,.75,'3'),S('L','diagVor',60,.25,'a'),S('R','schliessen',0,1,'4',180),...tripel('L','5','6')]],
+     [...rock,S('L','kreuz',35,.75,'3',0,'hoch'),S('R','seit',25,.25,'a',0,'hoch'),S('L','vor',35,1,'4',180,'hoch'),...H(tripel('R','5','6'),'LR')],
+     [...spiegel(rock),S('R','seit',45,.75,'3'),S('L','vor',50,.25,'a'),S('R','schliessen',0,1,'4',180),...tripel('L','5','6')]],
 });
 
 /* Paso Doble: ein Schritt pro Schlag, beginnt rechts */

@@ -21,6 +21,7 @@ Ein 3D-Simulator im Browser zum Lernen und Üben von Paartänzen. Herr und Dame 
 - **Tempo-Trainer:** eine Figur in Schleife, jede Runde etwas schneller
 - **Teilen per Link:** Eine Tanzfolge steckt in der Adresse – der Tanzpartner öffnet sie einfach im Browser
 - **Export und Import** eigener Figuren und Folgen als Datei
+- **Übungsmusik:** ein einfacher Rhythmus passend zum Tanz, ganz ohne eigene Musikdatei; bei eigener Musik schlägt der Simulator Tänze vor, die zum Tempo passen
 - **Einzählen und Mitzählen:** „fünf, sechs, sieben, acht" vor dem Start, auf Wunsch werden die Zählzeiten mitgesprochen
 - **Schritte erklärt:** zu jeder Figur die Schritte von Herr und Dame als Liste, auch zum Vorlesen
 - **Zeitlupe für einzelne Figuren** der Folge (🐢 im Ablauf)

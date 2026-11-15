@@ -77,3 +77,5 @@ summary{cursor:pointer;font-size:13px;color:#cfd6ff;user-select:none}
 #explain{font-size:12px;line-height:1.5;color:#ccc;margin-top:4px}
 #explain .ex{display:grid;grid-template-columns:22px 1fr 1fr;gap:2px 6px;padding:2px 0;border-bottom:1px solid #ffffff12}
 #explain .ex b{color:#ffd166} #explain .h{color:#9db8ff} #explain .d{color:#ff9db0} #explain .tp{grid-column:2/4;color:#aaa;font-style:italic}
+
+#musicFit{font-size:12px;color:#bbb;margin-top:8px} #musicFit button{flex:none;display:inline-block;margin:3px 4px 0 0;padding:3px 8px;font-size:12px;background:#2f6b4f}
