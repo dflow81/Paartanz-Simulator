@@ -61,3 +61,14 @@ folge('s_wcs2','West Coast Swing – Starter Step und Sugar Tuck',105,[['b_wc_st
 folge('s_disco_video','Discofox – wie im Video (angenähert)',120,[['b_d_solo'],['b_d_doppel'],['b_d_offen'],['b_d_wickel'],['b_d_solo'],['b_d_offen'],['b_d_herr'],['b_d_solol'],['b_d_herr'],
   ['b_d_korb'],['b_d_pw'],['b_d_dreh',2],['b_d_pw'],['b_d_solo'],['b_d_dreh',2],['b_d_offen'],['b_d_herrr'],['b_d_solo'],['b_d_kreuzh'],['b_d_doppel'],['b_d_herr'],['b_d_wickel'],['b_d_solo'],['b_d_offen']]);
 folge('s_disco5','Discofox – Promenade, Wickler, Herrensolo rechts',120,[['b_d_gs'],['b_d_prom'],['b_d_platz',2],['b_d_wickel'],['b_d_herrr'],['b_d_gs']]);
+/* Folgen für die weiteren Tänze des Welttanzprogramms */
+folge('s_musette','Walzer-Musette – Folge',180,[['b_mu_gs',2],['b_mu_pendel'],['b_mu_wl'],['b_mu_rechts',2],['b_mu_wr'],['b_mu_links',2],['b_mu_wiege']]);
+folge('s_tangowalzer','Tangowalzer – Folge',180,[['b_tw_geh',2],['b_tw_wiege'],['b_tw_wechsel'],['b_tw_links',2],['b_tw_prom'],['b_tw_gehr']]);
+folge('s_discosamba','Disco-Samba – Folge',120,[['b_ds_gs',2],['b_ds_seit'],['b_ds_wisch',2],['b_ds_solo'],['b_ds_dreh',4]]);
+folge('s_twostep','Two Step – Folge',160,[['b_ts_gs',2],['b_ts_links',2],['b_ts_gs'],['b_ts_solo'],['b_ts_check'],['b_ts_prom']]);
+folge('s_bugg','Bugg – Folge',140,[['b_bg_gs',2],['b_bg_solo'],['b_bg_platz'],['b_bg_pw'],['b_bg_gs'],['b_bg_solol'],['b_bg_dreh',4]]);
+folge('s_cumbia','Cumbia – Folge',100,[['b_cu_gs',2],['b_cu_vor'],['b_cu_dreh'],['b_cu_seit'],['b_cu_paar',2]]);
+folge('s_tangoam','Tango Americano – Folge',120,[['b_tam_gs',2],['b_tam_prom'],['b_tam_corte'],['b_tam_links',2],['b_tam_wiege']]);
+folge('s_nordic','Nordic Tango – Folge',116,[['b_nt_gs',2],['b_nt_links',2],['b_nt_seit'],['b_nt_prom'],['b_nt_wiege'],['b_nt_rueck']]);
+folge('s_mambo','Mambo – Folge',190,[['b_ma_gs',2],['b_ma_seit'],['b_ma_dreh'],['b_ma_links',2]]);
+folge('s_marschfox','Marschfox – Folge',120,[['b_mf_geh',2],['b_mf_wechsel'],['b_mf_seit'],['b_mf_dreh',2],['b_mf_wiege'],['b_mf_rueck']]);

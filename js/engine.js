@@ -35,8 +35,8 @@ function styleOf(d){ d=(d||'').toLowerCase();
   if(/argentin/.test(d)) return STYLES.argentino;
   if(/disco|hustle|west coast/.test(d)) return STYLES.social;
   if(/walzer|waltz|slow|fox|quick/.test(d)) return STYLES.swing;
-  if(/jive|samba|boogie|rock|swing|lindy|charleston|polka/.test(d)) return STYLES.bounce;
-  if(/cha|rumba|salsa|bachata|mambo|merengue|latein|latin|kizomba/.test(d)) return STYLES.latin;
+  if(/jive|samba|boogie|rock|swing|lindy|charleston|polka|bugg/.test(d)) return STYLES.bounce;
+  if(/cha|rumba|salsa|bachata|mambo|merengue|cumbia|latein|latin|kizomba/.test(d)) return STYLES.latin;
   return STYLES.social; }
 /* Wo steht die Dame zum Herrn? gap = vor ihm, off = rechts von ihm, face = ihre Blickrichtung relativ zu seiner
    (π = gegenüber, 0 = gleiche Richtung), spin = Drehsinn, mit dem sie in diese Position eindreht */

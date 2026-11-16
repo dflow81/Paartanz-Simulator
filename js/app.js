@@ -348,8 +348,8 @@ const GROOVES={
 };
 function grooveOf(d){ d=(d||'').toLowerCase();
   return /wiener/.test(d)?GROOVES.wiener:/walzer|waltz/.test(d)?GROOVES.walzer:/tango/.test(d)?GROOVES.tango:/quick/.test(d)?GROOVES.quick:/slow|foxtrott/.test(d)?GROOVES.fox:
-    /cha/.test(d)?GROOVES.chacha:/rumba/.test(d)?GROOVES.rumba:/samba/.test(d)?GROOVES.samba:/jive|boogie|rock/.test(d)?GROOVES.jive:/salsa|merengue/.test(d)?GROOVES.salsa:
-    /bachata/.test(d)?GROOVES.bachata:/polka/.test(d)?GROOVES.polka:/blues|west/.test(d)?GROOVES.blues:/paso/.test(d)?GROOVES.paso:GROOVES.disco; }
+    /disco/.test(d)?GROOVES.disco:/cha/.test(d)?GROOVES.chacha:/rumba/.test(d)?GROOVES.rumba:/samba/.test(d)?GROOVES.samba:/jive|boogie|rock|bugg/.test(d)?GROOVES.jive:/salsa|merengue|cumbia|mambo/.test(d)?GROOVES.salsa:
+    /bachata/.test(d)?GROOVES.bachata:/polka|marsch/.test(d)?GROOVES.polka:/blues|west/.test(d)?GROOVES.blues:/paso/.test(d)?GROOVES.paso:GROOVES.disco; }
 let noiseBuf=null, gOut=null, lastHalf=-999;
 function drum(kind,t,root,chord){
   const env=(node,peak,dur)=>{ const g=actx.createGain(); g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(peak,t+.004); g.gain.exponentialRampToValueAtTime(.001,t+dur); node.connect(g).connect(gOut); return g; };
