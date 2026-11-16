@@ -19,6 +19,8 @@ tanz('Foxtrott',120,{
 /* Discofox: Schritt, Schritt, Tap – der Tap-Fuß macht den nächsten Schritt */
 const dfox=(t,h,third='tap')=>[S('L','vor',28,1,'1',t,h),S('R','vor',28,1,'2',t,h),S('L',third,third==='kick'?30:0,1,'3',0,h),
               S('L','rueck',28,1,'4',t,h),S('R','rueck',28,1,'5',t,h),S('L',third,third==='kick'?30:0,1,'6',0,h)];
+/* Grundschritt, der rückwärts beginnt: zum Ausdrehen, der Herr gibt der Dame Platz */
+const dfoxRueck=h=>[S('L','rueck',28,1,'1',0,h),S('R','rueck',28,1,'2',0,h),S('L','tap',0,1,'3',0,h),S('L','vor',28,1,'4',0,h),S('R','vor',28,1,'5',0,h),S('L','tap',0,1,'6',0,h)];
 const amPlatz=[S('L','platz',0,1,'1',0,'hoch'),S('R','platz',0,1,'2',0,'hoch'),S('L','tap',0,1,'3',0,'LR')];
 tanz('Discofox',120,{
   b_d_gs:['Grundschritt',dfox(0)],
@@ -29,8 +31,9 @@ tanz('Discofox',120,{
   b_d_seit:['Seitschritte links und rechts',[S('L','seit',25,1,'1'),S('R','schliessen',0,1,'2'),S('L','seit',25,1,'3'),S('R','tap',0,1,'4'),
      S('R','seit',25,1,'5'),S('L','schliessen',0,1,'6'),S('R','seit',25,1,'7'),S('L','tap',0,1,'8')]],
   b_d_kreuzh:['Grundschritt in Kreuzhandfassung',dfox(0,'kreuz')],
-  b_d_korb:['Körbchen (eindrehen, mitgehen, ausdrehen)',[...dfox(0,'korb'),...dfox(0,'LR')]],
-  b_d_schatten:['Schattenposition (Dame vor dem Herrn)',[...dfox(0,'schatten'),...dfox(0,'offen')]],
+  b_d_korb:['Körbchen (eindrehen, mitgehen, ausdrehen)',[...dfox(0,'korb'),   // beim Ausdrehen geht der Herr zurück und gibt der Dame Platz, sonst müsste sie riesige Schritte machen
+     ...dfoxRueck('LR')]],
+  b_d_schatten:['Schattenposition (Dame vor dem Herrn)',[...dfox(0,'schatten'),...dfoxRueck('offen')]],
   b_d_solo:['Damensolo rechts (Drehung unter dem Arm)',amPlatz,[S('R','vor',20,1,'1',-180),S('L','vor',20,1,'2',-180),S('R','tap',0,1,'3')]],
   b_d_solol:['Damensolo links (Drehung unter dem Arm)',amPlatz,[S('R','vor',20,1,'1',180),S('L','vor',20,1,'2',180),S('R','tap',0,1,'3')]],
   b_d_doppel:['Doppelte Damendrehung rechts',amPlatz,[S('R','vor',20,1,'1',-360),S('L','rueck',20,1,'2',-360),S('R','tap',0,1,'3')]],
