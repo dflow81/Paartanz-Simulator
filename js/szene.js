@@ -246,7 +246,7 @@ class Dancer{
     const fw=new V3(Math.sin(yaw),0,Math.cos(yaw)), left=new V3(Math.cos(yaw),0,-Math.sin(yaw));
     // Füße: Knöchel so setzen, dass je nach Neigung Ballen oder Ferse am Boden bleibt
     const A={};
-    for(const s of 'LR'){ const f=po.feet[s], sg=s==='L'?1:-1, fy=f.yaw+sg*sty.turnout, ph=f.pitch+po.rise*.28;
+    for(const s of 'LR'){ const f=po.feet[s], sg=s==='L'?1:-1, fy=f.yaw+sg*sty.turnout, ph=f.pitch+po.rise*.28+(sty.heel?0:Math.min(.45,f.lift*9));   // ohne Fersenschritt: freier Fuß mit gestreckter Spitze
       const dir=new V3(Math.sin(fy),0,Math.cos(fy)), a=new V3(f.p[0],f.lift,f.p[1]), c=Math.cos(ph), sn=Math.sin(ph);
       if(ph>=0){ a.addScaledVector(dir,.11-.11*c+.07*sn); a.y+=.11*sn+.07*c; }
       else { a.addScaledVector(dir,-.05+.05*c+.07*sn); a.y+=-.05*sn+.07*c; }
@@ -254,24 +254,28 @@ class Dancer{
     // Becken: über dem Standbein, Höhe aus Stil (Heben/Senken, Federn) und Beinlänge
     const fl=po.feet.L.p, fr=po.feet.R.p, g0=lerp(po.sup,lerp(fl,fr,.5),sty.mid);
     if(po.flow){ g0[0]+=po.flow[0]; g0[1]+=po.flow[1]; }   // das Paar gleitet gemeinsam weiter
-    const gx=g0[0]+left.x*po.side*.025*sty.hip, gz=g0[1]+left.z*po.side*.025*sty.hip;
+    const hipA=sty.hip*(this.fem?1:.65);   // der Herr bewegt die Hüfte sparsamer
+    const gx=g0[0]+left.x*po.side*.04*hipA, gz=g0[1]+left.z*po.side*.04*hipA;
     if(!this.lag) this.lag=[gx,gz];
     const kl=Math.min(1,dt*5); this.lag[0]+=(gx-this.lag[0])*kl; this.lag[1]+=(gz-this.lag[1])*kl;
-    let hy=k*.935-sty.drop+(sty.rise?(po.rise-.35)*.05:0)-sty.bounce*(.5+.5*Math.cos(2*Math.PI*tb));
+    let hy=k*.935-sty.drop+(sty.rise?(po.rise-.35)*.075:0)-sty.bounce*(.5+.5*Math.cos(2*Math.PI*tb));
     this.hyS=this.hyS===null?hy:this.hyS+(hy-this.hyS)*Math.min(1,dt*20); hy=this.hyS;
     const Lg=.9*k*.997;
     for(const s of 'LR'){ const sg=s==='L'?1:-1, hx=gx+left.x*.09*k*sg, hz=gz+left.z*.09*k*sg;
       hy=Math.min(hy,A[s].y+Math.sqrt(Math.max(.02,Lg*Lg-(A[s].x-hx)**2-(A[s].z-hz)**2))+.02); }
     const P=this.P.set(gx,hy,gz);
-    const roll=sty.hip*po.side*.09;
-    this.hipG.position.copy(P); this.hipG.rotation.set(0,yaw+sty.hip*po.side*.14,roll,'YXZ'); this.hipG.updateMatrix();
+    const roll=this.roll=hipA*po.side*.125; this.side=po.side;
+    this.hipG.position.copy(P); this.hipG.rotation.set(0,yaw+hipA*po.side*.2,roll,'YXZ'); this.hipG.updateMatrix();
     // Oberkörper: Gegenbewegung zu den Beinen, Neigung (Sway) durch Nachlaufen
     const swing=this.swing=clamp((fl[0]-fr[0])*fw.x+(fl[1]-fr[1])*fw.z,-.5,.5);
-    const cy=this.chestYaw=yaw+clamp(swing*.45,-.2,.2)*(1-.6*ex.closed);
+    const cy=this.chestYaw=yaw+clamp(swing*.45,-.2,.2)*(1-.6*ex.closed)-hipA*po.side*.07;   // Schultern drehen leicht gegen die Hüfte
     const ol=(this.lag[0]-gx)*left.x+(this.lag[1]-gz)*left.z;
     const sway=this.sway=clamp(-ol*(sty.rise?1.4:.5),-.14,.14);
-    this.chestG.position.set(gx-left.x*po.side*.012*sty.hip,hy+.1*k,gz-left.z*po.side*.012*sty.hip);
-    this.chestG.rotation.set((sty.drop>.03?.03:0)-(this.fem&&sty.std?.07*ex.closed:0),cy,sway-roll*.5,'YXZ');
+    // Vorlage: in lockeren Tänzen geht der Oberkörper leicht mit der Bewegung mit; dazu ruhiges Atmen
+    const of=(this.lag[0]-gx)*fw.x+(this.lag[1]-gz)*fw.z, lean=this.lean=sty.std?0:clamp(-of*.5,-.04,.07);
+    const br=Math.sin(performance.now()*.0021+(this.fem?1.7:0));
+    this.chestG.position.set(gx-left.x*po.side*.022*hipA,hy+.1*k+br*.0025,gz-left.z*po.side*.022*hipA);
+    this.chestG.rotation.set((sty.drop>.03?.03:0)-(this.fem&&sty.std?.07*ex.closed:0)+lean,cy,sway-roll*.55,'YXZ');
     this.chestG.updateMatrix();
     this.fw.set(Math.sin(cy),0,Math.cos(cy)); this.left.set(Math.cos(cy),0,-Math.sin(cy));
     for(const s of 'LR'){ const sg=s==='L'?1:-1;
@@ -293,8 +297,9 @@ class Dancer{
   }
   freeHand(s,sty){ const sg=s==='L'?1:-1, k=this.k, p=this.sh[s].clone();
     const out=Math.min(.16,this.spin*.035);   // bei Drehungen zieht es den freien Arm nach außen und oben
-    if(sty.hip>=.5){ p.addScaledVector(this.left,sg*(.34*k+out*.4)).addScaledVector(this.fw,.12); p.y-=.2*k-out*.5; }   // Latein: Arm seitlich
-    else { p.addScaledVector(this.left,sg*(.15+out)).addScaledVector(this.fw,.1-sg*this.swing*.3); p.y-=.45*k-out*1.2; }
+    if(sty.hip>=.5){ const w=sg*(this.side||0);   // Latein: Arm seitlich; er hebt sich über dem Standbein und sinkt auf der anderen Seite
+      p.addScaledVector(this.left,sg*(.33*k+out*.4+w*.03)).addScaledVector(this.fw,.12-w*.05); p.y-=.2*k-out*.5-w*.06; }
+    else { p.addScaledVector(this.left,sg*(.15+out)).addScaledVector(this.fw,.1-sg*this.swing*.38); p.y-=.45*k-out*1.2-Math.abs(this.swing)*.06; }
     return p; }
   arms(hL,hR,closed){
     for(const [s,h] of [['L',hL],['R',hR]]){ const sg=s==='L'?1:-1, k=this.k;
@@ -340,7 +345,7 @@ function aimHead(a,b,sty,closed,prom,stdYaw,promYaw,dt){
   const d=b.headPos.clone().sub(a.headPos), look=clamp(wrap(Math.atan2(d.x,d.z)-a.chestYaw),-1.3,1.3);
   const cp=sty.std?mix(stdYaw,promYaw,prom):mix(look,promYaw*.7,prom), y=mix(look,cp,closed);
   a.headYaw+=(y-a.headYaw)*Math.min(1,dt*9);
-  const t=a.fem&&sty.std?closed:0; a.headG.rotation.set(-.1*t,a.headYaw,.08*t-(a.sway||0)*.6,'YXZ');
+  const t=a.fem&&sty.std?closed:0; a.headG.rotation.set(-.1*t-(a.lean||0)*.7,a.headYaw,.08*t-(a.sway||0)*.6+(a.roll||0)*.45,'YXZ');   // Kopf bleibt ruhig und waagerecht
 }
 
 /* ================= Fußabdrücke ================= */
