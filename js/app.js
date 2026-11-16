@@ -54,12 +54,23 @@ $('mirror').onchange=()=>setMirror($('mirror').checked);
 const look=(()=>{ try{ return JSON.parse(localStorage.getItem('tanzsim_look'))||{}; }catch(e){ return {}; } })();
 const saveLook=()=>{ try{ localStorage.setItem('tanzsim_look',JSON.stringify(look)); }catch(e){} };
 function applyLook(){ $('colH').value=look.h||'#2f5fd0'; $('colD').value=look.d||'#e8365a'; $('ambiente').value=look.a||'schule';
-  herr.setColor($('colH').value); dame.setColor($('colD').value); setAmbience($('ambiente').value); }
+  herr.setColor($('colH').value); dame.setColor($('colD').value); setAmbience($('ambiente').value); applyGfx(); }
 $('colH').oninput=()=>{ look.h=$('colH').value; herr.setColor(look.h); saveLook(); };
 $('colD').oninput=()=>{ look.d=$('colD').value; dame.setColor(look.d); saveLook(); };
 $('ambiente').onchange=()=>{ look.a=$('ambiente').value; setAmbience(look.a); saveLook(); };
 $('pairsN').onchange=()=>setPairs(+$('pairsN').value);
-$('gloss').onchange=()=>{ gloss.visible=$('gloss').checked; };
+$('gloss').onchange=()=>{ glossOn=$('gloss').checked; setGfx(gfxQ); };
+/* Grafik: „automatisch“ misst die Bildrate und schaltet eine Stufe herunter, wenn der Rechner nicht mitkommt (wird gemerkt) */
+const GFX=['hoch','mittel','niedrig'];
+function applyGfx(){ const g=look.g||'auto'; $('gfx').value=g; setGfx(g==='auto'?(look.ga||'hoch'):g);
+  $('gfxInfo').textContent=g==='auto'?'zurzeit: '+gfxQ:''; }
+$('gfx').onchange=()=>{ look.g=$('gfx').value; if(look.g==='auto') delete look.ga; saveLook(); applyGfx(); };
+let fpsT=0,fpsN=0,fpsLast=0;
+function watchFps(){ const now=performance.now(), d=now-fpsLast; fpsLast=now;
+  if(d>1500||document.hidden){ fpsT=fpsN=0; return; }   // Pause, anderer Tab
+  fpsT+=d; fpsN++;
+  if(fpsT>=3000){ const fps=fpsN*1000/fpsT; fpsT=fpsN=0;
+    if(fps<27&&(look.g||'auto')==='auto'&&gfxQ!=='niedrig'){ look.ga=GFX[GFX.indexOf(gfxQ)+1]; saveLook(); applyGfx(); } } }
 $('prints').onchange=$('printWho').onchange=()=>{ clearPrints(); clearDiagram(); };
 
 /* ---------- Tanz-Auswahl: filtert alle Listen ---------- */
@@ -472,7 +483,7 @@ function setPairs(n){
 }
 const isClosed=h=>h==='zu'||h==='prom'?1:0, isProm=h=>h==='prom'?1:0;
 function animate(){
-  requestAnimationFrame(animate);
+  requestAnimationFrame(animate); watchFps();
   const dt=Math.min(clock.getDelta(),.05);
   if(tl){
     const bps=baseBpm()/60*spd();

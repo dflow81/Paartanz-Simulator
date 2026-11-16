@@ -1,6 +1,6 @@
 /* ================= Szene ================= */
 const renderer=new THREE.WebGLRenderer({antialias:true});
-renderer.setPixelRatio(devicePixelRatio); renderer.setSize(innerWidth,innerHeight);
+renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(innerWidth,innerHeight);
 renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap; renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.12; document.body.appendChild(renderer.domElement);
 const scene=new THREE.Scene(); scene.background=new THREE.Color(0x1b1d24);
 /* Alles Sichtbare hängt an „world“. Für die Spiegelbild-Ansicht wird diese Gruppe seitenverkehrt (x → −x). */
@@ -113,8 +113,16 @@ function buildSaal(w,d){
   kasten(w/2-bt-.2,.07,d*.3,.4,.14,1.0,holz); kasten(w/2-bt-.2,.07,d*.3-1.1,.4,.14,1.0,holz);
 }
 let ambiente='schule';
+/* Grafikstufe: hoch = alles, mittel = ohne Spiegelung im Parkett und mit einfacheren Schatten, niedrig = ohne Schatten und gröber gerechnet */
+let gfxQ='hoch', glossOn=true;
+function setGfx(q){ gfxQ=q; const hi=q==='hoch', lo=q==='niedrig';
+  renderer.setPixelRatio(hi?Math.min(devicePixelRatio,2):lo?Math.min(devicePixelRatio,1)*.75:Math.min(devicePixelRatio,1)); renderer.setSize(innerWidth,innerHeight);
+  renderer.shadowMap.type=hi?THREE.PCFSoftShadowMap:THREE.PCFShadowMap; renderer.shadowMap.needsUpdate=true;
+  const n=hi?2048:1024; if(sun.shadow.mapSize.x!==n){ sun.shadow.mapSize.set(n,n); if(sun.shadow.map){ sun.shadow.map.dispose(); sun.shadow.map=null; } }
+  sun.castShadow=!lo; gloss.visible=glossOn&&hi; setAmbience(ambiente);
+  scene.traverse(o=>{ if(o.material){ for(const m of [].concat(o.material)) m.needsUpdate=true; } }); }
 function setAmbience(a){ ambiente=a; const b=a==='ball', z=a==='saal';
-  hemi.intensity=b?.32:z?1.15:.9; sun.intensity=b?.35:z?1.05:1.4; rim.intensity=b?.3:.55; spot.intensity=b?30:0; leuchter.visible=spiegel3d.visible=spiegelRahmen.visible=b; saal.visible=z;
+  hemi.intensity=b?.32:z?1.15:.9; sun.intensity=b?.35:z?1.05:1.4; rim.intensity=b?.3:.55; spot.intensity=b?30:0; spot.visible=b; spot.castShadow=b&&gfxQ==='hoch'; leuchter.visible=spiegel3d.visible=spiegelRahmen.visible=b; if(gfxQ==='niedrig') spiegel3d.visible=false; saal.visible=z;
   floor.material.map=z?texHell:tex; floor.material.needsUpdate=true;
   walls.material.color.set(b?0x4a2530:z?0x6d77b6:0x565d78); skirting.material.color.set(b?0x2a1418:z?0x3a3f5c:0x2a2d3a); scene.background.set(b?0x0d0b10:0x1b1d24); }
 function overview(){ const w=ROOM.w,d=ROOM.d; camera.position.set(w*.5,Math.max(w,d)*.62+1.5,-d*.5-Math.max(w,d)*.75); controls.target.set(0,.7,0); }
@@ -145,7 +153,8 @@ class Dancer{
     this.mats=[]; this.meshes=[];
     const M=(c,r=.55,o={})=>{ const m=new THREE.MeshStandardMaterial({color:c,roughness:r,envMap:ENV,envMapIntensity:.45,...o}); this.mats.push(m); return m; };
     const stoff=(c,r,o={})=>{ const m=new THREE.MeshPhysicalMaterial({color:c,roughness:r,envMap:ENV,envMapIntensity:.5,sheen:fem?1:.5,sheenRoughness:fem?.35:.6,sheenColor:new THREE.Color(c).lerp(new THREE.Color(0xffffff),.5),...o}); this.mats.push(m); return m; };
-    const add=(geo,mat,parent)=>{ const m=mk(geo,mat,parent); this.meshes.push(m); return m; };
+    const add=(geo,mat,parent)=>{ const m=mk(geo,mat,parent); this.meshes.push(m); geo.computeBoundingSphere();
+      if(geo.boundingSphere.radius<.03){ m.castShadow=false; m.userData.klein=true; } return m; };   // Kleinteile (Augen, Knöpfe, Schmuck) werfen keinen Schatten: spart Rechenzeit
     const dark=new THREE.Color(color).multiplyScalar(.28);
     // Herr: Anzug (Jackett in seiner Farbe, dunkle Hose, weißes Hemd). Dame: Kleid in ihrer Farbe, Arme und Beine frei.
     const top=this.topM=stoff(color,fem?.42:.78), skin=M(0xeebf9c,.58), legs=fem?skin:(this.legM=M(dark,.85)), shoe=M(fem?0x7a1630:0x101014,.25), hair=M(fem?0x5a3418:0x2a1f16,.85), white=M(0xf4f4f0,.6), eye=M(0x1c1c22,.4);
@@ -235,7 +244,7 @@ class Dancer{
     this.reset();
   }
   /* Tänzer fast durchsichtig zeigen (damit man den Partner allein sieht) */
-  setGhost(on){ for(const m of this.mats){ m.transparent=on; m.opacity=on?.12:1; m.depthWrite=!on; m.needsUpdate=true; } for(const m of this.meshes) m.castShadow=!on; }
+  setGhost(on){ for(const m of this.mats){ m.transparent=on; m.opacity=on?.12:1; m.depthWrite=!on; m.needsUpdate=true; } for(const m of this.meshes) m.castShadow=!on&&!m.userData.klein; }
   setColor(c){ const col=new THREE.Color(c); this.topM.color.copy(col); for(const m of [this.topM,this.skM]) if(m&&m.sheenColor) m.sheenColor.copy(col).lerp(new THREE.Color(0xffffff),.5); if(this.lapM) this.lapM.color.copy(col).multiplyScalar(.6);
     if(this.fem){ this.skM.color.copy(col); this.hemM.color.copy(col).lerp(new THREE.Color(0xffffff),.45); } else this.legM.color.copy(col).multiplyScalar(.28); }
   setVisible(v){ for(const m of this.meshes) m.visible=v; }

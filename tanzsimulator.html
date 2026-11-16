@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Paartanz-Simulator 3D – mit eigenen Tanzfolgen</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="tanzsimulator.css?v=2611161652">
+<link rel="stylesheet" href="tanzsimulator.css?v=2611161713">
 </head>
 <body>
 <div id="ui">
@@ -69,7 +69,9 @@
         <span>Anzug</span><input type="color" id="colH" value="#2f5fd0" style="flex:1;height:26px;padding:1px">
         <span>Kleid</span><input type="color" id="colD" value="#e8365a" style="flex:1;height:26px;padding:1px">
       </div>
-      <div class="chk"><input type="checkbox" id="gloss" checked><span>Spiegelndes Parkett</span></div>
+      <div class="chk"><input type="checkbox" id="gloss" checked><span>Spiegelndes Parkett (nur bei Grafik „hoch“)</span></div>
+      <label>Grafik <small id="gfxInfo"></small></label>
+      <select id="gfx" class="full" title="Niedriger = flüssiger auf schwächeren Rechnern"><option value="auto">automatisch (passt sich dem Rechner an)</option><option value="hoch">hoch (Spiegelung, weiche Schatten)</option><option value="mittel">mittel (einfache Schatten)</option><option value="niedrig">niedrig (ohne Schatten, am schnellsten)</option></select>
     </details>
     <details name="menu">
       <summary>🔊 Takt und Ansagen</summary>
@@ -202,23 +204,23 @@
   <span class="dot" style="background:#ff4d6d"></span>Dame &nbsp;|&nbsp; Maus: drehen / zoomen</div>
 
 <!-- Figuren-Bibliothek und Schritt-Engine (normale Skripte, damit die Seite auch direkt von der Festplatte läuft) -->
-<script src="js/basis.js?v=2611161652"></script>
-<script src="figuren/standard.js?v=2611161652"></script>
-<script src="figuren/latein.js?v=2611161652"></script>
-<script src="figuren/gesellschaft.js?v=2611161652"></script>
-<script src="figuren/karibik.js?v=2611161652"></script>
-<script src="figuren/weitere.js?v=2611161652"></script>
-<script src="figuren/mehr.js?v=2611161652"></script>
-<script src="figuren/wtp.js?v=2611161652"></script>
-<script src="figuren/folgen.js?v=2611161652"></script>
-<script src="js/speicher.js?v=2611161652"></script>
-<script src="js/engine.js?v=2611161652"></script>
-<script src="lib/three.js?v=2611161652"></script>
-<script src="lib/OrbitControls.js?v=2611161652"></script>
-<script src="lib/Reflector.js?v=2611161652"></script>
-<script src="js/szene.js?v=2611161652"></script>
-<script src="js/app.js?v=2611161652"></script>
-<script src="js/stream.js?v=2611161652"></script>
-<script src="js/editor.js?v=2611161652"></script>
+<script src="js/basis.js?v=2611161713"></script>
+<script src="figuren/standard.js?v=2611161713"></script>
+<script src="figuren/latein.js?v=2611161713"></script>
+<script src="figuren/gesellschaft.js?v=2611161713"></script>
+<script src="figuren/karibik.js?v=2611161713"></script>
+<script src="figuren/weitere.js?v=2611161713"></script>
+<script src="figuren/mehr.js?v=2611161713"></script>
+<script src="figuren/wtp.js?v=2611161713"></script>
+<script src="figuren/folgen.js?v=2611161713"></script>
+<script src="js/speicher.js?v=2611161713"></script>
+<script src="js/engine.js?v=2611161713"></script>
+<script src="lib/three.js?v=2611161713"></script>
+<script src="lib/OrbitControls.js?v=2611161713"></script>
+<script src="lib/Reflector.js?v=2611161713"></script>
+<script src="js/szene.js?v=2611161713"></script>
+<script src="js/app.js?v=2611161713"></script>
+<script src="js/stream.js?v=2611161713"></script>
+<script src="js/editor.js?v=2611161713"></script>
 </body>
 </html>
