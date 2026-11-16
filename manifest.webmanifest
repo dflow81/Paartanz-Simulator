@@ -1,0 +1,16 @@
+{
+  "name": "Paartanz-Simulator",
+  "short_name": "Tanzsimulator",
+  "description": "Tanzschritte in 3D ansehen, lernen und eigene Tanzfolgen zusammenstellen",
+  "lang": "de",
+  "start_url": "tanzsimulator.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#1b1d24",
+  "theme_color": "#1b1d24",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}

@@ -4,7 +4,7 @@ let src=null, blocks=[], tl=null, beat=0, playing=true, lastH=-1, lastD=-1, last
 const speedEl=$('speed');
 /* Musik-Zustand (steht oben, weil schon beim ersten Laden einer Folge das Tempo gebraucht wird) */
 const music=new Audio(); music.loop=true; music.preservesPitch=true;
-let mBpm=0, mOff=0, taps=[], mBusy=false;
+let mBpm=0, mOff=0, taps=[], mBusy=false, mOne=false, barPending=false;   // mOne: mOff liegt auf einer „1“ des Takts
 /* Zeitlupe: Figuren der Folge, die im halben Tempo laufen */
 const slow=new Set(), extra=[]; let exItem=-1;
 const spd=()=>speedEl.value/100*(slow.has(curItem)?.5:1);
@@ -19,7 +19,7 @@ function setSource(s){
   tl=simulate(blocks,{H:startH()}); beat=$('countIn').checked?-tl.H[0].meter:0; slow.clear(); exItem=-1; extra.forEach((p,i)=>{ if(p.on){ p.tl=simulate(blocks,{H:startH(...startPos(i))}); p.H.reset(); p.D.reset(); } }); lastH=lastD=-1; lastBeatIdx=-99; stepTarget=null; curItem=-1; lastSaid=-1; clearPrints(); clearDiagram(); herr.reset(); dame.reset();
   const figs=allFigs(), warn=new Set(tl.H.concat(tl.D).filter(r=>r.warn).map(r=>r.item));
   $('seqlist').innerHTML=s.items.map((it,i)=>`<div data-i="${i}">${i+1}. ${figs[it.fig]?esc(figLabel(figs[it.fig])):'(fehlt)'}${it.rep>1?' ×'+it.rep:''}${warn.has(i)?' <span title="Ein Schritt beginnt mit dem Fuß, auf dem gerade das Gewicht steht.">⚠ falscher Fuß</span>':''}<span class="turtle" data-slow="${i}" title="Diese Figur in Zeitlupe tanzen (halbes Tempo)">🐢</span></div>`).join('');
-  updBpm();
+  updBpm(); barPending=true; if(typeof dress==='function') dressed='';
 }
 /* Tanztempo in Schlägen pro Minute: mit Musik gibt die Musik das Tempo vor, sonst die Folge */
 const baseBpm=()=>danceBpm()||(src?src.bpm:0);
@@ -44,21 +44,27 @@ $('seqlist').onclick=e=>{ const d=e.target.closest('[data-i]'); if(!d||!tl) retu
 $('trainer').onchange=()=>{ if($('trainer').checked){ $('loopFig').checked=true; speedEl.value=60; updBpm(); } };
 /* „Hier ist die 1“: Tanz auf die nächstgelegene Eins des Takts schieben; mit Musik liegt der Schlag ab jetzt auf diesem Moment */
 $('oneBtn').onclick=()=>{ if(!tl) return; const s=evalDancer(tl.H,beat).step, m=s.meter;
-  if(hasMusic()) mOff=music.currentTime;
+  if(hasMusic()){ mOff=music.currentTime; mOne=true; }
   const pos=(((beat-s.blockStart+s.off)%m)+m)%m; beat=Math.max(0,beat+(pos>m/2?m-pos:-pos)); lastBeatIdx=-99; flash($('oneBtn'),'✔ Eins gesetzt'); };
 $('minBtn').onclick=()=>{ $('ui').classList.toggle('min'); $('minBtn').textContent=$('ui').classList.contains('min')?'▴':'▾'; };
-$('cam').onchange=()=>{ if($('cam').value==='frei') overview(); };
+let camPrev='frei';
+$('cam').onchange=()=>{ const v=$('cam').value; if(v==='frei'||/^ich/.test(camPrev)) overview(); camPrev=v; };
 $('show').onchange=()=>{ const v=$('show').value; herr.setGhost(v==='D'); dame.setGhost(v==='H'); };
 $('mirror').onchange=()=>setMirror($('mirror').checked);
 /* Aussehen: Farben, Ambiente, Anzahl der Paare – wird im Browser gemerkt */
 const look=(()=>{ try{ return JSON.parse(localStorage.getItem('tanzsim_look'))||{}; }catch(e){ return {}; } })();
 const saveLook=()=>{ try{ localStorage.setItem('tanzsim_look',JSON.stringify(look)); }catch(e){} };
-function applyLook(){ $('colH').value=look.h||'#2f5fd0'; $('colD').value=look.d||'#e8365a'; $('ambiente').value=look.a||'schule';
+function applyLook(){ $('colH').value=look.h||'#2f5fd0'; $('colD').value=look.d||'#e8365a'; $('ambiente').value=look.a||'schule'; $('outfit').value=look.o||'auto';
   herr.setColor($('colH').value); dame.setColor($('colD').value); setAmbience($('ambiente').value); applyGfx(); }
 $('colH').oninput=()=>{ look.h=$('colH').value; herr.setColor(look.h); saveLook(); };
 $('colD').oninput=()=>{ look.d=$('colD').value; dame.setColor(look.d); saveLook(); };
 $('ambiente').onchange=()=>{ look.a=$('ambiente').value; setAmbience(look.a); saveLook(); };
 $('pairsN').onchange=()=>setPairs(+$('pairsN').value);
+/* Kleidung: fest gewählt oder passend zum Tanz (Standard: Anzug und langes Kleid, Latein: kurzes Kleid, sonst Freizeit) */
+let dressed='';
+function dress(sty){ const o=look.o||'auto', w=o!=='auto'?o:sty.std?'standard':sty.hip>=.5?'latein':'freizeit'; if(w===dressed) return; dressed=w;
+  for(const p of [{H:herr,D:dame},...extra]){ p.H.setOutfit(w==='standard'?'anzug':w); p.D.setOutfit(w==='standard'?'ball':w); } }
+$('outfit').onchange=()=>{ look.o=$('outfit').value; saveLook(); dressed=''; };
 $('gloss').onchange=()=>{ glossOn=$('gloss').checked; setGfx(gfxQ); };
 /* Grafik: „automatisch“ misst die Bildrate und schaltet eine Stufe herunter, wenn der Rechner nicht mitkommt (wird gemerkt) */
 const GFX=['hoch','mittel','niedrig'];
@@ -90,18 +96,25 @@ function fillDance(){
 function fillSource(selectKey){
   const sel=$('source'), keep=selectKey||sel.value, all=curDance()===ALL;
   const seqs=Object.entries(user.seqs).filter(([k,s])=>inDance(seqDance(s)));
-  let h=seqs.length?'<optgroup label="Tanzfolgen">'+seqs.map(([k,s])=>`<option value="seq:${k}">${esc(s.name)}</option>`).join('')+'</optgroup>':'';
+  const lab=key=>{ const [t,k]=key.split(':'); if(t==='seq') return user.seqs[k]?user.seqs[k].name:null; const f=allFigs()[k]; return f?figLabel(f,true):null; };
+  const grp=(titel,keys)=>{ const o=keys.map(k=>[k,lab(k)]).filter(x=>x[1]).map(([k,n])=>`<option value="${k}">${esc(n)}</option>`).join(''); return o?`<optgroup label="${titel}">${o}</optgroup>`:''; };
+  let h0=grp('★ Favoriten',look.fav||[])+grp('Zuletzt getanzt',(look.rec||[]).filter(k=>!(look.fav||[]).includes(k)));
+  let h=h0+(seqs.length?'<optgroup label="Tanzfolgen">'+seqs.map(([k,s])=>`<option value="seq:${k}">${esc(s.name)}</option>`).join('')+'</optgroup>':'');
   const groups={}; for(const [k,f] of Object.entries(allFigs())) if(inDance(f.dance)) (groups[f.dance||'Sonstige']??=[]).push([k,f]);
   for(const [d,list] of Object.entries(groups)) h+=`<optgroup label="${all?'Figuren: '+esc(d):'Einzelne Figuren'}">`+list.map(([k,f])=>`<option value="fig:${k}">${esc(figLabel(f,false))}</option>`).join('')+'</optgroup>';
-  sel.innerHTML=h; sel.value=keep; if(sel.selectedIndex<0&&sel.options.length) sel.selectedIndex=0;
+  sel.innerHTML=h; sel.value=keep; if(sel.selectedIndex<0&&sel.options.length) sel.selectedIndex=sel.querySelector('optgroup[label="Tanzfolgen"] option, optgroup[label^="Figuren"] option, optgroup[label="Einzelne Figuren"] option')?.index??0;
+  updFav();
 }
+const updFav=()=>{ const on=(look.fav||[]).includes($('source').value); $('favBtn').textContent=on?'★':'☆'; $('favBtn').classList.toggle('on',on); };
+$('favBtn').onclick=()=>{ const k=$('source').value; if(!k) return; look.fav??=[]; const i=look.fav.indexOf(k); i<0?look.fav.unshift(k):look.fav.splice(i,1); saveLook(); fillSource(k); };
+const remember=k=>{ look.rec=[k,...(look.rec||[]).filter(x=>x!==k)].slice(0,6); saveLook(); };
 function sourceFromKey(key){
   const [t,k]=key.split(':');
   if(t==='seq'&&user.seqs[k]) return user.seqs[k];
   const f=allFigs()[k]; if(f) return {name:figTitle(f),bpm:f.bpm||100,items:[{fig:k,rep:1}]};
   return null;
 }
-$('source').onchange=()=>{const s=sourceFromKey($('source').value); if(s){setSource(s);setPlaying(true);}};
+$('source').onchange=()=>{const k=$('source').value, s=sourceFromKey(k); if(s){setSource(s);setPlaying(true); remember(k); fillSource(k);}};
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 /* ================= Tabs ================= */
@@ -161,6 +174,21 @@ $('seqDel').onclick=()=>{ if(!seqKey||!confirm('Tanzfolge „'+user.seqs[seqKey]
 $('seqAdd').onclick=()=>{const last=seqEdit.items.at(-1); seqEdit.items.push({fig:last?last.fig:firstFig(),rep:1}); renderSeqItems();};
 $('seqSave').onclick=()=>{ readSeq(); if(!seqKey) seqKey=uid('s_'); user.seqs[seqKey]=structuredClone(seqEdit); saveStore();
   fillSeqSel(); fillSource('seq:'+seqKey); flash($('seqSave'),'✔ Gespeichert'); };
+/* Zufallsfolge: Figuren des Tanzes aneinanderreihen, sodass Fuß und Tanzhaltung an jeder Stelle passen */
+$('randBtn').onclick=()=>{
+  const figs=allFigs(), cur=src&&src.items[0]&&figs[src.items[0].fig], dance=curDance()===ALL?(cur?cur.dance:'Langsamer Walzer'):curDance();
+  const pool=Object.entries(figs).filter(([k,f])=>(f.dance||'Sonstige')===dance&&f.steps&&f.steps.length), items=[], room={...ROOM}, ls=lastSteer;
+  let st={H:startH()}, last=''; ROOM.w=ROOM.d=400;
+  try{ for(let i=0;i<8;i++){ const hold=st.H.hold||'zu'; let ok=[];
+      for(const streng of [true,false]){ if(ok.length) break;   // erst mit passender Tanzhaltung suchen, sonst nur mit passendem Fuß
+        for(const [k,f] of pool){ if(k===last&&pool.length>1||streng&&i>0&&(f.steps[0].hold||'zu')!==hold) continue;
+          const r=simulate([{F:f,item:i,rep:1,reps:1}],st); if(!r.H.concat(r.D).some(x=>x.warn)) ok.push([k,r]); } }
+      if(!ok.length) break; const [k,r]=ok[Math.floor(Math.random()*ok.length)]; items.push({fig:k,rep:1}); st=r.end; last=k; }
+  } finally { ROOM.w=room.w; ROOM.d=room.d; lastSteer=ls; }
+  if(!items.length) return;
+  const sq={name:'Zufallsfolge – '+dance,bpm:figs[items[0].fig].bpm||100,items};
+  seqKey=null; seqEdit=structuredClone(sq); $('seqName').value=sq.name; $('seqBpm').value=sq.bpm; renderSeqItems(); $('seqSel').value='';   // steht auch unter „Tanzfolgen“ zum Speichern bereit
+  setSource(sq); setPlaying(true); flash($('randBtn'),'✔'); };
 $('seqPlay').onclick=()=>{ readSeq(); setSource(structuredClone(seqEdit)); setPlaying(true); gotoPlay(); };
 
 /* ================= Figuren-Editor ================= */
@@ -410,7 +438,7 @@ function musicInfo(){ const db=danceBpm(); musicFit();
   $('musicInfo').textContent=!hasMusic()?MUSIC_HELP:mBusy?'Tempo der Musik wird erkannt …':
     !mBpm?'Das Tempo wurde nicht erkannt. Bitte im Takt mindestens viermal auf „Tempo tippen“ drücken oder die Schläge pro Minute eintragen.':
     `Erkannt: ${mBpm.toFixed(1)} Schläge/min – das Paar tanzt mit ${Math.round(db)} Schlägen/min zur Musik.`+
-    (Math.abs(Math.log(db/src.bpm))>.3?` Für diesen Tanz sind etwa ${src.bpm} üblich; das Stück passt nur bedingt.`:'')+' Stimmt der Takt nicht, mittippen.';
+    (Math.abs(Math.log(db/src.bpm))>.3?` Für diesen Tanz sind etwa ${src.bpm} üblich; das Stück passt nur bedingt.`:'')+' Stimmt der Takt nicht, mittippen.'+(mOne?' Die „1“ ist geschätzt und das Paar beginnt auf ihr – liegt sie falsch, im richtigen Moment „Hier ist die 1“ drücken.':'');
   updBpm(); }
 /* Tempo und Lage der Schläge aus der Datei bestimmen: Lautstärke-Anstiege suchen und prüfen, in welchem Abstand sie sich wiederholen */
 async function analyseMusic(file){
@@ -431,20 +459,27 @@ async function analyseMusic(file){
   for(let bpm=bestB-2.5; bpm<=bestB+2.5; bpm+=.02){ const P=fr*60/bpm;
     for(let k=0;k<32;k++){ const ph=k*P/32; let s=0, c=0; for(let x=ph;x<m-1;x+=P){ const i=Math.round(x); s+=on[i]+.5*(on[i-1]||0)+.5*on[i+1]; c++; }
       s/=c; if(s>top){ top=s; res={bpm,off:ph/fr}; } } }
+  // die „1“ schätzen: Auf welchem Schlag des Takts sind die tiefen Töne (große Trommel, Bass) am stärksten?
+  try{ const mt=tl?tl.H[0].meter:4, per=60/res.bpm*sr, a=Math.exp(-2*Math.PI*160/sr), sum=new Float64Array(mt), cnt=new Float64Array(mt), w=Math.round(sr*.07);
+    for(let j=0;;j++){ const st=Math.round(res.off*sr+j*per); if(st+w>=n) break; let lp=0, e=0;
+      for(let i=Math.max(0,st-200);i<st+w;i++){ let x=0; for(const c of ch) x+=c[i]; lp=a*lp+(1-a)*x; if(i>=st) e+=lp*lp; }
+      sum[j%mt]+=Math.log(1e-9+e); cnt[j%mt]++; }
+    let bk=0; for(let k=1;k<mt;k++) if(sum[k]/Math.max(1,cnt[k])>sum[bk]/Math.max(1,cnt[bk])) bk=k;
+    res.off+=bk*60/res.bpm; res.one=true; }catch(e){}
   return res;
 }
 $('musicBtn').onclick=()=>$('musicFile').click();
 $('musicFile').onchange=async e=>{ const f=e.target.files[0]; if(!f) return; e.target.value='';
   if(music.src) URL.revokeObjectURL(music.src);
-  music.src=URL.createObjectURL(f); mBpm=0; mOff=0; taps=[]; $('musicBpm').value=''; $('musicBtn').textContent='🎵 '+f.name; mBusy=true; musicInfo();
+  music.src=URL.createObjectURL(f); mBpm=0; mOff=0; mOne=false; taps=[]; $('musicBpm').value=''; $('musicBtn').textContent='🎵 '+f.name; mBusy=true; musicInfo();
   let r=null; try{ r=await analyseMusic(f); }catch(err){}
-  mBusy=false; if(r&&!mBpm){ mBpm=r.bpm; mOff=r.off; $('musicBpm').value=mBpm.toFixed(1); }
+  mBusy=false; if(r&&!mBpm){ mBpm=r.bpm; mOff=r.off; mOne=!!r.one; barPending=true; $('musicBpm').value=mBpm.toFixed(1); }
   musicInfo(); };
 $('musicOff').onclick=()=>{ music.pause(); if(music.src) URL.revokeObjectURL(music.src); music.removeAttribute('src'); music.load(); mBpm=0; taps=[]; $('musicBpm').value=''; $('musicBtn').textContent='🎵 Musikdatei wählen'; musicInfo(); };
 $('musicBpm').onchange=()=>{ mBpm=+$('musicBpm').value||0; musicInfo(); };
 $('tapBtn').onclick=()=>{ if(!hasMusic()) { musicInfo(); return; }
   const now=music.currentTime; if(taps.length&&(now-taps.at(-1)>2.5||now<taps.at(-1))) taps=[]; taps.push(now); if(taps.length>12) taps.shift();
-  if(taps.length>=4){ mBpm=60*(taps.length-1)/(taps.at(-1)-taps[0]); mOff=now; $('musicBpm').value=mBpm.toFixed(1); }
+  if(taps.length>=4){ mBpm=60*(taps.length-1)/(taps.at(-1)-taps[0]); mOff=now; mOne=false; $('musicBpm').value=mBpm.toFixed(1); }
   else if(mBpm) mOff=now;   // schon ein Tipp verschiebt den Schlag auf diesen Moment
   $('tapBtn').textContent=taps.length<4?`noch ${4-taps.length}×`:'Tempo tippen'; musicInfo(); };
 /* Musik starten/anhalten wie der Tanz und den Tanz Schlag für Schlag an die Musik heranführen */
@@ -454,6 +489,8 @@ function syncMusic(dt){
   if(Math.abs(music.playbackRate-rate)>.002) music.playbackRate=rate;
   if(moving&&music.paused) music.play().catch(()=>{}); else if(!moving&&!music.paused) music.pause();
   const db=danceBpm();
+  if(barPending&&db&&playing&&!music.paused&&tl){ barPending=false;   // am Anfang auf die „1“ der Musik warten
+    if(mOne&&beat<1){ const m=tl.H[0].meter, mp=(((music.currentTime-mOff)*db/60)%m+m)%m, wait=(((tl.H[0].off-mp)%m)+m)%m; beat=-wait-($('countIn').checked?m:0); lastBeatIdx=-99; } }
   if(db&&playing&&!music.paused){ const f=x=>x-Math.floor(x), err=f(f((music.currentTime-mOff)*db/60)-f(beat)+.5)-.5; beat=Math.max(-8,beat+err*Math.min(1,dt*4)); }
 }
 /* Ein Paar zum aktuellen Zeitpunkt darstellen (Körper, Köpfe, Hände) */
@@ -502,6 +539,7 @@ function animate(){
     if(!tl.next&&beat>tl.total-1){ tl.next=simulate(blocks,tl.end); chain(tl,tl.next); }   // Anschluss vorausberechnen: weicher Übergang beim Neubeginn
     const {pH,pD,s,sty}=drawPair(herr,dame,tl,dt);
     for(const p of extra) if(p.on&&p.tl) drawPair(p.H,p.D,p.tl,dt);
+    dress(sty);
     curItem=s.item;
     if($('say').checked&&playing){ // etwa 1,3 Sekunden vor dem Wechsel die nächste Figur ansagen
       const la=beat+1.3*bps, nx=la<tl.total?evalDancer(tl.H,la).step:tl.H[0], key=nx.item+(la<tl.total?0:1000);
@@ -511,7 +549,7 @@ function animate(){
     const bi=Math.floor(beat+1e-6);
     if(bi!==lastBeatIdx){ lastBeatIdx=bi;
       if(playing||stepTarget!==null) click((bi-s.blockStart+s.off)%s.meter===0);
-      if(bi<0&&playing) say(ZAHL[String((s.meter===3?7:9)+bi)]||'',1.5); }   // Einzählen: „fünf, sechs, sieben, acht“ (Walzer: „vier, fünf, sechs“)
+      if(bi<0&&playing&&$('countIn').checked) say(ZAHL[String((s.meter===3?7:9)+bi)]||'',1.5); }   // Einzählen: „fünf, sechs, sieben, acht“ (Walzer: „vier, fünf, sechs“)
     if(s.item!==exItem){ exItem=s.item; renderExplain(); }
     if(pH.idx!==lastH){
       if($('sayCount').checked&&playing&&beat>=0&&s.d>=.5&&s.kind!=='halt') say(ZAHL[String(s.c??'').trim()]||'',1.7);
@@ -536,6 +574,9 @@ function animate(){
     const mx=v=>{ if(mirrored) v.x=-v.x; return v; }; mx(c);   // die Kamera steht außerhalb der gespiegelten Welt
     const cm=$('cam').value;
     if(cm==='folgen'){ const d=c.clone().sub(controls.target); controls.target.add(d); camera.position.add(d); }
+    else if(cm==='ichH'||cm==='ichD'){ // Blick aus den Augen des Tänzers
+      const dn=cm==='ichH'?herr:dame, a=dn.chestYaw+dn.headYaw, dir=new V3(Math.sin(a),0,Math.cos(a));
+      camera.position.copy(mx(dn.headPos.clone().addScaledVector(dir,.13))); controls.target.copy(mx(dn.headPos.clone().addScaledVector(dir,1.5))); controls.target.y-=.3; }
     else if(cm!=='frei'){ // feste Blickwinkel, die dem Paar nachgeführt werden
       const pos=c.clone(); if(cm==='oben'){ pos.y=7; pos.z-=.02; } else { const dn=cm==='herr'?herr:dame; mx(pos.copy(dn.P).addScaledVector(dn.fw,-2.6)); pos.y=2; }
       const k=Math.min(1,dt*(cm==='oben'?4:2)); camera.position.lerp(pos,k); controls.target.lerp(cm==='oben'?c.clone().setY(0):c,Math.min(1,dt*5)); }

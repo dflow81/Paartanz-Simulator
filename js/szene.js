@@ -171,15 +171,16 @@ class Dancer{
       const shd=add(lathe([[.1,.29],[.116,.35],[.095,.405],[.05,.44],[.001,.45]],k),skin,this.chestG); shd.scale.set(1.3,1,.72);
       const gold=this.gold=M(0xe2b955,.3,{metalness:.8});
       for(const sg of [1,-1]){ const tr=add(new THREE.CylinderGeometry(.006,.006,.14*k,6),top,this.chestG); tr.position.set(sg*.085*k,.37*k,.045*k); tr.rotation.set(-.35,0,sg*.22); }   // Träger
-      const kette=add(new THREE.TorusGeometry(.052*k,.003,6,24),gold,this.chestG); kette.rotation.x=1.2; kette.position.set(0,.43*k,.03*k);
+      const kette=this.kette=add(new THREE.TorusGeometry(.052*k,.003,6,24),gold,this.chestG); kette.rotation.x=1.2; kette.position.set(0,.43*k,.03*k);
     } else { // Jackett mit Hemdbrust und Krawatte
       const jac=add(lathe([[.001,-.14],[.122,-.14],[.126,-.02],[.118,.09],[.132,.24],[.142,.33],[.115,.40],[.055,.44],[.001,.45]],k),top,this.chestG); jac.scale.set(1.4,1,.8);
-      const shirt=add(new THREE.SphereGeometry(.06*k,14,10),white,this.chestG); shirt.scale.set(.62,1.75,.35); shirt.position.set(0,.31*k,.092*k);
+      const n0=this.meshes.length, shirt=add(new THREE.SphereGeometry(.06*k,14,10),white,this.chestG); shirt.scale.set(.62,1.75,.35); shirt.position.set(0,.31*k,.092*k);
       const tie=add(new THREE.BoxGeometry(.024*k,.15*k,.012),M(0x7a1322,.5),this.chestG); tie.position.set(0,.29*k,.113*k);
       const kr=add(new THREE.TorusGeometry(.047*k,.013*k,8,20),white,this.chestG); kr.rotation.x=Math.PI/2; kr.position.y=.445*k; kr.scale.set(1,1,1.5);   // Hemdkragen
       const lap=this.lapM=M(new THREE.Color(color).multiplyScalar(.6),.7);
       for(const sg of [1,-1]){ const l=add(new THREE.BoxGeometry(.034*k,.19*k,.008),lap,this.chestG); l.position.set(sg*.05*k,.3*k,.104*k); l.rotation.set(-.12,sg*.25,sg*.3); }   // Revers
       for(const y of [.17,.1]) add(new THREE.SphereGeometry(.009*k,8,6),M(0x15161a,.4),this.chestG).position.set(0,y*k,.103*k);                       // Knöpfe
+      this.suit=this.meshes.slice(n0).filter(m=>m!==kr);   // Hemdbrust, Krawatte, Revers, Knöpfe: nur beim Anzug
     }
     // Hals, Kopf, Gesicht, Haare
     add(new THREE.CylinderGeometry(.04*k,.046*k,.1*k,12),skin,this.chestG).position.y=.47*k;
@@ -243,13 +244,18 @@ class Dancer{
         for(let i=0;i<3;i++) add(new THREE.BoxGeometry(.03*k,.003,.004),this.band??=M(0x55555c,.5),g).position.set(0,-.019,(.05+i*.018)*k); }
       if(!fem) add(new THREE.CylinderGeometry(.05*k,.045*k,.05,10),legs,g).position.set(0,-.005,0);   // Hosensaum
       this.feet[s]=g; }
-    this.reset();
+    this.outfit=fem?'auto':'anzug'; this.reset();
   }
   /* Tänzer fast durchsichtig zeigen (damit man den Partner allein sieht) */
   setGhost(on){ for(const m of this.mats){ m.transparent=on; m.opacity=on?.12:1; m.depthWrite=!on; m.needsUpdate=true; } for(const m of this.meshes) m.castShadow=!on&&!m.userData.klein; }
-  setColor(c){ const col=new THREE.Color(c); this.topM.color.copy(col); for(const m of [this.topM,this.skM]) if(m&&m.sheenColor) m.sheenColor.copy(col).lerp(new THREE.Color(0xffffff),.5); if(this.lapM) this.lapM.color.copy(col).multiplyScalar(.6);
-    if(this.fem){ this.skM.color.copy(col); this.hemM.color.copy(col).lerp(new THREE.Color(0xffffff),.45); } else this.legM.color.copy(col).multiplyScalar(.28); }
-  setVisible(v){ for(const m of this.meshes) m.visible=v; }
+  /* Kleidung: Herr anzug | latein (Hemd, schwarze Hose) | freizeit (Hemd, Jeans); Dame ball (langes Kleid) | latein (kurz) | freizeit (knielang, ohne Kette) */
+  setOutfit(o){ if(this.outfit===o) return; this.outfit=o;
+    if(this.fem){ this.lenO={ball:1.62,latein:.7,freizeit:.95}[o]; this.wideO=o==='ball'?1.24:1; this.kette.visible=this.vis!==false&&o!=='freizeit'; }
+    else for(const m of this.suit) m.visible=this.vis!==false&&o==='anzug';
+    if(this.col!==undefined) this.setColor(this.col); }
+  setColor(c){ this.col=c; const col=new THREE.Color(c); this.topM.color.copy(col); for(const m of [this.topM,this.skM]) if(m&&m.sheenColor) m.sheenColor.copy(col).lerp(new THREE.Color(0xffffff),.5); if(this.lapM) this.lapM.color.copy(col).multiplyScalar(.6);
+    if(this.fem){ this.skM.color.copy(col); this.hemM.color.copy(col).lerp(new THREE.Color(0xffffff),.45); } else if(this.outfit==='latein') this.legM.color.set(0x121214); else if(this.outfit==='freizeit') this.legM.color.set(0x2c4268); else this.legM.color.copy(col).multiplyScalar(.28); }
+  setVisible(v){ this.vis=v; for(const m of this.meshes) m.visible=v; const o=this.outfit; this.outfit=null; this.setOutfit(o); }
   reset(){ this.lag=null; this.hyS=null; this.headYaw=0; this.skY=null; this.prevYaw=null; this.spin=0; this.hs=null; }
   /* po = Ergebnis von evalDancer, sty = Bewegungsstil, tb = Zeit in Schlägen, ex = {prom, closed} */
   update(po,sty,dt,tb,ex){
@@ -303,8 +309,8 @@ class Dancer{
       if(this.skY===null) this.skY=yaw;
       this.skY+=wrap(yaw-this.skY)*Math.min(1,dt*7);
       const fl_=1+Math.min(.45,this.spin*.1)+Math.min(.2,Math.abs(swing)*.35);
-      this.skirt.position.copy(P); this.skirt.rotation.set(0,this.skY,roll*.5,'YXZ'); const ln=sty.hip>=.5?.7:1; this.skLen=(this.skLen??ln)+(ln-(this.skLen??ln))*Math.min(1,dt*3);   // Lateinkleid ist kürzer
-      this.skirt.scale.set(fl_,(1-(fl_-1)*.3)*this.skLen,fl_); }
+      this.skirt.position.copy(P); this.skirt.rotation.set(0,this.skY,roll*.5,'YXZ'); const ln=this.lenO||(sty.hip>=.5?.7:1), wd=this.wideO||1; this.skLen=(this.skLen??ln)+(ln-(this.skLen??ln))*Math.min(1,dt*3);   // Lateinkleid ist kürzer
+      this.skirt.scale.set(fl_*wd,(1-(fl_-1)*.3)*this.skLen,fl_*wd); }
   }
   freeHand(s,sty){ const sg=s==='L'?1:-1, k=this.k, p=this.sh[s].clone();
     const out=Math.min(.16,this.spin*.035);   // bei Drehungen zieht es den freien Arm nach außen und oben

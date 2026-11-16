@@ -108,3 +108,16 @@ label small{color:#888;font-size:11px}
 #spInfo:empty{display:none}
 #ui,.seqlist,#streamBox,#guiSide,#spList{scrollbar-width:thin;scrollbar-color:#4a4f63 transparent}
 #build{font-size:10.5px;font-weight:normal;color:#8a90a6;margin-left:6px;white-space:nowrap}
+/* Favoriten-Stern, Lernmodus */
+#favBtn,#randBtn{font-size:15px;padding:3px 8px} #favBtn.on{color:#ffd166}
+#learnBtn{background:#2f6b4f}
+#learn{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);width:440px;max-width:calc(100vw - 24px);box-sizing:border-box;background:rgba(20,22,30,.95);border:1px solid #2f6b4f;border-radius:12px;padding:10px 14px;box-shadow:0 6px 24px #000a;z-index:5;font-size:13px;line-height:1.45}
+#learn[hidden]{display:none}
+#learn .lhead{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px}
+.ldots{display:flex;gap:6px;margin:8px 0}
+.ldots span{flex:1;text-align:center;font-size:11px;padding:2px 0;border-radius:6px;background:#2a2d38;color:#888}
+.ldots span.done{background:#2f6b4f;color:#cfe} .ldots span.on{background:#4b6bfb;color:#fff;font-weight:700}
+#learnStep{font-size:17px;color:#ffd166;margin-top:6px} #learnStep[hidden],#learnNextStep[hidden]{display:none}
+#learn .lrole{align-self:center;color:#bbb;font-size:12px} #learn button.on{background:#4b6bfb} #learn button:disabled{opacity:.4;cursor:default}
+@media (min-width:701px) and (max-width:1250px){ #learn{left:auto;right:12px;transform:none;bottom:60px;width:380px} }
+@media (max-width:700px){ #learn{top:6px;bottom:auto;font-size:12px;padding:8px 10px} }
