@@ -107,3 +107,4 @@ label small{color:#888;font-size:11px}
 #spNow{display:flex;gap:8px;align-items:center;font-size:13px;margin-top:8px} #spNow img{width:44px;height:44px;border-radius:6px}
 #spInfo:empty{display:none}
 #ui,.seqlist,#streamBox,#guiSide,#spList{scrollbar-width:thin;scrollbar-color:#4a4f63 transparent}
+#build{font-size:10.5px;font-weight:normal;color:#8a90a6;margin-left:6px;white-space:nowrap}

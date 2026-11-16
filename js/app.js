@@ -543,5 +543,8 @@ function animate(){
   controls.update(); renderer.render(scene,camera);
 }
 applyLook();
+/* Buildnummer: steht als ?v=JJMMTTHHMM an den Skripten und wird bei jedem Hochladen neu gesetzt */
+(()=>{ const m=/[?&]v=(\d{10})/.exec((document.querySelector('script[src*="app.js"]')||{}).src||''); if(!m) return;
+  const v=m[1]; $('build').textContent='Build '+v; $('build').title='Version vom '+v.slice(4,6)+'.'+v.slice(2,4)+'.20'+v.slice(0,2)+', '+v.slice(6,8)+':'+v.slice(8,10)+' Uhr'; })();
 animate();
 addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
