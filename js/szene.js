@@ -186,15 +186,18 @@ class Dancer{
     this.chestG.add(this.headG); this.headG.position.y=.5*k;
     const head=add(new THREE.SphereGeometry(.1*k,24,20),skin,this.headG); head.position.y=.1*k; head.scale.set(.9,1.08,.98);
     const nose=add(new THREE.ConeGeometry(.013,.034,8),skin,this.headG); nose.position.set(0,.09*k,.1*k); nose.rotation.x=Math.PI/2;
-    const lip=M(fem?0xb5263c:0xa5665a,.45), iris=M(fem?0x3d2a1c:0x2c3a4a,.3);
+    const wange=M(fem?0xeaa58c:0xe6b091,.6), lip=M(fem?0xb5263c:0xa5665a,.45), iris=M(fem?0x3d2a1c:0x2c3a4a,.3);
     for(const sg of [1,-1]){ const w=add(new THREE.SphereGeometry(.0155*k,12,10),white,this.headG); w.position.set(.034*k*sg,.118*k,.079*k); w.scale.set(1.15,.72,.8);
       add(new THREE.SphereGeometry(.0078*k,10,8),iris,this.headG).position.set(.034*k*sg,.118*k,.0895*k);
       add(new THREE.SphereGeometry(.0038*k,8,6),eye,this.headG).position.set(.034*k*sg,.118*k,.0955*k);
-      const br=add(new THREE.BoxGeometry(.03*k,.0055*k,.006),hair,this.headG); br.position.set(.035*k*sg,.142*k,.087*k); br.rotation.set(0,sg*.3,-sg*.12);        // Augenbraue
+      const br=add(new THREE.BoxGeometry(.03*k,.0055*k,.006),hair,this.headG); br.position.set(.035*k*sg,.146*k,.087*k); br.rotation.set(0,sg*.3,sg*.03);   // gehoben und geschwungen: freundlicher Blick
+      const wa=add(new THREE.SphereGeometry(.02*k,10,8),wange,this.headG); wa.position.set(.05*k*sg,.074*k,.066*k); wa.scale.set(1,.8,.6);                         // Wange, beim Lächeln angehoben        // Augenbraue
       if(fem){ const li=add(new THREE.BoxGeometry(.03*k,.003,.004),eye,this.headG); li.position.set(.035*k*sg,.127*k,.089*k); li.rotation.y=sg*.3; }               // Lidstrich
       const ear=add(new THREE.SphereGeometry(.022*k,10,8),skin,this.headG); ear.position.set(.088*k*sg,.105*k,-.005); ear.scale.set(.4,1,.7);
       if(fem) add(new THREE.SphereGeometry(.008*k,8,6),this.gold,this.headG).position.set(.091*k*sg,.078*k,-.003); }                                              // Ohrring
-    const mouth=add(new THREE.CapsuleGeometry(.0065*k,.026*k,3,8),lip,this.headG); mouth.rotation.z=Math.PI/2; mouth.position.set(0,.052*k,.089*k); mouth.scale.set(fem?1:.75,1,.6);
+    // Lächeln: Mund als nach oben offener Bogen mit etwas Zahnweiß
+    const bog=Math.PI*.62, mouth=add(new THREE.TorusGeometry(.03*k,(fem?.0062:.005)*k,6,14,bog),lip,this.headG); mouth.rotation.z=-Math.PI/2-bog/2; mouth.position.set(0,.079*k,.084*k); mouth.scale.set(1,1,.9);
+    const zahn=add(new THREE.SphereGeometry(.012*k,10,8),white,this.headG); zahn.position.set(0,.0555*k,.088*k); zahn.scale.set(1.5,.42,.35);
     const chin=add(new THREE.SphereGeometry(.04*k,12,10),skin,this.headG); chin.position.set(0,.03*k,.036*k); chin.scale.set(1.1,.75,.95);
     if(!fem){ const hb=add(new THREE.SphereGeometry(.094*k,16,12),hair,this.headG); hb.position.set(0,.105*k,-.022*k); hb.scale.set(.94,.98,.92); }               // Haare am Hinterkopf
     const hr=add(new THREE.SphereGeometry(.106*k,22,14,0,Math.PI*2,0,Math.PI*.46),hair,this.headG); hr.position.y=.105*k; hr.rotation.x=-.5; hr.scale.set(.93,1.06,1);
