@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Paartanz-Simulator 3D – mit eigenen Tanzfolgen</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="tanzsimulator.css?v=2611161649">
+<link rel="stylesheet" href="tanzsimulator.css?v=2611161652">
 </head>
 <body>
 <div id="ui">
@@ -20,51 +20,68 @@
   <div class="panel on" id="p-play">
     <label>Was soll getanzt werden?</label>
     <select id="source" class="full"></select>
-    <label>Tempo: <span id="speedv">100</span>% (<span id="bpmv"></span>)</label>
-    <input type="range" id="speed" min="20" max="150" value="100">
-    <div class="row">
+    <div class="row transport">
       <button id="backbtn" class="sec" title="einen Schritt zurück">⏮</button>
       <button id="play" style="flex:2">⏸ Pause</button>
       <button id="stepbtn" class="sec" title="einen Schritt weiter">⏭</button>
       <button id="reset" class="sec" title="von vorn beginnen">↺</button>
     </div>
-    <div class="chk"><input type="checkbox" id="loopFig"><span>Aktuelle Figur wiederholen (zum Üben)</span></div>
-    <div class="chk"><input type="checkbox" id="trainer"><span>Tempo-Trainer: bei 60 % beginnen, jede Runde 10 % schneller</span></div>
-    <details>
-      <summary>Ansicht</summary>
-      <label>Kamera</label>
-      <select id="cam" class="full"><option value="frei">Übersicht (mit der Maus drehbar)</option><option value="folgen">folgt dem Paar</option><option value="oben">von oben</option><option value="herr">hinter dem Herrn</option><option value="dame">hinter der Dame</option></select>
+    <label>Tempo: <span id="speedv">100</span>% (<span id="bpmv"></span>)</label>
+    <input type="range" id="speed" min="20" max="150" value="100">
+    <label>Ablauf <small>– anklicken zum Springen · 🐢 = Zeitlupe</small></label>
+    <div class="seqlist" id="seqlist"></div>
+
+    <div class="grp">Einstellungen</div>
+    <details name="menu">
+      <summary>🔁 Üben</summary>
+      <div class="chk"><input type="checkbox" id="loopFig"><span>Aktuelle Figur wiederholen</span></div>
+      <div class="chk"><input type="checkbox" id="trainer"><span>Tempo-Trainer: bei 60 % beginnen, jede Runde 10 % schneller</span></div>
+      <div class="chk"><input type="checkbox" id="mirror"><span>Spiegelbild (zum Mittanzen vor dem Bildschirm)</span></div>
       <div class="chk"><input type="checkbox" id="tips" checked><span>Führungshinweise einblenden</span></div>
       <label>Wer ist zu sehen?</label>
       <select id="show" class="full"><option value="HD">Herr und Dame</option><option value="H">nur Herr (Dame durchsichtig)</option><option value="D">nur Dame (Herr durchsichtig)</option></select>
-      <div class="chk"><input type="checkbox" id="mirror"><span>Spiegelbild (seitenverkehrt, zum Mittanzen vor dem Bildschirm)</span></div>
-      <div class="chk"><input type="checkbox" id="gloss" checked><span>Spiegelndes Parkett</span></div>
+    </details>
+    <details name="menu">
+      <summary>📖 Schritte erklärt</summary>
+      <div id="explain"></div>
+      <div class="row"><button id="readH" class="sec">🔊 Herr vorlesen</button><button id="readD" class="sec">🔊 Dame vorlesen</button></div>
+      <div class="row"><button id="printBtn" class="sec">🖨 Schrittplan zum Ausdrucken</button></div>
+    </details>
+    <details name="menu">
+      <summary>🎥 Kamera und Fußspuren</summary>
+      <label>Kamera</label>
+      <select id="cam" class="full"><option value="frei">Übersicht (mit der Maus drehbar)</option><option value="folgen">folgt dem Paar</option><option value="oben">von oben</option><option value="herr">hinter dem Herrn</option><option value="dame">hinter der Dame</option></select>
       <label>Schritte am Boden</label>
       <div class="row" style="margin-top:0">
         <select id="prints" style="flex:3"><option value="spur">Fußspur</option><option value="diagramm">Schrittdiagramm der Figur (nummeriert)</option><option value="aus">aus</option></select>
         <select id="printWho" style="flex:2"><option value="HD">Herr und Dame</option><option value="H">nur Herr</option><option value="D">nur Dame</option></select>
       </div>
-      <div class="row" style="margin-top:8px;align-items:center;font-size:12px;color:#bbb">
+    </details>
+    <details name="menu">
+      <summary>🏛 Raum und Kleidung</summary>
+      <label>Raum</label>
+      <select id="ambiente" class="full" title="Ballsaal: gedämpftes Licht, Scheinwerfer, Kronleuchter und Spiegelwand"><option value="schule">Übungsraum (hell)</option><option value="saal">Unsere Tanzschule (Saal)</option><option value="ball">Ballsaal (Scheinwerfer, Spiegelwand)</option></select>
+      <div class="row" style="margin-top:0">
+        <div style="flex:3"><label>Tanzfläche</label><select id="room" class="full"><option value="5x4">klein (5 × 4 m)</option><option value="8x6" selected>mittel (8 × 6 m)</option><option value="12x9">groß (12 × 9 m)</option></select></div>
+        <div style="flex:2"><label>Paare</label><select id="pairsN" class="full" title="Weitere Paare tanzen dieselbe Folge an anderer Stelle"><option value="1">1 Paar</option><option value="2">2 Paare</option><option value="3">3 Paare</option></select></div>
+      </div>
+      <div class="row" style="align-items:center;font-size:12px;color:#bbb">
         <span>Anzug</span><input type="color" id="colH" value="#2f5fd0" style="flex:1;height:26px;padding:1px">
         <span>Kleid</span><input type="color" id="colD" value="#e8365a" style="flex:1;height:26px;padding:1px">
       </div>
-      <div class="row" style="margin-top:6px">
-        <select id="ambiente" style="flex:1" title="Ballsaal: gedämpftes Licht, Scheinwerfer, Kronleuchter und Spiegelwand"><option value="schule">Übungsraum (hell)</option><option value="saal">Unsere Tanzschule (Saal)</option><option value="ball">Ballsaal (Scheinwerfer, Spiegelwand)</option></select>
-        <select id="pairsN" style="flex:1" title="Weitere Paare tanzen dieselbe Folge an anderer Stelle"><option value="1">1 Paar</option><option value="2">2 Paare</option><option value="3">3 Paare</option></select>
-      </div>
-      <label>Tanzfläche</label>
-      <select id="room" class="full"><option value="5x4">klein (5 × 4 m)</option><option value="8x6" selected>mittel (8 × 6 m)</option><option value="12x9">groß (12 × 9 m)</option></select>
+      <div class="chk"><input type="checkbox" id="gloss" checked><span>Spiegelndes Parkett</span></div>
     </details>
-    <details>
-      <summary>Ton und Musik</summary>
+    <details name="menu">
+      <summary>🔊 Takt und Ansagen</summary>
       <div class="chk"><input type="checkbox" id="tick" checked><span>Takt hörbar (Metronom, die „1“ betont)</span></div>
-      <div class="chk"><input type="checkbox" id="groove"><span>Übungsmusik: Rhythmus passend zum Tanz (ohne eigene Datei)</span></div>
-      <div class="row"><button id="oneBtn" class="sec" title="Im richtigen Moment drücken: Der Tanz springt auf die nächste Eins, bei Musik wird der Schlag dorthin gelegt">Hier ist die „1“ (im Takt drücken)</button></div>
-      <div class="chk"><input type="checkbox" id="say"><span>Figuren ansagen (kurz vor dem Wechsel)</span></div>
+      <div class="chk"><input type="checkbox" id="groove"><span>Übungsmusik: Rhythmus passend zum Tanz</span></div>
       <div class="chk"><input type="checkbox" id="countIn"><span>Einzählen vor dem Start („fünf, sechs, sieben, acht“)</span></div>
       <div class="chk"><input type="checkbox" id="sayCount"><span>Zählzeiten mitsprechen (eins, zwei … / lang, schnell)</span></div>
-      <label>Eigene Musik</label>
-      <div class="row" style="margin-top:0">
+      <div class="chk"><input type="checkbox" id="say"><span>Figuren ansagen (kurz vor dem Wechsel)</span></div>
+    </details>
+    <details name="menu">
+      <summary>🎵 Musik</summary>
+      <div class="row" style="margin-top:6px">
         <button id="musicBtn" class="sec">🎵 Musikdatei wählen</button>
         <button id="musicOff" class="mini del" title="Musik entfernen">✕</button>
         <input type="file" id="musicFile" accept="audio/*" style="display:none">
@@ -73,22 +90,16 @@
         <input id="musicBpm" type="number" min="40" max="260" step="0.1" placeholder="Schläge/min der Musik" style="flex:1;min-width:0">
         <button id="tapBtn" class="sec" style="flex:1">Tempo tippen</button>
       </div>
+      <div class="row"><button id="oneBtn" class="sec" title="Im richtigen Moment drücken: Der Tanz springt auf die nächste Eins, bei Musik wird der Schlag dorthin gelegt">Hier ist die „1“ (im Takt drücken)</button></div>
       <div id="musicFit"></div>
       <div class="info" id="musicInfo">Musikdatei wählen – das Paar tanzt dann im Tempo der Musik. Der Tempo-Regler macht Musik und Tanz gemeinsam langsamer oder schneller.</div>
+      <div class="row"><button class="sec" onclick="document.getElementById('streamBtn').click()">🎧 Spotify-Player ein-/ausblenden</button></div>
     </details>
-    <label>Ablauf (anklicken zum Springen · 🐢 = diese Figur in Zeitlupe)</label>
-    <div class="seqlist" id="seqlist"></div>
-    <details>
-      <summary>Schritte der Figur erklärt</summary>
-      <div id="explain"></div>
-      <div class="row"><button id="readH" class="sec">🔊 Herr vorlesen</button><button id="readD" class="sec">🔊 Dame vorlesen</button></div>
-    </details>
-    <div class="row"><button id="printBtn" class="sec">🖨 Schrittplan zum Ausdrucken</button></div>
   </div>
 
   <!-- TANZFOLGEN -->
   <div class="panel" id="p-seq">
-    <div class="info" style="margin-top:0">Eine Tanzfolge ist eine Kette von Figuren, z.&nbsp;B. so, wie du sie in der Tanzschule gelernt hast. Jede Figur muss mit dem Fuß beginnen, der gerade frei ist: ⚠ zeigt, wo das nicht passt – auch in der Auswahlliste. Zum Umsortieren die Zeile am Griff ⠿ ziehen.</div>
+    <details class="help"><summary>ℹ So geht’s</summary><div class="info">Eine Tanzfolge ist eine Kette von Figuren, z.&nbsp;B. so, wie du sie in der Tanzschule gelernt hast. Jede Figur muss mit dem Fuß beginnen, der gerade frei ist: ⚠ zeigt, wo das nicht passt – auch in der Auswahlliste. Zum Umsortieren die Zeile am Griff ⠿ ziehen. „Link zum Teilen“ kopiert eine Adresse, die genau diese Tanzfolge enthält (mit deinen eigenen Figuren darin) – der Tanzpartner öffnet sie einfach im Browser. „Exportieren“ speichert alle eigenen Figuren und Tanzfolgen als Datei.</div></details>
     <label>Gespeicherte Tanzfolgen</label>
     <div class="row" style="margin-top:0">
       <select id="seqSel" style="flex:3"></select>
@@ -112,12 +123,11 @@
       <button id="importBtn" class="sec">⬆ Importieren</button>
       <input type="file" id="importFile" accept=".json" style="display:none">
     </div>
-    <div class="info">„Link zum Teilen“ kopiert eine Adresse, die genau diese Tanzfolge enthält (mit deinen eigenen Figuren darin) – der Tanzpartner öffnet sie einfach im Browser. Export speichert alle eigenen Figuren und Tanzfolgen als Datei.</div>
   </div>
 
   <!-- FIGUREN -->
   <div class="panel" id="p-fig">
-    <div class="info" style="margin-top:0">Hier legst du eigene Figuren Schritt für Schritt an. Ohne eigene Schritte tanzt die Dame gegengleich und wird geführt; für Solodrehungen, Platzwechsel usw. bekommt sie eigene Schritte. Vorgegebene Figuren kannst du als Kopie bearbeiten.</div>
+    <details class="help"><summary>ℹ So geht’s</summary><div class="info">Hier legst du eigene Figuren Schritt für Schritt an. Ohne eigene Schritte tanzt die Dame gegengleich und wird geführt; für Solodrehungen, Platzwechsel usw. bekommt sie eigene Schritte. Vorgegebene Figuren kannst du als Kopie bearbeiten.</div></details>
     <label>Figur</label>
     <div class="row" style="margin-top:0">
       <select id="figSel" style="flex:3"></select>
@@ -139,12 +149,12 @@
     </table>
     <div class="row"><button id="figAddStep" class="sec">+ Schritt</button></div>
     <div class="info" id="figSum"></div>
-    <div class="info">
+    <details class="help"><summary>ℹ Was bedeuten die Spalten?</summary><div class="info">
       <b>cm</b> = Schrittlänge · <b>Dreh°</b> = Drehung dieses Tänzers (+ links, − rechts). Die Richtung gilt aus dem Blick <i>vor</i> der Drehung, gedreht wird auf dem gesetzten Fuß (2 × „vor“ mit −180° = ganze Rechtsdrehung). · <b>Schl.</b> = Dauer in Schlägen (0,5 = „&amp;“) · <b>Zähl.</b> = Anzeige (1, 2, 3, Q, S, &amp; …).<br>
       <b>Haltung</b> gilt ab diesem Schritt: geschlossen, Promenade, beide Hände, eine Hand, Arm hoch (für Drehungen unter dem Arm), ohne Fassung.<br>
       „Seitlich über Kreuz“ = der Fuß kreuzt vor bzw. hinter dem Standbein zur anderen Seite (New Yorker, Promenade, Hand to Hand). „Platz“ = Gewicht auf diesen Fuß, ohne ihn zu bewegen. „Tap“ = antippen ohne Gewicht – der nächste Schritt kommt mit demselben Fuß. „Pause“ = stehen bleiben.<br>
       Der <b>Tanz</b>-Name bestimmt den Bewegungsstil: Walzer/Foxtrott mit Heben und Senken, Tango flach und tief, Cha-Cha/Rumba/Salsa mit Hüfte, Jive/Samba federnd.
-    </div>
+    </div></details>
     <div class="row">
       <button id="figPlay">▶ Ausprobieren</button>
       <button id="figSave">💾 Speichern</button>
@@ -192,23 +202,23 @@
   <span class="dot" style="background:#ff4d6d"></span>Dame &nbsp;|&nbsp; Maus: drehen / zoomen</div>
 
 <!-- Figuren-Bibliothek und Schritt-Engine (normale Skripte, damit die Seite auch direkt von der Festplatte läuft) -->
-<script src="js/basis.js?v=2611161649"></script>
-<script src="figuren/standard.js?v=2611161649"></script>
-<script src="figuren/latein.js?v=2611161649"></script>
-<script src="figuren/gesellschaft.js?v=2611161649"></script>
-<script src="figuren/karibik.js?v=2611161649"></script>
-<script src="figuren/weitere.js?v=2611161649"></script>
-<script src="figuren/mehr.js?v=2611161649"></script>
-<script src="figuren/wtp.js?v=2611161649"></script>
-<script src="figuren/folgen.js?v=2611161649"></script>
-<script src="js/speicher.js?v=2611161649"></script>
-<script src="js/engine.js?v=2611161649"></script>
-<script src="lib/three.js?v=2611161649"></script>
-<script src="lib/OrbitControls.js?v=2611161649"></script>
-<script src="lib/Reflector.js?v=2611161649"></script>
-<script src="js/szene.js?v=2611161649"></script>
-<script src="js/app.js?v=2611161649"></script>
-<script src="js/stream.js?v=2611161649"></script>
-<script src="js/editor.js?v=2611161649"></script>
+<script src="js/basis.js?v=2611161652"></script>
+<script src="figuren/standard.js?v=2611161652"></script>
+<script src="figuren/latein.js?v=2611161652"></script>
+<script src="figuren/gesellschaft.js?v=2611161652"></script>
+<script src="figuren/karibik.js?v=2611161652"></script>
+<script src="figuren/weitere.js?v=2611161652"></script>
+<script src="figuren/mehr.js?v=2611161652"></script>
+<script src="figuren/wtp.js?v=2611161652"></script>
+<script src="figuren/folgen.js?v=2611161652"></script>
+<script src="js/speicher.js?v=2611161652"></script>
+<script src="js/engine.js?v=2611161652"></script>
+<script src="lib/three.js?v=2611161652"></script>
+<script src="lib/OrbitControls.js?v=2611161652"></script>
+<script src="lib/Reflector.js?v=2611161652"></script>
+<script src="js/szene.js?v=2611161652"></script>
+<script src="js/app.js?v=2611161652"></script>
+<script src="js/stream.js?v=2611161652"></script>
+<script src="js/editor.js?v=2611161652"></script>
 </body>
 </html>

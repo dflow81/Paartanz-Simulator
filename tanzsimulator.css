@@ -41,8 +41,18 @@ hr{border:0;border-top:1px solid #333;margin:10px 0}
 
 #ui h1{display:flex;justify-content:space-between;align-items:center}
 #ui.min>:not(h1){display:none}
-details{margin-top:8px;border-top:1px solid #333;padding-top:6px}
-summary{cursor:pointer;font-size:13px;color:#cfd6ff;user-select:none}
+/* Aufklappbereiche als Karten, immer nur einer offen */
+details{margin-top:5px;background:#262935;border-radius:8px;padding:0 10px}
+details[open]{padding-bottom:10px;background:#2b2f3d}
+summary{cursor:pointer;font-size:13.5px;color:#e6e9f5;user-select:none;padding:8px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'▸';color:#8a90a6;font-size:12px} details[open]>summary::after{content:'▾'}
+summary:hover{color:#fff}
+details.help{background:none;padding:0;margin:0 0 4px} details.help summary{color:#9fb4ff;font-size:12.5px;padding:2px 0;justify-content:flex-start;gap:6px} details.help .info{margin-top:4px}
+.grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8a90a6;margin:14px 0 6px}
+.seqlist{max-height:26vh;overflow-y:auto;background:#1c1e27;border-radius:8px;padding:4px}
+label small{color:#888;font-size:11px}
+.transport button{padding:8px;font-size:15px}
 .seqlist div{cursor:pointer}
 .seqlist div:hover{background:#ffffff14}
 .item .grip{cursor:grab;color:#888;width:22px;font-size:12px;white-space:nowrap}
@@ -96,3 +106,4 @@ summary{cursor:pointer;font-size:13px;color:#cfd6ff;user-select:none}
 .spi:hover{background:#2c3350} .spi span{color:#888;font-size:11px}
 #spNow{display:flex;gap:8px;align-items:center;font-size:13px;margin-top:8px} #spNow img{width:44px;height:44px;border-radius:6px}
 #spInfo:empty{display:none}
+#ui,.seqlist,#streamBox,#guiSide,#spList{scrollbar-width:thin;scrollbar-color:#4a4f63 transparent}

@@ -506,7 +506,8 @@ function animate(){
       if($('sayCount').checked&&playing&&beat>=0&&s.d>=.5&&s.kind!=='halt') say(ZAHL[String(s.c??'').trim()]||'',1.7);
       if(lastH>=0) markStep(tl.H[lastH],'H');
       lastH=pH.idx;
-      document.querySelectorAll('#seqlist div').forEach(d=>d.classList.toggle('cur',+d.dataset.i===s.item));
+      document.querySelectorAll('#seqlist div').forEach(d=>{ const c=+d.dataset.i===s.item; d.classList.toggle('cur',c);
+        if(c){ const l=$('seqlist'), y=d.offsetTop-l.offsetTop; if(y<l.scrollTop||y+d.offsetHeight>l.scrollTop+l.clientHeight) l.scrollTop=y-l.clientHeight/3; } });   // aktuelle Figur in der Liste sichtbar halten
     }
     if(pD.idx!==lastD){ if(lastD>=0) markStep(tl.D[lastD],'D'); lastD=pD.idx; }
     prints.forEach(p=>p.material.opacity=Math.max(0,p.material.opacity-dt*.06));
