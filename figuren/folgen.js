@@ -72,3 +72,36 @@ folge('s_tangoam','Tango Americano – Folge',120,[['b_tam_gs',2],['b_tam_prom']
 folge('s_nordic','Nordic Tango – Folge',116,[['b_nt_gs',2],['b_nt_links',2],['b_nt_seit'],['b_nt_prom'],['b_nt_wiege'],['b_nt_rueck']]);
 folge('s_mambo','Mambo – Folge',190,[['b_ma_gs',2],['b_ma_seit'],['b_ma_dreh'],['b_ma_links',2]]);
 folge('s_marschfox','Marschfox – Folge',120,[['b_mf_geh',2],['b_mf_wechsel'],['b_mf_seit'],['b_mf_dreh',2],['b_mf_wiege'],['b_mf_rueck']]);
+
+/* Folgen mit den Figuren aus neu.js */
+folge('s_walzer5','Walzer – Telemark, Flechtschritt und Promenade',90,[['b_w_box'],['b_w_hover'],['b_w_balance'],['b_w_telemark'],['b_w_wiege'],['b_w_prom'],['b_w_box']]);
+folge('s_wiener3','Wiener Walzer – Balance und Fleckerl',174,[['b_ww_rechts',2],['b_ww_wr'],['b_ww_vor'],['b_ww_balance'],['b_ww_links',2],['b_ww_wl']]);
+folge('s_tango4','Tango – Stakkato und Fallaway',128,[['b_t_staccato'],['b_t_gs'],['b_t_fallaway'],['b_t_brush'],['b_t_geh']]);
+folge('s_slowfox4','Slowfox – Hover-Telemark und Welle',116,[['b_sf_feder'],['b_sf_hover'],['b_sf_wellen'],['b_sf_dreier'],['b_sf_impetus']]);
+folge('s_quick3','Quickstep – Laufschritte und Hüpfer',200,[['b_q_pepper'],['b_q_hops'],['b_q_rumpf'],['b_q_hops']]);
+folge('s_chacha7','Cha-Cha – Seitlich, am Platz, gehend',120,[['b_c_gs'],['b_c_seit'],['b_c_platz'],['b_c_vor'],['b_c_rueckl'],['b_c_offen2'],['b_c_gs']]);
+folge('s_rumba5','Rumba – Gehschritte und offene Basic',100,[['b_r_box'],['b_r_vorgeh'],['b_r_seitl'],['b_r_offen'],['b_r_platz'],['b_r_box']]);
+folge('s_samba3','Samba – Rollen und Promenaden-Läufe',100,[['b_sa_gs'],['b_sa_prog',2],['b_sa_rolle'],['b_sa_prom'],['b_sa_platz']]);
+folge('s_jive3','Jive – Walks, Chicken Walks, Flicks',150,[['b_j_gs'],['b_j_walk'],['b_j_chicken'],['b_j_flicks',2],['b_j_prom'],['b_j_gs']]);
+folge('s_paso3','Paso Doble – Huit und Banderillas',120,[['b_pd_platz'],['b_pd_huit'],['b_pd_banderillas'],['b_pd_seit'],['b_pd_marsch']]);
+folge('s_foxtrott4','Foxtrott – Check und Promenade mit Damendrehung',120,[['b_f_gs'],['b_f_check'],['b_f_viertelr'],['b_f_gs'],['b_f_promdreh'],['b_f_gs']]);
+folge('s_disco6','Discofox – Handwechsel und Linksdrehung',120,[['b_d_gs'],['b_d_rueckgs'],['b_d_drehl2'],['b_d_platz'],['b_d_handwechsel'],['b_d_platz'],['b_d_gs']]);
+folge('s_blues3','Blues – Promenade und Wiegen',80,[['b_bl_seit'],['b_bl_vorr',2],['b_bl_prom'],['b_bl_platz'],['b_bl_seit']]);
+folge('s_rr3',"Rock'n'Roll – Kreuzhand",150,[['b_rr_gs'],['b_rr_platz'],['b_rr_kreuz',2],['b_rr_gs']]);
+folge('s_polka3','Polka – seitwärts, Promenade, offen',120,[['b_p_gs',2],['b_p_seit',2],['b_p_prom',2],['b_p_offen',2]]);
+folge('s_salsa4','Salsa – Suzie Q und Copa',170,[['b_s_gs'],['b_s_rueckb'],['b_s_suzie'],['b_s_gs'],['b_s_copa'],['b_s_offen'],['b_s_platz']]);
+folge('s_bachata3','Bachata – Karree und offene Haltung',125,[['b_b_seit'],['b_b_box',2],['b_b_rueck'],['b_b_offen'],['b_b_sensual']]);
+folge('s_merengue3','Merengue – Kreuzhand und Paardrehung',130,[['b_m_platz'],['b_m_dreh',2],['b_m_rueck'],['b_m_offen'],['b_m_kreuz']]);
+folge('s_boogie3','Boogie – Kreuzhand und Kick-Ball-Change',160,[['b_bw_gs'],['b_bw_platz',2],['b_bw_kreuz'],['b_bw_rechts',2]]);
+folge('s_argentino3','Tango Argentino – Ochos',110,[['b_ta_geh'],['b_ta_ocho',2],['b_ta_seit'],['b_ta_ochor',2],['b_ta_cambio']]);
+folge('s_wcs3','West Coast Swing – Right Side Pass',105,[['b_wc_start2'],['b_wc_push'],['b_wc_passR'],['b_wc_push']]);
+folge('s_musette2','Walzer-Musette – Balance und Promenade',180,[['b_mu_gs'],['b_mu_balance'],['b_mu_vor'],['b_mu_prom'],['b_mu_gs']]);
+folge('s_tangowalzer2','Tangowalzer – Corté und Rechtsdrehung',180,[['b_tw_geh'],['b_tw_seit'],['b_tw_corte'],['b_tw_links'],['b_tw_geh']]);
+folge('s_discosamba2','Disco-Samba – vorwärts und offen',120,[['b_ds_gs'],['b_ds_vor',2],['b_ds_offen',2],['b_ds_platz']]);
+folge('s_twostep2','Two Step – Drehung rechts und offen',160,[['b_ts_gs'],['b_ts_rechts',2],['b_ts_seit'],['b_ts_offen'],['b_ts_gs']]);
+folge('s_bugg2','Bugg – geschlossen und Kreuzhand',140,[['b_bg_gs'],['b_bg_zu',2],['b_bg_seit'],['b_bg_kreuz',2],['b_bg_gs']]);
+folge('s_cumbia2','Cumbia – rückwärts und offen',100,[['b_cu_gs'],['b_cu_rueck'],['b_cu_offen'],['b_cu_platz']]);
+folge('s_tangoam2','Tango Americano – Gehschritte und Seitschritt',120,[['b_tam_geh'],['b_tam_seit'],['b_tam_rueck'],['b_tam_gs']]);
+folge('s_nordic2','Nordic Tango – Gehschritte und Rechtsdrehung',116,[['b_nt_geh'],['b_nt_rechts',2],['b_nt_platz'],['b_nt_gs']]);
+folge('s_mambo2','Mambo – Kreuzschritt und offen',190,[['b_ma_gs'],['b_ma_kreuz'],['b_ma_offen'],['b_ma_rechts',2],['b_ma_platz']]);
+folge('s_marschfox2','Marschfox – Drehungen und Promenade',120,[['b_mf_geh'],['b_mf_links',2],['b_mf_prom'],['b_mf_rechts',2],['b_mf_platz']]);
