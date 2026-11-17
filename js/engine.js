@@ -133,6 +133,7 @@ function simBlock(b,H,D,beat,extra,hs,ds){
     const h0=HOLDS[F.steps[0].hold]?F.steps[0].hold:'zu', g0=holdGeo(h0,sty);
     if(g0.exact||g0.face===0){ const want=startD(H,sty,h0), c=lerp(D.L,D.R,.5), w=lerp(want.L,want.R,.5); if(Math.hypot(c[0]-w[0],c[1]-w[1])>.4) Object.assign(D,want); } }
   let tH=beat,tD=beat,out=0;
+  const anf=own&&F.ganz?{c:lerp(H.L,H.R,.5),h:H.h,hold:HOLDS[F.steps[0].hold]?F.steps[0].hold:'zu'}:null;   // Stellung des Herrn am Anfang (für F.ganz)
   for(const s of F.steps){
     const d=Math.max(.25,+s.d||1), hold=HOLDS[s.hold]?s.hold:'zu';
     // Führungshinweis: eigener Text des Schritts, sonst automatisch bei Haltungswechsel oder Solodrehung des Herrn
@@ -154,7 +155,12 @@ function simBlock(b,H,D,beat,extra,hs,ds){
   }
   if(own){
     const half=Math.floor(F.dame.length/2);   // nachgeführt wird erst in der zweiten Hälfte der Figur – der Anfang (z. B. Ausweichen) bleibt, wie er ist
-    const run=(Dx,sh,rec)=>{ let t=beat; F.dame.forEach((s,i)=>{ const d=Math.max(.25,+s.d||1), r=doStep(Dx,tw(s),sty,t,d,null,sh&&i>=half?sh:null); if(rec) rec.push(Object.assign(r,meta,{turn:s.turn,tip:s.tip})); t+=d; }); return t; };
+    /* F.ganz: Figuren, die einen bestimmten Anfangsabstand brauchen (z. B. Stop and Go): Steht die Dame am Anfang näher oder weiter weg
+       als in dieser Haltung üblich, gleicht sie das in der ersten Hälfte Schritt für Schritt aus */
+    let pre=null;
+    if(anf){ const v0=dirv(anf.h), g0=holdGeo(anf.hold,sty), rel=sub(lerp(D.L,D.R,.5),anf.c), k=Math.max(1,F.dame.filter((s,i)=>i<half&&s.dir!=='halt'&&s.dir!=='platz').length);
+      pre=add(v0.fw.map(x=>x*(g0.gap-dot(rel,v0.fw))/k),v0.lf,(-g0.off-dot(rel,v0.lf))/k); }
+    const run=(Dx,sh,rec)=>{ let t=beat; F.dame.forEach((s,i)=>{ const d=Math.max(.25,+s.d||1), r=doStep(Dx,tw(s),sty,t,d,null,i>=half?sh:pre); if(rec) rec.push(Object.assign(r,meta,{turn:s.turn,tip:s.tip})); t+=d; }); return t; };
     // Probeläufe: Landet die Dame zu weit weg, zu nah oder seitlich versetzt, werden ihre Schritte ein wenig nachgeführt
     const v=dirv(H.h), g=holdGeo(H.hold,sty), near0=g.face===0||g.exact;   // nebeneinander (Körbchen, Schatten): genau an den Platz, sonst nur grob
     const n=Math.max(1,F.dame.filter((s,i)=>i>=half&&s.dir!=='halt'&&s.dir!=='platz').length-.5);
@@ -181,7 +187,7 @@ function simulate(blocks,st){
   const hs=[],ds=[]; let beat=0;
   for(let i=0;i<blocks.length;i++){
     let best=0, bc=Infinity;
-    for(const e of STEER){
+    for(const e of st.noSteer?[0]:STEER){   // noSteer: schnelle Probe ohne Raumlenkung (Folgen-Generator)
       const h=structuredClone(H), d=structuredClone(D); let c=Math.abs(e)*.002+(e*lastSteer<0?.03:0);
       for(let k=0;k<3;k++) c+=simBlock(blocks[(i+k)%blocks.length],h,d,0,e,[],[]).out*(k?5:10);   // Annahme: die Kurve wird beibehalten
       const p=pairCtr(h,d); c+=Math.hypot(p[0],p[1])*.004;

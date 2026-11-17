@@ -105,3 +105,25 @@ folge('s_tangoam2','Tango Americano – Gehschritte und Seitschritt',120,[['b_ta
 folge('s_nordic2','Nordic Tango – Gehschritte und Rechtsdrehung',116,[['b_nt_geh'],['b_nt_rechts',2],['b_nt_platz'],['b_nt_gs']]);
 folge('s_mambo2','Mambo – Kreuzschritt und offen',190,[['b_ma_gs'],['b_ma_kreuz'],['b_ma_offen'],['b_ma_rechts',2],['b_ma_platz']]);
 folge('s_marschfox2','Marschfox – Drehungen und Promenade',120,[['b_mf_geh'],['b_mf_links',2],['b_mf_prom'],['b_mf_rechts',2],['b_mf_platz']]);
+
+/* Kursfolgen: orientiert am Aufbau üblicher Tanzschulkurse (Einsteiger/WTP, Bronze, Silber, Gold) –
+   sinnvolle Übungsfolgen, keine offiziellen Verbandsfolgen */
+folge('k_disco1','Kursfolge Discofox – Einsteiger',120,[['b_d_gs',2],['b_d_solo'],['b_d_gs'],['b_d_pw'],['b_d_zu'],['b_d_korb'],['b_d_gs']]);
+folge('k_disco2','Kursfolge Discofox – Bronze',120,[['b_d_gs'],['b_d_pwr'],['b_d_zu'],['b_d_schatten'],['b_d_wickel'],['b_d_herrr'],['b_d_gs']]);
+folge('k_disco3','Kursfolge Discofox – Silber',120,[['b_d_gs'],['b_d_hegoes'],['b_d_tunnel'],['b_d_hammer'],['b_d_zu'],['b_d_doppel'],['b_d_gs']]);
+folge('k_disco4','Kursfolge Discofox – Gold',120,[['b_d_gs'],['b_d_brezel'],['b_d_schal'],['b_d_handwechsel'],['b_d_zu'],['b_d_gs']]);
+folge('k_walzer1','Kursfolge Langsamer Walzer – Einsteiger',90,[['b_w_box',2],['b_w_vw'],['b_w_nat'],['b_w_rw'],['b_w_rev']]);
+folge('k_walzer2','Kursfolge Langsamer Walzer – Bronze',90,[['b_w_vw'],['b_w_nat'],['b_w_rw'],['b_w_aussen'],['b_w_nat'],['b_w_vwr'],['b_w_wisch'],['b_w_chasse'],['b_w_rw'],['b_w_rev']]);
+folge('k_walzer3','Kursfolge Langsamer Walzer – Silber',90,[['b_w_vw'],['b_w_impetus'],['b_w_rw'],['b_w_rev'],['b_w_vw'],['b_w_kchasse'],['b_w_vwr'],['b_w_rev']]);
+folge('k_tango1','Kursfolge Tango – Einsteiger',128,[['b_t_gs'],['b_t_wiege'],['b_t_prom']]);
+folge('k_tango2','Kursfolge Tango – Bronze',128,[['b_t_geh'],['b_t_link'],['b_t_rechts'],['b_t_links'],['b_t_corte']]);
+folge('k_tango3','Kursfolge Tango – Gold',128,[['b_t_geh'],['b_t_fuenf'],['b_t_prom'],['b_t_aussen'],['b_t_link'],['b_t_oprom'],['b_t_corte']]);
+folge('k_chacha1','Kursfolge Cha-Cha-Cha – Einsteiger',120,[['b_c_gs',2],['b_c_solo'],['b_c_gs'],['b_c_ny']]);
+folge('k_chacha2','Kursfolge Cha-Cha-Cha – Silber',120,[['b_c_gs'],['b_c_fan'],['b_c_hockey'],['b_c_hip'],['b_c_alemana'],['b_c_open']]);
+folge('k_rumba1','Kursfolge Rumba – Einsteiger',100,[['b_r_box',2],['b_r_solo'],['b_r_box'],['b_r_ny']]);
+folge('k_rumba2','Kursfolge Rumba – Silber',100,[['b_r_box'],['b_r_open'],['b_r_fan'],['b_r_hockey'],['b_r_hip'],['b_r_alemana'],['b_r_spot']]);
+folge('k_jive1','Kursfolge Jive – Einsteiger',150,[['b_j_gs',2],['b_j_pwrl'],['b_j_pw'],['b_j_gs']]);
+folge('k_jive2','Kursfolge Jive – Bronze',150,[['b_j_gs'],['b_j_pwrl'],['b_j_amspin'],['b_j_pw'],['b_j_fall'],['b_j_gs']]);
+folge('k_jive3','Kursfolge Jive – Silber',150,[['b_j_gs'],['b_j_pwrl'],['b_j_amspin'],['b_j_stopgo'],['b_j_pw'],['b_j_gs']]);
+folge('k_samba1','Kursfolge Samba – Bronze',100,[['b_sa_gs',2],['b_sa_wisch'],['b_sa_walk'],['b_sa_prog']]);
+folge('k_samba2','Kursfolge Samba – Gold',100,[['b_sa_gs'],['b_sa_volta'],['b_sa_pbota'],['b_sa_swalk'],['b_sa_wisch']]);

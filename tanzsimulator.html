@@ -8,12 +8,13 @@
 <meta name="theme-color" content="#1b1d24">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
-<link rel="stylesheet" href="tanzsimulator.css?v=2611170538">
+<link rel="stylesheet" href="tanzsimulator.css?v=2611171457">
 </head>
 <body>
 <div id="ui">
   <h1><span>💃 Paartanz-Simulator <small id="build" title="Buildnummer: Datum und Uhrzeit dieser Version"></small></span> <button id="minBtn" class="mini sec" title="Menü ein- und ausklappen">▾</button></h1>
   <div class="row dance"><span>Tanz</span><select id="danceSel" title="Zeigt in allen Listen nur Figuren und Tanzfolgen dieses Tanzes"></select></div>
+  <div class="row dance filt"><span>Filter</span><select id="stufeSel" title="Kursstufe: zeigt nur Figuren bis zu dieser Stufe (Orientierung an üblichen Tanzschulkursen)"></select><select id="artSel" title="Figurentyp oder Haltung, in der die Figur beginnt"></select></div>
   <div class="tabs">
     <button data-tab="play" class="on">▶ Abspielen</button>
     <button data-tab="seq">Tanzfolgen</button>
@@ -23,7 +24,8 @@
   <!-- ABSPIELEN -->
   <div class="panel on" id="p-play">
     <label>Was soll getanzt werden?</label>
-    <div class="row" style="margin-top:0"><select id="source" style="flex:1;min-width:0"></select><button id="favBtn" class="mini sec" title="Als Favorit merken – Favoriten stehen in der Liste ganz oben">☆</button><button id="randBtn" class="mini sec" title="Zufallsfolge: stellt aus den Figuren dieses Tanzes eine passende Folge zusammen">🎲</button></div>
+    <div class="row" style="margin-top:0"><select id="source" style="flex:1;min-width:0"></select><button id="favBtn" class="mini sec" title="Als Favorit merken – Favoriten stehen in der Liste ganz oben">☆</button><button id="randBtn" class="mini sec" title="Zufallsfolge: stellt aus den Figuren dieses Tanzes (bis zur gewählten Stufe) eine gültige Folge zusammen – Einstellungen unter „Tanzfolgen“">🎲</button></div>
+    <details id="figInfo" class="figinfo"><summary></summary><div></div></details>
     <div class="row transport">
       <button id="backbtn" class="sec" title="einen Schritt zurück">⏮</button>
       <button id="play" style="flex:2">⏸ Pause</button>
@@ -109,6 +111,20 @@
   <!-- TANZFOLGEN -->
   <div class="panel" id="p-seq">
     <details class="help"><summary>ℹ So geht’s</summary><div class="info">Eine Tanzfolge ist eine Kette von Figuren, z.&nbsp;B. so, wie du sie in der Tanzschule gelernt hast. Jede Figur muss mit dem Fuß beginnen, der gerade frei ist: ⚠ zeigt, wo das nicht passt – auch in der Auswahlliste. Zum Umsortieren die Zeile am Griff ⠿ ziehen. „Link zum Teilen“ kopiert eine Adresse, die genau diese Tanzfolge enthält (mit deinen eigenen Figuren darin) – der Tanzpartner öffnet sie einfach im Browser. „Exportieren“ speichert alle eigenen Figuren und Tanzfolgen als Datei.</div></details>
+    <details class="gen" name="gen">
+      <summary>🎲 Folge automatisch erstellen</summary>
+      <div class="row" style="margin-top:6px">
+        <div style="flex:1"><label>Figuren</label><select id="genLen" class="full"><option>4</option><option>6</option><option selected>8</option><option>12</option><option>16</option></select></div>
+        <div style="flex:2"><label>Kursstufe bis</label><select id="genStufe" class="full"></select></div>
+      </div>
+      <label>Beginnen mit</label><select id="genStart" class="full"></select>
+      <label>Enden mit</label><select id="genEnde" class="full"></select>
+      <div class="chk"><input type="checkbox" id="genZu" checked><span>Am Ende zurück in die Grundhaltung</span></div>
+      <div class="chk"><input type="checkbox" id="genWdh"><span>Gleiche Figur direkt hintereinander erlauben</span></div>
+      <div class="row"><button id="genBtn">🎲 Folge erstellen</button></div>
+      <div id="genOut" class="info"></div>
+      <div class="info">Es werden nur Übergänge verwendet, bei denen Fuß und Haltung passen. Danach wird die ganze Folge durchgetanzt und auf falsche Füße und den Rand der Tanzfläche geprüft.</div>
+    </details>
     <label>Gespeicherte Tanzfolgen</label>
     <div class="row" style="margin-top:0">
       <select id="seqSel" style="flex:3"></select>
@@ -221,25 +237,28 @@
   <span class="dot" style="background:#ff4d6d"></span>Dame &nbsp;|&nbsp; Maus: drehen / zoomen</div>
 
 <!-- Figuren-Bibliothek und Schritt-Engine (normale Skripte, damit die Seite auch direkt von der Festplatte läuft) -->
-<script src="js/basis.js?v=2611170538"></script>
-<script src="figuren/standard.js?v=2611170538"></script>
-<script src="figuren/latein.js?v=2611170538"></script>
-<script src="figuren/gesellschaft.js?v=2611170538"></script>
-<script src="figuren/karibik.js?v=2611170538"></script>
-<script src="figuren/weitere.js?v=2611170538"></script>
-<script src="figuren/mehr.js?v=2611170538"></script>
-<script src="figuren/wtp.js?v=2611170538"></script>
-<script src="figuren/neu.js?v=2611170538"></script>
-<script src="figuren/folgen.js?v=2611170538"></script>
-<script src="js/speicher.js?v=2611170538"></script>
-<script src="js/engine.js?v=2611170538"></script>
-<script src="lib/three.js?v=2611170538"></script>
-<script src="lib/OrbitControls.js?v=2611170538"></script>
-<script src="lib/Reflector.js?v=2611170538"></script>
-<script src="js/szene.js?v=2611170538"></script>
-<script src="js/app.js?v=2611170538"></script>
-<script src="js/lernen.js?v=2611170538"></script>
-<script src="js/stream.js?v=2611170538"></script>
-<script src="js/editor.js?v=2611170538"></script>
+<script src="js/basis.js?v=2611171457"></script>
+<script src="figuren/standard.js?v=2611171457"></script>
+<script src="figuren/latein.js?v=2611171457"></script>
+<script src="figuren/gesellschaft.js?v=2611171457"></script>
+<script src="figuren/karibik.js?v=2611171457"></script>
+<script src="figuren/weitere.js?v=2611171457"></script>
+<script src="figuren/mehr.js?v=2611171457"></script>
+<script src="figuren/wtp.js?v=2611171457"></script>
+<script src="figuren/neu.js?v=2611171457"></script>
+<script src="figuren/kurs.js?v=2611171457"></script>
+<script src="figuren/folgen.js?v=2611171457"></script>
+<script src="figuren/info.js?v=2611171457"></script>
+<script src="js/speicher.js?v=2611171457"></script>
+<script src="js/engine.js?v=2611171457"></script>
+<script src="js/figurdaten.js?v=2611171457"></script>
+<script src="lib/three.js?v=2611171457"></script>
+<script src="lib/OrbitControls.js?v=2611171457"></script>
+<script src="lib/Reflector.js?v=2611171457"></script>
+<script src="js/szene.js?v=2611171457"></script>
+<script src="js/app.js?v=2611171457"></script>
+<script src="js/lernen.js?v=2611171457"></script>
+<script src="js/stream.js?v=2611171457"></script>
+<script src="js/editor.js?v=2611171457"></script>
 </body>
 </html>

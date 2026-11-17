@@ -121,3 +121,15 @@ label small{color:#888;font-size:11px}
 #learn .lrole{align-self:center;color:#bbb;font-size:12px} #learn button.on{background:#4b6bfb} #learn button:disabled{opacity:.4;cursor:default}
 @media (min-width:701px) and (max-width:1250px){ #learn{left:auto;right:12px;transform:none;bottom:60px;width:380px} }
 @media (max-width:700px){ #learn{top:6px;bottom:auto;font-size:12px;padding:8px 10px} }
+/* Filter, Karte „Zur Figur“, Folgen-Generator */
+.filt select{font-size:12.5px;padding:4px;min-width:0}
+.figinfo{margin-top:6px;background:#1c1e27;border-radius:8px;padding:4px 8px;font-size:12px;color:#ccc}
+.figinfo summary{cursor:pointer;font-size:12.5px;color:#ddd}
+.figinfo summary small{color:#8a90a6}
+.figinfo>div div{margin-top:3px;line-height:1.35}
+.figinfo .txt{color:#aaa}
+.figinfo .stars{color:#f5c542;letter-spacing:1px}
+details.gen{background:#1c1e27;border-radius:8px;padding:6px 8px;margin-bottom:8px}
+details.gen summary{cursor:pointer;font-size:13px}
+#genOut .err{color:#ff8a8a} #genOut .warn{color:#f5c542;margin-top:4px}
+#genOut details{margin-top:4px} #genOut summary{cursor:pointer}

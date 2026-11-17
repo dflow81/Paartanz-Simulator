@@ -86,6 +86,18 @@ const inDance=d=>curDance()===ALL||(d||'Sonstige')===curDance();
 const seqDance=s=>{ const f=allFigs(); for(const it of s.items) if(f[it.fig]) return f[it.fig].dance||'Sonstige'; return 'Sonstige'; };
 const startsRight=F=>{ const s=F.steps.find(s=>s.dir!=='halt'); return !!s&&s.f==='R'; };
 /* Anzeigename: innerhalb des gewählten Tanzes ohne Tanznamen, sonst mit */
+/* Kursstufe und Figurentyp/Haltung filtern die Figurenlisten (Tanzfolgen bleiben immer sichtbar) */
+const metaCache=new WeakMap();
+const metaOf=(k,F)=>{ let m=metaCache.get(F); if(!m){ m=figMeta(F,k); metaCache.set(F,m); } return m; };
+const filtStufe=()=>+$('stufeSel').value||5;
+const figSichtbar=(k,F)=>{ if(!inDance(F.dance)) return false; const m=metaOf(k,F), a=$('artSel').value;
+  return m.stufe<=filtStufe()&&(!a||(a.startsWith('h:')?m.haltStart===a.slice(2):m.art===a)); };
+function fillFilter(){
+  $('stufeSel').innerHTML='<option value="5">alle Kursstufen</option>'+[1,2,3,4].map(i=>`<option value="${i}">bis ${STUFEN[i]}</option>`).join('');
+  $('artSel').innerHTML='<option value="">alle Figuren</option><optgroup label="Figurentyp">'+Object.entries(ARTEN).map(([k,v])=>`<option value="${k}">${v}</option>`).join('')
+    +'</optgroup><optgroup label="Beginnt in der Haltung">'+Object.entries(HOLDS).map(([k,v])=>`<option value="h:${k}">${v[0]}</option>`).join('')+'</optgroup>';
+  $('stufeSel').value=String(look.st||5); $('artSel').value=look.art||''; if($('artSel').selectedIndex<0) $('artSel').value='';
+}
 const figLabel=(F,full=!inDance(F.dance)||curDance()===ALL)=>(F.builtin?(full?F.dance+' – ':'')+F.name:F.name+' ★')+(startsRight(F)?' · beginnt rechts':'');
 function fillDance(){
   const set=new Set(DANCES); for(const f of Object.values(user.figures)) set.add(f.dance||'Sonstige');
@@ -99,10 +111,13 @@ function fillSource(selectKey){
   const lab=key=>{ const [t,k]=key.split(':'); if(t==='seq') return user.seqs[k]?user.seqs[k].name:null; const f=allFigs()[k]; return f?figLabel(f,true):null; };
   const grp=(titel,keys)=>{ const o=keys.map(k=>[k,lab(k)]).filter(x=>x[1]).map(([k,n])=>`<option value="${k}">${esc(n)}</option>`).join(''); return o?`<optgroup label="${titel}">${o}</optgroup>`:''; };
   let h0=grp('★ Favoriten',look.fav||[])+grp('Zuletzt getanzt',(look.rec||[]).filter(k=>!(look.fav||[]).includes(k)));
-  let h=h0+(seqs.length?'<optgroup label="Tanzfolgen">'+seqs.map(([k,s])=>`<option value="seq:${k}">${esc(s.name)}</option>`).join('')+'</optgroup>':'');
-  const groups={}; for(const [k,f] of Object.entries(allFigs())) if(inDance(f.dance)) (groups[f.dance||'Sonstige']??=[]).push([k,f]);
-  for(const [d,list] of Object.entries(groups)) h+=`<optgroup label="${all?'Figuren: '+esc(d):'Einzelne Figuren'}">`+list.map(([k,f])=>`<option value="fig:${k}">${esc(figLabel(f,false))}</option>`).join('')+'</optgroup>';
-  sel.innerHTML=h; sel.value=keep; if(sel.selectedIndex<0&&sel.options.length) sel.selectedIndex=sel.querySelector('optgroup[label="Tanzfolgen"] option, optgroup[label^="Figuren"] option, optgroup[label="Einzelne Figuren"] option')?.index??0;
+  // Tanzfolgen nach Herkunft: Kursfolgen, Beispielfolgen, eigene und automatisch erstellte
+  const sArt=([k,s])=>s.auto?'Automatisch erstellte Folgen':DEFAULT_SEQS[k]?(/^k_/.test(k)?'Kursfolgen':'Beispielfolgen'):'Eigene Tanzfolgen';
+  let h=h0; for(const g of ['Kursfolgen','Beispielfolgen','Eigene Tanzfolgen','Automatisch erstellte Folgen']){ const l=seqs.filter(e=>sArt(e)===g);
+    if(l.length) h+=`<optgroup label="${g}" data-s="1">`+l.map(([k,s])=>`<option value="seq:${k}">${esc(s.name)}</option>`).join('')+'</optgroup>'; }
+  const groups={}; for(const [k,f] of Object.entries(allFigs())) if(figSichtbar(k,f)) (groups[f.dance||'Sonstige']??=[]).push([k,f]);
+  for(const [d,list] of Object.entries(groups)) h+=`<optgroup label="${all?'Figuren: '+esc(d):'Einzelne Figuren'}" data-f="1">`+list.map(([k,f])=>`<option value="fig:${k}">${esc(figLabel(f,false))} · ${STUFEN[metaOf(k,f).stufe].replace(' (WTP 1)','')}</option>`).join('')+'</optgroup>';
+  sel.innerHTML=h; sel.value=keep; if(sel.selectedIndex<0&&sel.options.length) sel.selectedIndex=sel.querySelector('optgroup[data-s] option, optgroup[data-f] option')?.index??0;
   updFav();
 }
 const updFav=()=>{ const on=(look.fav||[]).includes($('source').value); $('favBtn').textContent=on?'★':'☆'; $('favBtn').classList.toggle('on',on); };
@@ -129,7 +144,7 @@ let seqEdit=null, seqKey=null;
 /* Passt die Figur an dieser Stelle? side = Fuß, auf dem vorher das Gewicht steht (1 = links, −1 = rechts, 0 = egal) */
 const footFits=(F,side)=>{ const s=F.steps.find(s=>s.dir!=='halt'); return !side||!s||/^(tap|kick|platz)/.test(s.dir)||(s.f==='L'?1:-1)!==side; };
 function figOptions(sel,side=0){ // Figuren des gewählten Tanzes; eine bereits eingetragene Figur eines anderen Tanzes bleibt wählbar
-  return Object.entries(allFigs()).filter(([k,f])=>inDance(f.dance)||k===sel).map(([k,f])=>`<option value="${k}" ${k===sel?'selected':''}>${footFits(f,side)?'':'⚠ '}${esc(figLabel(f))}</option>`).join('');
+  return Object.entries(allFigs()).filter(([k,f])=>figSichtbar(k,f)||k===sel).map(([k,f])=>`<option value="${k}" ${k===sel?'selected':''}>${footFits(f,side)?'':'⚠ '}${esc(figLabel(f))}</option>`).join('');
 }
 /* Für jede Zeile der bearbeiteten Folge: belasteter Fuß davor und ob irgendwo mit dem falschen Fuß begonnen wird */
 function seqFootInfo(){
@@ -174,21 +189,31 @@ $('seqDel').onclick=()=>{ if(!seqKey||!confirm('Tanzfolge „'+user.seqs[seqKey]
 $('seqAdd').onclick=()=>{const last=seqEdit.items.at(-1); seqEdit.items.push({fig:last?last.fig:firstFig(),rep:1}); renderSeqItems();};
 $('seqSave').onclick=()=>{ readSeq(); if(!seqKey) seqKey=uid('s_'); user.seqs[seqKey]=structuredClone(seqEdit); saveStore();
   fillSeqSel(); fillSource('seq:'+seqKey); flash($('seqSave'),'✔ Gespeichert'); };
-/* Zufallsfolge: Figuren des Tanzes aneinanderreihen, sodass Fuß und Tanzhaltung an jeder Stelle passen */
-$('randBtn').onclick=()=>{
-  const figs=allFigs(), cur=src&&src.items[0]&&figs[src.items[0].fig], dance=curDance()===ALL?(cur?cur.dance:'Langsamer Walzer'):curDance();
-  const pool=Object.entries(figs).filter(([k,f])=>(f.dance||'Sonstige')===dance&&f.steps&&f.steps.length), items=[], room={...ROOM}, ls=lastSteer;
-  let st={H:startH()}, last=''; ROOM.w=ROOM.d=400;
-  try{ for(let i=0;i<8;i++){ const hold=st.H.hold||'zu'; let ok=[];
-      for(const streng of [true,false]){ if(ok.length) break;   // erst mit passender Tanzhaltung suchen, sonst nur mit passendem Fuß
-        for(const [k,f] of pool){ if(k===last&&pool.length>1||streng&&i>0&&(f.steps[0].hold||'zu')!==hold) continue;
-          const r=simulate([{F:f,item:i,rep:1,reps:1}],st); if(!r.H.concat(r.D).some(x=>x.warn)) ok.push([k,r]); } }
-      if(!ok.length) break; const [k,r]=ok[Math.floor(Math.random()*ok.length)]; items.push({fig:k,rep:1}); st=r.end; last=k; }
-  } finally { ROOM.w=room.w; ROOM.d=room.d; lastSteer=ls; }
-  if(!items.length) return;
-  const sq={name:'Zufallsfolge – '+dance,bpm:figs[items[0].fig].bpm||100,items};
-  seqKey=null; seqEdit=structuredClone(sq); $('seqName').value=sq.name; $('seqBpm').value=sq.bpm; renderSeqItems(); $('seqSel').value='';   // steht auch unter „Tanzfolgen“ zum Speichern bereit
-  setSource(sq); setPlaying(true); flash($('randBtn'),'✔'); };
+/* ---------- Folgen-Generator (Regeln in js/figurdaten.js): nur gültige Übergänge, wahlweise mit Start-/Endfigur und Rückkehr in die Grundhaltung ---------- */
+const genDance=()=>{ if(curDance()!==ALL) return curDance(); const f=src&&src.items[0]&&allFigs()[src.items[0].fig]; return f?f.dance:'Langsamer Walzer'; };
+function fillGen(){
+  const d=genDance(), g=look.gen||{}, opts=Object.entries(allFigs()).filter(([k,f])=>(f.dance||'Sonstige')===d&&f.steps&&f.steps.length).map(([k,f])=>`<option value="${k}">${esc(f.name)}</option>`).join('');
+  $('genStufe').innerHTML=[1,2,3,4,5].map(i=>`<option value="${i}">${STUFEN[i]}</option>`).join(''); $('genStufe').value=String(g.st||filtStufe());
+  $('genLen').value=String(g.len||8); $('genZu').checked=g.zu!==false; $('genWdh').checked=!!g.wdh;
+  for(const id of ['genStart','genEnde']){ const v=$(id).value; $(id).innerHTML='<option value="">beliebig</option>'+opts; $(id).value=v; if($(id).selectedIndex<0) $(id).value=''; }
+}
+function erzeuge(laut){
+  const d=genDance(), o={tanz:d,bisStufe:+$('genStufe').value||filtStufe(),laenge:+$('genLen').value||8,start:$('genStart').value||null,ende:$('genEnde').value||null,zurueck:$('genZu').checked,wdh:$('genWdh').checked};
+  const ls=lastSteer; let r; try{ r=folgeErzeugen(o); } finally{ lastSteer=ls; }
+  const li=(t,c)=>t.length?`<div class="${c}">${t.map(x=>'• '+esc(x)).join('<br>')}</div>`:'';
+  $('genOut').innerHTML=r.fehler.length?li(r.fehler,'err'):`✔ ${r.items.length} Figuren, alle Übergänge geprüft.`+li(r.warnungen,'warn')+(r.hinweise.length?`<details><summary>${r.hinweise.length} Hinweis(e)</summary>${li(r.hinweise,'')}</details>`:'');
+  if(r.fehler.length||!r.items.length){ if(!laut) flash($('randBtn'),'✖'); return; }
+  const sq={name:`Automatische Folge – ${d} (bis ${STUFEN[o.bisStufe].replace(' (WTP 1)','')})`,bpm:allFigs()[r.items[0].fig].bpm||100,items:r.items,auto:true};
+  seqKey=null; seqEdit=structuredClone(sq); $('seqName').value=sq.name; $('seqBpm').value=sq.bpm; renderSeqItems(); $('seqSel').value='';   // steht unter „Tanzfolgen“ zum Speichern bereit
+  setSource(sq); setPlaying(true); flash(laut?$('genBtn'):$('randBtn'),'✔');
+}
+const saveGen=()=>{ look.gen={len:+$('genLen').value,st:+$('genStufe').value,zu:$('genZu').checked,wdh:$('genWdh').checked}; saveLook(); };
+['genLen','genStufe','genZu','genWdh'].forEach(id=>$(id).addEventListener('change',saveGen));
+document.querySelector('details.gen').addEventListener('toggle',e=>{ if(e.target.open) fillGenKeep(); });
+$('genBtn').onclick=()=>{ fillGenKeep(); erzeuge(true); };
+$('randBtn').onclick=()=>{ fillGenKeep(); erzeuge(false); };
+/* Vor dem Erzeugen: Start- und Endfigur zum aktuellen Tanz anbieten (bei Tanzwechsel neu füllen) */
+const fillGenKeep=()=>{ const d=genDance(); if($('genStart').dataset.d!==d){ fillGen(); $('genStart').dataset.d=d; } };
 $('seqPlay').onclick=()=>{ readSeq(); setSource(structuredClone(seqEdit)); setPlaying(true); gotoPlay(); };
 
 /* ================= Figuren-Editor ================= */
@@ -300,8 +325,9 @@ function applyDance(play){
   if(play&&$('source').options.length){ $('source').selectedIndex=0; const s=sourceFromKey($('source').value); if(s){ setSource(s); setPlaying(true); } }
 }
 $('danceSel').onchange=()=>{ user.dance=curDance(); saveStore(); applyDance(true); };
+$('stufeSel').onchange=$('artSel').onchange=()=>{ look.st=filtStufe(); look.art=$('artSel').value; saveLook(); fillSource(); if(seqEdit) renderSeqItems(); };
 const sharedKey=importShared();
-fillDance(); applyDance(true);
+fillFilter(); fillDance(); applyDance(true);
 if(sharedKey){ fillSource('seq:'+sharedKey); const s=sourceFromKey('seq:'+sharedKey); if(s){ setSource(s); setPlaying(true); } loadSeq(sharedKey); fillSeqSel(); }
 
 /* ---------- Schritte der Figur erklären ---------- */
@@ -313,7 +339,21 @@ function renderExplain(){
   const {H,D}=figSteps(tl,exItem), n=Math.max(H.length,D.length); let h=`<div><b>${esc(H[0]?H[0].fig:'')}</b> – Haltung: ${H[0]?HOLDS[H[0].hold][1]:''}</div>`;
   for(let i=0;i<n;i++){ const a=H[i], b=D[i];
     h+=`<div class="ex"><b>${esc((a||b).c||i+1)}</b><span class="h">${a?'Herr: '+esc(stepText(a)+cm(a)):''}</span><span class="d">${b?'Dame: '+esc(stepText(b)+cm(b)):''}</span>${a&&a.tip?`<span class="tp">💡 ${esc(a.tip)}</span>`:''}</div>`; }
-  $('explain').innerHTML=h;
+  $('explain').innerHTML=h; zeigeFigInfo();
+}
+/* Karte „Zur Figur“: Stufe, Rhythmus, Füße, Haltung, Beschreibung und mögliche Anschlüsse der gerade getanzten Figur */
+function zeigeFigInfo(){
+  const box=$('figInfo'), it=src&&src.items[Math.max(0,exItem)], figs=allFigs(), F=it&&figs[it.fig];
+  if(!F){ box.style.display='none'; return; } box.style.display='';
+  const m=metaOf(it.fig,F), kurz=n=>n.replace(/\s*\(.*?\)/g,''), fn=x=>x.start?fussName(x.start)+' → '+fussName(x.ende):'–';
+  const nx=anschluesse(it.fig,figs,metaOf).slice(0,6).map(k=>kurz(figs[k].name));
+  box.querySelector('summary').innerHTML=`ℹ ${esc(kurz(F.name))} <small>· ${STUFEN[m.stufe]}${m.stufeFest?'':' (geschätzt)'}</small>`;
+  box.querySelector('div').innerHTML=`<div>${esc(m.tanz)} · ${ARTEN[m.art]} · Schwierigkeit <span class="stars" title="${m.schwer} von 5">${'★'.repeat(m.schwer)}${'☆'.repeat(5-m.schwer)}</span></div>
+    <div>Zählzeiten: ${esc(m.rhythmus)} <small>(${m.schlaege} Schläge = ${String(m.takte).replace('.',',')} Takte)</small></div>
+    <div>Füße (Start → Gewicht am Ende): Herr ${fn(m.herr)} · Dame ${fn(m.dame)}</div>
+    <div>Haltung: ${HOLDS[m.haltStart][0]}${m.haltEnde!==m.haltStart?' → '+HOLDS[m.haltEnde][0]:''}${m.drehung?' · '+drehText(m.drehung):''}</div>
+    <div class="txt">${esc(m.text)}${m.vereinfacht?' <i>Vereinfachte Darstellung: die Armführung wird nicht gezeigt.</i>':''}</div>
+    ${nx.length?`<div><small>Passt danach z. B.: ${nx.map(esc).join(', ')}</small></div>`:'<div><small>Keine passende Anschlussfigur in diesem Tanz.</small></div>'}`;
 }
 const readSteps=w=>{ if(!tl||exItem<0) return; const st=figSteps(tl,exItem)[w]; say((w==='H'?'Herr. ':'Dame. ')+st.map((s,i)=>`${ZAHL[String(s.c??'').trim()]||i+1}: ${stepText(s).replace(' · ',', ')}`).join('. '),1); };
 $('readH').onclick=()=>readSteps('H'); $('readD').onclick=()=>readSteps('D');
