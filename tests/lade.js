@@ -2,7 +2,7 @@
    aber ohne Browserfenster (alles außer three.js und der Seite). Gibt den Kontext mit allen Funktionen zurück. */
 const fs=require('fs'), vm=require('vm'), path=require('path');
 const ROOT=path.join(__dirname,'..');
-const OHNE_FENSTER=/^(js\/basis|figuren\/|js\/speicher|js\/engine|js\/figurdaten)/;
+const OHNE_FENSTER=/^(js\/basis|figuren\/|js\/speicher|js\/engine|js\/figurdaten|js\/technik)/;
 /* Alle Skripte, die die Seite lädt, in ihrer Reihenfolge */
 function skripte(){
   const html=fs.readFileSync(path.join(ROOT,'tanzsimulator.html'),'utf8');

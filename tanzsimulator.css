@@ -133,3 +133,16 @@ details.gen{background:#1c1e27;border-radius:8px;padding:6px 8px;margin-bottom:8
 details.gen summary{cursor:pointer;font-size:13px}
 #genOut .err{color:#ff8a8a} #genOut .warn{color:#f5c542;margin-top:4px}
 #genOut details{margin-top:4px} #genOut summary{cursor:pointer}
+/* Technikdaten, Tanzlehrer, Profi-Lernmodus, Turniermodus */
+table.tech{font-size:10.5px;margin-top:2px} table.tech th,table.tech td{padding:1px 3px;border-bottom:1px solid #2c2f3a;white-space:nowrap}
+.tcap{font-size:12px;color:#ddd;margin-top:8px} #techBox{overflow-x:auto}
+#lehrer{position:absolute;top:12px;right:12px;width:430px;max-width:calc(100vw - 24px);max-height:calc(100% - 90px);overflow-y:auto;box-sizing:border-box;background:rgba(20,22,30,.97);border:1px solid #4b6bfb;border-radius:12px;padding:10px 14px;z-index:6;font-size:13px;line-height:1.4}
+#lehrer[hidden],#profi[hidden],#turnierInfo[hidden]{display:none}
+#lehrer .lhead,#profi .lhead{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px}
+#lehrer h4{margin:10px 0 2px;font-size:13px;color:#ffd166} #lehrer p{margin:2px 0} #lehrer ul{margin:2px 0;padding-left:18px}
+#profi{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);width:460px;max-width:calc(100vw - 24px);box-sizing:border-box;background:rgba(20,22,30,.95);border:1px solid #ffd166;border-radius:12px;padding:10px 14px;z-index:5;font-size:13px;line-height:1.4}
+#proSchritt{font-size:18px;color:#ffd166;margin-top:4px} #proInfo{color:#ccc;margin-top:2px;min-height:36px}
+#profi button.on{background:#4b6bfb} #profi .lrole{align-self:center;color:#bbb;font-size:12px} #proAuto{flex:1;min-width:0}
+#turnierInfo{font-size:13px;margin-top:6px;color:#bfe3ff;max-width:46vw;margin-left:auto;text-shadow:0 1px 6px #000}
+.qz{margin-top:6px} .qf{color:#ff8a8a} .qw{color:#f5c542}
+@media (min-width:701px) and (max-width:1250px){ #profi{left:auto;right:12px;transform:none;bottom:60px;width:400px} }

@@ -6,11 +6,16 @@ Ein 3D-Simulator im Browser zum Lernen und Üben von Paartänzen. Herr und Dame 
 
 ## Was er kann
 
-- **31 Tänze, 397 Figuren und 118 Beispiel- und Kursfolgen:** Langsamer Walzer, Wiener Walzer, Tango, Slowfox, Quickstep, Foxtrott, Discofox, Blues, Rock'n'Roll, Polka, Cha-Cha-Cha, Rumba, Samba, Jive, Paso Doble, Salsa, Bachata, Merengue, Boogie-Woogie, Tango Argentino, West Coast Swing Dazu die übrigen Tänze des Welttanzprogramms: Walzer-Musette, Tangowalzer, Disco-Samba, Two Step, Bugg, Cumbia, Tango Americano, Nordic Tango, Mambo und Marschfox.
+- **31 Tänze, 454 Figuren und 118 Beispiel- und Kursfolgen:** Langsamer Walzer, Wiener Walzer, Tango, Slowfox, Quickstep, Foxtrott, Discofox, Blues, Rock'n'Roll, Polka, Cha-Cha-Cha, Rumba, Samba, Jive, Paso Doble, Salsa, Bachata, Merengue, Boogie-Woogie, Tango Argentino, West Coast Swing Dazu die übrigen Tänze des Welttanzprogramms: Walzer-Musette, Tangowalzer, Disco-Samba, Two Step, Bugg, Cumbia, Tango Americano, Nordic Tango, Mambo und Marschfox.
 - **Fertige Tanzfolgen** für jeden Tanz, dazu eigene Folgen und eigene Figuren im Editor
-- **Kursstufen** (Einsteiger/WTP 1, Bronze, Silber, Gold, Freies Tanzen) und **Filter** nach Stufe, Figurentyp und Haltung – orientiert an üblichen Tanzschulkursen, keine offizielle Zuordnung
+- **Kursstufen** (Einsteiger/WTP 1, Bronze, Silber, Gold, Goldstar, Turnier, Freies Tanzen) und **Filter** nach Stufe, Figurentyp und Haltung – orientiert an üblichen Tanzschulkursen, keine offizielle Zuordnung
 - **Karte „Zur Figur“:** Stufe, Schwierigkeit, Zählzeiten, Start- und Endfuß, Haltung, Beschreibung und passende Anschlussfiguren
 - **Folgen-Generator:** erstellt gültige Folgen nach Tanz, Kursstufe, Länge, Start- und Endfigur, auf Wunsch mit Rückkehr in die Grundhaltung – nur mit Übergängen, bei denen Fuß und Haltung passen
+- **Technikdaten je Schritt** (einblendbar): Belastungsfuß, freier Fuß, Fußtechnik, Heben und Senken, CBM, CBMP, Sway, Ausrichtung – aus den Schritten abgeleitet, als Lernhilfe
+- **Tanzlehrer-Ansicht:** Beschreibung, Technik, typische Fehler, Hinweise für Herren und Damen, Unterrichtsmodus
+- **Profi-Lernmodus:** Stopp nach jedem Schritt, belasteter Fuß und nächster Schritt am Boden markiert, Zählzeit wird angesagt
+- **Turniermodus:** Tanzrichtung, Ausrichtung, Ecken und Raumaufteilung auf der Fläche
+- **Figuren-Qualitätsprüfung:** meldet Fehler bei Füßen, Gewichtswechsel, Takt und Anschlüssen
 - **Realistische Bewegung:** Gewichtsverlagerung, Fußabrollen, Heben und Senken im Walzer, Hüftbewegung in Latein, Federn im Jive
 - **Tanzhaltungen:** geschlossen, Promenade, offen, eine Hand, Arm hoch, Kreuzhand, Körbchen, Schattenposition, Fächer
 - **Die Dame tanzt eigene Schritte** bei Solodrehungen, Platzwechseln, New Yorker usw. – sonst gegengleich
@@ -56,8 +61,11 @@ Repository herunterladen und `tanzsimulator.html` (oder `index.html`) im Browser
 | `figuren/info.js` | Kursstufe, Figurentyp und Beschreibung je Figur |
 | `js/engine.js` | Schritt-Engine: Fußpositionen, Gewicht, Drehungen, Raumbegrenzung |
 | `js/figurdaten.js` | Figuren-Metadaten, Übergangsprüfung und Folgen-Generator |
-| `tests/` | Tests (`node tests/test.js`, `node tests/start.mjs`) und Erzeugung von `docs/tanzfiguren.md` |
-| `docs/tanzfiguren.md` | Tabelle aller Figuren mit Stufe, Rhythmus, Füßen und Anschlüssen |
+| `figuren/syllabus.js` | Abgleichliste der Figuren je Stufe |
+| `js/technik.js`, `js/profi.js` | Technikdaten, Tanzlehrer, Profi-Lernmodus, Turniermodus, Qualitätsprüfung |
+| `tests/` | Tests (`node tests/test.js`, `node tests/start.mjs`) und Erzeugung der Kataloge (`node tests/doku.js`) |
+| `docs/` | [Figurenkatalog](docs/figurenkatalog.md), [Tanzkatalog](docs/tanzkatalog.md), [Technikkatalog](docs/technikkatalog.md), [Analyse](docs/analyse.md), [Figurenlücken](docs/figurenluecken.md), [Entwicklerdokumentation](docs/entwickler.md) |
+| `CHANGELOG.md` | Änderungsprotokoll |
 | `js/szene.js` | 3D-Szene, Tänzer, Arme und Haltungen, Schrittdiagramm |
 | `js/app.js` | Wiedergabe, Editoren, Musik und Ansagen |
 | `js/editor.js` | grafischer Figuren-Editor (Schrittplan) |
@@ -92,17 +100,17 @@ tanz('Foxtrott',120,{
    `S(Fuß, Richtung, cm, Schläge, Zählung, Drehung°, Haltung)`: Drehung positiv = links, negativ = rechts. Ein dritter Eintrag mit Schritten für die Dame macht ihre Schritte unabhängig (Solodrehungen, Platzwechsel). Ohne ihn tanzt sie gegengleich.
 2. In `figuren/info.js` Kursstufe, Typ und Beschreibung eintragen, z. B. `set({f_beispiel:2},{f_beispiel:'Kurze Beschreibung'})`.
 3. `node tests/test.js` ausführen. Die Tests melden falsche Füße, fehlende Angaben und ungültige Folgen.
-4. `node tests/doku.js` ausführen. Das aktualisiert `docs/tanzfiguren.md`.
+4. `node tests/doku.js` ausführen. Das aktualisiert die Kataloge unter `docs/`.
 5. Die `?v=`-Nummer in `tanzsimulator.html` hochsetzen, damit Browser die neue Version laden.
 
 ## Hinweis
 
 Die Figuren sind vereinfachte Tanzschul-Versionen und können von dem abweichen, was in deiner Tanzschule unterrichtet wird. Korrekturen und Ergänzungen sind willkommen.
 
-**Kursstufen und Kursfolgen** orientieren sich am Aufbau üblicher Tanzschulkurse (Welttanzprogramm, Bronze, Silber, Gold). Sie sind keine offiziellen Vorgaben des ADTV oder eines anderen Verbands. Festgelegt sind die Stufen für Discofox, Langsamen Walzer, Tango, Cha-Cha-Cha, Rumba, Jive und Samba, für die übrigen Tänze sind sie geschätzt.
+**Kursstufen, Kursfolgen und die Abgleichliste** orientieren sich am Aufbau üblicher Tanzschulkurse und an allgemein bekannten Figurennamen. Sie sind keine offiziellen Lehrpläne von ADTV, DTV, ISTD oder WDSF. Die Aufbaufiguren sind schematisch beschrieben, die Technikdaten aus den Schritten abgeleitet; beides ersetzt kein Technikbuch und keinen Tanzlehrer. Figuren ohne Eintrag bekommen eine aus dem Schwierigkeitsgrad geschätzte Stufe.
 
 **Bekannte Einschränkungen**
 - Die Engine kennt Haltungen (Fassungen), aber keine einzelnen Arm- und Handbewegungen. Brezel, Hammerlock, Schal, Tunnel und He Goes – She Goes werden über Positionen, Drehungen und Führungshinweise gezeigt; sie sind in der Figurenkarte als „vereinfacht“ markiert.
-- Nicht umgesetzt sind Figuren, die vor allem von der Armführung oder von genauen Handwechseln leben. Das sind im Discofox der Schulterfasser, im Cha-Cha-Cha der Turkish Towel und im Jive die Windmill. Die Tango-„Kehre“ fehlt, weil der Begriff nicht eindeutig ist. Eine ähnliche Wendung steckt in „Rechtsdrehung aus der Promenade“. „Wrap“ entspricht im Discofox dem Körbchen.
+- Noch fehlende Figuren stehen priorisiert in [docs/figurenluecken.md](docs/figurenluecken.md). Die Tango-„Kehre“ fehlt, weil der Begriff nicht eindeutig ist. „Wrap“ entspricht im Discofox dem Körbchen.
 - Figuren mit eigenen Schritten der Dame setzen einen üblichen Anfangsabstand voraus. Bei Unterarmdrehungen und Körbchen-Figuren kommen sich die Partner teils sehr nah (unter 25 cm Körpermitte zu Körpermitte).
 - Wechselfiguren (z. B. Vorwärts-Wechsel) beginnen und enden auf demselben Fuß. Allein in Schleife abgespielt, zeigen sie deshalb ⚠.

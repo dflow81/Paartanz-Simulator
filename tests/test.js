@@ -18,7 +18,7 @@ const c=ladeAlles();
 const R=code=>lauf(c,code);
 
 /* ---------- 1–3, 9, 12: Figuren laden, gültige Schritte, Start- und Endfuß ---------- */
-test('mindestens 397 Figuren in 31 Tänzen geladen',()=>R(`Object.keys(BUILTIN).length>=397&&DANCES.length===31`)||R(`Object.keys(BUILTIN).length+' Figuren, '+DANCES.length+' Tänze'`));
+test('mindestens 450 Figuren in 31 Tänzen geladen',()=>R(`Object.keys(BUILTIN).length>=450&&DANCES.length===31`)||R(`Object.keys(BUILTIN).length+' Figuren, '+DANCES.length+' Tänze'`));
 test('jeder Schritt hat gültigen Fuß, Richtung, Länge, Dauer, Drehung, Haltung und Zählzeit',()=>liste(R(`(()=>{ const bad=[];
   for(const [k,F] of Object.entries(BUILTIN)) for(const [w,st] of [['H',F.steps],['D',F.dame||[]]]) st.forEach((s,i)=>{
     const p=k+'/'+w+(i+1);
@@ -40,8 +40,8 @@ test('jede Figur läuft ohne Fehler durch die Engine',()=>liste(R(`Object.keys(B
 test('in keiner Figur wird mit dem belasteten Fuß geschritten (einmal getanzt)',()=>liste(R(`Object.keys(BUILTIN).filter(k=>(t=>t.H.concat(t.D).some(r=>r.warn))(simulate(flatten({items:[{fig:k,rep:1}]}),{H:startH(),noSteer:true})))`)));
 
 /* ---------- Metadaten und Kursstufen ---------- */
-test('Kursstufe 1–5, Typ und Schwierigkeit 1–5 für jede Figur',()=>liste(R(`Object.entries(BUILTIN).filter(([k,F])=>{ const m=figMeta(F,k); return !(m.stufe>=1&&m.stufe<=5)||!ARTEN[m.art]||!(m.schwer>=1&&m.schwer<=5)||!m.text; }).map(([k])=>k)`)));
-test('Einträge in figuren/info.js gehören zu vorhandenen Figuren und haben gültige Werte',()=>liste(R(`Object.entries(INFO).filter(([k,v])=>!BUILTIN[k]||!(v[0]>=1&&v[0]<=5)||(v[1]&&!ARTEN[v[1]])).map(([k])=>k)`)));
+test('Kursstufe 1–7, Typ und Schwierigkeit 1–5 für jede Figur',()=>liste(R(`Object.entries(BUILTIN).filter(([k,F])=>{ const m=figMeta(F,k); return !(m.stufe>=1&&m.stufe<=7)||!ARTEN[m.art]||!(m.schwer>=1&&m.schwer<=5)||!m.text; }).map(([k])=>k)`)));
+test('Einträge in figuren/info.js gehören zu vorhandenen Figuren und haben gültige Werte',()=>liste(R(`Object.entries(INFO).filter(([k,v])=>!BUILTIN[k]||!(v[0]>=1&&v[0]<=7)||(v[1]&&!ARTEN[v[1]])).map(([k])=>k)`)));
 test('neue Kursfiguren haben eine festgelegte Stufe und Beschreibung',()=>liste(R(`['b_d_pwr','b_d_hegoes','b_d_tunnel','b_d_hammer','b_d_schal','b_d_brezel','b_d_zu','b_w_impetus','b_w_kchasse','b_t_rechts','b_t_fuenf','b_t_aussen',
   'b_c_hip','b_c_open','b_r_hip','b_r_open','b_j_pwrl','b_j_amspin','b_j_stopgo','b_sa_pbota','b_sa_swalk'].filter(k=>{ const F=BUILTIN[k]; if(!F) return true; const m=figMeta(F,k); return !m.stufeFest||!INFO[k][2]; })`)));
 test('Grundschritt jedes Tanzes der Schwerpunkte ist Einsteiger-Stufe',()=>liste(R(`['b_d_gs','b_w_box','b_t_gs','b_c_gs','b_r_box','b_j_gs','b_sa_gs'].filter(k=>figMeta(BUILTIN[k],k).stufe!==1)`)));
@@ -73,7 +73,7 @@ test('gespeicherte Folgen im alten Format (ohne neue Felder) laufen weiter',()=>
 /* ---------- 6–8: Folgen-Generator ---------- */
 const TAENZE=['Discofox','Langsamer Walzer','Tango','Cha-Cha-Cha','Rumba','Jive','Samba','Wiener Walzer','Salsa','Foxtrott'];
 test('Generator: jede Folge besteht nur aus Figuren des Tanzes, ohne Fußfehler, ohne direkte Wiederholung',()=>liste(R(`(()=>{ let seed=7; const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647; const bad=[];
-  for(const d of ${JSON.stringify(TAENZE)}) for(let n=0;n<4;n++){ const r=folgeErzeugen({tanz:d,laenge:6,bisStufe:5,zurueck:true,zufall:rnd});
+  for(const d of ${JSON.stringify(TAENZE)}) for(let n=0;n<4;n++){ const r=folgeErzeugen({tanz:d,laenge:6,bisStufe:7,zurueck:true,zufall:rnd});
     if(r.fehler.length){ bad.push(d+': '+r.fehler[0]); continue; }
     if(r.items.some(i=>BUILTIN[i.fig].dance!==d)) bad.push(d+': fremde Figur');
     if(r.items.some((i,j)=>j&&i.fig===r.items[j-1].fig)) bad.push(d+': direkte Wiederholung');
@@ -88,6 +88,25 @@ test('Generator: endet in der Grundhaltung, wenn gewünscht',()=>liste(R(`(()=>{
 test('Generator: Start- und Endfigur werden eingehalten',()=>{ const r=R(`folgeErzeugen({tanz:'Discofox',laenge:6,start:'b_d_solo',ende:'b_d_korb'})`); return !r.fehler.length&&r.items[0].fig==='b_d_solo'&&r.items.at(-1).fig==='b_d_korb'||JSON.stringify(r).slice(0,200); });
 test('Generator: Länge wird eingehalten (höchstens drei Figuren mehr für die Rückkehr)',()=>{ const r=R(`[4,8,12].map(n=>[n,folgeErzeugen({tanz:'Cha-Cha-Cha',laenge:n}).items.length])`); return r.every(([n,l])=>l>=n&&l<=n+3)||JSON.stringify(r); });
 test('Generator: meldet unmögliche Wünsche als Fehler statt einer ungültigen Folge',()=>{ const r=R(`folgeErzeugen({tanz:'Discofox',start:'b_w_box'})`); return r.fehler.length>0&&!r.items.length||'kein Fehler'; });
+
+/* ---------- Abgleichliste, Technik, Lehrer, Qualität ---------- */
+test('Abgleichliste verweist nur auf vorhandene Figuren',()=>liste(R(`Object.values(SYLLABUS).flatMap(s=>Object.values(s).flat()).filter(e=>e.includes('=')&&!BUILTIN['b_'+e.split('=')[1]])`)));
+test('Abgleichliste: Figur gehört zum genannten Tanz',()=>liste(R(`Object.entries(SYLLABUS).flatMap(([d,s])=>Object.values(s).flat().filter(e=>e.includes('=')&&BUILTIN['b_'+e.split('=')[1]].dance!==d))`)));
+test('die gewünschten Figuren sind vorhanden',()=>liste(R(`['sf_oimp','sf_ffinish','sf_cfeder','sf_hfeder','sf_tumble','sf_bounce','sf_nweave','q_fishtail','q_v6','q_6run','q_rrturn','q_tipple','w_telemark','w_otelemark','w_wing','w_contra','w_hcorte','t_fallaway','t_vier','t_fuenf','t_drag','w_oversway','w_throw','w_lunge','w_chair'].filter(k=>!BUILTIN['b_'+k])`)));
+test('Technikdaten für jeden Schritt jeder Figur vollständig',()=>liste(R(`Object.entries(BUILTIN).flatMap(([k,F])=>{ const t=technikVon(F.steps,styleOf(F.dance)); return t.length===F.steps.length&&t.every(x=>/^[LR]$/.test(x.belastet)&&x.frei!==x.belastet&&x.technik&&x.rise&&x.sway&&typeof x.cbm==='boolean'&&typeof x.cbmp==='boolean')?[]:[k]; })`)));
+test('Technik: Rechtsdrehung im Walzer beginnt mit Ferse-Spitze und CBM',()=>{ const t=R(`technikVon(BUILTIN.b_w_nat.steps,styleOf('Langsamer Walzer'))[0]`); return t.technik==='HT'&&t.cbm&&t.belastet==='R'&&t.frei==='L'||JSON.stringify(t); });
+test('Technik: Tap verlagert kein Gewicht',()=>{ const t=R(`technikVon(BUILTIN.b_d_gs.steps,styleOf('Discofox'))[2]`); return t.belastet==='R'&&t.frei==='L'||JSON.stringify(t); });
+test('Ausrichtung: an der unteren Seite nach +x = Tanzrichtung, nach +z = Wand',()=>{ const r=R(`[ausrichtung([0,2.5],Math.PI/2).kurz,ausrichtung([0,2.5],0).kurz,ausrichtung([0,2.5],Math.PI).kurz,ausrichtung([0,2.5],Math.PI/4).kurz]`); return r.join()==='LOD,W,C,DW'||r.join(); });
+test('Ausrichtung: Ecke wird erkannt',()=>R(`ausrichtung([3.5,2.5],0).ecke&&!ausrichtung([0,2.5],0).ecke`)||'nicht erkannt');
+test('Tanzlehrer-Texte für jede Figur vorhanden',()=>liste(R(`Object.entries(BUILTIN).filter(([k,F])=>{ const d=lehrerDaten(F,k); return !d.beschreibung||!d.technik.length||!d.fehler.length||!d.herr.length||!d.dame.length; }).map(([k])=>k)`)));
+test('Qualitätsprüfung: Bibliothek ohne Fehler',()=>liste(R(`qualitaetAlle().liste.filter(x=>x.q.some(q=>q.art==='fehler')).map(x=>x.id)`)));
+test('Qualitätsprüfung erkennt zweimal denselben Fuß',()=>R(`qualitaetFigur({name:'x',dance:'Tango',steps:[S('L','vor',30,1,'1'),S('L','vor',30,1,'2')]},'x').some(q=>q.art==='fehler'&&/Gewichtswechsel/.test(q.text))`)||'nicht erkannt');
+test('Qualitätsprüfung erkennt falschen Takt',()=>R(`qualitaetFigur({name:'x',dance:'Langsamer Walzer',steps:[S('L','vor',30,1,'1'),S('R','vor',30,1,'2')]},'x').some(q=>/Dreiergruppen/.test(q.text))`)||'nicht erkannt');
+test('Qualitätsprüfung erkennt ungleich lange Herr-/Damenschritte',()=>R(`qualitaetFigur({name:'x',dance:'Tango',steps:[S('L','vor',30,2,'S')],dame:[S('R','rueck',30,1,'Q')]},'x').some(q=>/gleiche Länge/.test(q.text))`)||'nicht erkannt');
+test('Medaillenfolgen: gültig und innerhalb der Stufe',()=>liste(R(`(()=>{ let seed=11; const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647, bad=[];
+  for(const d of ['Slowfox','Quickstep','Tango','Langsamer Walzer','Cha-Cha-Cha','Rumba','Salsa','Discofox']) for(const st of [2,3,4,5]){ const r=folgeFuerStufe(d,st,rnd); if(r.fehler.length){ bad.push(d+' '+st+': '+r.fehler[0]); continue; }
+    r.items.forEach(i=>{ if(figMeta(BUILTIN[i.fig],i.fig).stufe>st) bad.push(d+' '+st+': '+i.fig); }); if(r.items.length<STUFEN_FOLGE[st]) bad.push(d+' '+st+': zu kurz'); }
+  return bad; })()`)));
 
 /* ---------- Ergebnis ---------- */
 console.log(`${ok} Tests bestanden, ${fail} fehlgeschlagen`);

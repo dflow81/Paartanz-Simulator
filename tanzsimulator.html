@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#1b1d24">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
-<link rel="stylesheet" href="tanzsimulator.css?v=2611171457">
+<link rel="stylesheet" href="tanzsimulator.css?v=2611181916">
 </head>
 <body>
 <div id="ui">
@@ -51,8 +51,17 @@
     <details name="menu">
       <summary>📖 Schritte erklärt</summary>
       <div id="explain"></div>
+      <div class="chk"><input type="checkbox" id="techOn"><span>Technikdaten einblenden (Fußtechnik, Heben, CBM, Sway, Ausrichtung)</span></div>
+      <div id="techBox"></div>
       <div class="row"><button id="readH" class="sec">🔊 Herr vorlesen</button><button id="readD" class="sec">🔊 Dame vorlesen</button></div>
       <div class="row"><button id="printBtn" class="sec">🖨 Schrittplan zum Ausdrucken</button></div>
+    </details>
+    <details name="menu">
+      <summary>🏅 Profi: Lehrer, Lernmodus, Turnier</summary>
+      <div class="row"><button id="lehrerBtn" class="sec" title="Beschreibung, Technik, typische Fehler und Hinweise zur aktuellen Figur">👩‍🏫 Tanzlehrer-Ansicht</button><button id="profiBtn" class="sec" title="Stopp nach jedem Schritt, belasteter Fuß und nächster Schritt werden markiert">🎯 Profi-Lernmodus</button></div>
+      <div class="chk"><input type="checkbox" id="turnierOn"><span>Turniermodus: Tanzrichtung, Ausrichtung, Ecken und Raumaufteilung</span></div>
+      <div class="row"><button id="qualBtn" class="sec" title="Prüft Startfuß, Endfuß, Gewichtswechsel, Takt und Anschlussfähigkeit aller Figuren des gewählten Tanzes">🔍 Figuren-Qualitätsprüfung</button></div>
+      <div id="qualOut" class="info"></div>
     </details>
     <details name="menu">
       <summary>🎥 Kamera und Fußspuren</summary>
@@ -122,6 +131,8 @@
       <div class="chk"><input type="checkbox" id="genZu" checked><span>Am Ende zurück in die Grundhaltung</span></div>
       <div class="chk"><input type="checkbox" id="genWdh"><span>Gleiche Figur direkt hintereinander erlauben</span></div>
       <div class="row"><button id="genBtn">🎲 Folge erstellen</button></div>
+      <label>Oder fertig nach Medaillenstufe (mit Technik und Tanzrichtung)</label>
+      <div class="row" style="margin-top:0"><button class="sec genSt" data-st="2">Bronze</button><button class="sec genSt" data-st="3">Silber</button><button class="sec genSt" data-st="4">Gold</button><button class="sec genSt" data-st="5">Goldstar</button></div>
       <div id="genOut" class="info"></div>
       <div class="info">Es werden nur Übergänge verwendet, bei denen Fuß und Haltung passen. Danach wird die ganze Folge durchgetanzt und auf falsche Füße und den Rand der Tanzfläche geprüft.</div>
     </details>
@@ -208,7 +219,22 @@
   <div class="row"><button id="learnBack" class="sec">◀ Stufe zurück</button><button id="learnNextStep">Nächster Schritt ⏭</button><button id="learnNext">Stufe weiter ▶</button></div>
 </div>
 
-<div id="hud"><div id="count">1</div><div id="stepname"></div><div id="damename"></div><div id="figname"></div><div id="tip"></div></div>
+<!-- Tanzlehrer-Ansicht -->
+<div id="lehrer" hidden>
+  <div class="lhead"><b id="lehrerTitel"></b><button id="lehrerZu" class="mini sec" title="Schließen">✕</button></div>
+  <div id="lehrerInhalt"></div>
+  <div class="row"><button id="lehrerUnterricht">▶ Unterrichtsmodus starten</button></div>
+</div>
+<!-- Profi-Lernmodus -->
+<div id="profi" hidden>
+  <div class="lhead"><b id="proTitel"></b><button id="proZu" class="mini sec" title="Beenden">✕</button></div>
+  <div id="proSchritt"></div>
+  <div id="proInfo"></div>
+  <div class="row"><span class="lrole">Ich tanze:</span><button id="proH" class="sec">Herr</button><button id="proD" class="sec">Dame</button>
+    <select id="proAuto" title="Automatisch weiter nach dieser Pause"><option value="0">von Hand weiter</option><option value="2">nach 2 s weiter</option><option value="4">nach 4 s weiter</option></select></div>
+  <div class="row"><button id="proZurueck" class="sec">⏮ Schritt zurück</button><button id="proWeiter" style="flex:2">Nächster Schritt ⏭</button></div>
+</div>
+<div id="hud"><div id="count">1</div><div id="stepname"></div><div id="damename"></div><div id="figname"></div><div id="tip"></div><div id="turnierInfo" hidden></div></div>
 <button id="streamBtn" title="Player für Spotify und Apple Music ein- oder ausblenden">🎧</button>
 <div id="streamBox" class="off">
   <div class="shead"><b>Musik: Spotify</b><button id="streamHide" class="mini" title="Ausblenden – die Musik läuft weiter">▾</button></div>
@@ -237,28 +263,32 @@
   <span class="dot" style="background:#ff4d6d"></span>Dame &nbsp;|&nbsp; Maus: drehen / zoomen</div>
 
 <!-- Figuren-Bibliothek und Schritt-Engine (normale Skripte, damit die Seite auch direkt von der Festplatte läuft) -->
-<script src="js/basis.js?v=2611171457"></script>
-<script src="figuren/standard.js?v=2611171457"></script>
-<script src="figuren/latein.js?v=2611171457"></script>
-<script src="figuren/gesellschaft.js?v=2611171457"></script>
-<script src="figuren/karibik.js?v=2611171457"></script>
-<script src="figuren/weitere.js?v=2611171457"></script>
-<script src="figuren/mehr.js?v=2611171457"></script>
-<script src="figuren/wtp.js?v=2611171457"></script>
-<script src="figuren/neu.js?v=2611171457"></script>
-<script src="figuren/kurs.js?v=2611171457"></script>
-<script src="figuren/folgen.js?v=2611171457"></script>
-<script src="figuren/info.js?v=2611171457"></script>
-<script src="js/speicher.js?v=2611171457"></script>
-<script src="js/engine.js?v=2611171457"></script>
-<script src="js/figurdaten.js?v=2611171457"></script>
-<script src="lib/three.js?v=2611171457"></script>
-<script src="lib/OrbitControls.js?v=2611171457"></script>
-<script src="lib/Reflector.js?v=2611171457"></script>
-<script src="js/szene.js?v=2611171457"></script>
-<script src="js/app.js?v=2611171457"></script>
-<script src="js/lernen.js?v=2611171457"></script>
-<script src="js/stream.js?v=2611171457"></script>
-<script src="js/editor.js?v=2611171457"></script>
+<script src="js/basis.js?v=2611181916"></script>
+<script src="figuren/standard.js?v=2611181916"></script>
+<script src="figuren/latein.js?v=2611181916"></script>
+<script src="figuren/gesellschaft.js?v=2611181916"></script>
+<script src="figuren/karibik.js?v=2611181916"></script>
+<script src="figuren/weitere.js?v=2611181916"></script>
+<script src="figuren/mehr.js?v=2611181916"></script>
+<script src="figuren/wtp.js?v=2611181916"></script>
+<script src="figuren/neu.js?v=2611181916"></script>
+<script src="figuren/kurs.js?v=2611181916"></script>
+<script src="figuren/profi.js?v=2611181916"></script>
+<script src="figuren/folgen.js?v=2611181916"></script>
+<script src="figuren/info.js?v=2611181916"></script>
+<script src="figuren/syllabus.js?v=2611181916"></script>
+<script src="js/speicher.js?v=2611181916"></script>
+<script src="js/engine.js?v=2611181916"></script>
+<script src="js/figurdaten.js?v=2611181916"></script>
+<script src="js/technik.js?v=2611181916"></script>
+<script src="lib/three.js?v=2611181916"></script>
+<script src="lib/OrbitControls.js?v=2611181916"></script>
+<script src="lib/Reflector.js?v=2611181916"></script>
+<script src="js/szene.js?v=2611181916"></script>
+<script src="js/app.js?v=2611181916"></script>
+<script src="js/lernen.js?v=2611181916"></script>
+<script src="js/profi.js?v=2611181916"></script>
+<script src="js/stream.js?v=2611181916"></script>
+<script src="js/editor.js?v=2611181916"></script>
 </body>
 </html>

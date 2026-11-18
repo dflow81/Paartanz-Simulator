@@ -7,7 +7,8 @@
 
 /* Kursstufen: angelehnt an den Aufbau üblicher Tanzschulkurse (Welttanzprogramm, Bronze, Silber, Gold).
    Das ist eine Orientierung, keine offizielle Zuordnung eines Verbands. */
-const STUFEN=['','Einsteiger (WTP 1)','Bronze','Silber','Gold','Freies Tanzen'];
+const STUFEN=['','Einsteiger (WTP 1)','Bronze','Silber','Gold','Goldstar','Turnier','Freies Tanzen'];
+const STUFE_MAX=STUFEN.length-1;
 const ARTEN={gs:'Grundschritt',dreh:'Drehung',solo:'Solo- und Unterarmdrehung',pos:'Platz- und Positionswechsel',
   prom:'Promenade und offene Figuren',verb:'Verbindung und Wechsel',eff:'Effekt und Variation'};
 const OHNE_GEWICHT=new Set(['tap','tapSeit','tapRueck','kick','halt']);
@@ -69,7 +70,7 @@ function figMeta(F,id){
   m.stufe=inf[0]||schaetzStufe(F,m.art,m.schwer);
   m.stufeFest=!!inf[0];
   m.text=inf[2]||autoText(F,m);
-  m.vereinfacht=inf[3]==='v';
+  m.vereinfacht=inf[3]==='v'; m.schematisch=inf[3]==='s';
   return m;
 }
 /* Grundhaltung eines Tanzes = Haltung, in der seine erste Figur (der Grundschritt) beginnt */
@@ -134,12 +135,13 @@ function folgePruefen(items,opt={},figs=allFigs()){
 }
 
 /* ---------- Folgen-Generator ----------
-   o = {tanz, bisStufe (1–5), laenge (Anzahl Figuren), start (Figur), ende (Figur), zurueck (in der Grundhaltung enden),
-        wdh (gleiche Figur direkt hintereinander erlaubt), zufall (Funktion 0..1)}
+   o = {tanz, bisStufe (1–7), laenge (Anzahl Figuren), start (Figur), ende (Figur), zurueck (in der Grundhaltung enden),
+        wdh (gleiche Figur direkt hintereinander erlaubt), technik (Promenaden sauber verbinden),
+        richtung (Folge kommt entlang der Tanzrichtung voran), zufall (Funktion 0..1)}
    Reiht nur Figuren aneinander, deren Übergang laut uebergang() zulässig ist; Haltungswechsel werden seltener gewählt
    als Anschlüsse in derselben Haltung. Mit Rücksprung (Backtracking), damit Start-, Endfigur und Grundhaltung erreicht werden. */
 function folgeErzeugen(o){
-  const figs=o.figs||allFigs(), rnd=o.zufall||Math.random, L=Math.max(1,o.laenge||8), bis=o.bisStufe||5;
+  const figs=o.figs||allFigs(), rnd=o.zufall||Math.random, L=Math.max(1,o.laenge||8), bis=o.bisStufe||STUFE_MAX;
   const M={}; for(const [k,F] of Object.entries(figs)) if((F.dance||'Sonstige')===o.tanz&&F.steps&&F.steps.length) M[k]=figMeta(F,k);
   const pool=Object.keys(M).filter(k=>M[k].stufe<=bis), warnungen=[];
   if(o.start&&!M[o.start]) return {items:[],fehler:['Die Startfigur gehört nicht zu '+o.tanz],warnungen,hinweise:[]};
@@ -149,7 +151,9 @@ function folgeErzeugen(o){
   // Kandidaten nach Gewicht mischen: gleiche Haltung ×3, selten benutzte Figuren bevorzugt
   // Abwechslung: nicht zwei Grundschritt-Varianten hintereinander, Figuren der gewählten Stufe etwas bevorzugt
   const mische=(prev,list)=>list.map(k=>{ const u=prev?uebergang(M[prev],M[k]):{ok:true,wechsel:M[k].haltStart!==grund}, m=M[k];
-      const w=(u.wechsel?1.5:3)/(1+2*(used[k]||0))*(prev&&m.art==='gs'&&M[prev].art==='gs'?.3:1)*(m.art!=='gs'&&m.stufe>=Math.min(bis,4)-1?1.6:1);
+      // Technik: In den Standardtänzen soll eine Promenade mit einer Figur weitergehen, die in der Promenade beginnt
+      const tech=o.technik&&prev&&styleOf(o.tanz).std&&(M[prev].haltEnde==='prom')!==(m.haltStart==='prom')?.15:1;
+      const w=tech*(u.wechsel?1.5:3)/(1+2*(used[k]||0))*(prev&&m.art==='gs'&&M[prev].art==='gs'?.3:1)*(m.art!=='gs'&&m.stufe>=Math.min(bis,4)-1?1.6:1);
       return u.ok&&(o.wdh||k!==prev)?[k,w*(.25+rnd())]:null; })
     .filter(Boolean).sort((a,b)=>b[1]-a[1]).map(x=>x[0]);
   const fertig=seq=>{ const z=M[seq.at(-1)]; return o.ende?seq.at(-1)===o.ende:!o.zurueck||z.haltEnde===grund; };
@@ -163,7 +167,10 @@ function folgeErzeugen(o){
     for(const k of c.slice(0,12)){ used[k]=(used[k]||0)+1; const r=dfs([...seq,k]); if(r) return r; used[k]--; }
     return null;
   }
-  const seq=dfs([]);
+  /* Tanzrichtung: In den fortschreitenden Tänzen werden mehrere Entwürfe verglichen; genommen wird der, der am meisten vorankommt */
+  const vorankommen=q=>{ try{ const t=simulate(flatten({items:q.map(fig=>({fig,rep:1}))}),{H:startH(),noSteer:true}), H=t.end.H; return (H.sup[1]-startH().sup[1])/t.total; }catch(e){ return -9; } };
+  let seq=dfs([]);
+  if(seq&&o.richtung&&styleOf(o.tanz).std){ let best=vorankommen(seq); for(let i=0;i<4;i++){ schritte=0; for(const k in used) delete used[k]; const q=dfs([]); if(q){ const v=vorankommen(q); if(v>best){ best=v; seq=q; } } } }
   if(!seq) return {items:[],fehler:['Es ließ sich keine gültige Folge finden – andere Start-/Endfigur oder höhere Stufe wählen'],warnungen,hinweise:[]};
   const items=seq.map(fig=>({fig,rep:1}));
   if(seq.length>L) warnungen.push(`${seq.length-L} Figur(en) mehr als gewünscht, damit die Folge ${o.ende?'mit der Endfigur':'in der Grundhaltung'} endet`);
@@ -171,3 +178,6 @@ function folgeErzeugen(o){
   if(o.start&&M[o.start].stufe>bis) p.hinweise.push('Die Startfigur liegt über der gewählten Stufe');
   return {items,fehler:p.fehler,warnungen:warnungen.concat(p.warnungen),hinweise:p.hinweise};
 }
+/* Fertige Folge für eine Medaillenstufe: Länge und Regeln passen zur Stufe (Bronze 6, Silber 8, Gold 10, Goldstar 12 Figuren) */
+const STUFEN_FOLGE={2:6,3:8,4:10,5:12};
+const folgeFuerStufe=(tanz,stufe,zufall)=>folgeErzeugen({tanz,bisStufe:stufe,laenge:STUFEN_FOLGE[stufe]||8,zurueck:true,technik:true,richtung:true,zufall});
