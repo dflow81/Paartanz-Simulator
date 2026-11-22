@@ -23,7 +23,7 @@ Stand: 460 Figuren in 31 Tänzen.
 | Linksdrehung | 2 | ★★ | Drehung | S Q Q S Q Q (8) | L→R / R→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | vorhanden |
 | Rechtsdrehung | 2 | ★★ | Drehung | S Q Q S Q Q (8) | R→L / L→R | geschlossen | 11: Rechts, seit, ran mit Rechtsdrehung, Federschritt, Rechtsdrehung | vorhanden |
 | Rechtsdrehung mit Fersendrehung (Impetus) | 2 | ★★ | Drehung | S Q Q S Q Q (8) | R→L / L→R | geschlossen | 11: Rechts, seit, ran mit Rechtsdrehung, Federschritt, Rechtsdrehung | vorhanden |
-| Basic Weave | 2 | ★★ | Grundschritt | Q Q Q Q Q Q (6) | L→R / R→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/foxtrot/basic_weave.html) |
+| Basic Weave | 2 | ★★ | Drehung | Q Q Q Q Q Q (6) | L→R / R→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/foxtrot/basic_weave.html) |
 | Hover Feather | 3 | ★ | Effekt und Variation | S Q Q (4) | R→R / L→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | neu, schematisch |
 | Top Spin | 3 | ★ | Solo- und Unterarmdrehung | Q Q Q Q (4) | L→R / R→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | neu, schematisch |
 | Wellenschritt (Wave) | 3 | ★★ | Effekt und Variation | S Q Q S Q Q (8) | L→R / R→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | vorhanden |

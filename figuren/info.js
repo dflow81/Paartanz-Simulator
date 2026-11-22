@@ -102,7 +102,7 @@ set({sf_bweave:2,q_npivot:2,q_rpivot:2,t_rockl:2,t_rockr:2,c_closedhip:2},
    t_rockl:'Rock auf dem linken Fuß: zurück, Gewicht wieder vor, kleiner Schritt zurück (Q Q S). Anschluss: Rock auf dem rechten Fuß oder Linksdrehung.',
    t_rockr:'Rock auf dem rechten Fuß in CBMP: zurück, Gewicht vor, kleiner Schritt zurück. Anschluss: Rück-Corté.',
    c_closedhip:'Closed Hip Twist: der Herr dreht die Dame aus der geschlossenen Haltung zur Seite auf und führt sie in den Fächer. Anschluss: Hockeystick oder Alemana.'},
-  {},{c_closedhip:'s'});
+  {sf_bweave:'dreh'},{c_closedhip:'s'});   // „Basic“ im Namen, aber eine Drehfigur, kein Grundschritt
 }
 /* Gleiche Schritte unter zwei Namen (Aliasse). Beide Einträge bleiben, damit gespeicherte Folgen gültig bleiben. */
 const ALIAS={
