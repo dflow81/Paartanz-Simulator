@@ -355,6 +355,22 @@ function handTargets(hold,sty,herr,dame){
       const hip=dame.P.clone().addScaledVector(dame.left,-.18*dame.k); hip.y+=.14; reach(hip,herr.sh.R,hr,dame.sh.R,dr);
       return {HL:a,DL:a.clone(),HR:hip,DR:hip.clone()}; }
     case 'hoch': { const j=dame.headPos.clone(); j.y+=.25*dame.k; reach(j,herr.sh.L,hr,dame.sh.R,dr); t.HL=j; t.DR=j.clone(); return t; }
+    case 'hochB': { // beide Hände gefasst und über dem Kopf der Dame (Tunnel)
+      const y=dame.headPos.y+.2*dame.k, a=join(herr.sh.L,dame.sh.R), b=join(herr.sh.R,dame.sh.L); a.y=b.y=y; reach(a,herr.sh.L,hr,dame.sh.R,dr); reach(b,herr.sh.R,hr,dame.sh.L,dr);
+      return {HL:a,DR:a.clone(),HR:b,DL:b.clone()}; }
+    case 'hammer': { // ihr rechter Arm hinter ihrem Rücken (Hand an der Taille), seine linke Hand hält sie; die anderen Hände vorn gefasst
+      const back=dame.P.clone().addScaledVector(dame.fw,-.14).addScaledVector(dame.left,.05); back.y+=.06; reach(back,herr.sh.L,hr,dame.sh.R,dr);
+      const v=join(herr.sh.R,dame.sh.L); return {HL:back,DR:back.clone(),HR:v,DL:v.clone()}; }
+    case 'schal': { // ihre rechte Hand mit seiner linken auf seiner rechten Schulter, wie ein Schal um seinen Hals
+      const p=herr.sh.R.clone().addScaledVector(herr.fw,.07).addScaledVector(herr.left,.04); p.y+=.03; reach(p,herr.sh.L,hr,dame.sh.R,dr); t.HL=p; t.DR=p.clone(); return t; }
+    case 'brezel': { // beide Armpaare hinter den Rücken: seine rechte mit ihrer linken hinter ihr, seine linke mit ihrer rechten hinter ihm
+      const a=dame.P.clone().addScaledVector(dame.fw,-.13); a.y+=.08; reach(a,herr.sh.R,hr,dame.sh.L,dr);
+      const c=herr.P.clone().addScaledVector(herr.fw,-.13); c.y+=.08; reach(c,herr.sh.L,hr,dame.sh.R,dr);
+      return {HR:a,DL:a.clone(),HL:c,DR:c.clone()}; }
+    case 'schulter': { // ihre Hände auf seinen Schultern, seine Hände an ihrer Taille
+      const sL=herr.sh.R.clone().addScaledVector(herr.fw,.04), sR=herr.sh.L.clone().addScaledVector(herr.fw,.04); sL.y+=.02; sR.y+=.02;
+      const wL=dame.P.clone().addScaledVector(dame.left,-.15*dame.k).addScaledVector(dame.fw,.02), wR=dame.P.clone().addScaledVector(dame.left,.15*dame.k).addScaledVector(dame.fw,.02); wL.y+=.12; wR.y+=.12;
+      return {DL:reach(sL,dame.sh.L,dr,dame.sh.L,dr),DR:reach(sR,dame.sh.R,dr,dame.sh.R,dr),HL:reach(wL,herr.sh.L,hr,herr.sh.L,hr),HR:reach(wR,herr.sh.R,hr,herr.sh.R,hr)}; }
   }
   return t;
 }

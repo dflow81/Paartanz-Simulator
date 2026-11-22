@@ -308,12 +308,16 @@ $('shareBtn').onclick=async()=>{ readSeq(); const f={}; for(const it of seqEdit.
 /* Beim Öffnen eines geteilten Links: Folge übernehmen und gleich abspielen */
 function importShared(){
   const m=location.hash.match(/^#folge=([\w-]+)/); if(!m) return null;
-  try{ const d=JSON.parse(b64d(m[1])); if(!Array.isArray(d.i)) return null;
+  history.replaceState(null,'',location.pathname+location.search);
+  try{ const d=JSON.parse(b64d(m[1])); if(!Array.isArray(d.i)) throw 0;
     let h=0; for(const ch of m[1]) h=(h*31+ch.charCodeAt(0))>>>0; const key='s_link'+h.toString(36);
-    for(const [k,fig] of Object.entries(d.f||{})) if(!user.figures[k]&&!BUILTIN[k]&&fig&&Array.isArray(fig.steps)) user.figures[k]=fig;
-    user.seqs[key]={name:String(d.n||'Geteilte Folge'),bpm:+d.b||100,items:d.i.map(([fig,rep])=>({fig:String(fig),rep:Math.max(1,+rep||1)}))};
-    user.dance='*'; saveStore(); history.replaceState(null,'',location.pathname+location.search); return key;
-  }catch(e){ return null; }
+    // geteilte Folge wie einen Import prüfen: nur gültige Figuren und Einträge übernehmen
+    const p=importPruefen({figures:Object.fromEntries(Object.entries(d.f||{}).filter(([k])=>!user.figures[k])),seqs:{[key]:{name:String(d.n||'Geteilte Folge'),bpm:+d.b||100,items:d.i.map(x=>({fig:Array.isArray(x)?x[0]:'',rep:Array.isArray(x)?x[1]:1}))}}});
+    if(!p.seqs[key]){ setTimeout(()=>alert('Der geteilte Link enthält keine gültige Tanzfolge.\n'+p.fehler.concat(p.warnungen).slice(0,6).join('\n')),300); return null; }
+    Object.assign(user.figures,p.figures); user.seqs[key]=p.seqs[key];
+    if(p.fehler.length||p.warnungen.length) setTimeout(()=>alert('Geteilte Folge übernommen, mit Hinweisen:\n'+p.fehler.concat(p.warnungen).slice(0,6).join('\n')),300);
+    user.dance='*'; saveStore(); return key;
+  }catch(e){ setTimeout(()=>alert('Der geteilte Link ist beschädigt und konnte nicht gelesen werden.'),300); return null; }
 }
 
 /* ================= Export / Import ================= */
@@ -323,10 +327,12 @@ $('exportBtn').onclick=()=>{
 };
 $('importBtn').onclick=()=>$('importFile').click();
 $('importFile').onchange=async e=>{ const f=e.target.files[0]; if(!f) return;
-  try{ const d=JSON.parse(await f.text()); if(!d.figures||!d.seqs) throw 0;
-    Object.assign(user.figures,d.figures); Object.assign(user.seqs,d.seqs); saveStore();
-    fillDance(); fillSource(); fillSeqSel(); fillFigSel(); alert(`Importiert: ${Object.keys(d.figures).length} Figuren, ${Object.keys(d.seqs).length} Tanzfolgen.`);
-  }catch(err){ alert('Die Datei konnte nicht gelesen werden.'); }
+  let d=null; try{ d=JSON.parse(await f.text()); }catch(err){}
+  if(!d||!d.figures||!d.seqs){ alert('Die Datei konnte nicht gelesen werden (keine Datei aus „Exportieren“).'); e.target.value=''; return; }
+  const p=importPruefen(d), nf=Object.keys(p.figures).length, ns=Object.keys(p.seqs).length, rest=p.fehler.length+p.warnungen.length;
+  Object.assign(user.figures,p.figures); Object.assign(user.seqs,p.seqs); saveStore();
+  fillDance(); fillSource(); fillSeqSel(); fillFigSel();
+  alert(`Importiert: ${nf} Figuren, ${ns} Tanzfolgen.`+(rest?`\n\nNicht oder nur teilweise übernommen (${rest}):\n`+p.fehler.concat(p.warnungen).slice(0,12).join('\n')+(rest>12?'\n…':''):''));
   e.target.value=''; };
 function flash(btn,txt){const o=btn.textContent; btn.textContent=txt; setTimeout(()=>btn.textContent=o,1200);}
 

@@ -1,5 +1,26 @@
 # Änderungsprotokoll
 
+## 2026-11-22 (Nachmittag): Offline, Import, Arme und Figuren mit Quelle
+
+**Neu**
+- Offline: Die installierte App speichert beim ersten Start alle Dateien und läuft danach vollständig ohne Internet.
+- Import und geteilte Links werden geprüft. Nur gültige Figuren und Folgen werden übernommen, Probleme werden angezeigt.
+- Fünf neue Haltungen mit eigener Handführung: beide Arme hoch (Tunnel), Hammerlock, Schal, Brezel, Schulterfassung. Neue Figur: Discofox Schulterfasser.
+- 17 Figuren mit Quelle (BallroomGuide):
+  - Langsamer Walzer: Left Whisk, Open Impetus, Closed Wing, Turning Lock nach rechts
+  - Slowfox: Natural Telemark, Hover Cross, Natural Zig-Zag
+  - Quickstep: Tipsy, Rumba Cross
+  - Tango: Promenade Link, The Chase, Reverse Outside Swivel
+  - Cha-Cha-Cha und Rumba: Reverse Top und Curl, Rumba Closed Hip Twist
+- Fußarbeit laut Quelle für fünf vorhandene Walzerfiguren. Insgesamt 22 Figuren mit belegter Technik.
+- Feste Kursfolgen: Cha-Cha-Cha und Rumba Bronze und Gold, Tango Silber, Langsamer Walzer Gold.
+
+**Geändert**
+- Abstandsausgleich für alle Figuren mit eigenen Damenschritten, wenn die Dame zu nah steht.
+- Fächer, Hockeystick und Alemana: Stufe Bronze statt Silber (wie in der Abgleichliste).
+- West Coast Swing Right Side Pass: Die Dame hat eigene Schritte statt eines 1,3-m-Schritts.
+- Lückenbericht nennt Gründe für bewusst offen gelassene Figuren.
+
 ## 2026-11-22: Folgenprüfung, Takt und belegte Figuren
 
 **Behoben**

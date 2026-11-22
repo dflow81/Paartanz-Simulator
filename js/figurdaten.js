@@ -97,7 +97,7 @@ function grundHaltung(dance){
      Promenade, nach Technikbuch käme vorher eine Figur, die in der Promenade endet (z. B. Link).
    Die Richtung im Raum ist kein Hindernis: Alle Figuren sind relativ zur Blickrichtung beschrieben, und die
    Engine lenkt das Paar beim Tanzen so, dass es auf der Fläche bleibt. Ob das gelingt, prüft folgePruefen(). */
-const HALT_ART={zu:'eng',prom:'eng',offen:'hand',LR:'hand',RL:'hand',hoch:'hand',kreuz:'hand',frei:'hand',korb:'seite',schatten:'seite',faecher:'faecher'};
+const HALT_ART={zu:'eng',prom:'eng',offen:'hand',LR:'hand',RL:'hand',hoch:'hand',kreuz:'hand',frei:'hand',korb:'seite',schatten:'seite',faecher:'faecher',hochB:'hand',hammer:'hand',schal:'hand',brezel:'hand',schulter:'eng'};
 function uebergang(A,B){
   const g=[]; let ok=true, wechsel=false, vereinfacht=false;
   if(A.tanz!==B.tanz){ ok=false; g.push('anderer Tanz ('+A.tanz+' / '+B.tanz+')'); }
@@ -218,3 +218,51 @@ function folgeErzeugen(o){
 /* Fertige Folge für eine Medaillenstufe: Länge und Regeln passen zur Stufe (Bronze 6, Silber 8, Gold 10, Goldstar 12 Figuren) */
 const STUFEN_FOLGE={2:6,3:8,4:10,5:12};
 const folgeFuerStufe=(tanz,stufe,zufall)=>folgeErzeugen({tanz,bisStufe:stufe,laenge:STUFEN_FOLGE[stufe]||8,zurueck:true,technik:true,richtung:true,zufall});
+
+/* ---------- Import und geteilte Links prüfen ----------
+   Übernimmt nur gültige eigene Figuren und Folgen. Ungültige Schritte, unbekannte Figuren in Folgen, zu große oder
+   kaputte Daten werden verworfen und gemeldet; vorgegebene Figuren (BUILTIN) können nicht überschrieben werden.
+   Ergebnis: {figures, seqs, fehler:[], warnungen:[]} */
+const IMPORT_MAX={figuren:500,folgen:500,schritte:64,eintraege:200};
+const sauberKey=k=>/^[\w-]{1,40}$/.test(k)?k:null;
+function schrittePruefen(st,wo,fehler){
+  if(!Array.isArray(st)||!st.length||st.length>IMPORT_MAX.schritte){ fehler.push(`${wo}: keine oder zu viele Schritte`); return null; }
+  const out=[];
+  for(let i=0;i<st.length;i++){ const s=st[i]||{}, p=`${wo}, Schritt ${i+1}`;
+    if(s.f!=='L'&&s.f!=='R'){ fehler.push(p+': Fuß fehlt'); return null; }
+    if(!DIRS[s.dir]){ fehler.push(p+': unbekannte Richtung „'+String(s.dir).slice(0,20)+'“'); return null; }
+    const d=+s.d, len=+s.len||0, turn=+s.turn||0;
+    if(!(d>0&&d<=8)){ fehler.push(p+': Dauer ungültig'); return null; }
+    if(!(len>=0&&len<=100)||!Number.isFinite(turn)||Math.abs(turn)>1080){ fehler.push(p+': Länge oder Drehung ungültig'); return null; }
+    if(s.hold!==undefined&&!HOLDS[s.hold]){ fehler.push(p+': unbekannte Haltung'); return null; }
+    const n={f:s.f,dir:s.dir,len,d,c:String(s.c??'').slice(0,6),turn};
+    if(s.hold!==undefined) n.hold=s.hold; if(typeof s.tip==='string') n.tip=s.tip.slice(0,200); if(s.df==='ferse'||s.df==='seit') n.df=s.df;
+    out.push(n); }
+  return out;
+}
+function importPruefen(d,bekannt=BUILTIN){
+  const fehler=[],warnungen=[],figures={},seqs={};
+  if(!d||typeof d!=='object') return {figures,seqs,fehler:['Keine gültigen Daten'],warnungen};
+  const fe=Object.entries(d.figures||{}), se=Object.entries(d.seqs||{});
+  if(fe.length>IMPORT_MAX.figuren||se.length>IMPORT_MAX.folgen) return {figures,seqs,fehler:['Zu viele Einträge'],warnungen};
+  for(const [k0,F] of fe){ const k=sauberKey(k0), wo=`Figur „${String(F&&F.name||k0).slice(0,40)}“`;
+    if(!k){ fehler.push(wo+': ungültiger Schlüssel'); continue; }
+    if(bekannt[k]){ warnungen.push(wo+': vorgegebene Figur, wird nicht überschrieben'); continue; }
+    if(!F||typeof F.name!=='string'||!F.name.trim()){ fehler.push(wo+': Name fehlt'); continue; }
+    const steps=schrittePruefen(F.steps,wo,fehler); if(!steps) continue;
+    const n={name:F.name.slice(0,80),dance:typeof F.dance==='string'&&F.dance.trim()?F.dance.slice(0,40):'Sonstige',bpm:Math.min(260,Math.max(30,+F.bpm||100)),steps};
+    if(F.dame!==undefined&&F.dame!==null&&!(Array.isArray(F.dame)&&!F.dame.length)){ const dame=schrittePruefen(F.dame,wo+' (Dame)',fehler); if(!dame) continue;
+      const lang=x=>x.reduce((a,s)=>a+s.d,0); if(Math.abs(lang(dame)-lang(steps))>1e-6){ fehler.push(wo+': Herr und Dame unterschiedlich lang'); continue; } n.dame=dame; }
+    const q=gewichtsFehlerKurz(n); if(q) warnungen.push(wo+': '+q);
+    figures[k]=n; }
+  for(const [k0,S0] of se){ const k=sauberKey(k0), wo=`Folge „${String(S0&&S0.name||k0).slice(0,40)}“`;
+    if(!k||!S0||!Array.isArray(S0.items)){ fehler.push(wo+': ungültig'); continue; }
+    const items=[]; for(const it of S0.items.slice(0,IMPORT_MAX.eintraege)){ const fig=String(it&&it.fig||'');
+      if(bekannt[fig]||figures[fig]||(typeof user!=='undefined'&&user.figures[fig])) items.push({fig,rep:Math.min(32,Math.max(1,Math.round(+it.rep||1)))});
+      else warnungen.push(wo+': unbekannte Figur „'+fig.slice(0,40)+'“ weggelassen'); }
+    if(!items.length){ fehler.push(wo+': keine gültige Figur'); continue; }
+    seqs[k]={name:String(S0.name||'Ohne Namen').slice(0,80),bpm:Math.min(260,Math.max(30,+S0.bpm||100)),items,...(S0.auto?{auto:true}:{})}; }
+  return {figures,seqs,fehler,warnungen};
+}
+/* Fußfehler einer Figur in einem Satz (Import: nur Warnung – der Editor zeigt ⚠ an derselben Stelle) */
+function gewichtsFehlerKurz(F){ let g=null; for(const s of F.steps){ if(s.dir==='halt') continue; if(OHNE_GEWICHT.has(s.dir)) continue; if(s.dir!=='platz'&&g===s.f) return 'zweimal hintereinander derselbe Fuß'; g=s.f; } return ''; }

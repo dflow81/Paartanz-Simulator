@@ -208,7 +208,10 @@ tanz('Tango Argentino',110,{
 {
 const anker=(f,c1,c2,h)=>[S(f,'kreuzHinter',6,.5,c1,0,h),S(O(f),'platz',0,.5,'&',0,h),S(f,'platz',0,1,c2,0,h)];
 tanz('West Coast Swing',105,{
-  b_wc_passR:['Right Side Pass (Dame geht rechts vorbei)',H([S('L','rueck',20,1,'1'),S('R','seit',15,1,'2',-90),{...S('L','tap',0,1,'3'),tip:'Herr öffnet nach rechts, die Dame geht rechts an ihm vorbei'},S('L','seit',15,1,'4',-90),...anker('R','5','6')],'LR')],
+  // Dame mit eigenen Schritten: vorher tanzte sie gegengleich und machte dabei einen Schritt von 1,3 m
+  b_wc_passR:['Right Side Pass (Dame geht rechts vorbei)',
+     [S('L','kreuzSeit',25,1,'1',0,'LR'),{...S('R','seit',20,1,'2',-45,'LR'),tip:'Herr öffnet nach rechts, die Dame geht rechts an ihm vorbei'},S('L','platz',0,.5,'3',-45,'LR'),S('R','platz',0,.5,'&',-45,'LR'),S('L','platz',0,1,'4',-45,'LR'),...anker('R','5','6','LR')],
+     [S('R','vor',40,1,'1'),S('L','vor',40,1,'2'),S('R','vor',30,.5,'3'),S('L','vor',15,.5,'&',-90),S('R','rueck',15,1,'4',-90),...anker('L','5','6')]],
   b_wc_start2:['Grundschritt mit Anker (am Platz)',H([S('L','platz',0,1,'1'),S('R','platz',0,1,'2'),...anker('L','3','4'),...anker('R','5','6')],'LR')],
 });
 }

@@ -2,7 +2,7 @@
 
 Diese Datei wird mit `node tests/doku.js` aus den Figurendaten erzeugt. Bitte nicht von Hand bearbeiten.
 
-Stand: 460 Figuren in 31 Tänzen.
+Stand: 478 Figuren in 31 Tänzen.
 
 **Kursstufen:** 1 = Einsteiger (WTP 1), 2 = Bronze, 3 = Silber, 4 = Gold, 5 = Goldstar, 6 = Turnier, 7 = Freies Tanzen. Sie sind eine Orientierung am Aufbau üblicher Kurse, keine offizielle Zuordnung eines Verbands. Mit * markierte Stufen sind aus dem Schwierigkeitsgrad geschätzt.
 
@@ -15,90 +15,98 @@ Stand: 460 Figuren in 31 Tänzen.
 | Gehschritte | 1* | ★ | Grundschritt | S S (4) | L→R / R→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | vorhanden |
 | Ein Schritt rück, dann Federschritt | 2* | ★ | Effekt und Variation | S S Q Q (6) | L→R / R→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | vorhanden |
 | Federschritt | 2 | ★ | Effekt und Variation | S Q Q (4) | R→R / L→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | vorhanden |
-| Dreierschritt | 2 | ★ | Effekt und Variation | S Q Q (4) | L→L / R→R | geschlossen | 11: Rechts, seit, ran mit Rechtsdrehung, Federschritt, Rechtsdrehung | vorhanden |
-| Richtungswechsel (Change of Direction) | 2 | ★ | Verbindung und Wechsel | S S S (6) | L→L / R→R | geschlossen | 11: Rechts, seit, ran mit Rechtsdrehung, Federschritt, Rechtsdrehung | vorhanden |
+| Dreierschritt | 2 | ★ | Effekt und Variation | S Q Q (4) | L→L / R→R | geschlossen | 14: Rechts, seit, ran mit Rechtsdrehung, Federschritt, Rechtsdrehung | vorhanden |
+| Richtungswechsel (Change of Direction) | 2 | ★ | Verbindung und Wechsel | S S S (6) | L→L / R→R | geschlossen | 14: Rechts, seit, ran mit Rechtsdrehung, Federschritt, Rechtsdrehung | vorhanden |
 | Rückwärts-Dreierschritt | 2* | ★ | Effekt und Variation | S Q Q (4) | R→R / L→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | vorhanden |
 | Feather Finish | 2 | ★ | Effekt und Variation | S Q Q (4) | R→R / L→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | neu, schematisch |
-| Links vorbei mit Linksdrehung, dann zurück | 2* | ★★ | Drehung | S Q Q S S (8) | L→L / R→R | geschlossen | 11: Rechts, seit, ran mit Rechtsdrehung, Federschritt, Rechtsdrehung | vorhanden |
+| Links vorbei mit Linksdrehung, dann zurück | 2* | ★★ | Drehung | S Q Q S S (8) | L→L / R→R | geschlossen | 14: Rechts, seit, ran mit Rechtsdrehung, Federschritt, Rechtsdrehung | vorhanden |
 | Linksdrehung | 2 | ★★ | Drehung | S Q Q S Q Q (8) | L→R / R→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | vorhanden |
-| Rechtsdrehung | 2 | ★★ | Drehung | S Q Q S Q Q (8) | R→L / L→R | geschlossen | 11: Rechts, seit, ran mit Rechtsdrehung, Federschritt, Rechtsdrehung | vorhanden |
-| Rechtsdrehung mit Fersendrehung (Impetus) | 2 | ★★ | Drehung | S Q Q S Q Q (8) | R→L / L→R | geschlossen | 11: Rechts, seit, ran mit Rechtsdrehung, Federschritt, Rechtsdrehung | vorhanden |
+| Rechtsdrehung | 2 | ★★ | Drehung | S Q Q S Q Q (8) | R→L / L→R | geschlossen | 14: Rechts, seit, ran mit Rechtsdrehung, Federschritt, Rechtsdrehung | vorhanden |
+| Rechtsdrehung mit Fersendrehung (Impetus) | 2 | ★★ | Drehung | S Q Q S Q Q (8) | R→L / L→R | geschlossen | 14: Rechts, seit, ran mit Rechtsdrehung, Federschritt, Rechtsdrehung | vorhanden |
 | Basic Weave | 2 | ★★ | Drehung | Q Q Q Q Q Q (6) | L→R / R→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/foxtrot/basic_weave.html) |
 | Hover Feather | 3 | ★ | Effekt und Variation | S Q Q (4) | R→R / L→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | neu, schematisch |
 | Top Spin | 3 | ★ | Solo- und Unterarmdrehung | Q Q Q Q (4) | L→R / R→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | neu, schematisch |
 | Wellenschritt (Wave) | 3 | ★★ | Effekt und Variation | S Q Q S Q Q (8) | L→R / R→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | vorhanden |
 | Hover-Telemark | 3 | ★★ | Drehung | S Q Q S Q Q (8) | L→R / R→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | vorhanden |
-| Open Impetus (in die Promenade) | 3 | ★★ | Drehung | S Q Q (4) | L→L / R→R | geschlossen → Promenade | 1: Weave aus der Promenade | neu, schematisch |
+| Open Impetus (in die Promenade) | 3 | ★★ | Drehung | S Q Q (4) | L→L / R→R | geschlossen → Promenade | 2: Weave aus der Promenade, Natural Zig-Zag aus der Promenade | neu, schematisch |
 | Natural Weave | 3 | ★★ | Effekt und Variation | S Q Q Q Q Q Q (8) | R→R / L→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | neu, schematisch |
-| Open Telemark | 3 | ★★ | Drehung | S Q Q (4) | L→L / R→R | geschlossen → Promenade | 1: Weave aus der Promenade | neu, schematisch |
+| Open Telemark | 3 | ★★ | Drehung | S Q Q (4) | L→L / R→R | geschlossen → Promenade | 2: Weave aus der Promenade, Natural Zig-Zag aus der Promenade | neu, schematisch |
+| Natural Telemark | 3 | ★★ | Drehung | S Q Q Q Q (6) | R→R / L→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/foxtrot/natural_telemark.html) |
 | Rechts, seit, ran mit Rechtsdrehung (3×) | 3* | ★★★ | Drehung | S Q Q S Q Q S Q Q (12) | R→R / L→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | vorhanden |
 | Weave aus der Promenade | 3 | ★★★ | Promenade und offene Figuren | S Q Q Q Q Q Q (8) | R→R / L→L | Promenade → geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | neu, schematisch |
-| Rückwärts-Federschritt | 4 | ★ | Effekt und Variation | S Q Q (4) | L→L / R→R | geschlossen | 11: Rechts, seit, ran mit Rechtsdrehung, Federschritt, Rechtsdrehung | vorhanden |
+| Hover Cross | 3 | ★★★ | Drehung | S Q Q Q Q Q Q (8) | R→R / L→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/foxtrot/hover_cross.html) |
+| Rückwärts-Federschritt | 4 | ★ | Effekt und Variation | S Q Q (4) | L→L / R→R | geschlossen | 14: Rechts, seit, ran mit Rechtsdrehung, Federschritt, Rechtsdrehung | vorhanden |
 | Curved Feather | 4 | ★ | Effekt und Variation | S Q Q (4) | R→R / L→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | neu, schematisch |
+| Natural Zig-Zag aus der Promenade | 4 | ★★ | Promenade und offene Figuren | S Q Q Q Q (6) | R→R / L→L | Promenade → geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | vorhanden, schematisch, [Quelle](http://dance.djurredeboer.nl/standard/foxtrot/zig_zag.html) |
 | Bounce Fallaway mit Weave-Ende | 4 | ★★★ | Promenade und offene Figuren | S Q Q Q Q S (8) | L→R / R→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | neu, schematisch |
-| Natural Twist Turn | 4 | ★★★ | Drehung | S Q Q S Q Q (8) | R→L / L→R | geschlossen → Promenade | 1: Weave aus der Promenade | neu, schematisch |
+| Natural Twist Turn | 4 | ★★★ | Drehung | S Q Q S Q Q (8) | R→L / L→R | geschlossen → Promenade | 2: Weave aus der Promenade, Natural Zig-Zag aus der Promenade | neu, schematisch |
 | Tumble Turn | 5 | ★★ | Drehung | S Q Q S Q Q (8) | L→R / R→L | geschlossen | 15: Ein Schritt rück, dann Federschritt, Links vorbei mit Linksdrehung, dann zurück, Dreierschritt | neu, schematisch |
 
 ## Quickstep
 
 | Figur | Stufe | Schwierigkeit | Typ | Zählzeiten (Schläge) | Füße H / D | Haltung | Anschlüsse | Status |
 |---|---|---|---|---|---|---|---|---|
-| Gehschritte | 1* | ★ | Grundschritt | S S (4) | R→L / L→R | geschlossen | 15: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | vorhanden |
-| Kreuzschritt vorwärts | 2 | ★ | Verbindung und Wechsel | S Q Q S (6) | R→L / L→R | geschlossen | 15: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | vorhanden |
-| Progressives Chassé | 2 | ★ | Verbindung und Wechsel | S Q Q S (6) | R→L / L→R | geschlossen | 15: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | vorhanden |
-| Kreuzschritt rückwärts | 2 | ★ | Verbindung und Wechsel | S Q Q S (6) | L→R / R→L | geschlossen | 8: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | vorhanden |
-| Linksdrehung mit Chassé (erste Hälfte) | 2 | ★ | Drehung | S Q Q (4) | L→L / R→R | geschlossen | 15: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | vorhanden |
-| Fortschreitendes Chassé | 2* | ★ | Verbindung und Wechsel | S Q Q S (6) | L→R / R→L | geschlossen | 8: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | vorhanden |
-| Running Finish | 2 | ★ | Effekt und Variation | S Q Q (4) | R→R / L→L | geschlossen | 8: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | neu, schematisch |
-| Reverse Pivot | 2 | ★ | Effekt und Variation | S S (2) | R→R / L→L | geschlossen | 8: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/quickstep/reverse_pivot.html) |
-| Vierteldrehung und Chassé (Grundschritt) | 2 | ★★ | Grundschritt | S Q Q S S Q Q S (12) | R→L / L→R | geschlossen | 15: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | vorhanden |
-| Rechtsdrehung | 2 | ★★ | Drehung | S Q Q S Q Q (8) | R→L / L→R | geschlossen | 15: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | vorhanden |
-| Rechtsdrehung mit Zögern | 2 | ★★ | Drehung | S Q Q S S S (10) | R→R / L→L | geschlossen | 8: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | vorhanden |
-| Tipple-Chassé rechts | 2 | ★★ | Verbindung und Wechsel | S Q Q S Q Q (8) | R→L / L→R | geschlossen | 15: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | vorhanden |
-| Natural Pivot Turn | 2 | ★★ | Drehung | S Q Q S S (6) | R→L / L→R | geschlossen | 15: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/quickstep/pivot_turn.html) |
-| Rechtskreisel (Spin Turn) | 2 | ★★★ | Solo- und Unterarmdrehung | S Q Q S S S (10) | R→L / L→R | geschlossen | 15: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | vorhanden |
-| Fishtail | 3 | ★ | Effekt und Variation | S Q Q Q Q S (8) | R→L / L→R | geschlossen | 15: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | neu, schematisch |
-| Cross Swivel | 3 | ★ | Effekt und Variation | S S (4) | L→R / R→L | geschlossen | 8: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | neu, schematisch |
-| Quick Open Reverse | 3 | ★ | Effekt und Variation | S Q Q S (6) | L→R / R→L | geschlossen | 8: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | neu, schematisch |
-| V6 | 3 | ★★ | Effekt und Variation | S Q Q S S Q Q S (12) | L→R / R→L | geschlossen | 8: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | neu, schematisch |
-| Six Quick Run | 3 | ★★ | Effekt und Variation | Q Q Q Q Q Q (6) | R→L / L→R | geschlossen | 15: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | neu, schematisch |
-| Running Right Turn | 3 | ★★★ | Drehung | S Q Q S S Q Q S (12) | R→L / L→R | geschlossen | 15: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | neu, schematisch |
-| Hover Corté | 4 | ★ | Verbindung und Wechsel | S S S (6) | R→R / L→L | geschlossen | 8: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | neu, schematisch |
-| Hüpfer vorwärts (Hops) | 5 | ★ | Effekt und Variation | S S Q Q Q Q (8) | L→R / R→L | geschlossen | 8: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | vorhanden |
-| Pfeffermühle (Running Steps) | 5 | ★ | Effekt und Variation | Q Q Q Q S S (8) | L→R / R→L | geschlossen | 8: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | vorhanden |
+| Gehschritte | 1* | ★ | Grundschritt | S S (4) | R→L / L→R | geschlossen | 16: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | vorhanden |
+| Kreuzschritt vorwärts | 2 | ★ | Verbindung und Wechsel | S Q Q S (6) | R→L / L→R | geschlossen | 16: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | vorhanden |
+| Progressives Chassé | 2 | ★ | Verbindung und Wechsel | S Q Q S (6) | R→L / L→R | geschlossen | 16: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | vorhanden |
+| Kreuzschritt rückwärts | 2 | ★ | Verbindung und Wechsel | S Q Q S (6) | L→R / R→L | geschlossen | 9: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | vorhanden |
+| Linksdrehung mit Chassé (erste Hälfte) | 2 | ★ | Drehung | S Q Q (4) | L→L / R→R | geschlossen | 16: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | vorhanden |
+| Fortschreitendes Chassé | 2* | ★ | Verbindung und Wechsel | S Q Q S (6) | L→R / R→L | geschlossen | 9: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | vorhanden |
+| Running Finish | 2 | ★ | Effekt und Variation | S Q Q (4) | R→R / L→L | geschlossen | 9: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | neu, schematisch |
+| Reverse Pivot | 2 | ★ | Effekt und Variation | S S (2) | R→R / L→L | geschlossen | 9: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/quickstep/reverse_pivot.html) |
+| Vierteldrehung und Chassé (Grundschritt) | 2 | ★★ | Grundschritt | S Q Q S S Q Q S (12) | R→L / L→R | geschlossen | 16: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | vorhanden |
+| Rechtsdrehung | 2 | ★★ | Drehung | S Q Q S Q Q (8) | R→L / L→R | geschlossen | 16: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | vorhanden |
+| Rechtsdrehung mit Zögern | 2 | ★★ | Drehung | S Q Q S S S (10) | R→R / L→L | geschlossen | 9: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | vorhanden |
+| Tipple-Chassé rechts | 2 | ★★ | Verbindung und Wechsel | S Q Q S Q Q (8) | R→L / L→R | geschlossen | 16: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | vorhanden |
+| Natural Pivot Turn | 2 | ★★ | Drehung | S Q Q S S (6) | R→L / L→R | geschlossen | 16: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/quickstep/pivot_turn.html) |
+| Rechtskreisel (Spin Turn) | 2 | ★★★ | Solo- und Unterarmdrehung | S Q Q S S S (10) | R→L / L→R | geschlossen | 16: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | vorhanden |
+| Fishtail | 3 | ★ | Effekt und Variation | S Q Q Q Q S (8) | R→L / L→R | geschlossen | 16: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | neu, schematisch |
+| Cross Swivel | 3 | ★ | Effekt und Variation | S S (4) | L→R / R→L | geschlossen | 9: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | neu, schematisch |
+| Quick Open Reverse | 3 | ★ | Effekt und Variation | S Q Q S (6) | L→R / R→L | geschlossen | 9: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | neu, schematisch |
+| V6 | 3 | ★★ | Effekt und Variation | S Q Q S S Q Q S (12) | L→R / R→L | geschlossen | 9: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | neu, schematisch |
+| Six Quick Run | 3 | ★★ | Effekt und Variation | Q Q Q Q Q Q (6) | R→L / L→R | geschlossen | 16: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | neu, schematisch |
+| Running Right Turn | 3 | ★★★ | Drehung | S Q Q S S Q Q S (12) | R→L / L→R | geschlossen | 16: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | neu, schematisch |
+| Hover Corté | 4 | ★ | Verbindung und Wechsel | S S S (6) | R→R / L→L | geschlossen | 9: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | neu, schematisch |
+| Tipsy nach rechts | 4 | ★★ | Effekt und Variation | S Q & Q (4) | L→R / R→L | geschlossen | 9: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/quickstep/tipsy_to_R.html) |
+| Rumba Cross | 4 | ★★★ | Drehung | S Q Q S S S (6) | R→L / L→R | geschlossen | 16: Vierteldrehung und Chassé, Gehschritte, Kreuzschritt vorwärts | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/quickstep/rumba_cross.html) |
+| Hüpfer vorwärts (Hops) | 5 | ★ | Effekt und Variation | S S Q Q Q Q (8) | L→R / R→L | geschlossen | 9: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | vorhanden |
+| Pfeffermühle (Running Steps) | 5 | ★ | Effekt und Variation | Q Q Q Q S S (8) | L→R / R→L | geschlossen | 9: Kreuzschritt rückwärts, Linksdrehung mit Chassé, Hüpfer vorwärts | vorhanden |
 
 ## Tango
 
 | Figur | Stufe | Schwierigkeit | Typ | Zählzeiten (Schläge) | Füße H / D | Haltung | Anschlüsse | Status |
 |---|---|---|---|---|---|---|---|---|
-| Gehschritte vorwärts | 1 | ★ | Grundschritt | S S (4) | L→R / R→L | geschlossen | 27: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
-| Gehschritte rückwärts | 1 | ★ | Grundschritt | S S (4) | L→R / R→L | geschlossen | 27: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
-| Grundschritt (vor, vor, vor–seit–ran) | 1 | ★ | Grundschritt | S S Q Q S (8) | L→R / R→L | geschlossen | 27: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
-| Wiegeschritt | 1 | ★ | Grundschritt | Q Q S S (6) | L→R / R→L | geschlossen | 27: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
-| Promenade | 1 | ★ | Promenade und offene Figuren | S Q Q S (6) | L→R / R→L | Promenade → geschlossen | 27: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
-| Rück-Corté | 2 | ★ | Verbindung und Wechsel | S Q Q S (6) | L→R / R→L | geschlossen | 27: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
+| Gehschritte vorwärts | 1 | ★ | Grundschritt | S S (4) | L→R / R→L | geschlossen | 30: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
+| Gehschritte rückwärts | 1 | ★ | Grundschritt | S S (4) | L→R / R→L | geschlossen | 30: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
+| Grundschritt (vor, vor, vor–seit–ran) | 1 | ★ | Grundschritt | S S Q Q S (8) | L→R / R→L | geschlossen | 30: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
+| Wiegeschritt | 1 | ★ | Grundschritt | Q Q S S (6) | L→R / R→L | geschlossen | 30: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
+| Promenade | 1 | ★ | Promenade und offene Figuren | S Q Q S (6) | L→R / R→L | Promenade → geschlossen | 30: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
+| Rück-Corté | 2 | ★ | Verbindung und Wechsel | S Q Q S (6) | L→R / R→L | geschlossen | 30: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
 | Progressiver Seitschritt | 2 | ★ | Grundschritt | Q Q S (4) | L→L / R→R | geschlossen | 3: Rechts-Wiegedrehung, Rock zurück, Natural Twist Turn | vorhanden |
-| Progressive Link (in die Promenade) | 2 | ★ | Promenade und offene Figuren | Q Q (2) | L→R / R→L | geschlossen → Promenade | 6: Promenade, Offene Promenade, Fallaway-Promenade | vorhanden |
+| Progressive Link (in die Promenade) | 2 | ★ | Promenade und offene Figuren | Q Q (2) | L→R / R→L | geschlossen → Promenade | 8: Promenade, Offene Promenade, Fallaway-Promenade | vorhanden |
 | Rock zurück (linker Fuß) | 2 | ★ | Verbindung und Wechsel | Q Q S (4) | L→L / R→R | geschlossen | 3: Rechts-Wiegedrehung, Rock zurück, Natural Twist Turn | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/tango/rock_LF.html) |
-| Rock zurück (rechter Fuß, in CBMP) | 2 | ★ | Effekt und Variation | Q Q S (4) | R→R / L→L | geschlossen | 27: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/tango/rock_RF.html) |
-| Linksdrehung | 2 | ★★ | Drehung | Q Q S Q Q S (8) | L→R / R→L | geschlossen | 27: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
-| Wiegeschritt mit Linksdrehung | 2 | ★★ | Grundschritt | Q Q S Q Q S (8) | L→R / R→L | geschlossen | 27: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
-| Rechtsdrehung aus der Promenade | 2 | ★★ | Drehung | S Q Q S (6) | L→R / R→L | Promenade → geschlossen | 27: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | neu |
-| Offene Linksdrehung (Open Reverse Turn) | 2 | ★★ | Drehung | Q Q S Q Q S (8) | L→R / R→L | geschlossen | 27: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | neu, schematisch |
-| Viererschritt (Four Step) | 3 | ★ | Promenade und offene Figuren | Q Q Q Q (4) | L→R / R→L | geschlossen → Promenade | 6: Promenade, Offene Promenade, Fallaway-Promenade | vorhanden |
-| Offene Promenade | 3 | ★ | Promenade und offene Figuren | S Q Q S (6) | L→R / R→L | Promenade → geschlossen | 27: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
-| Stakkato-Gehschritte (schnell, schnell, lang) | 3 | ★ | Grundschritt | Q Q S Q Q S (8) | L→R / R→L | geschlossen | 27: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
-| Außenseitiger Wechsel (mit Gehschritt) | 3 | ★ | Verbindung und Wechsel | Q Q S S (6) | L→R / R→L | geschlossen | 27: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | neu |
-| Rückwärts offene Promenade | 3 | ★ | Promenade und offene Figuren | S Q Q S (6) | L→R / R→L | geschlossen → Promenade | 6: Promenade, Offene Promenade, Fallaway-Promenade | neu, schematisch |
-| Outside Swivel | 3 | ★ | Promenade und offene Figuren | S S (4) | L→R / R→L | geschlossen → Promenade | 6: Promenade, Offene Promenade, Fallaway-Promenade | neu, schematisch |
-| Rechts-Wiegedrehung (Natural Rock Turn) | 3 | ★★ | Drehung | S Q Q S Q Q S (10) | R→R / L→L | geschlossen | 27: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
+| Rock zurück (rechter Fuß, in CBMP) | 2 | ★ | Effekt und Variation | Q Q S (4) | R→R / L→L | geschlossen | 30: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/tango/rock_RF.html) |
+| Linksdrehung | 2 | ★★ | Drehung | Q Q S Q Q S (8) | L→R / R→L | geschlossen | 30: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
+| Wiegeschritt mit Linksdrehung | 2 | ★★ | Grundschritt | Q Q S Q Q S (8) | L→R / R→L | geschlossen | 30: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
+| Rechtsdrehung aus der Promenade | 2 | ★★ | Drehung | S Q Q S (6) | L→R / R→L | Promenade → geschlossen | 30: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | neu |
+| Offene Linksdrehung (Open Reverse Turn) | 2 | ★★ | Drehung | Q Q S Q Q S (8) | L→R / R→L | geschlossen | 30: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | neu, schematisch |
+| Viererschritt (Four Step) | 3 | ★ | Promenade und offene Figuren | Q Q Q Q (4) | L→R / R→L | geschlossen → Promenade | 8: Promenade, Offene Promenade, Fallaway-Promenade | vorhanden |
+| Offene Promenade | 3 | ★ | Promenade und offene Figuren | S Q Q S (6) | L→R / R→L | Promenade → geschlossen | 30: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
+| Stakkato-Gehschritte (schnell, schnell, lang) | 3 | ★ | Grundschritt | Q Q S Q Q S (8) | L→R / R→L | geschlossen | 30: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
+| Außenseitiger Wechsel (mit Gehschritt) | 3 | ★ | Verbindung und Wechsel | Q Q S S (6) | L→R / R→L | geschlossen | 30: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | neu |
+| Rückwärts offene Promenade | 3 | ★ | Promenade und offene Figuren | S Q Q S (6) | L→R / R→L | geschlossen → Promenade | 8: Promenade, Offene Promenade, Fallaway-Promenade | neu, schematisch |
+| Outside Swivel | 3 | ★ | Promenade und offene Figuren | S S (4) | L→R / R→L | geschlossen → Promenade | 8: Promenade, Offene Promenade, Fallaway-Promenade | neu, schematisch |
+| Promenade Link | 3 | ★ | Verbindung und Wechsel | S Q Q (4) | L→R / R→L | Promenade → geschlossen | 30: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/tango/promenade_link.html) |
+| Rechts-Wiegedrehung (Natural Rock Turn) | 3 | ★★ | Drehung | S Q Q S Q Q S (10) | R→R / L→L | geschlossen | 30: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
 | Natural Twist Turn | 3 | ★★ | Drehung | S Q Q S (6) | R→L / L→R | Promenade → geschlossen | 3: Rechts-Wiegedrehung, Rock zurück, Natural Twist Turn | neu, schematisch |
-| Natural Promenade Turn | 3 | ★★ | Drehung | S S Q Q (6) | L→R / R→L | Promenade | 6: Promenade, Offene Promenade, Fallaway-Promenade | neu, schematisch |
-| Brush Tap (Wischer) | 4 | ★ | Effekt und Variation | Q Q & Q S (6) | L→R / R→L | geschlossen | 27: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
+| Natural Promenade Turn | 3 | ★★ | Drehung | S S Q Q (6) | L→R / R→L | Promenade | 8: Promenade, Offene Promenade, Fallaway-Promenade | neu, schematisch |
+| Reverse Outside Swivel | 3 | ★★★ | Promenade und offene Figuren | Q Q S Q Q (6) | L→R / R→L | geschlossen | 30: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/tango/reverse_outside_swivel.html) |
+| Brush Tap (Wischer) | 4 | ★ | Effekt und Variation | Q Q & Q S (6) | L→R / R→L | geschlossen | 30: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
 | Contra Check | 4 | ★ | Promenade und offene Figuren | S Q Q (4) | L→L / R→R | geschlossen → Promenade | 1: Natural Twist Turn | neu, schematisch |
-| Fallaway Four Step | 4 | ★ | Promenade und offene Figuren | Q Q Q Q (4) | L→R / R→L | geschlossen → Promenade | 6: Promenade, Offene Promenade, Fallaway-Promenade | neu, schematisch |
-| Fallaway-Promenade | 4 | ★★ | Promenade und offene Figuren | S Q Q S Q Q (8) | L→R / R→L | Promenade → geschlossen | 27: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
-| Fünferschritt (Five Step) | 4 | ★★ | Promenade und offene Figuren | Q Q Q Q S (6) | L→R / R→L | geschlossen → Promenade | 6: Promenade, Offene Promenade, Fallaway-Promenade | neu |
+| Fallaway Four Step | 4 | ★ | Promenade und offene Figuren | Q Q Q Q (4) | L→R / R→L | geschlossen → Promenade | 8: Promenade, Offene Promenade, Fallaway-Promenade | neu, schematisch |
+| Fallaway-Promenade | 4 | ★★ | Promenade und offene Figuren | S Q Q S Q Q (8) | L→R / R→L | Promenade → geschlossen | 30: Gehschritte vorwärts, Gehschritte rückwärts, Grundschritt | vorhanden |
+| Fünferschritt (Five Step) | 4 | ★★ | Promenade und offene Figuren | Q Q Q Q S (6) | L→R / R→L | geschlossen → Promenade | 8: Promenade, Offene Promenade, Fallaway-Promenade | neu |
+| The Chase | 4 | ★★★★ | Promenade und offene Figuren | S Q Q Q Q S S (8) | L→R / R→L | Promenade | 8: Promenade, Offene Promenade, Fallaway-Promenade | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/tango/chase.html) |
 | Spanish Drag | 5 | ★ | Promenade und offene Figuren | S S (4) | L→L / R→R | Promenade | 1: Natural Twist Turn | neu, schematisch |
 | Oversway | 6 | ★ | Effekt und Variation | S (4) | L→L / R→R | geschlossen | 3: Rechts-Wiegedrehung, Rock zurück, Natural Twist Turn | neu, schematisch |
 
@@ -106,109 +114,118 @@ Stand: 460 Figuren in 31 Tänzen.
 
 | Figur | Stufe | Schwierigkeit | Typ | Zählzeiten (Schläge) | Füße H / D | Haltung | Anschlüsse | Status |
 |---|---|---|---|---|---|---|---|---|
-| Grundschritt (Karree) | 1 | ★ | Grundschritt | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
-| Vorwärts-Wechsel mit links | 1 | ★ | Verbindung und Wechsel | 1 2 3 (3) | L→L / R→R | geschlossen | 18: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden |
-| Vorwärts-Wechsel mit rechts | 1 | ★ | Verbindung und Wechsel | 1 2 3 (3) | R→R / L→L | geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
-| Rückwärts-Wechsel mit rechts | 1 | ★ | Verbindung und Wechsel | 1 2 3 (3) | R→R / L→L | geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
-| Rückwärts-Wechsel mit links | 1 | ★ | Verbindung und Wechsel | 1 2 3 (3) | L→L / R→R | geschlossen | 18: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden |
-| Pendelschritt (seit, ran) | 1 | ★ | Effekt und Variation | 1 2 1 2 (6) | L→R / R→L | geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
-| Wiegeschritt (vor, zurück) | 1 | ★ | Grundschritt | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
-| Karree mit Linksdrehung (¼) | 1 | ★★ | Grundschritt | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
-| Karree mit Rechtsdrehung (¼) | 1 | ★★ | Grundschritt | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
-| Rechtsdrehung (6 Schritte) | 1 | ★★ | Drehung | 1 2 3 4 5 6 (6) | R→L / L→R | geschlossen | 18: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden |
-| Linksdrehung (6 Schritte) | 1 | ★★ | Drehung | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Grundschritt (Karree) | 1 | ★ | Grundschritt | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Vorwärts-Wechsel mit links | 1 | ★ | Verbindung und Wechsel | 1 2 3 (3) | L→L / R→R | geschlossen | 21: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/waltz/closed_change_LF.html) |
+| Vorwärts-Wechsel mit rechts | 1 | ★ | Verbindung und Wechsel | 1 2 3 (3) | R→R / L→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/waltz/closed_change_RF.html) |
+| Rückwärts-Wechsel mit rechts | 1 | ★ | Verbindung und Wechsel | 1 2 3 (3) | R→R / L→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Rückwärts-Wechsel mit links | 1 | ★ | Verbindung und Wechsel | 1 2 3 (3) | L→L / R→R | geschlossen | 21: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden |
+| Pendelschritt (seit, ran) | 1 | ★ | Effekt und Variation | 1 2 1 2 (6) | L→R / R→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Wiegeschritt (vor, zurück) | 1 | ★ | Grundschritt | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Karree mit Linksdrehung (¼) | 1 | ★★ | Grundschritt | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Karree mit Rechtsdrehung (¼) | 1 | ★★ | Grundschritt | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Rechtsdrehung (6 Schritte) | 1 | ★★ | Drehung | 1 2 3 4 5 6 (6) | R→L / L→R | geschlossen | 21: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/waltz/natural_turn.html) |
+| Linksdrehung (6 Schritte) | 1 | ★★ | Drehung | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/waltz/reverse_turn.html) |
 | Wischer (in die Promenade) | 2 | ★ | Promenade und offene Figuren | 1 2 3 (3) | L→L / R→R | geschlossen → Promenade | 5: Chassé aus der Promenade, Wing, Weave aus der Promenade | vorhanden |
-| Zögerschritt | 2 | ★ | Effekt und Variation | 1 2 3 (3) | L→R / R→L | geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
-| Außenseitlicher Wechsel | 2 | ★ | Verbindung und Wechsel | 1 2 3 (3) | L→L / R→R | geschlossen | 18: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden |
-| Seitliche Balance (links und rechts) | 2 | ★ | Verbindung und Wechsel | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Zögerschritt | 2 | ★ | Effekt und Variation | 1 2 3 (3) | L→R / R→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Außenseitlicher Wechsel | 2 | ★ | Verbindung und Wechsel | 1 2 3 (3) | L→L / R→R | geschlossen | 21: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden |
+| Seitliche Balance (links und rechts) | 2 | ★ | Verbindung und Wechsel | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
 | Back Whisk | 2 | ★ | Promenade und offene Figuren | 1 2 3 (3) | L→L / R→R | geschlossen → Promenade | 5: Chassé aus der Promenade, Wing, Weave aus der Promenade | neu, schematisch |
-| Reverse Corté | 2 | ★ | Verbindung und Wechsel | 1 2 3 (3) | R→L / L→R | geschlossen | 18: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu, schematisch |
-| Chassé aus der Promenade | 2 | ★★ | Promenade und offene Figuren | 1 2 & 3 (3) | R→L / L→R | Promenade → geschlossen | 18: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden |
-| Promenade mit Chassé | 2 | ★★ | Promenade und offene Figuren | 1 2 3 & 1 2 3 (6) | L→R / R→L | Promenade → geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
-| Double Reverse Spin | 2 | ★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
-| Progressives Chassé nach rechts | 2 | ★★ | Verbindung und Wechsel | 1 2 & 3 (3) | L→R / R→L | geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
-| Drag Hesitation | 3 | ★ | Effekt und Variation | 1 2 3 (3) | L→R / R→L | geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
-| Cross Hesitation | 3 | ★ | Promenade und offene Figuren | 1 2 3 (3) | R→L / L→R | Promenade → geschlossen | 18: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu, schematisch |
-| Zögerwechsel (Rechtsdrehung mit Zögern) | 3 | ★★ | Drehung | 1 2 3 4 5 6 (6) | R→R / L→L | geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
-| Kreuzschritt vorwärts (1, 2 und 3) | 3 | ★★ | Verbindung und Wechsel | 1 2 & 3 (3) | R→L / L→R | geschlossen | 18: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden |
-| Kreuzschritt rückwärts (1, 2 und 3) | 3 | ★★ | Verbindung und Wechsel | 1 2 & 3 (3) | L→R / R→L | geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Reverse Corté | 2 | ★ | Verbindung und Wechsel | 1 2 3 (3) | R→L / L→R | geschlossen | 21: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu, schematisch |
+| Chassé aus der Promenade | 2 | ★★ | Promenade und offene Figuren | 1 2 & 3 (3) | R→L / L→R | Promenade → geschlossen | 21: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden |
+| Promenade mit Chassé | 2 | ★★ | Promenade und offene Figuren | 1 2 3 & 1 2 3 (6) | L→R / R→L | Promenade → geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Double Reverse Spin | 2 | ★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
+| Progressives Chassé nach rechts | 2 | ★★ | Verbindung und Wechsel | 1 2 & 3 (3) | L→R / R→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
+| Drag Hesitation | 3 | ★ | Effekt und Variation | 1 2 3 (3) | L→R / R→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
+| Cross Hesitation | 3 | ★ | Promenade und offene Figuren | 1 2 3 (3) | R→L / L→R | Promenade → geschlossen | 21: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu, schematisch |
+| Zögerwechsel (Rechtsdrehung mit Zögern) | 3 | ★★ | Drehung | 1 2 3 4 5 6 (6) | R→R / L→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Kreuzschritt vorwärts (1, 2 und 3) | 3 | ★★ | Verbindung und Wechsel | 1 2 & 3 (3) | R→L / L→R | geschlossen | 21: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden |
+| Kreuzschritt rückwärts (1, 2 und 3) | 3 | ★★ | Verbindung und Wechsel | 1 2 & 3 (3) | L→R / R→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
 | Open Telemark | 3 | ★★ | Drehung | 1 2 3 (3) | L→L / R→R | geschlossen → Promenade | 5: Chassé aus der Promenade, Wing, Weave aus der Promenade | neu, schematisch |
-| Wing | 3 | ★★ | Promenade und offene Figuren | 1 2 (3) | R→R / L→L | Promenade → geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
-| Outside Spin | 3 | ★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→L / R→R | geschlossen | 18: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu, schematisch |
-| Turning Lock | 3 | ★★ | Drehung | 1 2 & 3 (3) | R→L / L→R | geschlossen | 18: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu, schematisch |
-| Weave aus der Promenade | 3 | ★★ | Promenade und offene Figuren | 1 2 3 1 2 3 (6) | R→L / L→R | Promenade → geschlossen | 18: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu, schematisch |
-| Rechtskreisel (Spin Turn) | 3 | ★★★ | Drehung | 1 2 3 4 5 6 (6) | R→L / L→R | geschlossen | 18: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden |
-| Rechtsdrehung mit Impetus (Closed Impetus) | 3 | ★★★ | Drehung | 1 2 3 4 5 6 (6) | R→L / L→R | geschlossen | 18: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu |
-| Rechtskreisel mit Chassé | 3 | ★★★★ | Drehung | 1 2 3 4 5 6 1 2 & 3 (9) | R→L / L→R | geschlossen | 18: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu |
-| Schwebeschritt (Hover) | 4 | ★ | Effekt und Variation | 1 2 3 (3) | L→R / R→L | geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Wing | 3 | ★★ | Promenade und offene Figuren | 1 2 (3) | R→R / L→L | Promenade → geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
+| Outside Spin | 3 | ★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→L / R→R | geschlossen | 21: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu, schematisch |
+| Turning Lock | 3 | ★★ | Drehung | 1 2 & 3 (3) | R→L / L→R | geschlossen | 21: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu, schematisch |
+| Weave aus der Promenade | 3 | ★★ | Promenade und offene Figuren | 1 2 3 1 2 3 (6) | R→L / L→R | Promenade → geschlossen | 21: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu, schematisch |
+| Open Impetus | 3 | ★★ | Drehung | 1 2 3 (3) | L→L / R→R | geschlossen → Promenade | 5: Chassé aus der Promenade, Wing, Weave aus der Promenade | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/waltz/open_impetus.html) |
+| Rechtskreisel (Spin Turn) | 3 | ★★★ | Drehung | 1 2 3 4 5 6 (6) | R→L / L→R | geschlossen | 21: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/waltz/spin_turn.html) |
+| Rechtsdrehung mit Impetus (Closed Impetus) | 3 | ★★★ | Drehung | 1 2 3 4 5 6 (6) | R→L / L→R | geschlossen | 21: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu |
+| Rechtskreisel mit Chassé | 3 | ★★★★ | Drehung | 1 2 3 4 5 6 1 2 & 3 (9) | R→L / L→R | geschlossen | 21: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu |
+| Schwebeschritt (Hover) | 4 | ★ | Effekt und Variation | 1 2 3 (3) | L→R / R→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
 | Contra Check | 4 | ★ | Promenade und offene Figuren | 1 2 3 (3) | L→L / R→R | geschlossen → Promenade | 5: Chassé aus der Promenade, Wing, Weave aus der Promenade | neu, schematisch |
-| Hover Corté | 4 | ★ | Verbindung und Wechsel | 1 2 3 (3) | R→R / L→L | geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
-| Flechtschritt (Weave) | 4 | ★★ | Effekt und Variation | 1 2 3 1 2 3 (6) | R→L / L→R | geschlossen | 18: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden |
-| Telemark (offene Linksdrehung) | 4 | ★★★ | Drehung | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
-| Oversway | 6 | ★ | Effekt und Variation | 1 (3) | L→L / R→R | geschlossen | 18: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu, schematisch |
-| Throwaway Oversway | 6 | ★ | Effekt und Variation | 1 2 3 (3) | L→R / R→L | geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
-| Chair | 6 | ★ | Promenade und offene Figuren | 1 2 3 (3) | R→R / L→L | Promenade → geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
-| Same Foot Lunge | 6 | ★★ | Effekt und Variation | 1 1 2 (6) | R→R / L→L | geschlossen | 25: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
+| Hover Corté | 4 | ★ | Verbindung und Wechsel | 1 2 3 (3) | R→R / L→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
+| Flechtschritt (Weave) | 4 | ★★ | Effekt und Variation | 1 2 3 1 2 3 (6) | R→L / L→R | geschlossen | 21: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden |
+| Closed Wing | 4 | ★★ | Platz- und Positionswechsel | 1 2 3 (3) | R→R / L→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/waltz/closed_wing.html) |
+| Telemark (offene Linksdrehung) | 4 | ★★★ | Drehung | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Turning Lock nach rechts | 4 | ★★★ | Verbindung und Wechsel | 1 & 2 3 (3) | R→L / L→R | geschlossen → Promenade | 5: Chassé aus der Promenade, Wing, Weave aus der Promenade | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/waltz/turning_lock_right.html) |
+| Left Whisk | 4 | ★★★★★ | Drehung | 1 2 3 1 & 2 3 (6) | R→R / L→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden, schematisch, [Quelle](http://dance.djurredeboer.nl/standard/waltz/left_whisk.html) |
+| Oversway | 6 | ★ | Effekt und Variation | 1 (3) | L→L / R→R | geschlossen | 21: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu, schematisch |
+| Throwaway Oversway | 6 | ★ | Effekt und Variation | 1 2 3 (3) | L→R / R→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
+| Chair | 6 | ★ | Promenade und offene Figuren | 1 2 3 (3) | R→R / L→L | Promenade → geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
+| Same Foot Lunge | 6 | ★★ | Effekt und Variation | 1 1 2 (6) | R→R / L→L | geschlossen | 26: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
 
 ## Cha-Cha-Cha
 
 | Figur | Stufe | Schwierigkeit | Typ | Zählzeiten (Schläge) | Füße H / D | Haltung | Anschlüsse | Status |
 |---|---|---|---|---|---|---|---|---|
-| Grundschritt | 1 | ★★ | Grundschritt | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen | 25: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
-| Grundschritt in offener Haltung | 1 | ★★ | Grundschritt | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | beide Hände | 25: Grundschritt in offener Haltung, Kubanische Brüche, Offene Basic | vorhanden |
-| Seitliches Chassé (links und rechts) | 1 | ★★ | Verbindung und Wechsel | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen | 25: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
-| Grundschritt am Platz | 1 | ★★ | Grundschritt | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen | 25: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
-| Offene Basic (beide Hände) | 1 | ★★ | Grundschritt | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | beide Hände | 25: Grundschritt in offener Haltung, Kubanische Brüche, Offene Basic | vorhanden |
-| New Yorker (rechts und links) | 1 | ★★★★★ | Promenade und offene Figuren | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | Hand L–R → beide Hände | 25: Grundschritt in offener Haltung, Kubanische Brüche, Offene Basic | vorhanden |
-| Damendrehung rechts unter dem Arm | 1 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen | 25: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
-| Grundschritt mit Kreuz-Chassé (vor und rück) | 2 | ★★ | Grundschritt | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen | 25: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
-| Schulter an Schulter | 2 | ★★ | Effekt und Variation | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen | 25: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
-| Time Step (am Platz) | 2 | ★★ | Grundschritt | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen | 25: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
-| Vorwärts-Chassé (gehend) | 2 | ★★ | Verbindung und Wechsel | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen | 25: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
-| Rückwärts-Lock (Dame vorwärts) | 2 | ★★ | Verbindung und Wechsel | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen | 25: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
-| Hand to Hand (links und rechts) | 2 | ★★★★★ | Promenade und offene Figuren | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | Hand R–L → beide Hände | 25: Grundschritt in offener Haltung, Kubanische Brüche, Offene Basic | vorhanden |
-| Platzdrehung (beide drehen solo) | 2 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | ohne → beide Hände | 25: Grundschritt in offener Haltung, Kubanische Brüche, Offene Basic | vorhanden |
+| Grundschritt | 1 | ★★ | Grundschritt | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen | 27: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
+| Grundschritt in offener Haltung | 1 | ★★ | Grundschritt | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | beide Hände | 27: Grundschritt in offener Haltung, Kubanische Brüche, Offene Basic | vorhanden |
+| Seitliches Chassé (links und rechts) | 1 | ★★ | Verbindung und Wechsel | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen | 27: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
+| Grundschritt am Platz | 1 | ★★ | Grundschritt | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen | 27: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
+| Offene Basic (beide Hände) | 1 | ★★ | Grundschritt | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | beide Hände | 27: Grundschritt in offener Haltung, Kubanische Brüche, Offene Basic | vorhanden |
+| New Yorker (rechts und links) | 1 | ★★★★★ | Promenade und offene Figuren | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | Hand L–R → beide Hände | 27: Grundschritt in offener Haltung, Kubanische Brüche, Offene Basic | vorhanden |
+| Damendrehung rechts unter dem Arm | 1 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen | 27: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
+| Grundschritt mit Kreuz-Chassé (vor und rück) | 2 | ★★ | Grundschritt | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen | 27: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
+| Schulter an Schulter | 2 | ★★ | Effekt und Variation | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen | 27: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
+| Time Step (am Platz) | 2 | ★★ | Grundschritt | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen | 27: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
+| Vorwärts-Chassé (gehend) | 2 | ★★ | Verbindung und Wechsel | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen | 27: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
+| Rückwärts-Lock (Dame vorwärts) | 2 | ★★ | Verbindung und Wechsel | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen | 27: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
+| Fächer (Fan) | 2 | ★★★★ | Platz- und Positionswechsel | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen → Fächer | 2: Hockeystick, Alemana | vorhanden |
+| Hand to Hand (links und rechts) | 2 | ★★★★★ | Promenade und offene Figuren | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | Hand R–L → beide Hände | 27: Grundschritt in offener Haltung, Kubanische Brüche, Offene Basic | vorhanden |
+| Platzdrehung (beide drehen solo) | 2 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | ohne → beide Hände | 27: Grundschritt in offener Haltung, Kubanische Brüche, Offene Basic | vorhanden |
+| Hockeystick (aus dem Fächer) | 2 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | Fächer → Hand L–R | 27: New Yorker, Offener Hip Twist, Aida | vorhanden |
+| Alemana (aus dem Fächer) | 2 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | Fächer → geschlossen | 27: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
 | Closed Hip Twist (in den Fächer) | 2 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen → Fächer | 2: Hockeystick, Alemana | vorhanden, schematisch, [Quelle](http://dance.djurredeboer.nl/latin/cha_cha/closed_hip.html) |
-| Cross Basic | 3 | ★★ | Grundschritt | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen | 25: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | neu, schematisch |
-| Drei Cha-Cha-Chas (rück und vor) | 3 | ★★★ | Effekt und Variation | 2 3 4 & 1 2 & 3 4 & 1 2 3 4 & 1 2 & 3 4 & 1 (16) | L→R / R→L | geschlossen | 25: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
-| Kubanische Brüche (Cuban Breaks) | 3 | ★★★ | Promenade und offene Figuren | 2 & 3 4 & 1 (4) | L→R / R→L | beide Hände | 25: Grundschritt in offener Haltung, Kubanische Brüche, Offene Basic | vorhanden |
-| Fächer (Fan) | 3 | ★★★★ | Platz- und Positionswechsel | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen → Fächer | 2: Hockeystick, Alemana | vorhanden |
+| Cross Basic | 3 | ★★ | Grundschritt | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen | 27: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | neu, schematisch |
+| Drei Cha-Cha-Chas (rück und vor) | 3 | ★★★ | Effekt und Variation | 2 3 4 & 1 2 & 3 4 & 1 2 3 4 & 1 2 & 3 4 & 1 (16) | L→R / R→L | geschlossen | 27: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
+| Kubanische Brüche (Cuban Breaks) | 3 | ★★★ | Promenade und offene Figuren | 2 & 3 4 & 1 (4) | L→R / R→L | beide Hände | 27: Grundschritt in offener Haltung, Kubanische Brüche, Offene Basic | vorhanden |
 | Offener Hip Twist (in den Fächer) | 3 | ★★★★ | Platz- und Positionswechsel | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | Hand L–R → Fächer | 2: Hockeystick, Alemana | neu |
-| Hockeystick (aus dem Fächer) | 3 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | Fächer → Hand L–R | 25: New Yorker, Offener Hip Twist, Aida | vorhanden |
-| Alemana (aus dem Fächer) | 3 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | Fächer → geschlossen | 25: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
-| Opening Out (rechts und links) | 3 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | Hand R–L → geschlossen | 25: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | neu |
-| Aida | 3 | ★★★★★ | Promenade und offene Figuren | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | Hand L–R → beide Hände | 25: Grundschritt in offener Haltung, Kubanische Brüche, Offene Basic | neu, schematisch |
-| Spiral | 3 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen → Hand L–R | 25: New Yorker, Offener Hip Twist, Aida | neu, schematisch |
-| Fencing | 4 | ★★ | Effekt und Variation | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | Hand L–R | 25: New Yorker, Offener Hip Twist, Aida | neu, schematisch |
-| Rechtskreisel (Natural Top) | 4 | ★★★★ | Drehung | 2 3 4 & 1 2 3 4 & 1 2 3 4 & 1 2 3 4 & 1 (16) | L→R / R→L | geschlossen | 25: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
+| Opening Out (rechts und links) | 3 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | Hand R–L → geschlossen | 27: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | neu |
+| Aida | 3 | ★★★★★ | Promenade und offene Figuren | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | Hand L–R → beide Hände | 27: Grundschritt in offener Haltung, Kubanische Brüche, Offene Basic | neu, schematisch |
+| Spiral | 3 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | geschlossen → Hand L–R | 27: New Yorker, Offener Hip Twist, Aida | neu, schematisch |
+| Reverse Top (aus dem Grundschritt) | 3 | ★★★★★ | Drehung | 2 3 4 & 1 2 3 4 & 1 2 3 4 & 1 2 3 4 & 1 (16) | L→R / R→L | geschlossen | 27: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden, schematisch, [Quelle](http://dance.djurredeboer.nl/latin/cha_cha/reverse_top.html) |
+| Curl (in den Fächer) | 3 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | Hand L–R → Fächer | 2: Hockeystick, Alemana | vorhanden, schematisch, [Quelle](http://dance.djurredeboer.nl/latin/cha_cha/curl.html) |
+| Fencing | 4 | ★★ | Effekt und Variation | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | Hand L–R | 27: New Yorker, Offener Hip Twist, Aida | neu, schematisch |
+| Rechtskreisel (Natural Top) | 4 | ★★★★ | Drehung | 2 3 4 & 1 2 3 4 & 1 2 3 4 & 1 2 3 4 & 1 (16) | L→R / R→L | geschlossen | 27: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
 
 ## Rumba
 
 | Figur | Stufe | Schwierigkeit | Typ | Zählzeiten (Schläge) | Füße H / D | Haltung | Anschlüsse | Status |
 |---|---|---|---|---|---|---|---|---|
-| Grundschritt | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 21: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
-| Seit-Wiegeschritt (Cucaracha) | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 21: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
-| Gehschritte vor und rück | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 21: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
-| Seitschritte (links und rechts) | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 21: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
-| Seitschritte (Cucaracha-Schritt seitlich, links und rechts) | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 21: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden, Alias von „Seit-Wiegeschritt (Cucaracha)“ |
-| Vorwärts-Gehschritte | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 21: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden, Alias von „Gehschritte vor und rück“ |
-| Offene Basic (beide Hände) | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | beide Hände | 21: Offene Basic, Grundschritt, Seit-Wiegeschritt | vorhanden |
-| Grundschritt am Platz | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 21: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
-| New Yorker (rechts und links) | 1 | ★★★★★ | Promenade und offene Figuren | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R → beide Hände | 21: Offene Basic, Grundschritt, Seit-Wiegeschritt | vorhanden |
-| Damendrehung rechts unter dem Arm | 1 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 21: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
-| Schulter an Schulter | 2 | ★ | Effekt und Variation | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 21: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
-| Hand to Hand (links und rechts) | 2 | ★★★★★ | Promenade und offene Figuren | 2 3 4 2 3 4 (8) | L→R / R→L | Hand R–L → beide Hände | 21: Offene Basic, Grundschritt, Seit-Wiegeschritt | vorhanden |
-| Platzdrehung (beide drehen solo) | 2 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 (8) | L→R / R→L | ohne → beide Hände | 21: Offene Basic, Grundschritt, Seit-Wiegeschritt | vorhanden |
-| Cross Basic | 3 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 21: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | neu, schematisch |
-| Fächer (Fan) | 3 | ★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen → Fächer | 2: Hockeystick, Alemana | vorhanden |
+| Grundschritt | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 24: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
+| Seit-Wiegeschritt (Cucaracha) | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 24: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
+| Gehschritte vor und rück | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 24: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
+| Seitschritte (links und rechts) | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 24: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
+| Seitschritte (Cucaracha-Schritt seitlich, links und rechts) | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 24: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden, Alias von „Seit-Wiegeschritt (Cucaracha)“ |
+| Vorwärts-Gehschritte | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 24: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden, Alias von „Gehschritte vor und rück“ |
+| Offene Basic (beide Hände) | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | beide Hände | 24: Offene Basic, Grundschritt, Seit-Wiegeschritt | vorhanden |
+| Grundschritt am Platz | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 24: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
+| New Yorker (rechts und links) | 1 | ★★★★★ | Promenade und offene Figuren | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R → beide Hände | 24: Offene Basic, Grundschritt, Seit-Wiegeschritt | vorhanden |
+| Damendrehung rechts unter dem Arm | 1 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 24: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
+| Schulter an Schulter | 2 | ★ | Effekt und Variation | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 24: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
+| Fächer (Fan) | 2 | ★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen → Fächer | 2: Hockeystick, Alemana | vorhanden |
+| Hand to Hand (links und rechts) | 2 | ★★★★★ | Promenade und offene Figuren | 2 3 4 2 3 4 (8) | L→R / R→L | Hand R–L → beide Hände | 24: Offene Basic, Grundschritt, Seit-Wiegeschritt | vorhanden |
+| Platzdrehung (beide drehen solo) | 2 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 (8) | L→R / R→L | ohne → beide Hände | 24: Offene Basic, Grundschritt, Seit-Wiegeschritt | vorhanden |
+| Hockeystick (aus dem Fächer) | 2 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | Fächer → Hand L–R | 24: New Yorker, Offener Hip Twist, Aida | vorhanden |
+| Alemana (aus dem Fächer) | 2 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | Fächer → geschlossen | 24: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
+| Closed Hip Twist (in den Fächer) | 2 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen → Fächer | 2: Hockeystick, Alemana | vorhanden, schematisch, [Quelle](http://dance.djurredeboer.nl/latin/rumba/closed_hip.html) |
+| Cross Basic | 3 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 24: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | neu, schematisch |
 | Offener Hip Twist (in den Fächer) | 3 | ★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R → Fächer | 2: Hockeystick, Alemana | neu |
-| Hockeystick (aus dem Fächer) | 3 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | Fächer → Hand L–R | 21: New Yorker, Offener Hip Twist, Aida | vorhanden |
-| Alemana (aus dem Fächer) | 3 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | Fächer → geschlossen | 21: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
-| Opening Out (rechts und links) | 3 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | Hand R–L → geschlossen | 21: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | neu |
-| Aida | 3 | ★★★★★ | Promenade und offene Figuren | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R → beide Hände | 21: Offene Basic, Grundschritt, Seit-Wiegeschritt | neu, schematisch |
-| Spiral | 3 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen → Hand L–R | 21: New Yorker, Offener Hip Twist, Aida | neu, schematisch |
-| Fencing | 4 | ★ | Effekt und Variation | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R | 21: New Yorker, Offener Hip Twist, Aida | neu, schematisch |
-| Rechtskreisel (Natural Top) | 4 | ★★★★ | Drehung | 2 3 4 2 3 4 2 3 4 2 3 4 (16) | L→R / R→L | geschlossen | 21: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
+| Reverse Top (aus dem Grundschritt) | 3 | ★★★★ | Drehung | 2 3 4 2 3 4 2 3 4 2 3 4 (16) | L→R / R→L | geschlossen | 24: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden, schematisch, [Quelle](http://dance.djurredeboer.nl/latin/rumba/reverse_top.html) |
+| Opening Out (rechts und links) | 3 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | Hand R–L → geschlossen | 24: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | neu |
+| Aida | 3 | ★★★★★ | Promenade und offene Figuren | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R → beide Hände | 24: Offene Basic, Grundschritt, Seit-Wiegeschritt | neu, schematisch |
+| Spiral | 3 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen → Hand L–R | 24: New Yorker, Offener Hip Twist, Aida | neu, schematisch |
+| Curl (in den Fächer) | 3 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R → Fächer | 2: Hockeystick, Alemana | vorhanden, schematisch, [Quelle](http://dance.djurredeboer.nl/latin/rumba/curl.html) |
+| Fencing | 4 | ★ | Effekt und Variation | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R | 24: New Yorker, Offener Hip Twist, Aida | neu, schematisch |
+| Rechtskreisel (Natural Top) | 4 | ★★★★ | Drehung | 2 3 4 2 3 4 2 3 4 2 3 4 (16) | L→R / R→L | geschlossen | 24: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
 
 ## Salsa
 
@@ -237,37 +254,38 @@ Stand: 460 Figuren in 31 Tänzen.
 
 | Figur | Stufe | Schwierigkeit | Typ | Zählzeiten (Schläge) | Füße H / D | Haltung | Anschlüsse | Status |
 |---|---|---|---|---|---|---|---|---|
-| Grundschritt | 1 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 31: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
-| Grundschritt in offener Haltung | 1 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | beide Hände | 31: Grundschritt in offener Haltung, Offene Haltung rückwärts, Tunnel | vorhanden |
-| Grundschritt am Platz | 1 | ★ | Grundschritt | 1 2 3 (3) | L→R / R→L | geschlossen | 31: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
-| Grundschritt rückwärts (Herr rück, Dame vor) | 1 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 31: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
-| Grundschritt am Platz (seit, ran, tap) | 1 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 31: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
-| Offene Haltung rückwärts | 1 | ★ | Promenade und offene Figuren | 1 2 3 (3) | L→R / R→L | beide Hände | 31: Grundschritt in offener Haltung, Offene Haltung rückwärts, Tunnel | vorhanden |
-| Seitschritt nach rechts | 1 | ★ | Grundschritt | 1 2 3 (3) | L→R / R→L | geschlossen | 31: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
-| Grundschritt mit Linksdrehung | 1 | ★★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 31: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
-| Grundschritt mit Rechtsdrehung | 1 | ★★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 31: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
-| Seitschritte links und rechts | 1 | ★★ | Grundschritt | 1 2 3 4 5 6 7 8 (8) | L→R / R→L | geschlossen | 31: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden, Rhythmusvariante |
-| Rückführung in die geschlossene Haltung | 1 | ★★ | Effekt und Variation | 1 2 3 4 5 6 (6) | L→R / R→L | Hand L–R → geschlossen | 31: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | neu |
-| Körbchen (eindrehen, mitgehen, ausdrehen) | 1 | ★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 1 2 3 4 5 6 (12) | L→R / R→L | Körbchen → Hand L–R | 31: Schal, Rückführung in die geschlossene Haltung, Grundschritt | vorhanden |
-| Damensolo rechts (Drehung unter dem Arm) | 1 | ★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 31: Schal, Rückführung in die geschlossene Haltung, Grundschritt | vorhanden |
-| Damensolo links (Drehung unter dem Arm) | 1 | ★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 31: Schal, Rückführung in die geschlossene Haltung, Grundschritt | vorhanden |
-| Herrensolo (Linksdrehung) | 1 | ★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | ohne → beide Hände | 31: Grundschritt in offener Haltung, Offene Haltung rückwärts, Tunnel | vorhanden |
-| Platzwechsel (Dame dreht links unter dem Arm) | 1 | ★★★★ | Platz- und Positionswechsel | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 31: Schal, Rückführung in die geschlossene Haltung, Grundschritt | vorhanden |
-| Damendrehung links (Unterarmdrehung) | 1 | ★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 31: Schal, Rückführung in die geschlossene Haltung, Grundschritt | vorhanden, Alias von „Damensolo links (Drehung unter dem Arm)“ |
-| Grundschritt mit Kick | 2 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 31: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
-| Grundschritt in Kreuzhandfassung | 2 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | Kreuzhand | 31: Grundschritt in Kreuzhandfassung, Grundschritt, Grundschritt mit Linksdrehung | vorhanden |
-| Promenade (seitlich hin und zurück) | 2 | ★★ | Promenade und offene Figuren | 1 2 3 4 5 6 (6) | L→R / R→L | Promenade → geschlossen | 31: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
-| Wickler (Dame eindrehen und unter dem Arm wieder ausdrehen) | 2 | ★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 (6) | L→R / R→L | Körbchen → beide Hände | 31: Grundschritt in offener Haltung, Offene Haltung rückwärts, Tunnel | vorhanden |
-| Schattenposition (Dame vor dem Herrn) | 2 | ★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 1 2 3 4 5 6 (12) | L→R / R→L | Schatten → beide Hände | 31: Grundschritt in offener Haltung, Offene Haltung rückwärts, Tunnel | vorhanden |
-| Herrensolo (Rechtsdrehung) | 2 | ★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | ohne → beide Hände | 31: Grundschritt in offener Haltung, Offene Haltung rückwärts, Tunnel | vorhanden |
-| Platzwechsel (Dame dreht rechts unter dem Arm) | 2 | ★★★★ | Platz- und Positionswechsel | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 31: Schal, Rückführung in die geschlossene Haltung, Grundschritt | neu |
-| Handwechsel hinter dem Rücken (Herrendrehung) | 3 | ★★★★ | Platz- und Positionswechsel | 1 2 3 (3) | L→R / R→L | ohne → Hand L–R | 31: Schal, Rückführung in die geschlossene Haltung, Grundschritt | vorhanden |
-| Schal (Herr dreht rechts, ihr Arm liegt wie ein Schal um seinen Hals) | 3 | ★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Hand L–R | 31: Schal, Rückführung in die geschlossene Haltung, Grundschritt | neu, vereinfacht |
-| Doppelte Damendrehung rechts | 3 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 31: Schal, Rückführung in die geschlossene Haltung, Grundschritt | vorhanden |
-| He Goes – She Goes (erst die Dame, dann der Herr wechselt den Platz) | 3 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 (6) | L→R / R→L | Arm hoch → Hand L–R | 31: Schal, Rückführung in die geschlossene Haltung, Grundschritt | neu, vereinfacht |
-| Tunnel (Dame und Herr drehen unter beiden Armen) | 3 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 (6) | L→R / R→L | beide Hände | 31: Grundschritt in offener Haltung, Offene Haltung rückwärts, Tunnel | neu, vereinfacht |
-| Hammerlock (Dame links eingewickelt, Arm hinter dem Rücken) | 3 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Arm hoch → Hand L–R | 31: Schal, Rückführung in die geschlossene Haltung, Grundschritt | neu, vereinfacht |
-| Brezel (Körbchen, Herr dreht rechts hinein, beide drehen wieder auf) | 4 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Arm hoch → Hand L–R | 31: Schal, Rückführung in die geschlossene Haltung, Grundschritt | neu, vereinfacht |
+| Grundschritt | 1 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 32: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
+| Grundschritt in offener Haltung | 1 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | beide Hände | 32: Grundschritt in offener Haltung, Offene Haltung rückwärts, Grundschritt | vorhanden |
+| Grundschritt am Platz | 1 | ★ | Grundschritt | 1 2 3 (3) | L→R / R→L | geschlossen | 32: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
+| Grundschritt rückwärts (Herr rück, Dame vor) | 1 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 32: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
+| Grundschritt am Platz (seit, ran, tap) | 1 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 32: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
+| Offene Haltung rückwärts | 1 | ★ | Promenade und offene Figuren | 1 2 3 (3) | L→R / R→L | beide Hände | 32: Grundschritt in offener Haltung, Offene Haltung rückwärts, Grundschritt | vorhanden |
+| Seitschritt nach rechts | 1 | ★ | Grundschritt | 1 2 3 (3) | L→R / R→L | geschlossen | 32: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
+| Grundschritt mit Linksdrehung | 1 | ★★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 32: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
+| Grundschritt mit Rechtsdrehung | 1 | ★★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 32: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
+| Seitschritte links und rechts | 1 | ★★ | Grundschritt | 1 2 3 4 5 6 7 8 (8) | L→R / R→L | geschlossen | 32: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden, Rhythmusvariante |
+| Rückführung in die geschlossene Haltung | 1 | ★★ | Effekt und Variation | 1 2 3 4 5 6 (6) | L→R / R→L | Hand L–R → geschlossen | 32: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | neu |
+| Körbchen (eindrehen, mitgehen, ausdrehen) | 1 | ★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 1 2 3 4 5 6 (12) | L→R / R→L | Körbchen → Hand L–R | 32: Schal, Rückführung in die geschlossene Haltung, Grundschritt | vorhanden |
+| Damensolo rechts (Drehung unter dem Arm) | 1 | ★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 32: Schal, Rückführung in die geschlossene Haltung, Grundschritt | vorhanden |
+| Damensolo links (Drehung unter dem Arm) | 1 | ★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 32: Schal, Rückführung in die geschlossene Haltung, Grundschritt | vorhanden |
+| Herrensolo (Linksdrehung) | 1 | ★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | ohne → beide Hände | 32: Grundschritt in offener Haltung, Offene Haltung rückwärts, Grundschritt | vorhanden |
+| Platzwechsel (Dame dreht links unter dem Arm) | 1 | ★★★★ | Platz- und Positionswechsel | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 32: Schal, Rückführung in die geschlossene Haltung, Grundschritt | vorhanden |
+| Damendrehung links (Unterarmdrehung) | 1 | ★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 32: Schal, Rückführung in die geschlossene Haltung, Grundschritt | vorhanden, Alias von „Damensolo links (Drehung unter dem Arm)“ |
+| Grundschritt mit Kick | 2 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 32: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
+| Grundschritt in Kreuzhandfassung | 2 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | Kreuzhand | 32: Grundschritt in Kreuzhandfassung, Grundschritt, Grundschritt mit Linksdrehung | vorhanden |
+| Promenade (seitlich hin und zurück) | 2 | ★★ | Promenade und offene Figuren | 1 2 3 4 5 6 (6) | L→R / R→L | Promenade → geschlossen | 32: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
+| Wickler (Dame eindrehen und unter dem Arm wieder ausdrehen) | 2 | ★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 (6) | L→R / R→L | Körbchen → beide Hände | 32: Grundschritt in offener Haltung, Offene Haltung rückwärts, Grundschritt | vorhanden |
+| Schattenposition (Dame vor dem Herrn) | 2 | ★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 1 2 3 4 5 6 (12) | L→R / R→L | Schatten → beide Hände | 32: Grundschritt in offener Haltung, Offene Haltung rückwärts, Grundschritt | vorhanden |
+| Herrensolo (Rechtsdrehung) | 2 | ★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | ohne → beide Hände | 32: Grundschritt in offener Haltung, Offene Haltung rückwärts, Grundschritt | vorhanden |
+| Platzwechsel (Dame dreht rechts unter dem Arm) | 2 | ★★★★ | Platz- und Positionswechsel | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 32: Schal, Rückführung in die geschlossene Haltung, Grundschritt | neu |
+| Schulterfasser (Grundschritt in Schulterfassung) | 3 | ★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Arm hoch → Hand L–R | 32: Schal, Rückführung in die geschlossene Haltung, Grundschritt | neu |
+| Handwechsel hinter dem Rücken (Herrendrehung) | 3 | ★★★★ | Platz- und Positionswechsel | 1 2 3 (3) | L→R / R→L | ohne → Hand L–R | 32: Schal, Rückführung in die geschlossene Haltung, Grundschritt | vorhanden |
+| Doppelte Damendrehung rechts | 3 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 32: Schal, Rückführung in die geschlossene Haltung, Grundschritt | vorhanden |
+| He Goes – She Goes (erst die Dame, dann der Herr wechselt den Platz) | 3 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 (6) | L→R / R→L | Arm hoch → Hand L–R | 32: Schal, Rückführung in die geschlossene Haltung, Grundschritt | neu, vereinfacht |
+| Tunnel (Dame und Herr drehen unter beiden Armen) | 3 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 (6) | L→R / R→L | beide Arme hoch → beide Hände | 32: Grundschritt in offener Haltung, Offene Haltung rückwärts, Grundschritt | neu |
+| Hammerlock (Dame links eingewickelt, Arm hinter dem Rücken) | 3 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Arm hoch → Hand L–R | 32: Schal, Rückführung in die geschlossene Haltung, Grundschritt | neu |
+| Schal (Herr dreht rechts, ihr Arm liegt wie ein Schal um seinen Hals) | 3 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Hand L–R | 32: Schal, Rückführung in die geschlossene Haltung, Grundschritt | neu |
+| Brezel (Körbchen, Herr dreht rechts hinein, beide drehen wieder auf) | 4 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Arm hoch → Hand L–R | 32: Schal, Rückführung in die geschlossene Haltung, Grundschritt | neu |
 
 ## Wiener Walzer
 
@@ -480,8 +498,8 @@ Stand: 460 Figuren in 31 Tänzen.
 | Sugar Push (Grundschritt am Platz) | 1* | ★★ | Grundschritt | 1 2 3 4 5 & 6 (6) | L→R / R→L | beide Hände | 7: Sugar Push, Sugar Tuck, Left Side Pass | vorhanden |
 | Grundschritt mit Anker (am Platz) | 1* | ★★ | Grundschritt | 1 2 3 & 4 5 & 6 (6) | L→R / R→L | Hand L–R | 7: Left Side Pass, Underarm Turn, Right Side Pass | vorhanden |
 | Starter Step (Anfang in geschlossener Haltung) | 2* | ★★ | Effekt und Variation | 1 & 2 3 & 4 (4) | L→R / R→L | geschlossen | 7: Starter Step, Sugar Push, Left Side Pass | vorhanden |
-| Right Side Pass (Dame geht rechts vorbei) | 3* | ★★★ | Effekt und Variation | 1 2 3 4 5 & 6 (6) | L→R / R→L | Hand L–R | 7: Left Side Pass, Underarm Turn, Right Side Pass | vorhanden |
 | Left Side Pass (Dame geht links vorbei) | 4* | ★★★★ | Verbindung und Wechsel | 1 2 3 & 4 5 & 6 (6) | L→R / R→L | Hand L–R | 7: Left Side Pass, Underarm Turn, Right Side Pass | vorhanden |
+| Right Side Pass (Dame geht rechts vorbei) | 4* | ★★★★ | Effekt und Variation | 1 2 3 & 4 5 & 6 (6) | L→R / R→L | Hand L–R | 7: Left Side Pass, Underarm Turn, Right Side Pass | vorhanden |
 | Underarm Turn (Dame dreht rechts unter dem Arm) | 4* | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 & 4 5 & 6 (6) | L→R / R→L | Hand L–R | 7: Left Side Pass, Underarm Turn, Right Side Pass | vorhanden |
 | Sugar Tuck (Sugar Push mit Damendrehung) | 4* | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 4 5 & 6 (6) | L→R / R→L | beide Hände → Hand L–R | 7: Left Side Pass, Underarm Turn, Right Side Pass | vorhanden |
 

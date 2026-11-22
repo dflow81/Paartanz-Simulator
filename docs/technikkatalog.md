@@ -49,6 +49,9 @@ Belastungsfuß, freier Fuß und Ausrichtung im Raum stehen je Schritt in der App
 | Open Telemark | HT T HT | senkt, hebt, oben, senkt am Ende | 1 | – | gll |
 | Natural Twist Turn | HT T T BF T HT | senkt, hebt, oben, senkt am Ende | 1,6 | 3 | grrrrr |
 | Basic Weave † | HT T T T T TH | oben | 1,4 | 3,6 | gllgrr |
+| Natural Telemark † | HT T T T TH | senkt, hebt, oben, oben, senkt am Ende | 1 | 5 | grgrr |
+| Hover Cross † | HT T T T T T TH | senkt, hebt, oben, oben, senkt am Ende | 1 | 4,7 | grglgrr |
+| Natural Zig-Zag aus der Promenade † | HT T T T TH | senkt, hebt, oben, oben, senkt am Ende | – | 1,3,5 | gggrr |
 
 ## Quickstep
 
@@ -77,6 +80,8 @@ Belastungsfuß, freier Fuß und Ausrichtung im Raum stehen je Schritt in der App
 | Hover Corté | TH T BF | unten | 1 | – | gll |
 | Natural Pivot Turn † | HT T TH THT (Pivot) | unten, hebt, oben, senkt am Ende, senkt | 1,4 | – | grrgg |
 | Reverse Pivot † | THT (Pivot) | unten | – | 1 | gg |
+| Tipsy nach rechts † | TH T T T | senkt, hebt, oben, oben, senkt am Ende | 1,4 | – | grrr |
+| Rumba Cross † | HT HT T TH (Pivot) (Pivot) | unten, hebt, oben, senkt am Ende, senkt | 4 | – | lgrggg |
 
 ## Tango
 
@@ -112,6 +117,9 @@ Belastungsfuß, freier Fuß und Ausrichtung im Raum stehen je Schritt in der App
 | Oversway | BF – | keine | – | – | –– |
 | Rock zurück (linker Fuß) † | BH (Innenkante) HF BH (Innenkante) | keine | – | – | ––– |
 | Rock zurück (rechter Fuß, in CBMP) † | BH HF BH | keine | – | 1,3 | ––– |
+| Promenade Link † | HF HF i/e of B | keine | – | 2 | ––– |
+| The Chase † | HF HF i/e of BH BH BH BH i/e of B | keine | 4,5 | 2,4,5 | ––––––– |
+| Reverse Outside Swivel † | HF BH BH HF i/e of B | keine | 3 | 1,3,4 | ––––– |
 
 ## Langsamer Walzer
 
@@ -120,17 +128,17 @@ Belastungsfuß, freier Fuß und Ausrichtung im Raum stehen je Schritt in der App
 | Grundschritt (Karree) | HT T TH TH T TH | unten, hebt, senkt am Ende, senkt | – | – | gggggg |
 | Karree mit Linksdrehung (¼) | HT T TH TH T TH | unten, hebt, senkt am Ende, senkt | – | – | glllll |
 | Karree mit Rechtsdrehung (¼) | HT T TH TH T TH | unten, hebt, senkt am Ende, senkt | – | – | grrrrr |
-| Vorwärts-Wechsel mit links | HT T TH | unten, hebt, senkt am Ende, senkt | – | – | ggg |
-| Vorwärts-Wechsel mit rechts | HT T TH | unten, hebt, senkt am Ende, senkt | – | – | ggg |
+| Vorwärts-Wechsel mit links † | HT T TH | unten, hebt, senkt am Ende, senkt | – | – | gll |
+| Vorwärts-Wechsel mit rechts † | HT T TH | unten, hebt, senkt am Ende, senkt | – | – | grr |
 | Rückwärts-Wechsel mit rechts | TH T TH | unten, hebt, senkt am Ende, senkt | – | – | ggg |
 | Rückwärts-Wechsel mit links | TH T TH | unten, hebt, senkt am Ende, senkt | – | – | ggg |
-| Rechtsdrehung (6 Schritte) | HT T TH TH T TH | unten, hebt, senkt am Ende, senkt | 1,4 | – | grrrrr |
-| Linksdrehung (6 Schritte) | HT T TH TH T TH | unten, hebt, senkt am Ende, senkt | 1,4 | – | glllll |
+| Rechtsdrehung (6 Schritte) † | HT T TH TH T TH | unten, hebt, senkt am Ende, senkt | 1,4 | – | grrgll |
+| Linksdrehung (6 Schritte) † | HT T TH TH T TH | unten, hebt, senkt am Ende, senkt | 1,4 | – | gllgrr |
 | Wischer (in die Promenade) | HT T T | unten, hebt, senkt am Ende, senkt | – | 3 | ggg |
 | Chassé aus der Promenade | T T TH T | unten, hebt, oben, senkt am Ende, senkt | – | 1 | gggg |
 | Zögerschritt | HT T T | unten, hebt, senkt am Ende, senkt | – | – | ggg |
 | Pendelschritt (seit, ran) | T T T T | senkt, hebt, senkt am Ende | – | – | gggg |
-| Rechtskreisel (Spin Turn) | HT T TH TH HT TH | unten, hebt, senkt am Ende, senkt | 1,4,5 | – | grrrrr |
+| Rechtskreisel (Spin Turn) † | HT T TH THT HT TH | unten, hebt, senkt am Ende, senkt | 1,4,5 | – | grrggg |
 | Zögerwechsel (Rechtsdrehung mit Zögern) | HT T TH TH T T | unten, hebt, senkt am Ende, senkt | 1,4 | – | grrrrg |
 | Außenseitlicher Wechsel | TH TH T | unten, hebt, senkt am Ende, senkt | 2 | – | gll |
 | Kreuzschritt vorwärts (1, 2 und 3) | HT HT T HT | unten, hebt, oben, senkt am Ende, senkt | – | 1,3 | gggg |
@@ -160,6 +168,10 @@ Belastungsfuß, freier Fuß und Ausrichtung im Raum stehen je Schritt in der App
 | Throwaway Oversway | HT T T | unten, hebt, senkt am Ende, senkt | 1 | – | glg |
 | Chair | T BF TH | unten, hebt, senkt am Ende, senkt | – | 1 | ggg |
 | Same Foot Lunge | T – BF TH – | unten, hebt, senkt am Ende, senkt | – | – | ggggg |
+| Left Whisk † | TH TH T F (L), T (R) F (L), T (R) F (L), T (R) TH | unten, hebt, senkt am Ende, senkt, hebt, oben, senkt am Ende | 1 | 3 | grrgggg |
+| Open Impetus † | TH HT TH | unten, hebt, senkt am Ende, senkt | 1 | – | glg |
+| Closed Wing † | HT F F | unten, hebt, senkt am Ende, senkt | – | 1 | grr |
+| Turning Lock nach rechts † | T T T TH | unten, hebt, oben, senkt am Ende, senkt | 1 | 2 | rrgg |
 
 ## Cha-Cha-Cha
 
@@ -192,6 +204,8 @@ Belastungsfuß, freier Fuß und Ausrichtung im Raum stehen je Schritt in der App
 | Fencing | BF BF BF BF BF BF BF BF BF BF | keine | – | – | –––––––––– |
 | Spiral | BF BF BF BF BF BF BF BF BF BF | keine | – | – | –––––––––– |
 | Closed Hip Twist (in den Fächer) | BF BF BF BF BF BF BF BF BF BF | keine | – | – | –––––––––– |
+| Reverse Top (aus dem Grundschritt) | BF BF BF BF BF BF BF BF BF BF BF BF BF BF BF BF BF BF BF BF | keine | – | 7,9,11,13,15,17 | –––––––––––––––––––– |
+| Curl (in den Fächer) | BF BF BF BF BF BF BF BF BF BF | keine | – | – | –––––––––– |
 
 ## Rumba
 
@@ -220,6 +234,9 @@ Belastungsfuß, freier Fuß und Ausrichtung im Raum stehen je Schritt in der App
 | Aida | BF BF BF BF BF BF | keine | – | – | –––––– |
 | Fencing | BF BF BF BF BF BF | keine | – | – | –––––– |
 | Spiral | BF BF BF BF BF BF | keine | – | – | –––––– |
+| Reverse Top (aus dem Grundschritt) | BF BF BF BF BF BF BF BF BF BF BF BF | keine | – | 5,7,9,11 | –––––––––––– |
+| Curl (in den Fächer) | BF BF BF BF BF BF | keine | – | – | –––––– |
+| Closed Hip Twist (in den Fächer) | BF BF BF BF BF BF | keine | – | – | –––––– |
 
 ## Salsa
 
@@ -278,6 +295,7 @@ Belastungsfuß, freier Fuß und Ausrichtung im Raum stehen je Schritt in der App
 | Hammerlock (Dame links eingewickelt, Arm hinter dem Rücken) | BF BF T BF BF T BF BF T HF HF T | keine | – | – | –––––––––––– |
 | Schal (Herr dreht rechts, ihr Arm liegt wie ein Schal um seinen Hals) | HF HF T HF HF T HF HF T BF BF T | keine | – | – | –––––––––––– |
 | Brezel (Körbchen, Herr dreht rechts hinein, beide drehen wieder auf) | BF BF T HF HF T HF HF T BF BF T | keine | – | – | –––––––––––– |
+| Schulterfasser (Grundschritt in Schulterfassung) | BF BF T HF HF T BF BF T BF BF T | keine | – | – | –––––––––––– |
 | Rückführung in die geschlossene Haltung | BF BF T HF HF T | keine | – | – | –––––– |
 
 ## Wiener Walzer
@@ -493,7 +511,7 @@ Belastungsfuß, freier Fuß und Ausrichtung im Raum stehen je Schritt in der App
 | Underarm Turn (Dame dreht rechts unter dem Arm) | BF BF BF BF BF BF BF BF | keine | – | 2,6 | –––––––– |
 | Starter Step (Anfang in geschlossener Haltung) | BF BF BF BF BF BF | keine | – | – | –––––– |
 | Sugar Tuck (Sugar Push mit Damendrehung) | BF BF T HF BF BF BF | keine | – | 5 | ––––––– |
-| Right Side Pass (Dame geht rechts vorbei) | BF BF T BF BF BF BF | keine | – | 5 | ––––––– |
+| Right Side Pass (Dame geht rechts vorbei) | BF BF BF BF BF BF BF BF | keine | – | 1,6 | –––––––– |
 | Grundschritt mit Anker (am Platz) | BF BF BF BF BF BF BF BF | keine | – | 3,6 | –––––––– |
 
 ## Walzer-Musette

@@ -13,7 +13,7 @@ const D=lauf(c,String.raw`(()=>{ const neu=new Set(NEU), kurz=n=>n.replace(/\s*\
       fuss:t.map(x=>x.technik).join(' '),rise:[...new Set(t.map(x=>x.rise))].join(', '),cbm:t.filter(x=>x.cbm).map(x=>x.nr).join(','),cbmp:t.filter(x=>x.cbmp).map(x=>x.nr).join(','),sway:t.map(x=>x.sway[0]).join(''),
       sig:JSON.stringify([F.steps.map(s=>[s.f,s.dir,s.len,s.d,+s.turn||0,s.hold||'zu']),F.dame?F.dame.map(s=>[s.f,s.dir,s.len,s.d,+s.turn||0]):0])}; });
   const q=qualitaetAlle();
-  const syll=Object.entries(SYLLABUS).map(([d,st])=>({tanz:d,st:Object.entries(st).map(([s,l])=>({stufe:+s,da:l.filter(e=>e.includes('=')).map(e=>e.split('=')),fehlt:l.filter(e=>!e.includes('='))}))}));
+  const syll=Object.entries(SYLLABUS).map(([d,st])=>({tanz:d,st:Object.entries(st).map(([s,l])=>({stufe:+s,da:l.filter(e=>e.includes('=')).map(e=>e.split('=')),fehlt:l.filter(e=>!e.includes('=')).map(n=>OFFEN_GRUND[d+'|'+n]?n+' – offen: '+OFFEN_GRUND[d+'|'+n]:n)}))}));
   let seed=20261118; const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
   const folgen=PRIO.map(d=>({tanz:d,st:[2,3,4,5].map(s=>{ const r=folgeFuerStufe(d,s,rnd); return {stufe:s,fehler:r.fehler,items:r.items.map(i=>kurz(BUILTIN[i.fig].name))}; })}));
   const taenze=DANCES.map(d=>{ const l=figs.filter(f=>f.tanz===d), sty=styleOf(d), f0=Object.values(BUILTIN).find(F=>F.dance===d); return {tanz:d,bpm:f0.bpm,takt:taktOf(d),zaehl:(TANZ_DATEN[d]||{}).zaehl||'',phrase:phraseVon(d),standard:istStandard(d),stil:stilKey(sty),n:l.length,seqs:Object.values(DEFAULT_SEQS).filter(s=>BUILTIN[s.items[0].fig]&&BUILTIN[s.items[0].fig].dance===d).length,stufen:[1,2,3,4,5,6,7].map(s=>l.filter(f=>f.stufe===s).length),fest:l.filter(f=>f.fest).length}; });

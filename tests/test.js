@@ -143,11 +143,29 @@ test('Abgleichliste: jede Figur nur einmal zugeordnet',()=>liste(R(`(()=>{ const
 test('Figuren mit Quelle: Quelle und Fußarbeit für jeden Schritt beider Rollen',()=>liste(R(`Object.keys(QUELLEN).filter(k=>!BUILTIN[k]||!/^http/.test(QUELLEN[k])||(TECHNIK_DATEN[k]&&(TECHNIK_DATEN[k].H.fuss.length!==BUILTIN[k].steps.length||TECHNIK_DATEN[k].D.fuss.length!==BUILTIN[k].steps.length)))`)));
 
 /* ---------- Neue feste Kursfolgen ---------- */
-test('neue Kursfolgen: Stufe, Übergänge, Wiederholung, Schleife und Laufweg',()=>liste(R(`['k_slowfox1','k_slowfox2','k_quick1','k_quick2','k_salsa1','k_salsa2'].flatMap(k=>{ const s=DEFAULT_SEQS[k]; if(!s) return [k+' fehlt']; const st=/Bronze/.test(s.name)?2:3, p=folgePruefen(s.items,{schleife:true,bisStufe:st});
+test('neue Kursfolgen: Stufe, Übergänge, Wiederholung, Schleife und Laufweg',()=>liste(R(`['k_slowfox1','k_slowfox2','k_quick1','k_quick2','k_salsa1','k_salsa2','k_chacha3','k_chacha4','k_rumba3','k_rumba4','k_tango4','k_walzer4'].flatMap(k=>{ const s=DEFAULT_SEQS[k]; if(!s) return [k+' fehlt']; const st={Bronze:2,Silber:3,Gold:4}[s.name.split('– ').pop()], p=folgePruefen(s.items,{schleife:true,bisStufe:st});
   return p.fehler.concat(p.warnungen).map(x=>k+': '+x); })`)));
 test('Salsa-Kursfolgen bleiben im kubanischen Stil',()=>liste(R(`['k_salsa1','k_salsa2'].flatMap(k=>DEFAULT_SEQS[k].items.filter(i=>!['b_s_rueckb','b_s_dile','b_s_ench','b_s_vacilala','b_s_sombrero','b_s_kreuzgs'].includes(i.fig)).map(i=>k+': '+i.fig))`)));
 test('bestehendes Profil mit eigener Folge bekommt die neuen Vorlagen dazu',()=>{ const alt={figures:{},seqs:{s_eigen:{name:'Meine',bpm:100,items:[{fig:'b_d_gs',rep:1}]},s_walzer:{name:'geändert',bpm:90,items:[{fig:'b_w_box',rep:3}]}},seen:['s_walzer','s_eigen']};
   const c2=ladeAlles(alt), r=lauf(c2,`[!!user.seqs.s_eigen, user.seqs.s_walzer.name, !!user.seqs.k_slowfox1, !!user.seqs.k_salsa2, user.seen.includes('k_quick1')]`); return r.join()==='true,geändert,true,true,true'||r.join(); });
+
+/* ---------- Offline-Speicher (sw.js) ---------- */
+test('Offline: der Service Worker findet alle Dateien der Seite',()=>{ const c3={self:{addEventListener(){}},caches:{},fetch:()=>{}}; vm.createContext(c3); vm.runInContext(fs.readFileSync(path.join(ROOT,'sw.js'),'utf8')+';this.D=dateienAus;',c3);
+  const html=fs.readFileSync(path.join(ROOT,'tanzsimulator.html'),'utf8'), l=c3.D(html), fehlt=skripte().filter(f=>!l.some(u=>u.startsWith(f+'?')||u===f));
+  return !fehlt.length&&l.some(u=>/tanzsimulator\.css/.test(u))&&l.some(u=>/icon-192/.test(u))||'fehlt: '+fehlt.join(', '); });
+
+/* ---------- Import und geteilte Links ---------- */
+test('Import: gültige Figur und Folge werden übernommen',()=>{ const r=R(`importPruefen({figures:{u_test:{name:'Meine',dance:'Tango',bpm:120,steps:[S('L','vor',30,2,'S'),S('R','vor',30,2,'S')]}},seqs:{s_test:{name:'F',bpm:120,items:[{fig:'u_test',rep:2},{fig:'b_t_gs',rep:1}]}}})`);
+  return Object.keys(r.figures).length===1&&r.seqs.s_test.items.length===2&&!r.fehler.length||JSON.stringify(r).slice(0,300); });
+test('Import: kaputte Schritte, unbekannte Figuren und vorgegebene IDs werden abgewiesen',()=>{ const r=R(`importPruefen({figures:{u_a:{name:'A',steps:[{f:'X',dir:'vor',len:30,d:1,c:'1'}]},u_b:{name:'B',steps:[{f:'L',dir:'fliegen',len:30,d:1,c:'1'}]},b_w_box:{name:'Überschreiben',steps:[S('L','vor',30,1,'1')]},'<bad>':{name:'X',steps:[]},u_c:{name:'C',steps:[S('L','vor',30,1,'1')],dame:[S('R','rueck',30,2,'1')]}},seqs:{s_x:{name:'X',items:[{fig:'gibtsnicht'}]},s_y:{name:'Y',items:[{fig:'b_w_box'},{fig:'gibtsnicht'}]}}})`);
+  return !Object.keys(r.figures).length&&!r.seqs.s_x&&r.seqs.s_y.items.length===1&&r.fehler.length>=5&&r.warnungen.length>=2||JSON.stringify(r).slice(0,400); });
+test('Import: Werte werden begrenzt (Wiederholungen, Tempo, Textlänge)',()=>{ const r=R(`importPruefen({figures:{},seqs:{s_z:{name:'x'.repeat(500),bpm:9999,items:[{fig:'b_w_box',rep:999}]}}})`); return r.seqs.s_z.name.length===80&&r.seqs.s_z.bpm===260&&r.seqs.s_z.items[0].rep===32||JSON.stringify(r).slice(0,200); });
+
+/* ---------- Abstand, Schrittweite, Haltungen ---------- */
+test('Right Side Pass: keine Riesenschritte mehr (unter 0,6 m)',()=>{ const m=R(`(()=>{ const t=simulate(flatten({items:[{fig:'b_wc_passR',rep:2}]}),{H:startH(),noSteer:true}); let mx=0; for(const r of t.H.concat(t.D)) if(r.kind==='step') mx=Math.max(mx,Math.hypot(r.to[0]-r.other[0],r.to[1]-r.other[1])); return mx; })()`); return m<.6||m.toFixed(2); });
+test('Abstandsausgleich: in keiner Beispiel- oder Kursfolge kommen sich die Partner näher als 18 cm',()=>liste(R(`Object.entries(DEFAULT_SEQS).filter(([k,s])=>{ const t=simulate(flatten({items:s.items.concat(s.items)}),{H:startH()}); for(let b=0;b<t.total;b+=.1){ const a=evalRaw(t.H,b),d=evalRaw(t.D,b); if(Math.hypot(a.sup[0]-d.sup[0],a.sup[1]-d.sup[1])<.18) return true; } return false; }).map(([k])=>k)`)));
+test('neue Haltungen haben Namen, Hinweis und Geometrie',()=>liste(R(`['hochB','hammer','schal','brezel','schulter'].filter(h=>!HOLDS[h]||!HOLD_TIP[h]||!holdGeo(h,STYLES.social))`)));
+test('Abgleichliste: offene Gründe gehören zu offenen Einträgen',()=>liste(R(`Object.keys(OFFEN_GRUND).filter(k=>{ const [d,n]=k.split('|'); return !SYLLABUS[d]||!Object.values(SYLLABUS[d]).flat().includes(n); })`)));
 
 /* ---------- Ergebnis ---------- */
 console.log(`${ok} Tests bestanden, ${fail} fehlgeschlagen`);

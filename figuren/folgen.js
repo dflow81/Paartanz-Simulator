@@ -135,3 +135,11 @@ folge('k_quick1','Kursfolge Quickstep – Bronze',200,[['b_q_viertel'],['b_q_cha
 folge('k_quick2','Kursfolge Quickstep – Silber',200,[['b_q_viertel'],['b_q_lock'],['b_q_fishtail'],['b_q_rrturn'],['b_q_rfinish'],['b_q_qor'],['b_q_v6'],['b_q_links']]);
 folge('k_salsa1','Kursfolge Salsa (kubanischer Stil) – Bronze',170,[['b_s_rueckb',2],['b_s_dile'],['b_s_ench'],['b_s_dile']]);
 folge('k_salsa2','Kursfolge Salsa (kubanischer Stil) – Silber',170,[['b_s_rueckb'],['b_s_dile'],['b_s_vacilala'],['b_s_sombrero'],['b_s_kreuzgs']]);
+
+/* Weitere feste Kursfolgen: Cha-Cha-Cha und Rumba (Bronze, Gold), Tango (Silber), Langsamer Walzer (Gold) */
+folge('k_chacha3','Kursfolge Cha-Cha-Cha – Bronze',120,[['b_c_gs'],['b_c_ny'],['b_c_hand'],['b_c_fan'],['b_c_hockey'],['b_c_closedhip'],['b_c_alemana']]);
+folge('k_chacha4','Kursfolge Cha-Cha-Cha – Gold',120,[['b_c_gs'],['b_c_rtop'],['b_c_closedhip'],['b_c_hockey'],['b_c_fence'],['b_c_curl'],['b_c_alemana']]);
+folge('k_rumba3','Kursfolge Rumba – Bronze',100,[['b_r_box'],['b_r_ny'],['b_r_hand'],['b_r_fan'],['b_r_hockey'],['b_r_closedhip'],['b_r_alemana']]);
+folge('k_rumba4','Kursfolge Rumba – Gold',100,[['b_r_box'],['b_r_rtop'],['b_r_closedhip'],['b_r_hockey'],['b_r_fence'],['b_r_curl'],['b_r_alemana']]);
+folge('k_tango4','Kursfolge Tango – Silber',128,[['b_t_geh'],['b_t_link'],['b_t_plink'],['b_t_roswivel'],['b_t_vier'],['b_t_oprom'],['b_t_corte']]);
+folge('k_walzer4','Kursfolge Langsamer Walzer – Gold',90,[['b_w_vw'],['b_w_kreisel'],['b_w_tlockr'],['b_w_chasse'],['b_w_hcorte'],['b_w_contra'],['b_w_wpp'],['b_w_cwing'],['b_w_rev']]);

@@ -6,7 +6,7 @@ Ein 3D-Simulator im Browser zum Lernen und Üben von Paartänzen. Herr und Dame 
 
 ## Was er kann
 
-- **31 Tänze, 460 Figuren und 124 Beispiel- und Kursfolgen:** Langsamer Walzer, Wiener Walzer, Tango, Slowfox, Quickstep, Foxtrott, Discofox, Blues, Rock'n'Roll, Polka, Cha-Cha-Cha, Rumba, Samba, Jive, Paso Doble, Salsa, Bachata, Merengue, Boogie-Woogie, Tango Argentino, West Coast Swing Dazu die übrigen Tänze des Welttanzprogramms: Walzer-Musette, Tangowalzer, Disco-Samba, Two Step, Bugg, Cumbia, Tango Americano, Nordic Tango, Mambo und Marschfox.
+- **31 Tänze, 478 Figuren und 130 Beispiel- und Kursfolgen:** Langsamer Walzer, Wiener Walzer, Tango, Slowfox, Quickstep, Foxtrott, Discofox, Blues, Rock'n'Roll, Polka, Cha-Cha-Cha, Rumba, Samba, Jive, Paso Doble, Salsa, Bachata, Merengue, Boogie-Woogie, Tango Argentino, West Coast Swing Dazu die übrigen Tänze des Welttanzprogramms: Walzer-Musette, Tangowalzer, Disco-Samba, Two Step, Bugg, Cumbia, Tango Americano, Nordic Tango, Mambo und Marschfox.
 - **Fertige Tanzfolgen** für jeden Tanz, dazu eigene Folgen und eigene Figuren im Editor
 - **Kursstufen** (Einsteiger/WTP 1, Bronze, Silber, Gold, Goldstar, Turnier, Freies Tanzen) und **Filter** nach Stufe, Figurentyp und Haltung – orientiert an üblichen Tanzschulkursen, keine offizielle Zuordnung
 - **Karte „Zur Figur“:** Stufe, Schwierigkeit, Zählzeiten, Start- und Endfuß, Haltung, Beschreibung und passende Anschlussfiguren
@@ -45,7 +45,9 @@ Ein 3D-Simulator im Browser zum Lernen und Üben von Paartänzen. Herr und Dame 
 
 **Eigene Figuren** legst du im Tab **Figuren** Schritt für Schritt an: Fuß, Richtung, Schrittlänge, Drehung, Dauer in Schlägen, Zählung und Haltung. Vorgegebene Figuren lassen sich als Kopie bearbeiten. **Eigene Tanzfolgen** baust du im Tab **Tanzfolgen** – ⚠ zeigt an, wo eine Figur mit dem falschen Fuß beginnt.
 
-Eigene Figuren und Folgen werden im Browser gespeichert (nicht auf GitHub). Mit **Exportieren** sicherst du sie als Datei.
+Eigene Figuren und Folgen werden im Browser gespeichert (nicht auf GitHub). Mit **Exportieren** sicherst du sie als Datei. Beim **Importieren** und beim Öffnen eines **geteilten Links** wird alles geprüft: Nur gültige Figuren und Folgen werden übernommen, Probleme werden angezeigt.
+
+**Als App installiert** (auf GitHub Pages über „Installieren“ im Browser) speichert der Simulator beim ersten Start alle Dateien und läuft danach vollständig ohne Internet.
 
 ## Lokal starten
 
@@ -111,7 +113,7 @@ Die Figuren sind vereinfachte Tanzschul-Versionen und können von dem abweichen,
 **Kursstufen, Kursfolgen und die Abgleichliste** orientieren sich am Aufbau üblicher Tanzschulkurse und an allgemein bekannten Figurennamen. Sie sind keine offiziellen Lehrpläne von ADTV, DTV, ISTD oder WDSF. Die Aufbaufiguren sind schematisch beschrieben, die Technikdaten aus den Schritten abgeleitet; beides ersetzt kein Technikbuch und keinen Tanzlehrer. Figuren ohne Eintrag bekommen eine aus dem Schwierigkeitsgrad geschätzte Stufe.
 
 **Bekannte Einschränkungen**
-- Die Engine kennt Haltungen (Fassungen), aber keine einzelnen Arm- und Handbewegungen. Brezel, Hammerlock, Schal, Tunnel und He Goes – She Goes werden über Positionen, Drehungen und Führungshinweise gezeigt; sie sind in der Figurenkarte als „vereinfacht“ markiert.
+- Arme und Hände folgen der Haltung. Für Tunnel, Hammerlock, Schal, Brezel und Schulterfassung gibt es eigene Haltungen mit passender Handführung; Armbewegungen zwischen zwei Haltungen werden weich überblendet, aber nicht einzeln choreografiert. He Goes – She Goes ist weiterhin als „vereinfacht“ markiert.
 - Noch fehlende Figuren stehen priorisiert in [docs/figurenluecken.md](docs/figurenluecken.md). Die Tango-„Kehre“ fehlt, weil der Begriff nicht eindeutig ist. „Wrap“ entspricht im Discofox dem Körbchen.
 - Figuren mit eigenen Schritten der Dame setzen einen üblichen Anfangsabstand voraus. Bei Unterarmdrehungen und Körbchen-Figuren kommen sich die Partner teils sehr nah (unter 25 cm Körpermitte zu Körpermitte).
 - Wechselfiguren (z. B. Vorwärts-Wechsel) beginnen und enden auf demselben Fuß. Allein in Schleife abgespielt, zeigen sie deshalb ⚠.

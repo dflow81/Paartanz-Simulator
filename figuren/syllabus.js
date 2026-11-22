@@ -8,29 +8,29 @@
 const SYLLABUS={
 'Langsamer Walzer':{
   2:['Closed Change=w_vw','Natural Turn=w_nat','Reverse Turn=w_rev','Natural Spin Turn=w_kreisel','Whisk=w_wisch','Chassé from Promenade=w_chasse','Closed Impetus=w_impetus','Hesitation Change=w_zwechsel','Outside Change=w_aussen','Reverse Corté=w_rcorte','Back Whisk=w_bwhisk','Basic Weave=w_weave','Double Reverse Spin=w_dbl','Reverse Pivot','Back Lock=w_rlock','Progressive Chassé to Right=w_pcr'],
-  3:['Weave from Promenade=w_wpp','Closed Telemark=w_telemark','Open Telemark=w_otelemark','Cross Hesitation=w_cross','Wing=w_wing','Open Impetus','Outside Spin=w_ospin','Turning Lock=w_tlock','Drag Hesitation=w_drag','Left Whisk'],
-  4:['Contra Check=w_contra','Closed Wing','Turning Lock to Right','Fallaway Reverse and Slip Pivot','Hover Corté=w_hcorte','Fallaway Whisk'],
+  3:['Weave from Promenade=w_wpp','Closed Telemark=w_telemark','Open Telemark=w_otelemark','Cross Hesitation=w_cross','Wing=w_wing','Open Impetus=w_oimpetus','Outside Spin=w_ospin','Turning Lock=w_tlock','Drag Hesitation=w_drag'],
+  4:['Contra Check=w_contra','Closed Wing=w_cwing','Turning Lock to Right=w_tlockr','Left Whisk=w_lwhisk','Fallaway Reverse and Slip Pivot','Hover Corté=w_hcorte','Fallaway Whisk'],
   5:['Hover Telemark=w_hover','Hinge Line','Curved Feather'],
   6:['Oversway=w_oversway','Throwaway Oversway=w_throw','Same Foot Lunge=w_lunge','Chair=w_chair','Natural Fallaway'],
 },
 'Tango':{
   2:['Walk=t_geh','Progressive Side Step=t_pss','Progressive Link=t_link','Closed Promenade=t_prom','LF Rock (Rock Back)=t_rockl','RF Rock=t_rockr','Open Reverse Turn=t_orev','Back Corté=t_corte','Natural Rock Turn=t_rock','Basic Reverse Turn=t_links'],
-  3:['Four Step=t_vier','Open Promenade=t_oprom','Back Open Promenade=t_bopr','Outside Swivel=t_oswivel','Fallaway Promenade=t_fallaway','Natural Twist Turn=t_ntwist','Natural Promenade Turn=t_npt'],
-  4:['Five Step=t_fuenf','Contra Check=t_contra','Fallaway Four Step=t_fall4','Brush Tap=t_brush','Chase'],
-  5:['Spanish Drag=t_drag','Promenade Link','Reverse Outside Swivel'],
+  3:['Four Step=t_vier','Open Promenade=t_oprom','Back Open Promenade=t_bopr','Outside Swivel=t_oswivel','Fallaway Promenade=t_fallaway','Natural Twist Turn=t_ntwist','Natural Promenade Turn=t_npt','Promenade Link=t_plink','Reverse Outside Swivel=t_roswivel'],
+  4:['Five Step=t_fuenf','Contra Check=t_contra','Fallaway Four Step=t_fall4','Brush Tap=t_brush','The Chase=t_chase'],
+  5:['Spanish Drag=t_drag'],
   6:['Oversway=t_oversway','Same Foot Lunge','Throwaway Oversway'],
 },
 'Slowfox':{
   2:['Feather Step=sf_feder','Three Step=sf_dreier','Natural Turn=sf_rechts','Reverse Turn=sf_links','Closed Impetus=sf_impetus','Feather Finish=sf_ffinish','Change of Direction=sf_cod','Basic Weave=sf_bweave'],
-  3:['Natural Weave=sf_nweave','Open Telemark=sf_otelemark','Top Spin=sf_topspin','Hover Feather=sf_hfeder','Hover Telemark=sf_hover','Open Impetus=sf_oimp','Weave from Promenade=sf_wpp','Reverse Wave=sf_wellen','Natural Telemark','Hover Cross'],
-  4:['Curved Feather=sf_cfeder','Back Feather=sf_rfeder','Bounce Fallaway with Weave Ending=sf_bounce','Natural Twist Turn=sf_ntwist','Natural Zig Zag','Fallaway Reverse and Slip Pivot'],
+  3:['Natural Weave=sf_nweave','Open Telemark=sf_otelemark','Top Spin=sf_topspin','Hover Feather=sf_hfeder','Hover Telemark=sf_hover','Open Impetus=sf_oimp','Weave from Promenade=sf_wpp','Reverse Wave=sf_wellen','Natural Telemark=sf_ntelemark','Hover Cross=sf_hcross'],
+  4:['Curved Feather=sf_cfeder','Back Feather=sf_rfeder','Bounce Fallaway with Weave Ending=sf_bounce','Natural Twist Turn=sf_ntwist','Natural Zig Zag from PP=sf_zigzag','Fallaway Reverse and Slip Pivot'],
   5:['Tumble Turn=sf_tumble','Extended Reverse Wave','Curved Three Step'],
   6:['Oversway','Hover Corté'],
 },
 'Quickstep':{
   2:['Quarter Turn to Right=q_viertel','Progressive Chassé=q_chasse','Forward Lock=q_lock','Natural Turn=q_rechts','Natural Pivot Turn=q_npivot','Natural Spin Turn=q_kreisel','Back Lock=q_rlock','Reverse Pivot=q_rpivot','Tipple Chassé to Right=q_tipple','Running Finish=q_rfinish','Natural Turn with Hesitation=q_zoeger','Chassé Reverse Turn=q_links'],
-  3:['Quick Open Reverse=q_qor','Fishtail=q_fishtail','Running Right Turn=q_rrturn','Cross Swivel=q_swivel','Six Quick Run=q_6run','V6=q_v6','Zig Zag'],
-  4:['Hover Corté=q_hcorte','Rumba Cross','Tipsy to Right','Fallaway Natural Turn'],
+  3:['Quick Open Reverse=q_qor','Fishtail=q_fishtail','Running Right Turn=q_rrturn','Cross Swivel=q_swivel','Six Quick Run=q_6run','V6=q_v6'],
+  4:['Hover Corté=q_hcorte','Rumba Cross=q_rcross','Tipsy to Right=q_tipsy','Tipsy to Left','Fallaway Natural Turn'],
   5:['Scatter Chassés','Pepperpot=q_pepper','Hops=q_hops'],
   6:['Oversway'],
 },
@@ -40,14 +40,14 @@ const SYLLABUS={
 },
 'Cha-Cha-Cha':{
   2:['Closed Basic=c_gs','Open Basic=c_offen','Fan=c_fan','Hockey Stick=c_hockey','Alemana=c_alemana','Natural Top=c_top','New York=c_ny','Spot Turn=c_spot','Hand to Hand=c_hand','Time Step=c_time','Three Cha Chas=c_drei','Shoulder to Shoulder=c_schulter','Natural Opening Out=c_open','Closed Hip Twist=c_closedhip','Side Steps=c_seit','Cuban Break=c_cuban'],
-  3:['Open Hip Twist=c_hip','Reverse Top','Aida=c_aida','Spiral=c_spiral','Cross Basic=c_cross','Turkish Towel','Sweetheart','Follow My Leader'],
-  4:['Fencing=c_fence','Rope Spinning','Sliding Doors','Curl','Advanced Hip Twist','Hip Twist Spiral'],
+  3:['Open Hip Twist=c_hip','Reverse Top=c_rtop','Aida=c_aida','Spiral=c_spiral','Cross Basic=c_cross','Curl=c_curl','Turkish Towel'],
+  4:['Fencing=c_fence','Rope Spinning','Sliding Doors','Sweetheart','Follow My Leader','Advanced Hip Twist','Hip Twist Spiral'],
   5:['Three Threes','Chase'],
 },
 'Rumba':{
-  2:['Closed Basic=r_box','Open Basic=r_offen','Fan=r_fan','Hockey Stick=r_hockey','Alemana=r_alemana','Natural Top=r_top','New York=r_ny','Spot Turn=r_spot','Hand to Hand=r_hand','Shoulder to Shoulder=r_schulter','Natural Opening Out=r_open','Closed Hip Twist','Side Steps=r_seit','Cucaracha=r_cuca','Progressive Walks=r_geh'],
-  3:['Open Hip Twist=r_hip','Reverse Top','Aida=r_aida','Spiral=r_spiral','Cross Basic=r_cross','Opening Out from Reverse Top'],
-  4:['Fencing=r_fence','Rope Spinning','Sliding Doors','Curl','Advanced Hip Twist','Three Alemanas','Hip Twist Spiral'],
+  2:['Closed Basic=r_box','Open Basic=r_offen','Fan=r_fan','Hockey Stick=r_hockey','Alemana=r_alemana','Natural Top=r_top','New York=r_ny','Spot Turn=r_spot','Hand to Hand=r_hand','Shoulder to Shoulder=r_schulter','Natural Opening Out=r_open','Closed Hip Twist=r_closedhip','Side Steps=r_seit','Cucaracha=r_cuca','Progressive Walks=r_geh'],
+  3:['Open Hip Twist=r_hip','Reverse Top=r_rtop','Aida=r_aida','Spiral=r_spiral','Cross Basic=r_cross','Curl=r_curl','Opening Out from Reverse Top'],
+  4:['Fencing=r_fence','Rope Spinning','Sliding Doors','Advanced Hip Twist','Three Alemanas','Hip Twist Spiral'],
   5:['Three Threes','Continuous Hip Twist'],
 },
 'Samba':{
@@ -74,9 +74,16 @@ const SYLLABUS={
 },
 'Discofox':{
   2:['Grundschritt=d_gs','Damensolo=d_solo','Herrensolo=d_herr','Platzwechsel=d_pw','Körbchen=d_korb','Wickler=d_wickel','Schattenposition=d_schatten'],
-  3:['Doppeldrehung=d_doppel','He Goes – She Goes=d_hegoes','Tunnel=d_tunnel','Hammerlock=d_hammer','Schal=d_schal','Handwechsel=d_handwechsel','Schulterfasser'],
+  3:['Doppeldrehung=d_doppel','He Goes – She Goes=d_hegoes','Tunnel=d_tunnel','Hammerlock=d_hammer','Schal=d_schal','Handwechsel=d_handwechsel','Schulterfasser=d_schulter'],
   4:['Brezel=d_brezel','Lasso','Seilwurf','Sliding Doors'],
 },
+};
+/* Bewusst offen gelassen, mit Grund (wird im Lückenbericht angezeigt) */
+const OFFEN_GRUND={
+  'Langsamer Walzer|Reverse Pivot':'wird auf „&“ aus dem vorigen Takt getanzt und ist als eigene Figur nicht taktgerecht darstellbar',
+  'Langsamer Walzer|Fallaway Whisk':'in der Quelle nicht gefunden',
+  'Cha-Cha-Cha|Sweetheart':'Diagramm der Quelle widersprüchlich (Dame: Schritt 26/27 zweimal links belastet)',
+  'Cha-Cha-Cha|Follow My Leader':'Diagramm der Quelle widersprüchlich (Dame: derselbe Fuß zweimal hintereinander belastet)',
 };
 /* Stufe aus der Abgleichliste übernehmen, wenn figuren/info.js für die Figur noch nichts festlegt */
 for(const stufen of Object.values(SYLLABUS)) for(const [st,liste] of Object.entries(stufen)) for(const e of liste){

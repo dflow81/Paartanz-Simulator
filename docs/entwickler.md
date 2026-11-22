@@ -83,8 +83,29 @@ node tests/doku.js     # Kataloge unter docs/ neu erzeugen
 
 Vor jedem Hochladen die `?v=`-Nummer in `tanzsimulator.html` erhöhen.
 
+## Offline-Speicher
+
+`sw.js` speichert beim Installieren und bei jedem Laden der Seite mit Internet alle Dateien, die `tanzsimulator.html` einbindet (`dateienAus`), dazu Manifest und Icons. Ältere `?v=`-Fassungen werden aufgeräumt. Die Seite selbst wird immer zuerst frisch geholt.
+
+## Import und geteilte Links
+
+`importPruefen(daten)` in `js/figurdaten.js` übernimmt nur gültige eigene Figuren und Folgen:
+- Schritte mit gültigem Fuß, gültiger Richtung, Dauer, Länge, Drehung und Haltung
+- gleiche Länge von Herr und Dame
+- Folgen nur mit bekannten Figuren
+
+Vorgegebene Figuren können nicht überschrieben werden, und Werte werden begrenzt. Geteilte Links laufen durch dieselbe Prüfung.
+
+## Abstandsausgleich
+
+Steht die Dame am Anfang einer Figur mit eigenen Schritten mehr als 15 cm näher als in der Anfangshaltung üblich, gleicht sie den Abstand in der ersten Figurenhälfte aus (`simBlock` in `js/engine.js`). Mit `F.ganz` wird immer ausgeglichen, auch seitlich.
+
+## Haltungen und Arme
+
+Jede Haltung in `HOLDS` (`js/basis.js`) hat eine Geometrie in `holdGeo` (`js/engine.js`) und Handziele in `handTargets` (`js/szene.js`). Für eine neue Haltung braucht man alle drei Einträge, dazu einen Führungshinweis in `HOLD_TIP` und eine Haltungsart in `HALT_ART` (`js/figurdaten.js`).
+
 ## Offene Folgeaufgaben
 
-- Offline-Cache: `sw.js` legt Dateien erst beim ersten Abruf ab. Eine vollständige Vorab-Liste aller Dateien fehlt, deshalb ist die App erst nach einem kompletten Durchlauf offline vollständig.
-- Importvalidierung: Importierte Dateien und geteilte Links werden nicht gegen `figMeta`/`folgePruefen` geprüft.
-- Figurspezifische Technikdaten: Belegt sind bisher sechs Figuren (`TECHNIK_DATEN`); alle übrigen Technikangaben sind abgeleitet.
+- Figurgenaue Technikdaten: Belegt sind 22 Figuren (`TECHNIK_DATEN`), alle übrigen Technikangaben sind abgeleitet.
+- Armbewegungen innerhalb einer Haltung (z. B. das Einwickeln selbst) werden nicht einzeln choreografiert.
+- Weitere Figuren der Abgleichliste: siehe `docs/figurenluecken.md` (mit Gründen bei bewusst offen gelassenen Figuren).

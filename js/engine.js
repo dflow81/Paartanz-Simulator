@@ -82,7 +82,8 @@ function styleOf(d){ if(TANZ_DATEN[d]) return STYLES[TANZ_DATEN[d].stil]; d=(d||
    (π = gegenüber, 0 = gleiche Richtung), spin = Drehsinn, mit dem sie in diese Position eindreht */
 const holdGeo=(hold,sty)=>hold==='zu'||hold==='prom'?{gap:sty.gap,off:sty.off,face:Math.PI}:hold==='hoch'?{gap:.62,off:0,face:Math.PI}:
   hold==='offen'||hold==='kreuz'?{gap:.8,off:0,face:Math.PI}:hold==='korb'?{gap:.1,off:.37,face:0,spin:1}:hold==='schatten'?{gap:.32,off:.12,face:0,spin:-1}:
-  hold==='faecher'?{gap:.32,off:-.75,face:-Math.PI/2,exact:true}:{gap:.85,off:0,face:Math.PI};
+  hold==='faecher'?{gap:.32,off:-.75,face:-Math.PI/2,exact:true}:hold==='hochB'?{gap:.62,off:0,face:Math.PI}:hold==='hammer'?{gap:.5,off:.08,face:Math.PI}:
+  hold==='schulter'?{gap:.42,off:0,face:Math.PI}:hold==='schal'?{gap:-.3,off:0,face:Math.PI}:hold==='brezel'?{gap:.1,off:.37,face:0}:{gap:.85,off:0,face:Math.PI};
 const RISE={'1':.15,'2':1,'3':0,'4':.15,'5':1,'6':0,S:.2,Q:.75,'&':1,a:1};
 
 const startH=(x=0,z=0,h=0)=>{ const lf=dirv(h).lf; return {L:[x+lf[0]*.1,z+lf[1]*.1],R:[x-lf[0]*.1,z-lf[1]*.1],yL:h,yR:h,pL:0,pR:0,h,sup:[x,z],side:0,rise:0,hold:null}; };
@@ -173,7 +174,7 @@ function simBlock(b,H,D,beat,extra,hs,ds){
     const h0=HOLDS[F.steps[0].hold]?F.steps[0].hold:'zu', g0=holdGeo(h0,sty);
     if(g0.exact||g0.face===0){ const want=startD(H,sty,h0), c=lerp(D.L,D.R,.5), w=lerp(want.L,want.R,.5); if(Math.hypot(c[0]-w[0],c[1]-w[1])>.4) Object.assign(D,want); } }
   let tH=beat,tD=beat,out=0;
-  const anf=own&&F.ganz?{c:lerp(H.L,H.R,.5),h:H.h,hold:HOLDS[F.steps[0].hold]?F.steps[0].hold:'zu'}:null;   // Stellung des Herrn am Anfang (für F.ganz)
+  const anf=own?{c:lerp(H.L,H.R,.5),h:H.h,hold:HOLDS[F.steps[0].hold]?F.steps[0].hold:'zu'}:null;   // Stellung des Herrn am Anfang (Abstandsausgleich)
   for(const s of F.steps){
     const d=Math.max(.25,+s.d||1), hold=HOLDS[s.hold]?s.hold:'zu';
     // Führungshinweis: eigener Text des Schritts, sonst automatisch bei Haltungswechsel oder Solodrehung des Herrn
@@ -197,9 +198,15 @@ function simBlock(b,H,D,beat,extra,hs,ds){
     const half=Math.floor(F.dame.length/2);   // nachgeführt wird erst in der zweiten Hälfte der Figur – der Anfang (z. B. Ausweichen) bleibt, wie er ist
     /* F.ganz: Figuren, die einen bestimmten Anfangsabstand brauchen (z. B. Stop and Go): Steht die Dame am Anfang näher oder weiter weg
        als in dieser Haltung üblich, gleicht sie das in der ersten Hälfte Schritt für Schritt aus */
+    /* Abstandsausgleich für alle Figuren mit eigenen Damenschritten: Steht die Dame am Anfang deutlich näher oder weiter weg
+       (mehr als 15 cm näher als in der Anfangshaltung üblich – etwa weil die vorige Figur eng endet), gleicht sie den Abstand in der
+       ersten Hälfte Schritt für Schritt aus. Mit F.ganz wird immer ausgeglichen, auch seitlich und wenn sie zu weit weg steht. */
     let pre=null;
     if(anf){ const v0=dirv(anf.h), g0=holdGeo(anf.hold,sty), rel=sub(lerp(D.L,D.R,.5),anf.c), k=Math.max(1,F.dame.filter((s,i)=>i<half&&s.dir!=='halt'&&s.dir!=='platz').length);
-      pre=add(v0.fw.map(x=>x*(g0.gap-dot(rel,v0.fw))/k),v0.lf,(-g0.off-dot(rel,v0.lf))/k); }
+      const dg=g0.gap-dot(rel,v0.fw), dl=-g0.off-dot(rel,v0.lf);
+      if(F.ganz){ const l=Math.hypot(dg,dl), m=Math.min(1,.45/Math.max(l,1e-6)); pre=add(v0.fw.map(x=>x*dg*m/k),v0.lf,dl*m/k); }
+      else if(dg>.15) pre=v0.fw.map(x=>x*Math.min(dg,.45)/k);   // nur wenn sie zu nah steht: nach hinten ausgleichen (weiter weg ist ungefährlich)
+    }
     const run=(Dx,sh,rec)=>{ let t=beat; F.dame.forEach((s,i)=>{ const d=Math.max(.25,+s.d||1), r=doStep(Dx,tw(s),sty,t,d,null,i>=half?sh:pre); if(rec) rec.push(Object.assign(r,meta,{turn:s.turn,tip:s.tip})); t+=d; }); return t; };
     // Probeläufe: Landet die Dame zu weit weg, zu nah oder seitlich versetzt, werden ihre Schritte ein wenig nachgeführt
     const v=dirv(H.h), g=holdGeo(H.hold,sty), near0=g.face===0||g.exact;   // nebeneinander (Körbchen, Schatten): genau an den Platz, sonst nur grob
