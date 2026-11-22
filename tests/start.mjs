@@ -32,6 +32,20 @@ try{
   await pruef('Turniermodus',`(()=>{ const c=document.getElementById('turnierOn'); c.checked=true; c.onchange(); return new Promise(r=>setTimeout(()=>{ const t=document.getElementById('turnierInfo').textContent, n=turnierG.children.length; c.checked=false; c.onchange(); r({ok:/Blick/.test(t)&&n>8,info:t.slice(0,70)}); },900)); })()`);
   await pruef('Figuren-Qualitätsprüfung',`(()=>{ document.getElementById('qualBtn').click(); return new Promise(r=>setTimeout(()=>{ const t=document.getElementById('qualOut').textContent; r({ok:/geprüft/.test(t),info:t.slice(0,70)}); },4000)); })()`);
   await pruef('Goldfolge per Knopf',`(()=>{ document.querySelector('.genSt[data-st="4"]').click(); const t=document.getElementById('genOut').textContent; return {ok:/✔/.test(t),info:t.slice(0,60)}; })()`);
+  /* Abspielen neuer Kursfolgen: Wiedergabe läuft, Schleife (Neubeginn) ohne Fehler, Schrittansicht gefüllt */
+  const spiel=key=>`(()=>{ const s=document.getElementById('source'); s.value='seq:${key}'; s.dispatchEvent(new Event('change')); speedEl.value=150; setPlaying(true);
+    const t0=tl.total; beat=t0-.3; return new Promise(r=>setTimeout(()=>{ const ex=document.getElementById('explain').textContent; r({ok:taktBasis>=t0&&beat<t0&&!!document.querySelector('#seqlist .cur')&&ex.length>20&&!document.querySelector('#seqlist .loopbad'),
+      info:'Durchlauf '+t0+' Schläge, nach Neubeginn bei Schlag '+beat.toFixed(1)+', Takt '+taktZaehl(Math.floor(beat))}); },6000)); })()`;
+  await pruef('Kursfolge Slowfox Bronze abspielen und neu beginnen',spiel('k_slowfox1'));
+  await pruef('Kursfolge Salsa Bronze abspielen und neu beginnen',spiel('k_salsa1'));
+  await pruef('Takt: Cha-Cha beginnt auf 2 – Einzählen endet auf der „1“',`(()=>{ const s=document.getElementById('source'); s.value='fig:b_c_gs'; s.dispatchEvent(new Event('change'));
+    const r=[einzaehl(-5,true),einzaehl(-2,true),einzaehl(-1,true),taktZaehl(0),taktZaehl(3)].join(); return {ok:r==='5,8,1,2,1',info:r}; })()`);
+  await pruef('Takt: betonte Eins läuft über Discofox-Figurenwechsel weiter',`(()=>{ const s=document.getElementById('source'); s.value='seq:k_disco1'; s.dispatchEvent(new Event('change'));
+    const r=[taktZaehl(0),taktZaehl(4),taktZaehl(6),taktZaehl(8)].join(); return {ok:r==='1,1,3,1',info:r}; })()`);
+  await pruef('Editor zeigt nicht schleifbare Folge an',`(()=>{ seqEdit={name:'x',bpm:90,items:[{fig:'b_w_vw',rep:1},{fig:'b_w_nat',rep:1}]}; renderSeqItems(); const t=document.querySelector('#seqItems .loopinfo').textContent; return {ok:/Keine Schleife/.test(t),info:t.slice(0,70)}; })()`);
+  await pruef('Generator: Endfigur über der Höchststufe nicht wählbar',`(()=>{ document.querySelector('.tabs button[data-tab=seq]').click(); const d=document.getElementById('danceSel'); d.value='Discofox'; d.dispatchEvent(new Event('change'));
+    document.querySelector('details.gen').open=true; fillGen(); const g=document.getElementById('genStufe'); g.value='2'; g.dispatchEvent(new Event('change')); const o=[...document.getElementById('genEnde').options].find(o=>o.value==='b_d_brezel');
+    document.querySelector('.tabs button[data-tab=play]').click(); return {ok:!!o&&o.disabled,info:o?o.textContent:'fehlt'}; })()`);
 }catch(e){ ok=false; console.log('✖ Starttest abgebrochen: '+e.message); }
 finally{ try{ ws&&ws.close(); }catch(e){} ch.kill(); await sleep(800); fs.rmSync(profil,{recursive:true,force:true}); }
 for(const f of fehler) console.log('✖ '+f);

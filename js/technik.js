@@ -25,7 +25,7 @@ function riseText(steps,i,sty){
   return a>=.6?'senkt':'unten';
 }
 /* Technik eines ganzen Ablaufs. steps = Schritte einer Figur oder Einträge der Zeitleiste; alle Angaben aus Sicht dieses Tänzers */
-function technikVon(steps,sty){
+function technikVon(steps,sty,td){   // td: belegte Technikdaten dieser Rolle {fuss:[], sway:[]} aus TECHNIK_DATEN – ersetzen die abgeleiteten Werte
   let last=null;
   return steps.map((s,i)=>{
     const dir=s.dir, gewicht=!OHNE_GEWICHT.has(dir), turn=+s.turn||0, code=fussTechnik(dir,sty);
@@ -36,7 +36,9 @@ function technikVon(steps,sty){
       rise:riseText(steps,i,sty),
       cbm:!!sty.std&&Math.abs(turn)>=30&&/^(vor|rueck|vorAussen|rueckAussen|diagVor)$/.test(dir),
       cbmp:/^kreuz|Aussen$/.test(dir),
-      sway:sty.std&&sty.rise?(i>0&&dreht&&gewicht?(turn||(prev&&+prev.turn)||0)<0?'rechts':'links':'gerade'):'–'};
+      sway:sty.std&&sty.rise?(i>0&&dreht&&gewicht?(turn||(prev&&+prev.turn)||0)<0?'rechts':'links':'gerade'):'–',quelle:false,
+      ...(td&&td.fuss&&td.fuss[i]?{technik:td.fuss[i],heel:/H/.test(td.fuss[i]),toe:/T/.test(td.fuss[i]),ball:/B/.test(td.fuss[i]),flat:/F/.test(td.fuss[i]),quelle:true}:{}),
+      ...(td&&td.sway&&td.sway[i]?{sway:td.sway[i]}:{})};
   });
 }
 
@@ -75,8 +77,8 @@ const LEHRER_STIL={
 };
 const stilKey=sty=>sty.std&&sty.rise?'swing':sty.std?'tango':sty===STYLES.latin?'latin':sty===STYLES.bounce?'bounce':'social';
 function lehrerDaten(F,id){
-  const m=figMeta(F,id), sty=styleOf(F.dance), a=LEHRER_ART[m.art]||LEHRER_ART.eff, s=LEHRER_STIL[stilKey(sty)], t=technikVon(F.steps,sty);
-  const tech=[...s.t]; if(t.some(x=>x.cbm)) tech.push('Gegenbewegung (CBM) zu Beginn der Drehung: Körper dreht zum vorgehenden Fuß hin');
+  const m=figMeta(F,id), sty=styleOf(F.dance), a=LEHRER_ART[m.art]||LEHRER_ART.eff, s=LEHRER_STIL[stilKey(sty)], td=typeof TECHNIK_DATEN!=='undefined'&&TECHNIK_DATEN[id], t=technikVon(F.steps,sty,td&&td.H);
+  const tech=[...s.t]; if(td) tech.push(`Fußarbeit laut Quelle – Herr: ${td.H.fuss.join(', ')}; Dame: ${td.D.fuss.join(', ')}`); if(t.some(x=>x.cbm)) tech.push('Gegenbewegung (CBM) zu Beginn der Drehung: Körper dreht zum vorgehenden Fuß hin');
   if(t.some(x=>x.cbmp)) tech.push('Gekreuzte Schritte in Gegenbewegungsposition (CBMP) setzen'); if(m.haltStart!==m.haltEnde) tech.push(`Haltungswechsel: ${HOLDS[m.haltStart][0]} → ${HOLDS[m.haltEnde][0]}`);
   return {name:F.name,meta:m,beschreibung:m.text,technik:tech,fehler:[...a.f,...s.f],herr:a.h,dame:a.d,schritte:t};
 }
@@ -100,9 +102,11 @@ function qualitaetFigur(F,id,figs=allFigs()){
   gewichtsFehler(F.steps,'Herr').forEach(feh); if(hatDame(F)) gewichtsFehler(F.dame,'Dame').forEach(feh);
   const beats=x=>x.reduce((a,s)=>a+Math.max(.25,+s.d||1),0);
   if(hatDame(F)&&Math.abs(beats(F.steps)-beats(F.dame))>1e-6) feh(`Herr ${beats(F.steps)} und Dame ${beats(F.dame)} Schläge: gleiche Länge nötig`);
-  const einheit=/disco/i.test(F.dance||'')?3:taktOf(F.dance)===3?3:2, n=m.schlaege/einheit;
-  if(Math.abs(n-Math.round(n))>1e-6) war(`${m.schlaege} Schläge passen nicht auf ${einheit===3?'Dreiergruppen':'halbe Takte'}`);
-  if(F.steps.some(s=>s.c===undefined||s.c==='')) war('Mindestens ein Schritt hat keine Zählzeit');
+  // Phrase: Takt, Zählschema und Phrasenlänge kommen aus TANZ_DATEN (engine.js). Eine bekannte Rhythmusvariante ist kein Fehler.
+  const einheit=phraseVon(F.dance), n=m.schlaege/einheit;
+  if(Math.abs(n-Math.round(n))>1e-6&&!m.rhythmusVariante) war(`${m.schlaege} Schläge passen nicht auf die Phrase von ${einheit} Schlägen (${taktOf(F.dance)}/4-Takt)`);
+  // Pausen („halt“) dürfen ohne Zählzeit stehen; ein Schritt ohne Zählzeit ist ein Datenfehler
+  if(F.steps.concat(F.dame||[]).some(s=>s.dir!=='halt'&&(s.c===undefined||s.c===''))) war('Mindestens ein Schritt (keine Pause) hat keine Zählzeit');
   if(F.steps.concat(F.dame||[]).some(s=>(+s.len||0)>80)) war('Ein Schritt ist länger als 80 cm');
   const liste=Object.entries(figs).filter(([k,f])=>(f.dance||'Sonstige')===m.tanz&&f.steps&&f.steps.length).map(([k,f])=>figMeta(f,k));
   if(!liste.some(b=>uebergang(m,b).ok)) feh('Keine Figur dieses Tanzes kann auf diese Figur folgen');

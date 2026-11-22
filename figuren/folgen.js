@@ -127,3 +127,11 @@ folge('k_jive2','Kursfolge Jive – Bronze',150,[['b_j_gs'],['b_j_pwrl'],['b_j_a
 folge('k_jive3','Kursfolge Jive – Silber',150,[['b_j_gs'],['b_j_pwrl'],['b_j_amspin'],['b_j_stopgo'],['b_j_pw'],['b_j_gs']]);
 folge('k_samba1','Kursfolge Samba – Bronze',100,[['b_sa_gs',2],['b_sa_wisch'],['b_sa_walk'],['b_sa_prog']]);
 folge('k_samba2','Kursfolge Samba – Gold',100,[['b_sa_gs'],['b_sa_volta'],['b_sa_pbota'],['b_sa_swalk'],['b_sa_wisch']]);
+
+/* Feste Kursfolgen Slowfox, Quickstep und Salsa (Bronze, Silber). Salsa einheitlich im kubanischen Stil (Casino: Guapea/Back Basic, Dile que no, Enchufla …) */
+folge('k_slowfox1','Kursfolge Slowfox – Bronze',116,[['b_sf_feder'],['b_sf_links'],['b_sf_dreier'],['b_sf_impetus'],['b_sf_ffinish'],['b_sf_bweave'],['b_sf_cod']]);
+folge('k_slowfox2','Kursfolge Slowfox – Silber',116,[['b_sf_feder'],['b_sf_wellen'],['b_sf_otelemark'],['b_sf_wpp'],['b_sf_topspin'],['b_sf_dreier'],['b_sf_nweave'],['b_sf_cod']]);
+folge('k_quick1','Kursfolge Quickstep – Bronze',200,[['b_q_viertel'],['b_q_chasse'],['b_q_lock'],['b_q_npivot'],['b_q_tipple'],['b_q_rfinish'],['b_q_rlock'],['b_q_links']]);
+folge('k_quick2','Kursfolge Quickstep – Silber',200,[['b_q_viertel'],['b_q_lock'],['b_q_fishtail'],['b_q_rrturn'],['b_q_rfinish'],['b_q_qor'],['b_q_v6'],['b_q_links']]);
+folge('k_salsa1','Kursfolge Salsa (kubanischer Stil) – Bronze',170,[['b_s_rueckb',2],['b_s_dile'],['b_s_ench'],['b_s_dile']]);
+folge('k_salsa2','Kursfolge Salsa (kubanischer Stil) – Silber',170,[['b_s_rueckb'],['b_s_dile'],['b_s_vacilala'],['b_s_sombrero'],['b_s_kreuzgs']]);

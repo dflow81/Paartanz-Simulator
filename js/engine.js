@@ -28,11 +28,51 @@ const STYLES={
   bounce:{gap:.5,off:0,rise:0,bounce:.03,hip:.5,fe:.7,lift:.05,heel:false,drop:.02,mid:.15,std:false,turnout:.15},
   social:{gap:.5,off:.04,rise:0,bounce:.014,hip:.25,fe:.7,lift:.03,heel:true,drop:.01,mid:.25,std:false,turnout:.1},
 };
-function styleOf(d){ d=(d||'').toLowerCase();
+/* Feste Angaben je Tanz. stil = Bewegungsstil (STYLES), takt = Schläge pro Takt, zaehl = übliches Zählschema,
+   phrase = Schläge, in deren Vielfachen eine Figur aufgehen sollte (z. B. Discofox: Dreiergruppen „Schritt, Schritt, Tap“),
+   standard = einer der fünf Standardtänze (strengere Regeln für die Promenade). Tänze, die hier fehlen (eigene Tanznamen),
+   werden über den Namen eingeordnet (siehe styleOf). */
+const TANZ_DATEN={
+  'Langsamer Walzer':{stil:'swing',takt:3,zaehl:'1 2 3',phrase:3,standard:true},
+  'Wiener Walzer':{stil:'wiener',takt:3,zaehl:'1 2 3',phrase:3,standard:true},
+  'Tango':{stil:'tango',takt:4,zaehl:'S Q',phrase:2,standard:true},
+  'Slowfox':{stil:'swing',takt:4,zaehl:'S Q',phrase:2,standard:true},
+  'Quickstep':{stil:'swing',takt:4,zaehl:'S Q',phrase:2,standard:true},
+  'Cha-Cha-Cha':{stil:'latin',takt:4,zaehl:'2 3 4 & 1',phrase:4},
+  'Rumba':{stil:'latin',takt:4,zaehl:'2 3 4-1',phrase:4},
+  'Samba':{stil:'bounce',takt:4,zaehl:'1 a 2',phrase:2},
+  'Jive':{stil:'bounce',takt:4,zaehl:'1 2 3 a 4 5 a 6',phrase:2},
+  'Paso Doble':{stil:'paso',takt:4,zaehl:'1–8',phrase:2},
+  'Foxtrott':{stil:'swing',takt:4,zaehl:'S Q',phrase:2},
+  'Discofox':{stil:'social',takt:4,zaehl:'1 2 3 (Schritt, Schritt, Tap)',phrase:3},
+  'Blues':{stil:'social',takt:4,zaehl:'1–4',phrase:2},
+  "Rock'n'Roll":{stil:'bounce',takt:4,zaehl:'1–6',phrase:2},
+  'Polka':{stil:'bounce',takt:4,zaehl:'1 & 2',phrase:2},
+  'Salsa':{stil:'latin',takt:4,zaehl:'1 2 3 – 5 6 7',phrase:4},
+  'Bachata':{stil:'latin',takt:4,zaehl:'1 2 3 Tap',phrase:4},
+  'Merengue':{stil:'latin',takt:4,zaehl:'1–8',phrase:2},
+  'Boogie-Woogie':{stil:'bounce',takt:4,zaehl:'1–6',phrase:2},
+  'Tango Argentino':{stil:'argentino',takt:4,zaehl:'frei, meist 1–8',phrase:2},
+  'West Coast Swing':{stil:'social',takt:4,zaehl:'1–6',phrase:2},
+  'Walzer-Musette':{stil:'swing',takt:3,zaehl:'1 2 3',phrase:3},
+  'Tangowalzer':{stil:'tango',takt:3,zaehl:'1 2 3',phrase:3},
+  'Disco-Samba':{stil:'bounce',takt:4,zaehl:'1 a 2',phrase:2},
+  'Two Step':{stil:'social',takt:4,zaehl:'S S Q Q',phrase:2},
+  'Bugg':{stil:'bounce',takt:4,zaehl:'1–4',phrase:2},
+  'Cumbia':{stil:'latin',takt:4,zaehl:'1–8',phrase:4},
+  'Tango Americano':{stil:'tango',takt:4,zaehl:'S Q',phrase:2},
+  'Nordic Tango':{stil:'tango',takt:4,zaehl:'S Q',phrase:2},
+  'Mambo':{stil:'latin',takt:4,zaehl:'1 2 3 – 5 6 7',phrase:4},
+  'Marschfox':{stil:'swing',takt:4,zaehl:'S S',phrase:2},
+};
+const taktVon=d=>TANZ_DATEN[d]?TANZ_DATEN[d].takt:/walzer|waltz|musette/i.test(d||'')?3:4;
+const phraseVon=d=>TANZ_DATEN[d]?TANZ_DATEN[d].phrase:taktVon(d)===3?3:/disco(?!-?samba)|discofox/i.test(d||'')?3:2;
+const istStandard=d=>!!(TANZ_DATEN[d]&&TANZ_DATEN[d].standard);
+function styleOf(d){ if(TANZ_DATEN[d]) return STYLES[TANZ_DATEN[d].stil]; d=(d||'').toLowerCase();
   if(/wiener/.test(d)) return STYLES.wiener;
+  if(/argentin/.test(d)) return STYLES.argentino;   // vor der allgemeinen Tango-Regel
   if(/tango/.test(d)) return STYLES.tango;
   if(/paso/.test(d)) return STYLES.paso;
-  if(/argentin/.test(d)) return STYLES.argentino;
   if(/disco|hustle|west coast/.test(d)) return STYLES.social;
   if(/walzer|waltz|slow|fox|quick/.test(d)) return STYLES.swing;
   if(/jive|samba|boogie|rock|swing|lindy|charleston|polka|bugg/.test(d)) return STYLES.bounce;
@@ -50,8 +90,8 @@ function startD(H,sty,hold){
   const {fw,lf}=dirv(H.h), g=holdGeo(hold,sty), h=H.h+g.face, c=add(add(lerp(H.L,H.R,.5),fw,g.gap),lf,-g.off), l2=dirv(h).lf, L=add(c,l2,.1), R=add(c,l2,-.1);
   return {L,R,yL:h,yR:h,pL:0,pR:0,h,sup:lerp(L,R,.5),side:0,rise:0};
 }
-function flatten(src){
-  const figs=allFigs(), out=[];
+function flatten(src,figs=allFigs()){
+  const out=[];
   src.items.forEach((it,i)=>{const F=figs[it.fig]; if(!F||!F.steps||!F.steps.length) return;
     const n=Math.max(1,it.rep||1); for(let r=0;r<n;r++) out.push({F,item:i,rep:r+1,reps:n});});
   return out;
@@ -127,7 +167,7 @@ const outside=p=>Math.max(0,Math.abs(p[0])-(ROOM.w/2-ROOM.margin))+Math.max(0,Ma
 function simBlock(b,H,D,beat,extra,hs,ds){
   const F=b.F, sty=styleOf(F.dance), c0=parseInt(F.steps[0].c);
   // Takt: Die Figur beginnt auf Zählzeit c0 (z. B. Cha-Cha auf „2“), betont wird die „1“ jedes Takts
-  const meta={fig:figTitle(F),item:b.item,rep:b.rep,reps:b.reps,sty,name:F.name,blockStart:beat,meter:/walzer|waltz/i.test(F.dance||'')?3:4,off:c0>0?c0-1:0};
+  const meta={fig:figTitle(F),item:b.item,rep:b.rep,reps:b.reps,sty,name:F.name,blockStart:beat,meter:taktVon(F.dance),off:c0>0?c0-1:0};
   const own=Array.isArray(F.dame)&&F.dame.length>0, tw=s=>extra&&s.dir!=='halt'?{...s,turn:(+s.turn||0)+extra}:s;
   if(own){ // Figur beginnt in einer festen Stellung (z. B. aus dem Fächer): Steht die Dame ganz woanders, etwa beim Üben in Schleife, beginnt sie dort
     const h0=HOLDS[F.steps[0].hold]?F.steps[0].hold:'zu', g0=holdGeo(h0,sty);

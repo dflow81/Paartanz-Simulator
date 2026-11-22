@@ -9,10 +9,11 @@ Der Simulator ist eine statische Webseite ohne Build-Schritt. Alle Skripte sind 
 | `js/basis.js` | Richtungen, Haltungen, `S()`, `tanz()`, `folge()` | nein |
 | `figuren/*.js` | Figuren und Folgen | nein |
 | `figuren/info.js` | Kursstufe, Typ, Beschreibung je Figur (`INFO`) | nein |
+| `figuren/belegt.js` | Figuren mit Quelle (`QUELLEN`) und belegter Fußarbeit (`TECHNIK_DATEN`) | nein |
 | `figuren/syllabus.js` | Abgleichliste je Tanz und Stufe (`SYLLABUS`) | nein |
 | `js/speicher.js` | eigene Figuren und Folgen im Browser | nein (`localStorage`) |
 | `js/engine.js` | Schrittsimulation von Herr und Dame, Raumlenkung | nein |
-| `js/figurdaten.js` | `figMeta`, `uebergang`, `folgePruefen`, `folgeErzeugen`, `folgeFuerStufe` | nein |
+| `js/figurdaten.js` | `figMeta`, `uebergang`, `schleifePruefen`, `folgePruefen`, `folgeErzeugen`, `folgeFuerStufe` | nein |
 | `js/technik.js` | `technikVon`, `ausrichtung`, `lehrerDaten`, `qualitaetFigur`, `qualitaetAlle` | nein |
 | `js/szene.js` | 3D-Szene und Tänzer | ja |
 | `js/app.js` | Wiedergabe, Menüs, Editoren, Musik | ja |
@@ -36,9 +37,30 @@ Alles Ableitbare wird nicht gespeichert, sondern von `figMeta()` berechnet: Fü�
 
 `SYLLABUS[Tanz][Stufe]` enthält Einträge `'Name=kurzeId'` (umgesetzt, ohne Präfix `b_`) oder `'Name'` (fehlt noch). Trägt man eine neue Figur dort ein, verschwindet sie aus dem Lückenbericht und bekommt die Stufe, sofern `INFO` keine festlegt.
 
+## Tanzdaten: Stil, Takt, Zählschema, Phrase
+
+`TANZ_DATEN` in `js/engine.js` ist die einzige Quelle für Bewegungsstil, Takt (Schläge pro Takt), Zählschema und Phrase (Schläge, in deren Vielfachen eine Figur aufgehen soll) je Tanz. Engine (Metronom), Metadaten (`taktOf`) und Qualitätsprüfung (`phraseVon`) lesen daraus. Tanznamen, die dort fehlen (eigene Figuren), werden über den Namen eingeordnet; „Argentin…“ wird vor der allgemeinen Tango-Regel geprüft.
+
+Weitere Tabellen in `figuren/info.js`:
+- `ALIAS[id] = [zielId, Erklärung, 'v'?]` für Figuren mit denselben Schritten wie eine andere Figur. Beide IDs bleiben gültig.
+- `RHYTHMUS_VARIANTE[id]` für bewusst abweichende Figurenlängen; die Qualitätsprüfung meldet sie nicht als Fehler.
+
+Pausen (`halt`) dürfen ohne Zählzeit stehen. Ein Schritt ohne Zählzeit gilt als Datenfehler.
+
+## Takt in der Wiedergabe
+
+Die betonte Eins wird ab dem Anfang der Folge durchgezählt (`taktZaehl` in `js/app.js`), über Figurenwechsel und den Neubeginn hinweg (`taktBasis`). Beginnt die erste Figur nicht auf 1 (Cha-Cha auf 2), zählt das Einzählen bis zur Eins davor (`einzaehl`).
+
 ## Regeln der Übergangsprüfung
 
-`uebergang(A,B)` verlangt denselben Tanz, den freien Fuß für Herr und Dame und eine passende Haltung. Haltungswechsel sind erlaubt und werden als Hinweis gemeldet. Fächer-Haltungen müssen exakt anschließen.
+`uebergang(A,B)` verlangt denselben Tanz, den freien Fuß für Herr und Dame und eine passende Haltung. Feste Haltungsregeln:
+- Fächer schließt nur an Fächer an.
+- Aus einer Seitenposition (Körbchen, Schatten) geht es nur in dieselbe Position.
+- In den fünf Standardtänzen folgt auf eine Figur, die in der Promenade endet, eine Figur, die in der Promenade beginnt.
+
+Alle anderen Haltungswechsel sind erlaubt und werden als Hinweis gemeldet. Beginnt eine Standardfigur in der Promenade, obwohl die vorige nicht dort endet, ist der Wechsel als „vereinfacht“ markiert.
+
+`schleifePruefen(items)` prüft den Übergang von der letzten zur ersten Figur. `folgePruefen(items, {schleife:true})` nimmt ihn in die Fehlerliste auf. Der Folgen-Generator erzeugt nur schleifbare Folgen. Alle Vorgaben (Start, Ende, Höchststufe, Wiederholung, Grundhaltung, Schleife) gelten gemeinsam. Unmögliche Kombinationen liefern eine Fehlermeldung und keine Folge.
 
 ## Technikableitung
 
@@ -49,14 +71,20 @@ Alles Ableitbare wird nicht gespeichert, sondern von `figMeta()` berechnet: Fü�
 - CBMP bei gekreuzten und außenseitlichen Schritten
 - Sway zur Innenseite der Drehung in Schwungtänzen
 
-Die Ergebnisse sind Näherungen. Für einzelne Figuren genauere Werte einzutragen, wäre der nächste Ausbauschritt.
+Die Ergebnisse sind Näherungen. Für Figuren mit Quelle stehen Fußarbeit und Sway beider Rollen in `TECHNIK_DATEN` (`figuren/belegt.js`) und ersetzen die abgeleiteten Werte.
 
 ## Prüfen und Dokumentation erzeugen
 
 ```
 node tests/test.js     # Daten, Übergänge, Generator, Technik, Qualität
-node tests/start.mjs   # Seite in Chromium ohne Fenster bedienen
+node tests/start.mjs   # Seite in Chromium ohne Fenster bedienen, Folgen abspielen, Takt und Schleife prüfen
 node tests/doku.js     # Kataloge unter docs/ neu erzeugen
 ```
 
 Vor jedem Hochladen die `?v=`-Nummer in `tanzsimulator.html` erhöhen.
+
+## Offene Folgeaufgaben
+
+- Offline-Cache: `sw.js` legt Dateien erst beim ersten Abruf ab. Eine vollständige Vorab-Liste aller Dateien fehlt, deshalb ist die App erst nach einem kompletten Durchlauf offline vollständig.
+- Importvalidierung: Importierte Dateien und geteilte Links werden nicht gegen `figMeta`/`folgePruefen` geprüft.
+- Figurspezifische Technikdaten: Belegt sind bisher sechs Figuren (`TECHNIK_DATEN`); alle übrigen Technikangaben sind abgeleitet.

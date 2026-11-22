@@ -1,5 +1,25 @@
 # Änderungsprotokoll
 
+## 2026-11-22: Folgenprüfung, Takt und belegte Figuren
+
+**Behoben**
+- Generator: Endfigur und „zurück in die Grundhaltung“ gelten gemeinsam. Eine unmögliche Kombination liefert eine Fehlermeldung statt einer Folge.
+- Generator: Die erzwungene Endfigur hält die Wiederholungsregel ein. Start- und Endfigur über der Höchststufe werden abgelehnt; in der Oberfläche sind sie nicht wählbar.
+- `folgePruefen([])` meldet eine leere Folge. Die Simulation nutzt dieselbe Figurenbibliothek wie die Metadaten (`flatten(src, figs)`). Eine fehlgeschlagene Simulation ist ein Fehler, kein grünes Ergebnis.
+- Neue Schleifenprüfung (letzte → erste Figur). Sie gilt für erzeugte Folgen und wird im Editor und in der Ablaufliste angezeigt.
+- Haltungsregeln ergänzt: Seitenposition nur in dieselbe Position; Promenade im Standardtanz nur in eine Promenaden-Figur. Der Wechsel in die Promenade ist als „vereinfacht“ markiert.
+- Tango Argentino bekam fälschlich den Bewegungsstil des Tangos, Disco-Samba den des Discofox. Neu ist die Tabelle `TANZ_DATEN` mit Stil, Takt, Zählschema und Phrase je Tanz.
+- Metronom: Die betonte Eins läuft über Figurenwechsel und Neubeginn durch. Beginnt eine Figur auf 2, endet das Einzählen auf der Eins davor.
+- Tipple-Chassé: letzter Schritt war 2 statt 1 Schlag lang.
+- „Seitschritte (Chassé nach links)“ führte nach rechts. Umbenannt und als Alias von „Chassés nach rechts“ gekennzeichnet; sechs Dubletten insgesamt als Alias gekennzeichnet. Zwei doppelte Namen eindeutig gemacht.
+- Abgleichliste: Link und Whip zeigten auf dieselbe Figur. Jetzt gibt es einen kombinierten Eintrag, „Link (allein)“ steht als offen.
+- Qualitätsprüfung: Pausen ohne Zählzeit sind erlaubt, Rhythmusvarianten werden ausgenommen. Ergebnis: 0 Fehler, 0 Warnungen.
+
+**Neu**
+- Sechs Figuren mit Quelle (BallroomGuide): Slowfox Basic Weave, Quickstep Natural Pivot Turn und Reverse Pivot, Tango-Rock links und rechts, Cha-Cha-Cha Closed Hip Twist. Fußarbeit und Sway beider Rollen sind hinterlegt.
+- Feste Kursfolgen Bronze und Silber für Slowfox, Quickstep und Salsa (kubanischer Stil).
+- Regressionstests (72 Tests) und erweiterter Starttest mit Abspielen, Schleife und Takt.
+
 ## 2026-11-18: Ausbau zum Lernsystem
 
 **Neu**

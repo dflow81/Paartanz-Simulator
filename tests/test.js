@@ -101,12 +101,53 @@ test('Ausrichtung: Ecke wird erkannt',()=>R(`ausrichtung([3.5,2.5],0).ecke&&!aus
 test('Tanzlehrer-Texte für jede Figur vorhanden',()=>liste(R(`Object.entries(BUILTIN).filter(([k,F])=>{ const d=lehrerDaten(F,k); return !d.beschreibung||!d.technik.length||!d.fehler.length||!d.herr.length||!d.dame.length; }).map(([k])=>k)`)));
 test('Qualitätsprüfung: Bibliothek ohne Fehler',()=>liste(R(`qualitaetAlle().liste.filter(x=>x.q.some(q=>q.art==='fehler')).map(x=>x.id)`)));
 test('Qualitätsprüfung erkennt zweimal denselben Fuß',()=>R(`qualitaetFigur({name:'x',dance:'Tango',steps:[S('L','vor',30,1,'1'),S('L','vor',30,1,'2')]},'x').some(q=>q.art==='fehler'&&/Gewichtswechsel/.test(q.text))`)||'nicht erkannt');
-test('Qualitätsprüfung erkennt falschen Takt',()=>R(`qualitaetFigur({name:'x',dance:'Langsamer Walzer',steps:[S('L','vor',30,1,'1'),S('R','vor',30,1,'2')]},'x').some(q=>/Dreiergruppen/.test(q.text))`)||'nicht erkannt');
+test('Qualitätsprüfung erkennt falschen Takt',()=>R(`qualitaetFigur({name:'x',dance:'Langsamer Walzer',steps:[S('L','vor',30,1,'1'),S('R','vor',30,1,'2')]},'x').some(q=>/Phrase von 3/.test(q.text))`)||'nicht erkannt');
 test('Qualitätsprüfung erkennt ungleich lange Herr-/Damenschritte',()=>R(`qualitaetFigur({name:'x',dance:'Tango',steps:[S('L','vor',30,2,'S')],dame:[S('R','rueck',30,1,'Q')]},'x').some(q=>/gleiche Länge/.test(q.text))`)||'nicht erkannt');
 test('Medaillenfolgen: gültig und innerhalb der Stufe',()=>liste(R(`(()=>{ let seed=11; const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647, bad=[];
   for(const d of ['Slowfox','Quickstep','Tango','Langsamer Walzer','Cha-Cha-Cha','Rumba','Salsa','Discofox']) for(const st of [2,3,4,5]){ const r=folgeFuerStufe(d,st,rnd); if(r.fehler.length){ bad.push(d+' '+st+': '+r.fehler[0]); continue; }
     r.items.forEach(i=>{ if(figMeta(BUILTIN[i.fig],i.fig).stufe>st) bad.push(d+' '+st+': '+i.fig); }); if(r.items.length<STUFEN_FOLGE[st]) bad.push(d+' '+st+': zu kurz'); }
   return bad; })()`)));
+
+/* ---------- Regressionstests: Folgenprüfung und Generator ---------- */
+test('Generator: Endfigur und „zurück in die Grundhaltung“ gelten gemeinsam (Discofox, Körbchen endet in L–R)',()=>{ const r=R(`folgeErzeugen({tanz:'Discofox',laenge:6,start:'b_d_solo',ende:'b_d_korb',zurueck:true,zufall:()=>0.5})`);
+  return !r.items.length&&r.fehler.length&&/Grundhaltung/.test(r.fehler[0])||JSON.stringify(r).slice(0,200); });
+test('Generator: ohne „zurück“ endet die Folge mit der Endfigur und beginnt mit der Startfigur',()=>{ const r=R(`folgeErzeugen({tanz:'Discofox',laenge:6,start:'b_d_solo',ende:'b_d_korb',zurueck:false,zufall:()=>0.5})`);
+  return !r.fehler.length&&r.items[0].fig==='b_d_solo'&&r.items.at(-1).fig==='b_d_korb'||JSON.stringify(r).slice(0,200); });
+test('Generator: erzwungene Endfigur hält die Wiederholungsregel ein (Tango, Pool nur Grundschritt)',()=>{ const r=R(`folgeErzeugen({tanz:'Tango',laenge:2,start:'b_t_gs',ende:'b_t_gs',wdh:false,figs:{b_t_gs:BUILTIN.b_t_gs},zufall:()=>0.5})`);
+  return !r.items.length&&r.fehler.length>0||JSON.stringify(r.items); });
+test('Generator: mit erlaubter Wiederholung entsteht die Folge',()=>{ const r=R(`folgeErzeugen({tanz:'Tango',laenge:2,start:'b_t_gs',ende:'b_t_gs',wdh:true,figs:{b_t_gs:BUILTIN.b_t_gs},zufall:()=>0.5})`);
+  return !r.fehler.length&&r.items.length===2||JSON.stringify(r).slice(0,200); });
+test('Generator: Start- oder Endfigur über der Höchststufe wird abgelehnt',()=>{ const r=R(`[folgeErzeugen({tanz:'Discofox',laenge:4,bisStufe:2,start:'b_d_brezel'}),folgeErzeugen({tanz:'Discofox',laenge:4,bisStufe:2,ende:'b_d_brezel'})]`);
+  return r.every(x=>!x.items.length&&/Höchststufe/.test(x.fehler[0]))||JSON.stringify(r).slice(0,200); });
+test('Generator: erzeugte Folgen lassen sich als Schleife tanzen',()=>liste(R(`(()=>{ let seed=5; const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647, bad=[];
+  for(const d of ['Discofox','Langsamer Walzer','Cha-Cha-Cha','Slowfox','Salsa']) for(let i=0;i<3;i++){ const r=folgeErzeugen({tanz:d,laenge:6,zurueck:true,zufall:rnd}); if(r.fehler.length){ bad.push(d+': '+r.fehler[0]); continue; } const s=schleifePruefen(r.items); if(!s.ok) bad.push(d+': '+s.gruende.join(';')); }
+  return bad; })()`)));
+test('folgePruefen([]) meldet eine leere Folge',()=>{ const r=R(`folgePruefen([])`); return r.fehler.length===1&&/leer/.test(r.fehler[0])||JSON.stringify(r); });
+test('folgePruefen nutzt die übergebene Figurenbibliothek auch für die Simulation',()=>{ const r=R(`folgePruefen([{fig:'x_test',rep:1}],{},{...BUILTIN,x_test:{name:'Test',dance:'Tango',bpm:120,steps:[S('L','vor',30,2,'S'),S('R','vor',30,2,'S')]}})`); return !r.fehler.length||r.fehler.join(' | '); });
+test('folgePruefen: fehlgeschlagene Simulation ist ein Fehler, kein grünes Ergebnis',()=>{ const r=R(`(()=>{ const alt=simulate; simulate=()=>{ throw new Error('Testfehler'); }; try{ return folgePruefen([{fig:'b_t_gs',rep:1}]); } finally{ simulate=alt; } })()`); return r.fehler.some(f=>/simuliert/.test(f))||JSON.stringify(r); });
+test('Schleifenprüfung: gültige Schleife und bewusst ungültiger Anschluss',()=>{ const r=R(`[schleifePruefen([{fig:'b_w_box'},{fig:'b_w_vw'},{fig:'b_w_nat'},{fig:'b_w_rw'},{fig:'b_w_rev'}]).ok, schleifePruefen([{fig:'b_w_vw'},{fig:'b_w_nat'}]).ok, folgePruefen([{fig:'b_w_vw'},{fig:'b_w_nat'}],{schleife:true,schnell:true}).fehler.some(f=>/Schleife/.test(f))]`); return r.join()==='true,false,true'||r.join(); });
+test('Schleifenprüfung erkennt einen falschen Fuß nur der Dame',()=>{ const r=R(`(()=>{ const figs={...BUILTIN,x_d:{name:'Damenfehler',dance:'Discofox',bpm:120,steps:[S('L','platz',0,1,'1'),S('R','platz',0,1,'2'),S('L','tap',0,1,'3')],dame:[S('R','vor',15,1,'1'),S('L','vor',15,1,'2'),S('R','vor',15,1,'3')]}};
+  return schleifePruefen([{fig:'x_d'}],figs); })()`); return !r.ok&&r.gruende.some(g=>/^Dame/.test(g))&&!r.gruende.some(g=>/^Herr/.test(g))||JSON.stringify(r); });
+test('Wiederholung (rep > 1) wird weiterhin geprüft',()=>R(`folgePruefen([{fig:'b_w_vw',rep:2}],{schnell:true}).fehler.some(f=>/Wiederholung/.test(f))`)||'nicht erkannt');
+test('Haltung: Promenade im Standardtanz muss in der Promenade weitergehen',()=>{ const r=R(`[uebergang(figMeta(BUILTIN.b_w_wisch,'b_w_wisch'),figMeta(BUILTIN.b_w_rev,'b_w_rev')).ok, uebergang(figMeta(BUILTIN.b_w_wisch,'b_w_wisch'),figMeta(BUILTIN.b_w_chasse,'b_w_chasse')).ok]`); return r.join()==='false,true'||r.join(); });
+test('Haltung: Wechsel in die Promenade im Standard ist erlaubt, aber als vereinfacht markiert',()=>{ const u=R(`uebergang(figMeta(BUILTIN.b_t_wiege,'b_t_wiege'),figMeta(BUILTIN.b_t_prom,'b_t_prom'))`); return u.ok&&u.vereinfacht||JSON.stringify(u); });
+test('Haltung: aus einer Seitenposition nur in dieselbe Position',()=>{ const u=R(`(()=>{ const A={...figMeta(BUILTIN.b_d_gs,'b_d_gs'),haltEnde:'korb'}; return [uebergang(A,figMeta(BUILTIN.b_d_gs,'b_d_gs')).ok,uebergang(A,figMeta(BUILTIN.b_d_korb,'b_d_korb')).ok]; })()`); return u.join()==='false,true'||u.join(); });
+
+/* ---------- Stil, Takt, Daten ---------- */
+test('Stil: Tango Argentino und Tangowalzer werden richtig eingeordnet',()=>{ const r=R(`[styleOf('Tango Argentino')===STYLES.argentino, styleOf('Tangowalzer')===STYLES.tango, taktVon('Tangowalzer'), taktVon('Tango Argentino'), styleOf('Mein Tango Argentino')===STYLES.argentino, styleOf('Disco-Samba')===STYLES.bounce, phraseVon('Disco-Samba'), phraseVon('Discofox')]`); return r.join()==='true,true,3,4,true,true,2,3'||r.join(); });
+test('eine Taktquelle: Engine-Meter und Metadaten stimmen überein',()=>liste(R(`DANCES.filter(d=>{ const k=Object.keys(BUILTIN).find(k=>BUILTIN[k].dance===d); return simulate(flatten({items:[{fig:k}]}),{H:startH(),noSteer:true}).H[0].meter!==taktOf(d); })`)));
+test('Qualitätsprüfung: keine Warnungen mehr in der Bibliothek',()=>liste(R(`qualitaetAlle().liste.map(x=>x.id+': '+x.q.map(q=>q.text).join('; '))`)));
+test('Tipple-Chassé hat 8 Schläge',()=>R(`figMeta(BUILTIN.b_q_tipple,'b_q_tipple').schlaege`)===8||'falsch');
+test('Aliasse haben wirklich dieselben Schritte',()=>liste(R(`Object.entries(ALIAS).filter(([a,[b]])=>JSON.stringify(BUILTIN[a].steps)!==JSON.stringify(BUILTIN[b].steps)).map(([a])=>a)`)));
+test('Abgleichliste: jede Figur nur einmal zugeordnet',()=>liste(R(`(()=>{ const n={}; for(const s of Object.values(SYLLABUS)) for(const l of Object.values(s)) for(const e of l){ const id=e.split('=')[1]; if(id) n[id]=(n[id]||0)+1; } return Object.entries(n).filter(([k,v])=>v>1).map(([k])=>k); })()`)));
+test('Figuren mit Quelle: Quelle und Fußarbeit für jeden Schritt beider Rollen',()=>liste(R(`Object.keys(QUELLEN).filter(k=>!BUILTIN[k]||!/^http/.test(QUELLEN[k])||(TECHNIK_DATEN[k]&&(TECHNIK_DATEN[k].H.fuss.length!==BUILTIN[k].steps.length||TECHNIK_DATEN[k].D.fuss.length!==BUILTIN[k].steps.length)))`)));
+
+/* ---------- Neue feste Kursfolgen ---------- */
+test('neue Kursfolgen: Stufe, Übergänge, Wiederholung, Schleife und Laufweg',()=>liste(R(`['k_slowfox1','k_slowfox2','k_quick1','k_quick2','k_salsa1','k_salsa2'].flatMap(k=>{ const s=DEFAULT_SEQS[k]; if(!s) return [k+' fehlt']; const st=/Bronze/.test(s.name)?2:3, p=folgePruefen(s.items,{schleife:true,bisStufe:st});
+  return p.fehler.concat(p.warnungen).map(x=>k+': '+x); })`)));
+test('Salsa-Kursfolgen bleiben im kubanischen Stil',()=>liste(R(`['k_salsa1','k_salsa2'].flatMap(k=>DEFAULT_SEQS[k].items.filter(i=>!['b_s_rueckb','b_s_dile','b_s_ench','b_s_vacilala','b_s_sombrero','b_s_kreuzgs'].includes(i.fig)).map(i=>k+': '+i.fig))`)));
+test('bestehendes Profil mit eigener Folge bekommt die neuen Vorlagen dazu',()=>{ const alt={figures:{},seqs:{s_eigen:{name:'Meine',bpm:100,items:[{fig:'b_d_gs',rep:1}]},s_walzer:{name:'geändert',bpm:90,items:[{fig:'b_w_box',rep:3}]}},seen:['s_walzer','s_eigen']};
+  const c2=ladeAlles(alt), r=lauf(c2,`[!!user.seqs.s_eigen, user.seqs.s_walzer.name, !!user.seqs.k_slowfox1, !!user.seqs.k_salsa2, user.seen.includes('k_quick1')]`); return r.join()==='true,geändert,true,true,true'||r.join(); });
 
 /* ---------- Ergebnis ---------- */
 console.log(`${ok} Tests bestanden, ${fail} fehlgeschlagen`);

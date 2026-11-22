@@ -2,7 +2,7 @@
 
 Diese Datei wird mit `node tests/doku.js` aus den Figurendaten erzeugt. Bitte nicht von Hand bearbeiten.
 
-**Wichtig:** Die Technikangaben werden nach festen Regeln aus den Schritten abgeleitet (`js/technik.js`). Sie sind eine Lernhilfe, keine Abschrift aus einem Technikbuch.
+**Wichtig:** Die Technikangaben werden nach festen Regeln aus den Schritten abgeleitet (`js/technik.js`). Sie sind eine Lernhilfe, keine Abschrift aus einem Technikbuch. Ausnahme: Bei Figuren mit Quelle (mit † markiert) stammen Fußarbeit und Sway aus dem angegebenen Figurendiagramm.
 
 ## Begriffe
 
@@ -48,6 +48,7 @@ Belastungsfuß, freier Fuß und Ausrichtung im Raum stehen je Schritt in der App
 | Top Spin | TH TH T HT | oben | 1,2 | 4 | glll |
 | Open Telemark | HT T HT | senkt, hebt, oben, senkt am Ende | 1 | – | gll |
 | Natural Twist Turn | HT T T BF T HT | senkt, hebt, oben, senkt am Ende | 1,6 | 3 | grrrrr |
+| Basic Weave † | HT T T T T TH | oben | 1,4 | 3,6 | gllgrr |
 
 ## Quickstep
 
@@ -74,6 +75,8 @@ Belastungsfuß, freier Fuß und Ausrichtung im Raum stehen je Schritt in der App
 | Cross Swivel | HT T | unten | 1 | 2 | gl |
 | Quick Open Reverse | HT T TH TH | unten, hebt, oben, senkt am Ende, senkt | 1,3 | 4 | glll |
 | Hover Corté | TH T BF | unten | 1 | – | gll |
+| Natural Pivot Turn † | HT T TH THT (Pivot) | unten, hebt, oben, senkt am Ende, senkt | 1,4 | – | grrgg |
+| Reverse Pivot † | THT (Pivot) | unten | – | 1 | gg |
 
 ## Tango
 
@@ -107,6 +110,8 @@ Belastungsfuß, freier Fuß und Ausrichtung im Raum stehen je Schritt in der App
 | Contra Check | HF BF BF | keine | – | – | ––– |
 | Fallaway Four Step | HF BF BF BF | keine | – | 3 | –––– |
 | Oversway | BF – | keine | – | – | –– |
+| Rock zurück (linker Fuß) † | BH (Innenkante) HF BH (Innenkante) | keine | – | – | ––– |
+| Rock zurück (rechter Fuß, in CBMP) † | BH HF BH | keine | – | 1,3 | ––– |
 
 ## Langsamer Walzer
 
@@ -186,6 +191,7 @@ Belastungsfuß, freier Fuß und Ausrichtung im Raum stehen je Schritt in der App
 | Aida | BF BF BF BF BF BF BF BF BF BF | keine | – | – | –––––––––– |
 | Fencing | BF BF BF BF BF BF BF BF BF BF | keine | – | – | –––––––––– |
 | Spiral | BF BF BF BF BF BF BF BF BF BF | keine | – | – | –––––––––– |
+| Closed Hip Twist (in den Fächer) | BF BF BF BF BF BF BF BF BF BF | keine | – | – | –––––––––– |
 
 ## Rumba
 
@@ -322,7 +328,7 @@ Belastungsfuß, freier Fuß und Ausrichtung im Raum stehen je Schritt in der App
 | Grundschritt für den Anfang (Schritt–Tap) | BF BF BF T BF T | keine | – | – | –––––– |
 | Fallaway Rock (Rückschritt in der Promenade) | BF BF BF BF BF BF BF BF | keine | – | – | –––––––– |
 | Link und Peitsche (Whip) | BF BF BF BF BF BF BF BF BF BF | keine | – | 6 | –––––––––– |
-| Grundschritt in offener Haltung | BF BF BF BF BF BF BF BF | keine | – | – | –––––––– |
+| Grundschritt in offener Haltung (kleine Chassés) | BF BF BF BF BF BF BF BF | keine | – | – | –––––––– |
 | Gehschritte (Jive Walks) | BF BF BF BF BF BF BF BF | keine | – | – | –––––––– |
 | Chicken Walks (Dame geht rückwärts) | BF BF BF BF BF BF BF BF BF BF | keine | – | – | –––––––––– |
 | Flicks (Kicks seitlich) | BF BF T BF T BF | keine | – | – | –––––– |
@@ -345,7 +351,7 @@ Belastungsfuß, freier Fuß und Ausrichtung im Raum stehen je Schritt in der App
 | Rechtsdrehung am Platz | BF BF BF BF BF BF BF BF | keine | – | – | –––––––– |
 | Promenade | BF BF BF BF BF BF BF BF | keine | – | 3,5 | –––––––– |
 | Ecart (Appell, vor, seit, kreuzen) | BF HF BF BF | keine | – | 4 | –––– |
-| Seitschritte (Chassé nach links) | BF BF BF BF BF BF BF BF | keine | – | – | –––––––– |
+| Seitschritte (Chassé nach rechts) | BF BF BF BF BF BF BF BF | keine | – | – | –––––––– |
 | Huit (Dame schwingt vor dem Herrn) | BF BF BF BF BF BF BF BF | keine | – | – | –––––––– |
 | Banderillas (am Platz mit Kicks) | BF BF T BF T BF BF BF | keine | – | – | –––––––– |
 
@@ -459,7 +465,7 @@ Belastungsfuß, freier Fuß und Ausrichtung im Raum stehen je Schritt in der App
 | Damensolo am Platz (Rechtsdrehung) | BF T BF T BF BF | keine | – | – | –––––– |
 | Kreuzhand-Grundschritt | BF T BF T BF BF | keine | – | – | –––––– |
 | Rock-Step mit Kick-Ball-Change | BF BF T BF BF BF BF | keine | – | – | ––––––– |
-| Grundschritt mit Rechtsdrehung | BF T BF T BF BF | keine | – | – | –––––– |
+| Grundschritt mit stärkerer Rechtsdrehung | BF T BF T BF BF | keine | – | – | –––––– |
 
 ## Tango Argentino
 
@@ -523,14 +529,14 @@ Belastungsfuß, freier Fuß und Ausrichtung im Raum stehen je Schritt in der App
 
 | Figur | Fußtechnik Herr je Schritt | Heben und Senken | CBM bei Schritt | CBMP bei Schritt | Sway je Schritt |
 |---|---|---|---|---|---|
-| Grundschritt (vor und rück) | HF BF BF BF BF BF | keine | – | – | –––––– |
+| Grundschritt (vor und rück) | BF BF BF BF BF BF | keine | – | – | –––––– |
 | Grundschritt seitlich | BF BF BF BF BF BF | keine | – | – | –––––– |
 | Wischer (links und rechts) | BF BF BF BF BF BF | keine | – | 2,5 | –––––– |
-| Grundschritt mit Linksdrehung | HF BF BF BF BF BF | keine | – | – | –––––– |
+| Grundschritt mit Linksdrehung | BF BF BF BF BF BF | keine | – | – | –––––– |
 | Damendrehung rechts im Wischer | BF BF BF BF BF BF | keine | – | 2,5 | –––––– |
 | Grundschritt am Platz | BF BF BF BF BF BF | keine | – | – | –––––– |
-| Fortschreitend vorwärts | HF BF BF HF BF BF | keine | – | – | –––––– |
-| Grundschritt in offener Haltung | HF BF BF BF BF BF | keine | – | – | –––––– |
+| Fortschreitend vorwärts | BF BF BF BF BF BF | keine | – | – | –––––– |
+| Grundschritt in offener Haltung | BF BF BF BF BF BF | keine | – | – | –––––– |
 
 ## Two Step
 

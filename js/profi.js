@@ -4,10 +4,11 @@
 /* ---------- Technikdaten unter „Schritte erklärt“ (optional) ---------- */
 function zeigeTechnik(){
   const box=$('techBox'); if(!$('techOn').checked||!tl||exItem<0){ box.innerHTML=''; return; }
-  const {H,D}=figSteps(tl,exItem), tab=(steps,t)=>{ if(!steps.length) return ''; const tx=technikVon(steps,steps[0].sty||H[0].sty);
+  const {H,D}=figSteps(tl,exItem), fid=src&&src.items[exItem]&&src.items[exItem].fig, td=typeof TECHNIK_DATEN!=='undefined'&&TECHNIK_DATEN[fid];
+  const tab=(steps,t)=>{ if(!steps.length) return ''; const tx=technikVon(steps,steps[0].sty||H[0].sty,td&&td[t==='Herr'?'H':'D']);
     return `<div class="tcap">${t}</div><table class="tech"><tr><th>Zähl</th><th title="Belastungsfuß / freier Fuß">Gew./frei</th><th title="H Ferse, T Spitze, B Ballen, F ganzer Fuß">Fuß</th><th>Heben</th><th>CBM</th><th>CBMP</th><th>Sway</th><th title="Ausrichtung im Raum">Ausr.</th></tr>`+
       tx.map((x,i)=>`<tr><td>${esc(x.c)}</td><td>${x.belastet} / ${x.frei}</td><td>${x.technik}</td><td>${x.rise}</td><td>${x.cbm?'●':''}</td><td>${x.cbmp?'●':''}</td><td>${x.sway}</td><td title="${esc(ausrichtung(steps[i].to,steps[i].hA).lang)}">${esc(ausrichtung(steps[i].to,steps[i].hA).kurz)}</td></tr>`).join('')+'</table>'; };
-  box.innerHTML=tab(H,'Herr')+tab(D,'Dame')+'<div class="info">Aus den Schritten abgeleitet, als Lernhilfe. H Ferse, T Spitze, B Ballen, F ganzer Fuß. LOD Tanzrichtung, DW diagonal zur Wand, DC diagonal zur Mitte.</div>';
+  box.innerHTML=tab(H,'Herr')+tab(D,'Dame')+(td?`<div class="info">Fußarbeit und Sway laut Quelle: <a href="${esc(QUELLEN[fid])}" target="_blank" rel="noopener">${esc(QUELLEN[fid])}</a>. Übrige Spalten abgeleitet.</div>`:'')+'<div class="info">'+(td?'':'Aus den Schritten abgeleitet, als Lernhilfe. ')+' H Ferse, T Spitze, B Ballen, F ganzer Fuß. LOD Tanzrichtung, DW diagonal zur Wand, DC diagonal zur Mitte.</div>';
 }
 $('techOn').onchange=zeigeTechnik;
 
@@ -20,6 +21,7 @@ function lehrerZeigen(){
   $('lehrerTitel').textContent='👩‍🏫 '+figTitle(a.F);
   $('lehrerInhalt').innerHTML=`<div class="info">${STUFEN[m.stufe]}${m.stufeFest?'':' (geschätzt)'} · ${ARTEN[m.art]} · Zählzeiten ${esc(m.rhythmus)}</div>
     <h4>Figurenbeschreibung</h4><p>${esc(d.beschreibung)}</p>${m.schematisch?'<p class="info">Schrittfolge schematisch dargestellt, nicht mit einem Technikbuch abgeglichen.</p>':''}
+    ${m.alias?`<p class="info">Alias: ${esc(m.alias.text)}.</p>`:''}${m.quelle?`<p class="info">Quelle: <a href="${esc(m.quelle)}" target="_blank" rel="noopener">${esc(m.quelle)}</a></p>`:''}
     <h4>Technik</h4>${ul(d.technik)}<h4>Typische Fehler</h4>${ul(d.fehler)}<h4>Hinweise für Herren</h4>${ul(d.herr)}<h4>Hinweise für Damen</h4>${ul(d.dame)}`;
   $('lehrer').hidden=false;
 }

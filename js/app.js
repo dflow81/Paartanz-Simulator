@@ -1,5 +1,6 @@
 /* ================= Wiedergabe ================= */
 const $=id=>document.getElementById(id);
+let taktBasis=0;   // Schläge aus früheren Durchläufen: hält die betonte „1“ über das Wiederholen hinweg im Takt
 let src=null, blocks=[], tl=null, beat=0, playing=true, lastH=-1, lastD=-1, lastBeatIdx=-99, stepTarget=null, curItem=-1, lastSaid=-1;
 const speedEl=$('speed');
 /* Musik-Zustand (steht oben, weil schon beim ersten Laden einer Folge das Tempo gebraucht wird) */
@@ -16,9 +17,10 @@ function danceBpm(){ if(!hasMusic()||!mBpm||!src) return 0; let best=mBpm, e=9;
 function setSource(s){
   src=s; blocks=flatten(s);
   if(!blocks.length){tl=null;$('seqlist').innerHTML='<div>Diese Folge enthält keine Schritte.</div>';return;}
-  tl=simulate(blocks,{H:startH()}); beat=$('countIn').checked?-tl.H[0].meter:0; slow.clear(); exItem=-1; extra.forEach((p,i)=>{ if(p.on){ p.tl=simulate(blocks,{H:startH(...startPos(i))}); p.H.reset(); p.D.reset(); } }); lastH=lastD=-1; lastBeatIdx=-99; stepTarget=null; curItem=-1; lastSaid=-1; clearPrints(); clearDiagram(); herr.reset(); dame.reset();
+  tl=simulate(blocks,{H:startH()}); taktBasis=0; beat=$('countIn').checked?-tl.H[0].meter-tl.H[0].off:0; slow.clear(); exItem=-1; extra.forEach((p,i)=>{ if(p.on){ p.tl=simulate(blocks,{H:startH(...startPos(i))}); p.H.reset(); p.D.reset(); } }); lastH=lastD=-1; lastBeatIdx=-99; stepTarget=null; curItem=-1; lastSaid=-1; clearPrints(); clearDiagram(); herr.reset(); dame.reset();
   const figs=allFigs(), warn=new Set(tl.H.concat(tl.D).filter(r=>r.warn).map(r=>r.item));
-  $('seqlist').innerHTML=s.items.map((it,i)=>`<div data-i="${i}">${i+1}. ${figs[it.fig]?esc(figLabel(figs[it.fig])):'(fehlt)'}${it.rep>1?' ×'+it.rep:''}${warn.has(i)?' <span title="Ein Schritt beginnt mit dem Fuß, auf dem gerade das Gewicht steht.">⚠ falscher Fuß</span>':''}<span class="turtle" data-slow="${i}" title="Diese Figur in Zeitlupe tanzen (halbes Tempo)">🐢</span></div>`).join('');
+  $('seqlist').innerHTML=s.items.map((it,i)=>`<div data-i="${i}">${i+1}. ${figs[it.fig]?esc(figLabel(figs[it.fig])):'(fehlt)'}${it.rep>1?' ×'+it.rep:''}${warn.has(i)?' <span title="Ein Schritt beginnt mit dem Fuß, auf dem gerade das Gewicht steht.">⚠ falscher Fuß</span>':''}<span class="turtle" data-slow="${i}" title="Diese Figur in Zeitlupe tanzen (halbes Tempo)">🐢</span></div>`).join('')
+    +(sp=>sp.ok?'':`<div class="loopbad" title="${esc(sp.gruende.join('; '))}">↻ ⚠ Beim Neubeginn passt der Anschluss nicht (${esc(sp.gruende[0]||'')})</div>`)(schleifePruefen(s.items));
   updBpm(); barPending=true; if(typeof dress==='function') dressed='';
 }
 /* Tanztempo in Schlägen pro Minute: mit Musik gibt die Musik das Tempo vor, sonst die Folge */
@@ -45,7 +47,7 @@ $('trainer').onchange=()=>{ if($('trainer').checked){ $('loopFig').checked=true;
 /* „Hier ist die 1“: Tanz auf die nächstgelegene Eins des Takts schieben; mit Musik liegt der Schlag ab jetzt auf diesem Moment */
 $('oneBtn').onclick=()=>{ if(!tl) return; const s=evalDancer(tl.H,beat).step, m=s.meter;
   if(hasMusic()){ mOff=music.currentTime; mOne=true; }
-  const pos=(((beat-s.blockStart+s.off)%m)+m)%m; beat=Math.max(0,beat+(pos>m/2?m-pos:-pos)); lastBeatIdx=-99; flash($('oneBtn'),'✔ Eins gesetzt'); };
+  const pos=(((beat+taktBasis+(tl.H[0].off||0))%m)+m)%m; beat=Math.max(0,beat+(pos>m/2?m-pos:-pos)); lastBeatIdx=-99; flash($('oneBtn'),'✔ Eins gesetzt'); };
 $('minBtn').onclick=()=>{ $('ui').classList.toggle('min'); $('minBtn').textContent=$('ui').classList.contains('min')?'▴':'▾'; };
 let camPrev='frei';
 $('cam').onchange=()=>{ const v=$('cam').value; if(v==='frei'||/^ich/.test(camPrev)) overview(); camPrev=v; };
@@ -181,6 +183,11 @@ function renderSeqItems(){
     d.ondrop=e=>{ e.preventDefault(); if(dragFrom>=0&&dragFrom!==i){ const [m]=seqEdit.items.splice(dragFrom,1); seqEdit.items.splice(i,0,m); } dragFrom=-1; renderSeqItems(); };
     box.appendChild(d);
   });
+  // Schleife: beim Abspielen beginnt die Folge von vorn – passt die erste Figur an die letzte?
+  const sp=seqEdit.items.length?schleifePruefen(seqEdit.items):null, n=document.createElement('div'); n.className='info loopinfo';
+  n.innerHTML=!sp?'':sp.ok?'↻ Die Folge lässt sich als Schleife tanzen: die erste Figur passt wieder an die letzte.'+(sp.wechsel?' ('+esc(sp.gruende.join('; '))+')':'')
+    :'<span class="bad">⚠</span> Keine Schleife: '+esc(sp.gruende.join('; '))+'. Beim Wiederholen von vorn passt der Anschluss nicht – am Ende eine passende Figur anhängen.';
+  box.appendChild(n);
 }
 $('seqSel').onchange=()=>loadSeq($('seqSel').value);
 $('seqNew').onclick=()=>{seqKey=null;loadSeq(null);$('seqSel').value='';};
@@ -192,11 +199,18 @@ $('seqSave').onclick=()=>{ readSeq(); if(!seqKey) seqKey=uid('s_'); user.seqs[se
 /* ---------- Folgen-Generator (Regeln in js/figurdaten.js): nur gültige Übergänge, wahlweise mit Start-/Endfigur und Rückkehr in die Grundhaltung ---------- */
 const genDance=()=>{ if(curDance()!==ALL) return curDance(); const f=src&&src.items[0]&&allFigs()[src.items[0].fig]; return f?f.dance:'Langsamer Walzer'; };
 function fillGen(){
-  const d=genDance(), g=look.gen||{}, opts=Object.entries(allFigs()).filter(([k,f])=>(f.dance||'Sonstige')===d&&f.steps&&f.steps.length).map(([k,f])=>`<option value="${k}">${esc(f.name)}</option>`).join('');
+  const g=look.gen||{};
   $('genStufe').innerHTML=[1,2,3,4,5,6,7].map(i=>`<option value="${i}">${STUFEN[i]}</option>`).join(''); $('genStufe').value=String(g.st2||Math.min(filtStufe(),STUFE_MAX));
   $('genLen').value=String(g.len||8); $('genZu').checked=g.zu!==false; $('genWdh').checked=!!g.wdh;
-  for(const id of ['genStart','genEnde']){ const v=$(id).value; $(id).innerHTML='<option value="">beliebig</option>'+opts; $(id).value=v; if($(id).selectedIndex<0) $(id).value=''; }
+  fillGenFig();
 }
+/* Start- und Endfigur: nur Figuren bis zur gewählten Höchststufe sind wählbar; eine schon gewählte höhere Figur wird zurückgesetzt */
+function fillGenFig(){
+  const d=genDance(), bis=+$('genStufe').value||STUFE_MAX, liste=Object.entries(allFigs()).filter(([k,f])=>(f.dance||'Sonstige')===d&&f.steps&&f.steps.length).map(([k,f])=>[k,f,metaOf(k,f)]);
+  const opts=liste.map(([k,f,m])=>`<option value="${k}"${m.stufe>bis?' disabled':''}>${esc(f.name)} · ${STUFEN[m.stufe].replace(' (WTP 1)','')}${m.stufe>bis?' (über der Höchststufe)':''}</option>`).join('');
+  for(const id of ['genStart','genEnde']){ const v=$(id).value; $(id).innerHTML='<option value="">beliebig</option>'+opts; $(id).value=v; if($(id).selectedIndex<0||$(id).selectedOptions[0].disabled) $(id).value=''; }
+}
+$('genStufe').addEventListener('change',fillGenFig);
 function erzeuge(laut,stufe){
   const d=genDance(), o=stufe?{tanz:d,bisStufe:stufe,laenge:STUFEN_FOLGE[stufe],zurueck:true,technik:true,richtung:true}:{tanz:d,bisStufe:+$('genStufe').value||Math.min(filtStufe(),STUFE_MAX),laenge:+$('genLen').value||8,start:$('genStart').value||null,ende:$('genEnde').value||null,zurueck:$('genZu').checked,wdh:$('genWdh').checked};
   const ls=lastSteer; let r; try{ r=folgeErzeugen(o); } finally{ lastSteer=ls; }
@@ -353,7 +367,7 @@ function zeigeFigInfo(){
     <div>Zählzeiten: ${esc(m.rhythmus)} <small>(${m.schlaege} Schläge = ${String(m.takte).replace('.',',')} Takte)</small></div>
     <div>Füße (Start → Gewicht am Ende): Herr ${fn(m.herr)} · Dame ${fn(m.dame)}</div>
     <div>Haltung: ${HOLDS[m.haltStart][0]}${m.haltEnde!==m.haltStart?' → '+HOLDS[m.haltEnde][0]:''}${m.drehung?' · '+drehText(m.drehung):''}</div>
-    <div class="txt">${esc(m.text)}${m.vereinfacht?' <i>Vereinfachte Darstellung: die Armführung wird nicht gezeigt.</i>':''}${m.schematisch?' <i>Schrittfolge schematisch, nicht mit einem Technikbuch abgeglichen.</i>':''}</div>
+    <div class="txt">${esc(m.text)}${m.vereinfacht?' <i>Vereinfachte Darstellung: die Armführung wird nicht gezeigt.</i>':''}${m.schematisch?' <i>Schrittfolge schematisch, nicht mit einem Technikbuch abgeglichen.</i>':''}${m.alias?` <i>Alias: ${esc(m.alias.text)}.</i>`:''}${m.rhythmusVariante?` <i>Rhythmusvariante: ${esc(m.rhythmusVariante)}.</i>`:''}${m.quelle?` <i>Quelle: <a href="${esc(m.quelle)}" target="_blank" rel="noopener">BallroomGuide</a>.</i>`:''}</div>
     ${nx.length?`<div><small>Passt danach z. B.: ${nx.map(esc).join(', ')}</small></div>`:'<div><small>Keine passende Anschlussfigur in diesem Tanz.</small></div>'}`;
 }
 const readSteps=w=>{ if(!tl||exItem<0) return; const st=figSteps(tl,exItem)[w]; say((w==='H'?'Herr. ':'Dame. ')+st.map((s,i)=>`${ZAHL[String(s.c??'').trim()]||i+1}: ${stepText(s).replace(' · ',', ')}`).join('. '),1); };
@@ -393,6 +407,12 @@ $('printBtn').onclick=()=>{ if(!src) return;
     <p class="leg">Blau = Herr, Rot = Dame, Grau = Ausgangsstellung. Die Zahl ist die Schrittnummer; gestrichelt = Tap ohne Gewicht. Raster: 50 cm. Blick von oben, der Herr schaut am Anfang nach oben.</p></body></html>`);
   w.document.close(); };
 
+/* ---------- Takt: Position im Takt, gezählt ab dem Anfang der Folge ----------
+   off = Zählzeit der ersten Figur minus 1 (Cha-Cha beginnt auf 2 → off 1); taktBasis = Schläge früherer Durchläufe */
+const taktZaehl=bi=>{ if(!tl) return 1; const m=tl.H[0].meter, o=tl.H[0].off||0; return (((Math.round(bi+taktBasis)+o)%m+m)%m)+1; };
+/* Einzählen vor dem Start: im Takt vor der ersten „1“ „fünf, sechs, sieben, acht“ (Walzer: „vier, fünf, sechs“), danach die Zählzeiten bis zum ersten Schritt */
+function einzaehl(bi,ziffer){ if(!tl) return ''; const m=tl.H[0].meter, o=tl.H[0].off||0, z=taktZaehl(bi), vor=bi+o<0;
+  const n=vor?(m===3?3:4)+z:z; return ziffer?String(n):(ZAHL[String(n)]||''); }
 /* ================= Hauptschleife ================= */
 const clock=new THREE.Clock();
 /* Takt (Metronom): ein Klick pro Schlag, die „1“ ist betont. Browser erlauben Ton erst nach dem ersten Klick/Tastendruck. */
@@ -573,7 +593,7 @@ function animate(){
         if($('trainer').checked&&+speedEl.value<100){ speedEl.value=Math.min(100,+speedEl.value+10); updBpm(); } } }
     if(beat>=tl.total){ // Folge beginnt von vorn – weitertanzen ab aktueller Position
       markStep(tl.H.at(-1),'H'); markStep(tl.D.at(-1),'D');
-      beat=Math.min(beat-tl.total,tl.total*.5); if(stepTarget!==null) stepTarget=Math.max(0,stepTarget-tl.total);
+      taktBasis+=tl.total; beat=Math.min(beat-tl.total,tl.total*.5); if(stepTarget!==null) stepTarget=Math.max(0,stepTarget-tl.total);
       tl=tl.next||simulate(blocks,tl.end); for(const p of extra) if(p.on&&p.tl) p.tl=simulate(blocks,p.tl.end);
       lastH=lastD=-1; lastBeatIdx=-99; lastSaid=-1;
     }
@@ -589,8 +609,8 @@ function animate(){
     const hi=Math.floor(beat*2+1e-6); if(hi!==lastHalf){ lastHalf=hi; if(playing||stepTarget!==null) groove(hi,s,bps); }
     const bi=Math.floor(beat+1e-6);
     if(bi!==lastBeatIdx){ lastBeatIdx=bi;
-      if(playing||stepTarget!==null) click((bi-s.blockStart+s.off)%s.meter===0);
-      if(bi<0&&playing&&$('countIn').checked) say(ZAHL[String((s.meter===3?7:9)+bi)]||'',1.5); }   // Einzählen: „fünf, sechs, sieben, acht“ (Walzer: „vier, fünf, sechs“)
+      if(playing||stepTarget!==null) click(taktZaehl(bi)===1);   // Eins durchgehend vom Anfang der Folge an gezählt, auch über Figurenwechsel hinweg
+      if(bi<0&&playing&&$('countIn').checked) say(einzaehl(bi),1.5); }
     if(s.item!==exItem){ exItem=s.item; renderExplain(); }
     if(pH.idx!==lastH){
       if($('sayCount').checked&&playing&&beat>=0&&s.d>=.5&&s.kind!=='halt') say(ZAHL[String(s.c??'').trim()]||'',1.7);
@@ -601,7 +621,7 @@ function animate(){
     }
     if(pD.idx!==lastD){ if(lastD>=0) markStep(tl.D[lastD],'D'); lastD=pD.idx; }
     prints.forEach(p=>p.material.opacity=Math.max(0,p.material.opacity-dt*.06));
-    $('count').textContent=beat<0?String((s.meter===3?7:9)+Math.floor(beat)):s.c||'';
+    $('count').textContent=beat<0?einzaehl(Math.floor(beat),true):s.c||'';
     $('stepname').textContent='Herr: '+stepText(s);
     $('damename').textContent='Dame: '+stepText(pD.step);
     let tp=''; if($('tips').checked){ // Hinweis des laufenden Schritts (bleibt zwei Schläge stehen), sonst Vorschau auf den nächsten

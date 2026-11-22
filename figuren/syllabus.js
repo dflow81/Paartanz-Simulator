@@ -14,21 +14,21 @@ const SYLLABUS={
   6:['Oversway=w_oversway','Throwaway Oversway=w_throw','Same Foot Lunge=w_lunge','Chair=w_chair','Natural Fallaway'],
 },
 'Tango':{
-  2:['Walk=t_geh','Progressive Side Step=t_pss','Progressive Link=t_link','Closed Promenade=t_prom','Rock Back','Open Reverse Turn=t_orev','Back Corté=t_corte','Natural Rock Turn=t_rock','Basic Reverse Turn=t_links'],
+  2:['Walk=t_geh','Progressive Side Step=t_pss','Progressive Link=t_link','Closed Promenade=t_prom','LF Rock (Rock Back)=t_rockl','RF Rock=t_rockr','Open Reverse Turn=t_orev','Back Corté=t_corte','Natural Rock Turn=t_rock','Basic Reverse Turn=t_links'],
   3:['Four Step=t_vier','Open Promenade=t_oprom','Back Open Promenade=t_bopr','Outside Swivel=t_oswivel','Fallaway Promenade=t_fallaway','Natural Twist Turn=t_ntwist','Natural Promenade Turn=t_npt'],
   4:['Five Step=t_fuenf','Contra Check=t_contra','Fallaway Four Step=t_fall4','Brush Tap=t_brush','Chase'],
   5:['Spanish Drag=t_drag','Promenade Link','Reverse Outside Swivel'],
   6:['Oversway=t_oversway','Same Foot Lunge','Throwaway Oversway'],
 },
 'Slowfox':{
-  2:['Feather Step=sf_feder','Three Step=sf_dreier','Natural Turn=sf_rechts','Reverse Turn=sf_links','Closed Impetus=sf_impetus','Feather Finish=sf_ffinish','Change of Direction=sf_cod','Basic Weave'],
+  2:['Feather Step=sf_feder','Three Step=sf_dreier','Natural Turn=sf_rechts','Reverse Turn=sf_links','Closed Impetus=sf_impetus','Feather Finish=sf_ffinish','Change of Direction=sf_cod','Basic Weave=sf_bweave'],
   3:['Natural Weave=sf_nweave','Open Telemark=sf_otelemark','Top Spin=sf_topspin','Hover Feather=sf_hfeder','Hover Telemark=sf_hover','Open Impetus=sf_oimp','Weave from Promenade=sf_wpp','Reverse Wave=sf_wellen','Natural Telemark','Hover Cross'],
   4:['Curved Feather=sf_cfeder','Back Feather=sf_rfeder','Bounce Fallaway with Weave Ending=sf_bounce','Natural Twist Turn=sf_ntwist','Natural Zig Zag','Fallaway Reverse and Slip Pivot'],
   5:['Tumble Turn=sf_tumble','Extended Reverse Wave','Curved Three Step'],
   6:['Oversway','Hover Corté'],
 },
 'Quickstep':{
-  2:['Quarter Turn to Right=q_viertel','Progressive Chassé=q_chasse','Forward Lock=q_lock','Natural Turn=q_rechts','Natural Pivot Turn','Natural Spin Turn=q_kreisel','Back Lock=q_rlock','Reverse Pivot','Tipple Chassé to Right=q_tipple','Running Finish=q_rfinish','Natural Turn with Hesitation=q_zoeger','Chassé Reverse Turn=q_links'],
+  2:['Quarter Turn to Right=q_viertel','Progressive Chassé=q_chasse','Forward Lock=q_lock','Natural Turn=q_rechts','Natural Pivot Turn=q_npivot','Natural Spin Turn=q_kreisel','Back Lock=q_rlock','Reverse Pivot=q_rpivot','Tipple Chassé to Right=q_tipple','Running Finish=q_rfinish','Natural Turn with Hesitation=q_zoeger','Chassé Reverse Turn=q_links'],
   3:['Quick Open Reverse=q_qor','Fishtail=q_fishtail','Running Right Turn=q_rrturn','Cross Swivel=q_swivel','Six Quick Run=q_6run','V6=q_v6','Zig Zag'],
   4:['Hover Corté=q_hcorte','Rumba Cross','Tipsy to Right','Fallaway Natural Turn'],
   5:['Scatter Chassés','Pepperpot=q_pepper','Hops=q_hops'],
@@ -39,7 +39,7 @@ const SYLLABUS={
   3:['Contra Check=ww_check','Natural Fleckerl=ww_fleckerl','Reverse Fleckerl'],
 },
 'Cha-Cha-Cha':{
-  2:['Closed Basic=c_gs','Open Basic=c_offen','Fan=c_fan','Hockey Stick=c_hockey','Alemana=c_alemana','Natural Top=c_top','New York=c_ny','Spot Turn=c_spot','Hand to Hand=c_hand','Time Step=c_time','Three Cha Chas=c_drei','Shoulder to Shoulder=c_schulter','Natural Opening Out=c_open','Closed Hip Twist','Side Steps=c_seit','Cuban Break=c_cuban'],
+  2:['Closed Basic=c_gs','Open Basic=c_offen','Fan=c_fan','Hockey Stick=c_hockey','Alemana=c_alemana','Natural Top=c_top','New York=c_ny','Spot Turn=c_spot','Hand to Hand=c_hand','Time Step=c_time','Three Cha Chas=c_drei','Shoulder to Shoulder=c_schulter','Natural Opening Out=c_open','Closed Hip Twist=c_closedhip','Side Steps=c_seit','Cuban Break=c_cuban'],
   3:['Open Hip Twist=c_hip','Reverse Top','Aida=c_aida','Spiral=c_spiral','Cross Basic=c_cross','Turkish Towel','Sweetheart','Follow My Leader'],
   4:['Fencing=c_fence','Rope Spinning','Sliding Doors','Curl','Advanced Hip Twist','Hip Twist Spiral'],
   5:['Three Threes','Chase'],
@@ -57,7 +57,7 @@ const SYLLABUS={
   5:['Rolls=sa_rolle','Samba Locks','Natural Roll'],
 },
 'Jive':{
-  2:['Basic in Place=j_gs','Fallaway Rock=j_fall','Change of Place Right to Left=j_pwrl','Change of Place Left to Right=j_pw','Link=j_whip','American Spin=j_amspin','Stop and Go=j_stopgo','Walks=j_walk','Whip=j_whip'],
+  2:['Basic in Place=j_gs','Fallaway Rock=j_fall','Change of Place Right to Left=j_pwrl','Change of Place Left to Right=j_pw','Link and Whip (zusammen getanzt)=j_whip','Link (allein)','American Spin=j_amspin','Stop and Go=j_stopgo','Walks=j_walk'],
   3:['Flick Ball Change=j_flicks','Chicken Walks=j_chicken','Promenade Walks=j_prom','Windmill','Spanish Arms','Rolling Off the Arm'],
   4:['Curly Whip','Toe Heel Swivels','Simple Spin','Miami Special'],
   5:['Chugging','Catapult','Stalking Walks'],

@@ -146,3 +146,4 @@ table.tech{font-size:10.5px;margin-top:2px} table.tech th,table.tech td{padding:
 #turnierInfo{font-size:13px;margin-top:6px;color:#bfe3ff;max-width:46vw;margin-left:auto;text-shadow:0 1px 6px #000}
 .qz{margin-top:6px} .qf{color:#ff8a8a} .qw{color:#f5c542}
 @media (min-width:701px) and (max-width:1250px){ #profi{left:auto;right:12px;transform:none;bottom:60px;width:400px} }
+.loopinfo{margin-top:6px} .loopbad{color:#f5c542;font-size:12px;padding:3px 6px}

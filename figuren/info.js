@@ -94,4 +94,26 @@ set({j_gs:1,j_dreh:1,j_offen:1,j_offen2:1,j_tap:1,j_pw:1,j_pwrl:1,
    j_stopgo:'Stop and Go: die Dame dreht links an seine rechte Seite ein, seine rechte Hand stoppt sie, dann dreht sie rechts wieder aus.',
    j_fall:'Fallaway Rock: der Rock Step in der Promenade, beide gehen gleichzeitig zurück.'},
   {},{j_stopgo:'v',j_amspin:''});
+/* ---------- Figuren mit Quelle (figuren/belegt.js) ---------- */
+set({sf_bweave:2,q_npivot:2,q_rpivot:2,t_rockl:2,t_rockr:2,c_closedhip:2},
+  {sf_bweave:'Basic Weave: sechs schnelle Schritte mit einer halben Linksdrehung, vom gegen die Tanzrichtung diagonal zur Mitte nach diagonal zur Wand; die letzten Schritte sind das „Weave-Ende“.',
+   q_npivot:'Natural Pivot Turn: erste Hälfte der Rechtsdrehung, dann auf dem linken Fuß rückwärts eine halbe Rechtsdrehung (Pivot). Häufig an der Ecke.',
+   q_rpivot:'Reverse Pivot: ein kleiner Schritt rück in CBMP mit einer halben Linksdrehung auf dem rechten Fuß.',
+   t_rockl:'Rock auf dem linken Fuß: zurück, Gewicht wieder vor, kleiner Schritt zurück (Q Q S). Anschluss: Rock auf dem rechten Fuß oder Linksdrehung.',
+   t_rockr:'Rock auf dem rechten Fuß in CBMP: zurück, Gewicht vor, kleiner Schritt zurück. Anschluss: Rück-Corté.',
+   c_closedhip:'Closed Hip Twist: der Herr dreht die Dame aus der geschlossenen Haltung zur Seite auf und führt sie in den Fächer. Anschluss: Hockeystick oder Alemana.'},
+  {},{c_closedhip:'s'});
 }
+/* Gleiche Schritte unter zwei Namen (Aliasse). Beide Einträge bleiben, damit gespeicherte Folgen gültig bleiben. */
+const ALIAS={
+  b_pd_seit:['b_pd_chasse','gleiche Schritte wie „Chassés nach rechts“'],
+  b_r_seitl:['b_r_cuca','gleiche Schritte wie die Cucaracha'],
+  b_r_vorgeh:['b_r_geh','gleiche Schritte wie „Gehschritte vor und rück“'],
+  b_d_drehl2:['b_d_solol','gleiche Schritte wie „Damensolo links“'],
+  b_bl_vorr:['b_bl_vor','gleiche Schritte wie „Vor – Tap, Rück – Tap“'],
+  b_b_sensual:['b_b_platz','die Füße tanzen den Grundschritt am Platz; die Wellenbewegung des Oberkörpers wird nicht dargestellt','v'],
+};
+/* Zulässige Rhythmusvarianten: Figuren, deren Länge bewusst nicht zur üblichen Phrase des Tanzes passt */
+const RHYTHMUS_VARIANTE={
+  b_d_seit:'Seitschritte im Vierer-Rhythmus (seit, ran, seit, Tap) statt der Dreiergruppe „Schritt, Schritt, Tap“',
+};

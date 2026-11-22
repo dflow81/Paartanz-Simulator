@@ -40,7 +40,7 @@ tanz('Slowfox',116,{
 
 /* ---------- Quickstep ---------- */
 tanz('Quickstep',200,{
-  b_q_tipple:['Tipple-Chassé rechts',[S('R','vor',35,2,'S',-45),S('L','seit',25,1,'Q',-45),S('R','schliessen',0,1,'Q',-45),S('L','seit',25,2,'S'),S('R','seit',20,1,'Q'),S('L','schliessen',0,2,'Q')]],
+  b_q_tipple:['Tipple-Chassé rechts',[S('R','vor',35,2,'S',-45),S('L','seit',25,1,'Q',-45),S('R','schliessen',0,1,'Q',-45),S('L','seit',25,2,'S'),S('R','seit',20,1,'Q'),S('L','schliessen',0,1,'Q')]],   // letzter Schritt war 2 Schläge lang, obwohl als Q gezählt (9 statt 8 Schläge)
   b_q_hops:['Hüpfer vorwärts (Hops)',[S('L','vor',35,2,'S'),S('R','vor',35,2,'S'),{...S('L','vor',25,1,'Q'),tip:'kleine Hüpfer auf den Ballen'},S('R','vor',25,1,'Q'),S('L','vor',25,1,'Q'),S('R','vor',25,1,'Q')]],
   b_q_pepper:['Pfeffermühle (Running Steps)',[S('L','vor',30,1,'Q'),S('R','vor',30,1,'Q'),S('L','vor',30,1,'Q'),S('R','vor',30,1,'Q'),S('L','seit',20,2,'S'),S('R','schliessen',0,2,'S')]],
   b_q_rumpf:['Fortschreitendes Chassé',[S('L','vor',35,2,'S'),S('R','seit',25,1,'Q'),S('L','schliessen',0,1,'Q'),S('R','seit',25,2,'S')]],
@@ -85,7 +85,7 @@ tanz('Samba',100,{
 const rock=[S('L','rueck',22,1,'1'),S('R','platz',0,1,'2')];
 const ch=(f,dir,len,c1,c2,t=0,h)=>[S(f,dir,len,.75,c1,t,h),S(O(f),'schliessen',0,.25,'a',0,h),S(f,dir,len/2,1,c2,t,h)];
 tanz('Jive',150,{
-  b_j_offen2:['Grundschritt in offener Haltung',H([...rock,...ch('L','seit',22,'3','4'),...ch('R','seit',22,'5','6')],'offen')],
+  b_j_offen2:['Grundschritt in offener Haltung (kleine Chassés)',H([...rock,...ch('L','seit',22,'3','4'),...ch('R','seit',22,'5','6')],'offen')],
   b_j_walk:['Gehschritte (Jive Walks)',[S('L','vor',25,1,'1'),S('R','vor',25,1,'2'),...ch('L','vor',20,'3','4'),...ch('R','vor',20,'5','6')]],
   b_j_chicken:['Chicken Walks (Dame geht rückwärts)',[S('L','rueck',20,1,'1'),S('R','rueck',20,1,'2'),S('L','rueck',20,1,'3'),S('R','rueck',20,1,'4'),...ch('L','seit',20,'5','6'),...ch('R','seit',20,'7','8')]],
   b_j_flicks:['Flicks (Kicks seitlich)',[...rock,S('L','kick',30,1,'3'),S('L','schliessen',0,1,'4'),S('R','kick',30,1,'5'),S('R','schliessen',0,1,'6')]],
@@ -97,7 +97,7 @@ tanz('Jive',150,{
 {
 const n8=fn=>[1,2,3,4,5,6,7,8].map(n=>fn(n%2?'R':'L',String(n)));
 tanz('Paso Doble',120,{
-  b_pd_seit:['Seitschritte (Chassé nach links)',n8((f,c)=>f==='R'?S(f,'seit',25,1,c):S(f,'schliessen',0,1,c))],
+  b_pd_seit:['Seitschritte (Chassé nach rechts)',n8((f,c)=>f==='R'?S(f,'seit',25,1,c):S(f,'schliessen',0,1,c))],
   b_pd_huit:['Huit (Dame schwingt vor dem Herrn)',n8((f,c)=>S(f,'platz',0,1,c,0,+c>2&&+c<7?'prom':'zu'))],
   b_pd_banderillas:['Banderillas (am Platz mit Kicks)',[S('R','platz',0,1,'1'),S('L','platz',0,1,'2'),S('R','kick',25,1,'3'),S('R','schliessen',0,1,'4'),S('L','kick',25,1,'5'),S('L','schliessen',0,1,'6'),S('R','platz',0,1,'7'),S('L','platz',0,1,'8')]],
 });
@@ -190,7 +190,7 @@ const bt=(t,h)=>[S('L','seit',14,1,'1',t,h),S('R','tap',0,1,'2',0,h),S('R','seit
 tanz('Boogie-Woogie',160,{
   b_bw_kreuz:['Kreuzhand-Grundschritt',bt(0,'kreuz')],
   b_bw_platz:['Rock-Step mit Kick-Ball-Change',[S('L','rueck',20,1,'1'),S('R','platz',0,1,'2'),S('L','kick',25,.5,'3'),S('L','schliessen',0,.5,'&'),S('R','platz',0,1,'4'),S('L','seit',14,1,'5'),S('R','schliessen',0,1,'6')]],
-  b_bw_rechts:['Grundschritt mit Rechtsdrehung',bt(-30)],
+  b_bw_rechts:['Grundschritt mit stärkerer Rechtsdrehung',bt(-30)],
 });
 }
 

@@ -12,113 +12,109 @@ Sortiert nach gewünschter Tanz-Priorität und Stufe (niedrige Stufen zuerst).
 
 | Nr. | Tanz | Figur | Stufe |
 |---|---|---|---|
-| 1 | Slowfox | Basic Weave | Bronze |
-| 2 | Quickstep | Natural Pivot Turn | Bronze |
-| 3 | Quickstep | Reverse Pivot | Bronze |
-| 4 | Tango | Rock Back | Bronze |
-| 5 | Slowfox | Natural Telemark | Silber |
-| 6 | Slowfox | Hover Cross | Silber |
-| 7 | Langsamer Walzer | Reverse Pivot | Bronze |
-| 8 | Quickstep | Zig Zag | Silber |
-| 9 | Cha-Cha-Cha | Closed Hip Twist | Bronze |
-| 10 | Rumba | Closed Hip Twist | Bronze |
-| 11 | Slowfox | Natural Zig Zag | Gold |
-| 12 | Slowfox | Fallaway Reverse and Slip Pivot | Gold |
-| 13 | Langsamer Walzer | Open Impetus | Silber |
-| 14 | Langsamer Walzer | Left Whisk | Silber |
-| 15 | Quickstep | Rumba Cross | Gold |
-| 16 | Quickstep | Tipsy to Right | Gold |
-| 17 | Quickstep | Fallaway Natural Turn | Gold |
-| 18 | Cha-Cha-Cha | Reverse Top | Silber |
-| 19 | Cha-Cha-Cha | Turkish Towel | Silber |
-| 20 | Cha-Cha-Cha | Sweetheart | Silber |
-| 21 | Cha-Cha-Cha | Follow My Leader | Silber |
-| 22 | Tango | Chase | Gold |
-| 23 | Rumba | Reverse Top | Silber |
-| 24 | Rumba | Opening Out from Reverse Top | Silber |
-| 25 | Slowfox | Extended Reverse Wave | Goldstar |
-| 26 | Slowfox | Curved Three Step | Goldstar |
-| 27 | Langsamer Walzer | Closed Wing | Gold |
-| 28 | Langsamer Walzer | Turning Lock to Right | Gold |
-| 29 | Langsamer Walzer | Fallaway Reverse and Slip Pivot | Gold |
-| 30 | Langsamer Walzer | Fallaway Whisk | Gold |
-| 31 | Salsa | Setenta | Silber |
-| 32 | Salsa | Sácala | Silber |
-| 33 | Salsa | Exhíbela | Silber |
-| 34 | Samba | Corta Jaca | Bronze |
-| 35 | Paso Doble | Separation | Bronze |
-| 36 | Paso Doble | Sixteen | Bronze |
-| 37 | Quickstep | Scatter Chassés | Goldstar |
-| 38 | Cha-Cha-Cha | Rope Spinning | Gold |
-| 39 | Cha-Cha-Cha | Sliding Doors | Gold |
-| 40 | Cha-Cha-Cha | Curl | Gold |
-| 41 | Cha-Cha-Cha | Advanced Hip Twist | Gold |
-| 42 | Cha-Cha-Cha | Hip Twist Spiral | Gold |
-| 43 | Discofox | Schulterfasser | Silber |
-| 44 | Tango | Promenade Link | Goldstar |
-| 45 | Tango | Reverse Outside Swivel | Goldstar |
-| 46 | Rumba | Rope Spinning | Gold |
-| 47 | Rumba | Sliding Doors | Gold |
-| 48 | Rumba | Curl | Gold |
-| 49 | Rumba | Advanced Hip Twist | Gold |
-| 50 | Rumba | Three Alemanas | Gold |
-| 51 | Rumba | Hip Twist Spiral | Gold |
-| 52 | Slowfox | Oversway | Turnier |
-| 53 | Slowfox | Hover Corté | Turnier |
-| 54 | Langsamer Walzer | Hinge Line | Goldstar |
-| 55 | Langsamer Walzer | Curved Feather | Goldstar |
-| 56 | Salsa | Kentucky | Gold |
-| 57 | Salsa | Adiós | Gold |
-| 58 | Salsa | Tumba Francesa | Gold |
-| 59 | Salsa | Montaña | Gold |
-| 60 | Wiener Walzer | Reverse Fleckerl | Silber |
-| 61 | Samba | Criss Cross Volta | Silber |
-| 62 | Samba | Rolling Off the Arm | Silber |
-| 63 | Samba | Plait | Silber |
-| 64 | Jive | Windmill | Silber |
-| 65 | Jive | Spanish Arms | Silber |
-| 66 | Jive | Rolling Off the Arm | Silber |
-| 67 | Paso Doble | Grand Circle | Silber |
-| 68 | Paso Doble | La Passe | Silber |
-| 69 | Paso Doble | Twist Turn | Silber |
-| 70 | Paso Doble | Spanish Lines | Silber |
-| 71 | Quickstep | Oversway | Turnier |
-| 72 | Cha-Cha-Cha | Three Threes | Goldstar |
-| 73 | Cha-Cha-Cha | Chase | Goldstar |
-| 74 | Discofox | Lasso | Gold |
-| 75 | Discofox | Seilwurf | Gold |
-| 76 | Discofox | Sliding Doors | Gold |
-| 77 | Tango | Same Foot Lunge | Turnier |
-| 78 | Tango | Throwaway Oversway | Turnier |
-| 79 | Rumba | Three Threes | Goldstar |
-| 80 | Rumba | Continuous Hip Twist | Goldstar |
-| 81 | Langsamer Walzer | Natural Fallaway | Turnier |
-| 82 | Samba | Three Step Turn | Gold |
-| 83 | Samba | Argentine Crosses | Gold |
-| 84 | Samba | Maypole | Gold |
-| 85 | Samba | Contra Botafogo | Gold |
-| 86 | Jive | Curly Whip | Gold |
-| 87 | Jive | Toe Heel Swivels | Gold |
-| 88 | Jive | Simple Spin | Gold |
-| 89 | Jive | Miami Special | Gold |
-| 90 | Paso Doble | Coup de Pique | Gold |
-| 91 | Paso Doble | Flamenco Taps | Gold |
-| 92 | Paso Doble | Farol | Gold |
-| 93 | Paso Doble | Fregolina | Gold |
-| 94 | Paso Doble | Syncopated Separation | Gold |
-| 95 | Samba | Samba Locks | Goldstar |
-| 96 | Samba | Natural Roll | Goldstar |
-| 97 | Jive | Chugging | Goldstar |
-| 98 | Jive | Catapult | Goldstar |
-| 99 | Jive | Stalking Walks | Goldstar |
+| 1 | Slowfox | Natural Telemark | Silber |
+| 2 | Slowfox | Hover Cross | Silber |
+| 3 | Langsamer Walzer | Reverse Pivot | Bronze |
+| 4 | Quickstep | Zig Zag | Silber |
+| 5 | Rumba | Closed Hip Twist | Bronze |
+| 6 | Slowfox | Natural Zig Zag | Gold |
+| 7 | Slowfox | Fallaway Reverse and Slip Pivot | Gold |
+| 8 | Langsamer Walzer | Open Impetus | Silber |
+| 9 | Langsamer Walzer | Left Whisk | Silber |
+| 10 | Quickstep | Rumba Cross | Gold |
+| 11 | Quickstep | Tipsy to Right | Gold |
+| 12 | Quickstep | Fallaway Natural Turn | Gold |
+| 13 | Cha-Cha-Cha | Reverse Top | Silber |
+| 14 | Cha-Cha-Cha | Turkish Towel | Silber |
+| 15 | Cha-Cha-Cha | Sweetheart | Silber |
+| 16 | Cha-Cha-Cha | Follow My Leader | Silber |
+| 17 | Tango | Chase | Gold |
+| 18 | Rumba | Reverse Top | Silber |
+| 19 | Rumba | Opening Out from Reverse Top | Silber |
+| 20 | Slowfox | Extended Reverse Wave | Goldstar |
+| 21 | Slowfox | Curved Three Step | Goldstar |
+| 22 | Langsamer Walzer | Closed Wing | Gold |
+| 23 | Langsamer Walzer | Turning Lock to Right | Gold |
+| 24 | Langsamer Walzer | Fallaway Reverse and Slip Pivot | Gold |
+| 25 | Langsamer Walzer | Fallaway Whisk | Gold |
+| 26 | Salsa | Setenta | Silber |
+| 27 | Salsa | Sácala | Silber |
+| 28 | Salsa | Exhíbela | Silber |
+| 29 | Samba | Corta Jaca | Bronze |
+| 30 | Jive | Link (allein) | Bronze |
+| 31 | Paso Doble | Separation | Bronze |
+| 32 | Paso Doble | Sixteen | Bronze |
+| 33 | Quickstep | Scatter Chassés | Goldstar |
+| 34 | Cha-Cha-Cha | Rope Spinning | Gold |
+| 35 | Cha-Cha-Cha | Sliding Doors | Gold |
+| 36 | Cha-Cha-Cha | Curl | Gold |
+| 37 | Cha-Cha-Cha | Advanced Hip Twist | Gold |
+| 38 | Cha-Cha-Cha | Hip Twist Spiral | Gold |
+| 39 | Discofox | Schulterfasser | Silber |
+| 40 | Tango | Promenade Link | Goldstar |
+| 41 | Tango | Reverse Outside Swivel | Goldstar |
+| 42 | Rumba | Rope Spinning | Gold |
+| 43 | Rumba | Sliding Doors | Gold |
+| 44 | Rumba | Curl | Gold |
+| 45 | Rumba | Advanced Hip Twist | Gold |
+| 46 | Rumba | Three Alemanas | Gold |
+| 47 | Rumba | Hip Twist Spiral | Gold |
+| 48 | Slowfox | Oversway | Turnier |
+| 49 | Slowfox | Hover Corté | Turnier |
+| 50 | Langsamer Walzer | Hinge Line | Goldstar |
+| 51 | Langsamer Walzer | Curved Feather | Goldstar |
+| 52 | Salsa | Kentucky | Gold |
+| 53 | Salsa | Adiós | Gold |
+| 54 | Salsa | Tumba Francesa | Gold |
+| 55 | Salsa | Montaña | Gold |
+| 56 | Wiener Walzer | Reverse Fleckerl | Silber |
+| 57 | Samba | Criss Cross Volta | Silber |
+| 58 | Samba | Rolling Off the Arm | Silber |
+| 59 | Samba | Plait | Silber |
+| 60 | Jive | Windmill | Silber |
+| 61 | Jive | Spanish Arms | Silber |
+| 62 | Jive | Rolling Off the Arm | Silber |
+| 63 | Paso Doble | Grand Circle | Silber |
+| 64 | Paso Doble | La Passe | Silber |
+| 65 | Paso Doble | Twist Turn | Silber |
+| 66 | Paso Doble | Spanish Lines | Silber |
+| 67 | Quickstep | Oversway | Turnier |
+| 68 | Cha-Cha-Cha | Three Threes | Goldstar |
+| 69 | Cha-Cha-Cha | Chase | Goldstar |
+| 70 | Discofox | Lasso | Gold |
+| 71 | Discofox | Seilwurf | Gold |
+| 72 | Discofox | Sliding Doors | Gold |
+| 73 | Tango | Same Foot Lunge | Turnier |
+| 74 | Tango | Throwaway Oversway | Turnier |
+| 75 | Rumba | Three Threes | Goldstar |
+| 76 | Rumba | Continuous Hip Twist | Goldstar |
+| 77 | Langsamer Walzer | Natural Fallaway | Turnier |
+| 78 | Samba | Three Step Turn | Gold |
+| 79 | Samba | Argentine Crosses | Gold |
+| 80 | Samba | Maypole | Gold |
+| 81 | Samba | Contra Botafogo | Gold |
+| 82 | Jive | Curly Whip | Gold |
+| 83 | Jive | Toe Heel Swivels | Gold |
+| 84 | Jive | Simple Spin | Gold |
+| 85 | Jive | Miami Special | Gold |
+| 86 | Paso Doble | Coup de Pique | Gold |
+| 87 | Paso Doble | Flamenco Taps | Gold |
+| 88 | Paso Doble | Farol | Gold |
+| 89 | Paso Doble | Fregolina | Gold |
+| 90 | Paso Doble | Syncopated Separation | Gold |
+| 91 | Samba | Samba Locks | Goldstar |
+| 92 | Samba | Natural Roll | Goldstar |
+| 93 | Jive | Chugging | Goldstar |
+| 94 | Jive | Catapult | Goldstar |
+| 95 | Jive | Stalking Walks | Goldstar |
 
 ## Slowfox
 
-Abgedeckt: **20 von 29** Figuren der Abgleichliste (69 %).
+Abgedeckt: **21 von 29** Figuren der Abgleichliste (72 %).
 
 | Stufe | vorhanden | fehlend |
 |---|---|---|
-| Bronze | Feather Step, Three Step, Natural Turn, Reverse Turn, Closed Impetus, Feather Finish, Change of Direction | Basic Weave |
+| Bronze | Feather Step, Three Step, Natural Turn, Reverse Turn, Closed Impetus, Feather Finish, Change of Direction, Basic Weave | – |
 | Silber | Natural Weave, Open Telemark, Top Spin, Hover Feather, Hover Telemark, Open Impetus, Weave from Promenade, Reverse Wave | Natural Telemark, Hover Cross |
 | Gold | Curved Feather, Back Feather, Bounce Fallaway with Weave Ending, Natural Twist Turn | Natural Zig Zag, Fallaway Reverse and Slip Pivot |
 | Goldstar | Tumble Turn | Extended Reverse Wave, Curved Three Step |
@@ -126,11 +122,11 @@ Abgedeckt: **20 von 29** Figuren der Abgleichliste (69 %).
 
 ## Quickstep
 
-Abgedeckt: **19 von 27** Figuren der Abgleichliste (70 %).
+Abgedeckt: **21 von 27** Figuren der Abgleichliste (78 %).
 
 | Stufe | vorhanden | fehlend |
 |---|---|---|
-| Bronze | Quarter Turn to Right, Progressive Chassé, Forward Lock, Natural Turn, Natural Spin Turn, Back Lock, Tipple Chassé to Right, Running Finish, Natural Turn with Hesitation, Chassé Reverse Turn | Natural Pivot Turn, Reverse Pivot |
+| Bronze | Quarter Turn to Right, Progressive Chassé, Forward Lock, Natural Turn, Natural Pivot Turn, Natural Spin Turn, Back Lock, Reverse Pivot, Tipple Chassé to Right, Running Finish, Natural Turn with Hesitation, Chassé Reverse Turn | – |
 | Silber | Quick Open Reverse, Fishtail, Running Right Turn, Cross Swivel, Six Quick Run, V6 | Zig Zag |
 | Gold | Hover Corté | Rumba Cross, Tipsy to Right, Fallaway Natural Turn |
 | Goldstar | Pepperpot, Hops | Scatter Chassés |
@@ -138,11 +134,11 @@ Abgedeckt: **19 von 27** Figuren der Abgleichliste (70 %).
 
 ## Tango
 
-Abgedeckt: **21 von 27** Figuren der Abgleichliste (78 %).
+Abgedeckt: **23 von 28** Figuren der Abgleichliste (82 %).
 
 | Stufe | vorhanden | fehlend |
 |---|---|---|
-| Bronze | Walk, Progressive Side Step, Progressive Link, Closed Promenade, Open Reverse Turn, Back Corté, Natural Rock Turn, Basic Reverse Turn | Rock Back |
+| Bronze | Walk, Progressive Side Step, Progressive Link, Closed Promenade, LF Rock (Rock Back), RF Rock, Open Reverse Turn, Back Corté, Natural Rock Turn, Basic Reverse Turn | – |
 | Silber | Four Step, Open Promenade, Back Open Promenade, Outside Swivel, Fallaway Promenade, Natural Twist Turn, Natural Promenade Turn | – |
 | Gold | Five Step, Contra Check, Fallaway Four Step, Brush Tap | Chase |
 | Goldstar | Spanish Drag | Promenade Link, Reverse Outside Swivel |
@@ -162,11 +158,11 @@ Abgedeckt: **30 von 40** Figuren der Abgleichliste (75 %).
 
 ## Cha-Cha-Cha
 
-Abgedeckt: **20 von 32** Figuren der Abgleichliste (63 %).
+Abgedeckt: **21 von 32** Figuren der Abgleichliste (66 %).
 
 | Stufe | vorhanden | fehlend |
 |---|---|---|
-| Bronze | Closed Basic, Open Basic, Fan, Hockey Stick, Alemana, Natural Top, New York, Spot Turn, Hand to Hand, Time Step, Three Cha Chas, Shoulder to Shoulder, Natural Opening Out, Side Steps, Cuban Break | Closed Hip Twist |
+| Bronze | Closed Basic, Open Basic, Fan, Hockey Stick, Alemana, Natural Top, New York, Spot Turn, Hand to Hand, Time Step, Three Cha Chas, Shoulder to Shoulder, Natural Opening Out, Closed Hip Twist, Side Steps, Cuban Break | – |
 | Silber | Open Hip Twist, Aida, Spiral, Cross Basic | Reverse Top, Turkish Towel, Sweetheart, Follow My Leader |
 | Gold | Fencing | Rope Spinning, Sliding Doors, Curl, Advanced Hip Twist, Hip Twist Spiral |
 | Goldstar | – | Three Threes, Chase |
@@ -224,11 +220,11 @@ Abgedeckt: **12 von 22** Figuren der Abgleichliste (55 %).
 
 ## Jive
 
-Abgedeckt: **12 von 22** Figuren der Abgleichliste (55 %).
+Abgedeckt: **11 von 22** Figuren der Abgleichliste (50 %).
 
 | Stufe | vorhanden | fehlend |
 |---|---|---|
-| Bronze | Basic in Place, Fallaway Rock, Change of Place Right to Left, Change of Place Left to Right, Link, American Spin, Stop and Go, Walks, Whip | – |
+| Bronze | Basic in Place, Fallaway Rock, Change of Place Right to Left, Change of Place Left to Right, Link and Whip (zusammen getanzt), American Spin, Stop and Go, Walks | Link (allein) |
 | Silber | Flick Ball Change, Chicken Walks, Promenade Walks | Windmill, Spanish Arms, Rolling Off the Arm |
 | Gold | – | Curly Whip, Toe Heel Swivels, Simple Spin, Miami Special |
 | Goldstar | – | Chugging, Catapult, Stalking Walks |

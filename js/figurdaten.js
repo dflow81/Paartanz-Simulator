@@ -22,7 +22,7 @@ function fussVon(steps){
 }
 const hatDame=F=>Array.isArray(F.dame)&&F.dame.length>0;
 const haltOf=s=>HOLDS[s.hold]?s.hold:'zu';
-const taktOf=d=>/walzer|waltz|musette/i.test(d||'')?3:4;
+const taktOf=d=>taktVon(d);   // eine Taktquelle für Engine, Metadaten und Prüfung (TANZ_DATEN in engine.js)
 
 /* Schwierigkeit 1–5: Anzahl der Schritte, Drehung, eigene Schritte der Dame, Haltungswechsel, Synkopen, Solodrehungen */
 function schwierigkeit(F){
@@ -70,7 +70,11 @@ function figMeta(F,id){
   m.stufe=inf[0]||schaetzStufe(F,m.art,m.schwer);
   m.stufeFest=!!inf[0];
   m.text=inf[2]||autoText(F,m);
-  m.vereinfacht=inf[3]==='v'; m.schematisch=inf[3]==='s';
+  const al=typeof ALIAS!=='undefined'&&id&&ALIAS[id];
+  m.vereinfacht=inf[3]==='v'||!!(al&&al[2]==='v'); m.schematisch=inf[3]==='s';
+  if(al) m.alias={ziel:al[0],text:al[1]};
+  if(typeof QUELLEN!=='undefined'&&id&&QUELLEN[id]) m.quelle=QUELLEN[id];
+  if(typeof RHYTHMUS_VARIANTE!=='undefined'&&id&&RHYTHMUS_VARIANTE[id]) m.rhythmusVariante=RHYTHMUS_VARIANTE[id];
   return m;
 }
 /* Grundhaltung eines Tanzes = Haltung, in der seine erste Figur (der Grundschritt) beginnt */
@@ -83,13 +87,19 @@ function grundHaltung(dance){
    Eine Figur B darf auf A folgen, wenn
    – beide zum selben Tanz gehören,
    – Herr und Dame B mit dem Fuß beginnen, der am Ende von A frei ist (oder B mit „Platz“ beginnt),
-   – die Haltung passt: gleich, oder ein üblicher Haltungswechsel (z. B. geschlossen → Promenade, beide Hände → eine Hand).
-     In den Fächer und aus dem Fächer geht es nur mit Figuren, die genau dort enden bzw. beginnen.
+   – die Haltung passt. Feste Regeln (fachlich eindeutig):
+       · In den Fächer und aus dem Fächer geht es nur mit Figuren, die genau dort enden bzw. beginnen.
+       · Endet eine Figur in einer Seitenposition (Körbchen, Schatten), muss die nächste dort beginnen.
+       · In den fünf Standardtänzen muss auf eine Figur, die in der Promenade endet, eine Figur folgen,
+         die in der Promenade beginnt (z. B. Chassé aus der Promenade, Weave aus der Promenade).
+     Alle anderen Haltungswechsel sind erlaubt und werden als Hinweis gemeldet. Beginnt eine Standardfigur in der
+     Promenade, ohne dass die vorige dort endet, gilt der Wechsel als „vereinfacht“: Die Figur öffnet selbst in die
+     Promenade, nach Technikbuch käme vorher eine Figur, die in der Promenade endet (z. B. Link).
    Die Richtung im Raum ist kein Hindernis: Alle Figuren sind relativ zur Blickrichtung beschrieben, und die
    Engine lenkt das Paar beim Tanzen so, dass es auf der Fläche bleibt. Ob das gelingt, prüft folgePruefen(). */
 const HALT_ART={zu:'eng',prom:'eng',offen:'hand',LR:'hand',RL:'hand',hoch:'hand',kreuz:'hand',frei:'hand',korb:'seite',schatten:'seite',faecher:'faecher'};
 function uebergang(A,B){
-  const g=[]; let ok=true, wechsel=false;
+  const g=[]; let ok=true, wechsel=false, vereinfacht=false;
   if(A.tanz!==B.tanz){ ok=false; g.push('anderer Tanz ('+A.tanz+' / '+B.tanz+')'); }
   const fuss=(wer,e,b)=>{ if(e&&b.start&&!b.frei&&b.start===e){ ok=false; g.push(`${wer} beginnt ${fussName(b.start)}, steht aber am Ende von „${A.name}“ auf diesem Fuß`); } };
   fuss('Herr',A.herr.ende,B.herr); fuss('Dame',A.dame.ende,B.dame);
@@ -97,9 +107,12 @@ function uebergang(A,B){
   if(a!==b){
     if(HALT_ART[a]==='faecher'){ ok=false; g.push('aus dem Fächer geht es nur mit einer Figur weiter, die im Fächer beginnt (Hockeystick, Alemana …)'); }
     else if(HALT_ART[b]==='faecher'){ ok=false; g.push('in den Fächer führt nur eine Fächer-Figur'); }
-    else { wechsel=true; g.push('Haltungswechsel: '+HOLDS[a][0]+' → '+HOLDS[b][0]); }
+    else if(HALT_ART[a]==='seite'){ ok=false; g.push(`„${A.name}“ endet in der Seitenposition „${HOLDS[a][0]}“ – die nächste Figur muss dort beginnen`); }
+    else if(a==='prom'&&istStandard(A.tanz)){ ok=false; g.push(`„${A.name}“ endet in der Promenade – im Standardtanz folgt eine Figur, die in der Promenade beginnt`); }
+    else { wechsel=true; vereinfacht=b==='prom'&&istStandard(B.tanz);
+      g.push('Haltungswechsel: '+HOLDS[a][0]+' → '+HOLDS[b][0]+(vereinfacht?' (vereinfacht: die Figur öffnet selbst in die Promenade)':'')); }
   }
-  return {ok,wechsel,gruende:g};
+  return {ok,wechsel,vereinfacht,gruende:g};
 }
 /* Mögliche Anschlussfiguren (gleiche Haltung zuerst) */
 function anschluesse(id,figs=allFigs(),mf=(k,F)=>figMeta(F,k)){
@@ -107,76 +120,100 @@ function anschluesse(id,figs=allFigs(),mf=(k,F)=>figMeta(F,k)){
   for(const [k,F] of Object.entries(figs)) if((F.dance||'Sonstige')===A.tanz&&F.steps&&F.steps.length){ const u=uebergang(A,mf(k,F)); if(u.ok) out.push([k,u.wechsel]); }
   return out.sort((x,y)=>x[1]-y[1]).map(x=>x[0]);
 }
+/* Schleife: Passt die erste Figur wieder an die letzte? (Beim Abspielen beginnt die Folge von vorn.) */
+function schleifePruefen(items,figs=allFigs()){
+  if(!items.length) return {ok:false,gruende:['Die Folge ist leer']};
+  const a=items.at(-1), b=items[0], A=figs[a.fig], B=figs[b.fig];
+  if(!A||!B) return {ok:false,gruende:['Figur fehlt']};
+  return uebergang(figMeta(A,a.fig),figMeta(B,b.fig));
+}
 
 /* Prüft eine ganze Folge: jeden Übergang, die Kursstufe, Wiederholungen und – durch Simulation – Fußarbeit und Raum.
-   opt = {tanz, bisStufe, wdh, schnell}. Gibt {fehler:[], warnungen:[], hinweise:[]} zurück; fehler leer = gültig. */
+   opt = {tanz, bisStufe, wdh, schnell, schleife}. schleife: auch den Übergang von der letzten zur ersten Figur prüfen.
+   Gibt {fehler:[], warnungen:[], hinweise:[]} zurück; fehler leer = gültig. */
 function folgePruefen(items,opt={},figs=allFigs()){
-  const fehler=[],warnungen=[],hinweise=[], M=items.map(it=>figs[it.fig]?figMeta(figs[it.fig],it.fig):null);
+  const fehler=[],warnungen=[],hinweise=[];
+  if(!Array.isArray(items)||!items.length) return {fehler:['Die Folge ist leer – mindestens eine Figur eintragen'],warnungen,hinweise};
+  const M=items.map(it=>figs[it.fig]?figMeta(figs[it.fig],it.fig):null);
   items.forEach((it,i)=>{ if(!M[i]) fehler.push(`Figur ${i+1} („${it.fig}“) gibt es nicht`); });
   if(fehler.length) return {fehler,warnungen,hinweise};
   const tanz=opt.tanz||M[0].tanz;
+  const meld=(txt,u)=>{ if(!u.ok) fehler.push(txt+u.gruende.join('; ')); else if(u.wechsel) hinweise.push(txt+u.gruende.join('; ')); };
   M.forEach((m,i)=>{
     if(m.tanz!==tanz) fehler.push(`„${m.name}“ gehört zu ${m.tanz}, nicht zu ${tanz}`);
     if(opt.bisStufe&&m.stufe>opt.bisStufe) warnungen.push(`„${m.name}“ ist ${STUFEN[m.stufe]}, also über der gewählten Stufe`);
     if(m.eigen) hinweise.push(`„${m.name}“ ist eine eigene Figur – Kursstufe und Haltung sind nur geschätzt`);
-    // innerhalb einer Wiederholung (Figur × n) und zur nächsten Figur
-    const nachfolger=[]; if((items[i].rep||1)>1) nachfolger.push(m); if(i+1<M.length) nachfolger.push(M[i+1]);
-    for(const n of nachfolger){ const u=uebergang(m,n); if(!u.ok) fehler.push(`${i+1}. „${m.name}“ → „${n.name}“: `+u.gruende.join('; ')); else if(u.wechsel) hinweise.push(`${i+1}. „${m.name}“ → „${n.name}“: `+u.gruende.join('; ')); }
+    if((items[i].rep||1)>1) meld(`${i+1}. „${m.name}“ × ${items[i].rep} (Wiederholung): `,uebergang(m,m));
+    if(i+1<M.length) meld(`${i+1}. „${m.name}“ → „${M[i+1].name}“: `,uebergang(m,M[i+1]));
     if(i+1<M.length&&items[i+1].fig===items[i].fig&&!opt.wdh) warnungen.push(`„${m.name}“ steht zweimal hintereinander – besser „× 2“ eintragen`);
   });
-  // Simulation: gleiche Prüfung, die beim Abspielen das ⚠ zeigt, und Raum
+  if(opt.schleife&&M.length) meld(`Schleife: „${M.at(-1).name}“ → „${M[0].name}“: `,uebergang(M.at(-1),M[0]));
+  // Simulation mit derselben Figurenbibliothek: gleiche Prüfung, die beim Abspielen das ⚠ zeigt, und Raum
   try{
-    const tl=simulate(flatten({items}),{H:startH(),noSteer:!!opt.schnell}); let out=0;   // schnell: ohne Raumlenkung und ohne Raumprüfung
+    const tl=simulate(flatten({items},figs),{H:startH(),noSteer:!!opt.schnell}); let out=0;   // schnell: ohne Raumlenkung und ohne Raumprüfung
     if(tl.H.concat(tl.D).some(r=>r.warn)) fehler.push('Beim Durchtanzen wird ein Schritt mit dem belasteten Fuß verlangt');
     if(!opt.schnell) for(let t=0;t<tl.total;t+=1){ const a=evalRaw(tl.H,t),b=evalRaw(tl.D,t); out=Math.max(out,outside([(a.sup[0]+b.sup[0])/2,(a.sup[1]+b.sup[1])/2])); }
     if(out>.3) warnungen.push(`Die Folge führt bis ${out.toFixed(1)} m über den Rand der Tanzfläche hinaus`);
-  }catch(e){ warnungen.push('Die Folge konnte nicht vollständig simuliert werden: '+e.message); }
+  }catch(e){ fehler.push('Die Folge konnte nicht simuliert werden: '+e.message); }
   return {fehler,warnungen,hinweise};
 }
 
 /* ---------- Folgen-Generator ----------
    o = {tanz, bisStufe (1–7), laenge (Anzahl Figuren), start (Figur), ende (Figur), zurueck (in der Grundhaltung enden),
-        wdh (gleiche Figur direkt hintereinander erlaubt), technik (Promenaden sauber verbinden),
-        richtung (Folge kommt entlang der Tanzrichtung voran), zufall (Funktion 0..1)}
-   Reiht nur Figuren aneinander, deren Übergang laut uebergang() zulässig ist; Haltungswechsel werden seltener gewählt
-   als Anschlüsse in derselben Haltung. Mit Rücksprung (Backtracking), damit Start-, Endfigur und Grundhaltung erreicht werden. */
+        wdh (gleiche Figur direkt hintereinander erlaubt), schleife (letzte Figur passt wieder zur ersten, Standard: ja),
+        technik (Promenaden sauber verbinden), richtung (Folge kommt entlang der Tanzrichtung voran), zufall (Funktion 0..1), figs}
+   Alle Vorgaben gelten gemeinsam: Start- und Endfigur müssen innerhalb der Höchststufe liegen, die Endfigur muss in der
+   Grundhaltung enden, wenn „zurueck“ gewählt ist, und auch erzwungene Figuren halten die Wiederholungsregel ein.
+   Reiht nur zulässige Übergänge aneinander (Rücksprung bei Sackgassen). Besteht ein Entwurf die abschließende Prüfung nicht,
+   werden bis zu fünf weitere Entwürfe versucht; sonst wird der Konflikt gemeldet. */
 function folgeErzeugen(o){
-  const figs=o.figs||allFigs(), rnd=o.zufall||Math.random, L=Math.max(1,o.laenge||8), bis=o.bisStufe||STUFE_MAX;
+  const figs=o.figs||allFigs(), rnd0=o.zufall||Math.random, L=Math.max(1,o.laenge||8), bis=o.bisStufe||STUFE_MAX, schleife=o.schleife!==false;
+  const raus=(f,w=[])=>({items:[],fehler:[].concat(f),warnungen:w,hinweise:[]});
   const M={}; for(const [k,F] of Object.entries(figs)) if((F.dance||'Sonstige')===o.tanz&&F.steps&&F.steps.length) M[k]=figMeta(F,k);
-  const pool=Object.keys(M).filter(k=>M[k].stufe<=bis), warnungen=[];
-  if(o.start&&!M[o.start]) return {items:[],fehler:['Die Startfigur gehört nicht zu '+o.tanz],warnungen,hinweise:[]};
-  if(o.ende&&!M[o.ende]) return {items:[],fehler:['Die Endfigur gehört nicht zu '+o.tanz],warnungen,hinweise:[]};
-  if(!pool.length&&!o.start) return {items:[],fehler:['Für '+o.tanz+' gibt es keine Figuren bis zur Stufe '+STUFEN[bis]],warnungen,hinweise:[]};
-  const grund=grundHaltung(o.tanz), used={}; let schritte=0;
-  // Kandidaten nach Gewicht mischen: gleiche Haltung ×3, selten benutzte Figuren bevorzugt
-  // Abwechslung: nicht zwei Grundschritt-Varianten hintereinander, Figuren der gewählten Stufe etwas bevorzugt
-  const mische=(prev,list)=>list.map(k=>{ const u=prev?uebergang(M[prev],M[k]):{ok:true,wechsel:M[k].haltStart!==grund}, m=M[k];
-      // Technik: In den Standardtänzen soll eine Promenade mit einer Figur weitergehen, die in der Promenade beginnt
-      const tech=o.technik&&prev&&styleOf(o.tanz).std&&(M[prev].haltEnde==='prom')!==(m.haltStart==='prom')?.15:1;
-      const w=tech*(u.wechsel?1.5:3)/(1+2*(used[k]||0))*(prev&&m.art==='gs'&&M[prev].art==='gs'?.3:1)*(m.art!=='gs'&&m.stufe>=Math.min(bis,4)-1?1.6:1);
-      return u.ok&&(o.wdh||k!==prev)?[k,w*(.25+rnd())]:null; })
-    .filter(Boolean).sort((a,b)=>b[1]-a[1]).map(x=>x[0]);
-  const fertig=seq=>{ const z=M[seq.at(-1)]; return o.ende?seq.at(-1)===o.ende:!o.zurueck||z.haltEnde===grund; };
-  function dfs(seq){
-    if(++schritte>4000) return null;
-    const n=seq.length;
-    if(n>=L&&fertig(seq)) return seq;
-    if(n>=L+3) return null;   // höchstens drei Figuren mehr, um Endfigur oder Grundhaltung zu erreichen
-    let c=n===0&&o.start?[o.start]:mische(seq.at(-1),pool);
-    if(o.ende&&n>=L-1){ const p=seq.at(-1); if(!p||uebergang(M[p],M[o.ende]).ok) c=[o.ende,...c.filter(k=>k!==o.ende)]; }
-    for(const k of c.slice(0,12)){ used[k]=(used[k]||0)+1; const r=dfs([...seq,k]); if(r) return r; used[k]--; }
-    return null;
+  const pool=Object.keys(M).filter(k=>M[k].stufe<=bis);
+  const grund=grundHaltung(o.tanz), nm=k=>`„${M[k].name}“`;
+  for(const [k,w] of [[o.start,'Startfigur'],[o.ende,'Endfigur']]) if(k){
+    if(!M[k]) return raus(`Die ${w} gehört nicht zu ${o.tanz}`);
+    if(M[k].stufe>bis) return raus(`Die ${w} ${nm(k)} ist ${STUFEN[M[k].stufe]} und liegt über der gewählten Höchststufe ${STUFEN[bis]}`); }
+  if(o.ende&&o.zurueck&&M[o.ende].haltEnde!==grund) return raus(`Die Endfigur ${nm(o.ende)} endet in der Haltung „${HOLDS[M[o.ende].haltEnde][0]}“, die Grundhaltung ist „${HOLDS[grund][0]}“ – beides zugleich geht nicht. Andere Endfigur wählen oder „zurück in die Grundhaltung“ abwählen.`);
+  if(o.start&&o.ende&&L===1&&o.start!==o.ende) return raus('Bei einer Figur können Start- und Endfigur nicht verschieden sein');
+  if(!pool.length) return raus('Für '+o.tanz+' gibt es keine Figuren bis zur Stufe '+STUFEN[bis]);
+  const darf=(prev,k)=>!prev||(uebergang(M[prev],M[k]).ok&&(o.wdh||k!==prev));
+  function entwurf(rnd){
+    const used={}; let schritte=0;
+    // Kandidaten nach Gewicht mischen: gleiche Haltung ×3, selten benutzte Figuren bevorzugt, Abwechslung, Figuren der gewählten Stufe etwas bevorzugt
+    const mische=(prev,list)=>list.map(k=>{ if(!darf(prev,k)) return null; const u=prev?uebergang(M[prev],M[k]):{wechsel:M[k].haltStart!==grund}, m=M[k];
+        const tech=o.technik&&prev&&istStandard(o.tanz)&&m.haltStart==='prom'&&M[prev].haltEnde!=='prom'?.15:1;   // Technik: Promenade nur aus der Promenade
+        const w=tech*(u.wechsel?1.5:3)/(1+2*(used[k]||0))*(prev&&m.art==='gs'&&M[prev].art==='gs'?.3:1)*(m.art!=='gs'&&m.stufe>=Math.min(bis,4)-1?1.6:1);
+        return [k,w*(.25+rnd())]; }).filter(Boolean).sort((a,b)=>b[1]-a[1]).map(x=>x[0]);
+    const fertig=seq=>{ const z=seq.at(-1); return (!o.ende||z===o.ende)&&(!o.zurueck||M[z].haltEnde===grund)&&(!schleife||uebergang(M[z],M[seq[0]]).ok); };
+    function dfs(seq){
+      if(++schritte>4000) return null;
+      const n=seq.length;
+      if(n>=L&&fertig(seq)) return seq;
+      if(n>=L+3) return null;   // höchstens drei Figuren mehr, um Endfigur, Grundhaltung oder Schleife zu erreichen
+      let c=n===0&&o.start?[o.start]:mische(seq.at(-1),pool);
+      if(o.ende&&n>=L-1&&darf(seq.at(-1),o.ende)) c=[o.ende,...c.filter(k=>k!==o.ende)];   // erzwungen, aber nur wenn erlaubt
+      else if(o.ende&&!(n===0&&o.start)) c=c.filter(k=>k!==o.ende);   // die Endfigur nicht vorzeitig verbrauchen (die Startfigur bleibt)
+      for(const k of c.slice(0,12)){ used[k]=(used[k]||0)+1; const r=dfs([...seq,k]); if(r) return r; used[k]--; }
+      return null;
+    }
+    return dfs([]);
   }
   /* Tanzrichtung: In den fortschreitenden Tänzen werden mehrere Entwürfe verglichen; genommen wird der, der am meisten vorankommt */
-  const vorankommen=q=>{ try{ const t=simulate(flatten({items:q.map(fig=>({fig,rep:1}))}),{H:startH(),noSteer:true}), H=t.end.H; return (H.sup[1]-startH().sup[1])/t.total; }catch(e){ return -9; } };
-  let seq=dfs([]);
-  if(seq&&o.richtung&&styleOf(o.tanz).std){ let best=vorankommen(seq); for(let i=0;i<4;i++){ schritte=0; for(const k in used) delete used[k]; const q=dfs([]); if(q){ const v=vorankommen(q); if(v>best){ best=v; seq=q; } } } }
-  if(!seq) return {items:[],fehler:['Es ließ sich keine gültige Folge finden – andere Start-/Endfigur oder höhere Stufe wählen'],warnungen,hinweise:[]};
-  const items=seq.map(fig=>({fig,rep:1}));
-  if(seq.length>L) warnungen.push(`${seq.length-L} Figur(en) mehr als gewünscht, damit die Folge ${o.ende?'mit der Endfigur':'in der Grundhaltung'} endet`);
-  const p=folgePruefen(items,{tanz:o.tanz,bisStufe:bis,wdh:o.wdh},figs);
-  if(o.start&&M[o.start].stufe>bis) p.hinweise.push('Die Startfigur liegt über der gewählten Stufe');
-  return {items,fehler:p.fehler,warnungen:warnungen.concat(p.warnungen),hinweise:p.hinweise};
+  const vorankommen=q=>{ try{ const t=simulate(flatten({items:q.map(fig=>({fig,rep:1}))},figs),{H:startH(),noSteer:true}), H=t.end.H; return (H.sup[1]-startH().sup[1])/t.total; }catch(e){ return -9; } };
+  let letzte=null;
+  for(let versuch=0;versuch<6;versuch++){
+    const rnd=versuch?(()=>{ const r=rnd0(); return (r+versuch*.618)%1; }):rnd0;   // jeder weitere Versuch mischt anders
+    let seq=entwurf(rnd);
+    if(!seq) break;
+    if(o.richtung&&styleOf(o.tanz).std){ let best=vorankommen(seq); for(let i=0;i<4;i++){ const q=entwurf(()=>(rnd()+i*.37)%1); if(q){ const v=vorankommen(q); if(v>best){ best=v; seq=q; } } } }
+    const items=seq.map(fig=>({fig,rep:1})), p=folgePruefen(items,{tanz:o.tanz,bisStufe:bis,wdh:o.wdh,schleife},figs);
+    const warnungen=seq.length>L?[`${seq.length-L} Figur(en) mehr als gewünscht, damit ${o.ende?'die Endfigur, ':''}${o.zurueck?'die Grundhaltung, ':''}${schleife?'der Anschluss an den Anfang ':''}erreicht wird`.replace(/, (erreicht)/,' $1')]:[];
+    if(!p.fehler.length) return {items,fehler:[],warnungen:warnungen.concat(p.warnungen),hinweise:p.hinweise};
+    letzte=p;
+  }
+  return raus(letzte?['Kein Entwurf hat die Prüfung bestanden:',...letzte.fehler]:['Es ließ sich keine gültige Folge finden – andere Start-/Endfigur, höhere Stufe oder ohne „zurück in die Grundhaltung“ versuchen']);
 }
 /* Fertige Folge für eine Medaillenstufe: Länge und Regeln passen zur Stufe (Bronze 6, Silber 8, Gold 10, Goldstar 12 Figuren) */
 const STUFEN_FOLGE={2:6,3:8,4:10,5:12};
