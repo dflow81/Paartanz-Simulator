@@ -1,5 +1,12 @@
 # Änderungsprotokoll
 
+## 2026-11-22 (Abend): Technik je Schritt vollständig, Prüfung im Editor
+
+- Technikdaten: Heben (Rise) und Senken (Fall) getrennt, Ferse/Spitze/Ballen/ganzer Fuß einzeln. Die Regel für Heben und Senken folgt jetzt dem Höhenverlauf (Walzer: Heben am Ende von 1, weiter auf 2, Senken am Ende von 3; Slow-Quick-Tänze: S hebt am Ende, Q oben, letztes Q senkt).
+- `technikFigur()`: vollständige Technik jeder Figur für Herr und Dame, mit Ausrichtung bei festem Anfang (lange Seite, Blick in Tanzrichtung).
+- Technikkatalog je Tanz unter `docs/technik/`: jeder Schritt jeder Figur mit allen Feldern.
+- Figuren-Editor: Die bearbeitete Figur wird sofort geprüft (Startfuß, Endfuß, Gewichtswechsel, Takt, Anschlüsse).
+
 ## 2026-11-22 (Nachmittag): Offline, Import, Arme und Figuren mit Quelle
 
 **Neu**

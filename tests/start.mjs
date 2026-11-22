@@ -46,6 +46,8 @@ try{
   await pruef('Generator: Endfigur über der Höchststufe nicht wählbar',`(()=>{ document.querySelector('.tabs button[data-tab=seq]').click(); const d=document.getElementById('danceSel'); d.value='Discofox'; d.dispatchEvent(new Event('change'));
     document.querySelector('details.gen').open=true; fillGen(); const g=document.getElementById('genStufe'); g.value='2'; g.dispatchEvent(new Event('change')); const o=[...document.getElementById('genEnde').options].find(o=>o.value==='b_d_brezel');
     document.querySelector('.tabs button[data-tab=play]').click(); return {ok:!!o&&o.disabled,info:o?o.textContent:'fehlt'}; })()`);
+  await pruef('Figuren-Editor prüft die bearbeitete Figur',`(()=>{ document.querySelector('.tabs button[data-tab=fig]').click(); figEdit={name:'Test',dance:'Langsamer Walzer',bpm:90,steps:[S('L','vor',30,1,'1'),S('L','vor',30,1,'2')]}; renderFigSteps();
+    const t=document.getElementById('figQual').textContent; document.querySelector('.tabs button[data-tab=play]').click(); return {ok:/zweimal hintereinander/.test(t)&&/Phrase/.test(t),info:t.slice(0,90)}; })()`);
 }catch(e){ ok=false; console.log('✖ Starttest abgebrochen: '+e.message); }
 finally{ try{ ws&&ws.close(); }catch(e){} ch.kill(); await sleep(800); fs.rmSync(profil,{recursive:true,force:true}); }
 for(const f of fehler) console.log('✖ '+f);

@@ -167,6 +167,13 @@ test('Abstandsausgleich: in keiner Beispiel- oder Kursfolge kommen sich die Part
 test('neue Haltungen haben Namen, Hinweis und Geometrie',()=>liste(R(`['hochB','hammer','schal','brezel','schulter'].filter(h=>!HOLDS[h]||!HOLD_TIP[h]||!holdGeo(h,STYLES.social))`)));
 test('Abgleichliste: offene Gründe gehören zu offenen Einträgen',()=>liste(R(`Object.keys(OFFEN_GRUND).filter(k=>{ const [d,n]=k.split('|'); return !SYLLABUS[d]||!Object.values(SYLLABUS[d]).flat().includes(n); })`)));
 
+/* ---------- Technik je Figur vollständig ---------- */
+test('jede Figur: alle Technikfelder für jeden Schritt beider Rollen, mit Ausrichtung',()=>liste(R(`Object.entries(BUILTIN).filter(([k,F])=>{ const t=technikFigur(F,k);
+  return !t.H.length||!t.D.length||t.H.concat(t.D).some(x=>!/^[LR]$/.test(x.belastet)||!/^[LR]$/.test(x.frei)||!x.technik||typeof x.heel!=='boolean'||typeof x.toe!=='boolean'||typeof x.ball!=='boolean'||typeof x.flat!=='boolean'||!x.heben||!x.senken||typeof x.cbm!=='boolean'||typeof x.cbmp!=='boolean'||!x.ausrichtung||!x.sway); }).map(([k])=>k)`)));
+test('Heben und Senken: Walzer-Grundschritt (am Ende von 1, hebt auf 2, senkt am Ende von 3)',()=>{ const t=R(`technikVon(BUILTIN.b_w_box.steps,styleOf('Langsamer Walzer')).slice(0,3).map(x=>x.heben+'/'+x.senken)`); return t.join()==='am Ende/–,hebt/–,oben/am Ende'||t.join(); });
+test('Heben und Senken: Slowfox-Federschritt (S hebt am Ende, Q oben, letztes Q senkt)',()=>{ const t=R(`technikVon(BUILTIN.b_sf_feder.steps,styleOf('Slowfox')).map(x=>x.heben+'/'+x.senken)`); return t.join()==='am Ende/–,oben/–,oben/am Ende'||t.join(); });
+test('Ausrichtung im Katalog: Walzer-Grundschritt beginnt in Tanzrichtung',()=>R(`technikFigur(BUILTIN.b_w_box,'b_w_box').H[0].ausrichtung`)==='LOD'||'falsch');
+
 /* ---------- Ergebnis ---------- */
 console.log(`${ok} Tests bestanden, ${fail} fehlgeschlagen`);
 for(const f of fehler) console.log('  ✖ '+f);

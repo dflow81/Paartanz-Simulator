@@ -16,13 +16,21 @@ function fussTechnik(dir,sty){
   return 'BF';                                                                     // Latein und Swing: über den Ballen
 }
 const riseWert=c=>RISE[String(c??'').trim()]??.5;
-/* Heben und Senken aus der Zählzeit: vergleicht den Schritt mit dem vorigen und dem nächsten */
+/* Heben und Senken aus der Zählzeit: Die Engine kennt je Zählzeit die Höhe am Ende des Schritts (RISE).
+   Verglichen wird die Höhe vor und nach dem Schritt: leicht höher = beginnt am Ende zu heben (Walzer „1“), deutlich höher = hebt (2),
+   oben geblieben = oben, deutlich tiefer = senkt am Ende des Schritts (Walzer „3“). */
 function riseText(steps,i,sty){
   if(!sty.rise) return 'keine';
-  const a=riseWert(steps[(i-1+steps.length)%steps.length].c), b=riseWert(steps[i].c), c=riseWert(steps[(i+1)%steps.length].c);
-  if(b>=a+.3) return b>=.7&&c<.4?'hebt, senkt am Ende':'hebt';
-  if(b>=.7) return c<.4?'oben, senkt am Ende':'oben';
-  return a>=.6?'senkt':'unten';
+  // Slow-Quick-Tänze (Slowfox, Quickstep, Foxtrott): S = Heben am Ende, Q = oben, das letzte Q vor einem S (oder am Figurenende) senkt am Ende
+  const c=String(steps[i].c??'').trim();
+  if(c==='S'||c==='Q'){ const n=steps[i+1], nc=n?String(n.c??'').trim():'';
+    if(c==='S') return n&&nc==='S'?'unten':'beginnt am Ende zu heben';
+    return !n||nc==='S'?'oben, senkt am Ende':'oben'; }
+  const a=riseWert(steps[(i-1+steps.length)%steps.length].c), b=riseWert(steps[i].c), d=b-a;
+  if(d< -.3) return 'oben, senkt am Ende';
+  if(d>.5) return 'hebt';
+  if(d>.05) return 'beginnt am Ende zu heben';
+  return b>=.6?'oben':'unten';
 }
 /* Technik eines ganzen Ablaufs. steps = Schritte einer Figur oder Einträge der Zeitleiste; alle Angaben aus Sicht dieses Tänzers */
 function technikVon(steps,sty,td){   // td: belegte Technikdaten dieser Rolle {fuss:[], sway:[]} aus TECHNIK_DATEN – ersetzen die abgeleiteten Werte
@@ -31,9 +39,10 @@ function technikVon(steps,sty,td){   // td: belegte Technikdaten dieser Rolle {f
     const dir=s.dir, gewicht=!OHNE_GEWICHT.has(dir), turn=+s.turn||0, code=fussTechnik(dir,sty);
     if(gewicht) last=s.f; const bel=last||(s.f==='L'?'R':'L');
     const prev=steps[i-1], dreht=turn!==0||(prev&&(+prev.turn||0)!==0);
+    const rt=riseText(steps,i,sty);
     return {nr:i+1,c:s.c,fuss:s.f,belastet:bel,frei:bel==='L'?'R':'L',technik:code,
       heel:code.includes('H'),toe:code.includes('T'),ball:code.includes('B'),flat:code.includes('F'),
-      rise:riseText(steps,i,sty),
+      rise:rt,heben:rt==='hebt'?'hebt':rt==='beginnt am Ende zu heben'?'am Ende':/^oben/.test(rt)?'oben':'–',senken:/senkt/.test(rt)?'am Ende':'–',
       cbm:!!sty.std&&Math.abs(turn)>=30&&/^(vor|rueck|vorAussen|rueckAussen|diagVor)$/.test(dir),
       cbmp:/^kreuz|Aussen$/.test(dir),
       sway:sty.std&&sty.rise?(i>0&&dreht&&gewicht?(turn||(prev&&+prev.turn)||0)<0?'rechts':'links':'gerade'):'–',quelle:false,
@@ -120,4 +129,18 @@ function qualitaetAlle(tanz,figs=allFigs()){
     const q=qualitaetFigur(F,k,figs); f+=q.filter(x=>x.art==='fehler').length; w+=q.filter(x=>x.art==='warnung').length;
     if(q.length) liste.push({id:k,name:F.name,tanz:F.dance,q}); }
   return {geprueft:n,fehler:f,warnungen:w,liste};
+}
+
+/* ---------- Vollständige Technik einer Figur, mit Ausrichtung ----------
+   Die Ausrichtung hängt davon ab, wo und wohin das Paar beim Beginn der Figur schaut. Als Bezug dient ein fester Anfang:
+   Herr an der langen Seite A der Standard-Tanzfläche, Blick in Tanzrichtung (LOD). In der App wird dagegen die tatsächliche
+   Lage beim Tanzen verwendet. Ergebnis: {H:[…], D:[…]} mit allen Feldern aus technikVon und zusätzlich ausrichtung. */
+function technikFigur(F,id){
+  const sty=styleOf(F.dance), td=typeof TECHNIK_DATEN!=='undefined'&&TECHNIK_DATEN[id], raum={...ROOM}, ls=lastSteer;
+  try{ ROOM.w=8; ROOM.d=6;
+    const t=simulate([{F,item:0,rep:1,reps:1}],{H:startH(0,ROOM.d/2-ROOM.margin,Math.PI/2),noSteer:true});
+    const rolle=(w,tdr)=>{ const st=t[w].filter(r=>r.kind!=='halt'||r.dir==='halt'), tx=technikVon(st,sty,tdr);
+      return tx.map((x,i)=>{ const a=ausrichtung(st[i].to,st[i].hA); return {...x,ausrichtung:a.kurz,ausrichtungText:a.lang}; }); };
+    return {H:rolle('H',td&&td.H),D:rolle('D',td&&td.D)};
+  } finally { ROOM.w=raum.w; ROOM.d=raum.d; lastSteer=ls; }
 }

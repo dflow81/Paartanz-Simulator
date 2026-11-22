@@ -241,7 +241,16 @@ function setWho(w){ figWho=w==='D'&&hasOwn()?'D':'H';
 function updFigSum(){ const sum=l=>l.reduce((a,s)=>a+Math.max(.25,+s.d||1),0), h=sum(figEdit.steps);
   let t='Herr: '+h+' Schläge';
   if(hasOwn()){ const d=sum(figEdit.dame); t+=' · Dame: '+d+' Schläge'+(Math.abs(h-d)>1e-6?' ⚠ ungleich – der kürzere Teil wartet am Ende':''); }
-  $('figSum').textContent=t; }
+  $('figSum').textContent=t; figPruefen(); }
+/* Figuren-Qualitätsprüfung direkt im Editor: Startfuß, Endfuß, Gewichtswechsel, Takt, Anschlussfähigkeit der bearbeiteten Figur */
+function figPruefen(){ const box=$('figQual'); if(!box||!figEdit) return;
+  try{ const F={...figEdit,name:$('figName').value.trim()||figEdit.name||'Ohne Namen',dance:$('figDance').value.trim()||figEdit.dance||'Sonstige'}; if(!hasOwn()) delete F.dame;
+    if(!F.steps.length){ box.innerHTML=''; return; }
+    const q=qualitaetFigur(F,figKey||'neu'), m=figMeta(F,figKey||'neu'), fn=x=>x.start?fussName(x.start)+' → '+fussName(x.ende):'–';
+    box.innerHTML=`<b>Prüfung:</b> Herr ${fn(m.herr)} · Dame ${fn(m.dame)} · ${m.schlaege} Schläge · Phrase ${phraseVon(F.dance)}`+
+      (q.length?q.map(x=>`<div class="${x.art==='fehler'?'qf':'qw'}">${x.art==='fehler'?'✖':'⚠'} ${esc(x.text)}</div>`).join(''):'<div style="color:#7fd18b">✔ Keine Fehler: Füße, Gewichtswechsel, Takt und Anschlüsse passen.</div>');
+  }catch(e){ box.textContent='Prüfung nicht möglich: '+e.message; } }
+['figName','figDance'].forEach(id=>$(id).addEventListener('change',figPruefen));
 function fillFigSel(){
   const own=Object.entries(user.figures).filter(([k,f])=>inDance(f.dance)||k===figKey), std=Object.entries(BUILTIN).filter(([k,f])=>inDance(f.dance));
   $('figSel').innerHTML=(own.length?'<optgroup label="Eigene Figuren">'+own.map(([k,f])=>`<option value="${k}">${esc(figLabel(f,false))}</option>`).join('')+'</optgroup>':'')+

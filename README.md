@@ -11,11 +11,11 @@ Ein 3D-Simulator im Browser zum Lernen und Üben von Paartänzen. Herr und Dame 
 - **Kursstufen** (Einsteiger/WTP 1, Bronze, Silber, Gold, Goldstar, Turnier, Freies Tanzen) und **Filter** nach Stufe, Figurentyp und Haltung – orientiert an üblichen Tanzschulkursen, keine offizielle Zuordnung
 - **Karte „Zur Figur“:** Stufe, Schwierigkeit, Zählzeiten, Start- und Endfuß, Haltung, Beschreibung und passende Anschlussfiguren
 - **Folgen-Generator:** erstellt gültige Folgen nach Tanz, Kursstufe, Länge, Start- und Endfigur, auf Wunsch mit Rückkehr in die Grundhaltung – nur mit Übergängen, bei denen Fuß und Haltung passen
-- **Technikdaten je Schritt** (einblendbar): Belastungsfuß, freier Fuß, Fußtechnik, Heben und Senken, CBM, CBMP, Sway, Ausrichtung – aus den Schritten abgeleitet, als Lernhilfe
+- **Technikdaten je Schritt** (einblendbar, für jede Figur und beide Rollen): Belastungsfuß, freier Fuß, Fußtechnik mit Ferse/Spitze/Ballen/ganzer Fuß, Heben (Rise), Senken (Fall), CBM, CBMP, Ausrichtung (Alignment), Sway – bei 22 Figuren laut Quelle, sonst aus den Schritten abgeleitet. Vollständig zum Nachlesen im [Technikkatalog](docs/technikkatalog.md)
 - **Tanzlehrer-Ansicht:** Beschreibung, Technik, typische Fehler, Hinweise für Herren und Damen, Unterrichtsmodus
 - **Profi-Lernmodus:** Stopp nach jedem Schritt, belasteter Fuß und nächster Schritt am Boden markiert, Zählzeit wird angesagt
 - **Turniermodus:** Tanzrichtung, Ausrichtung, Ecken und Raumaufteilung auf der Fläche
-- **Figuren-Qualitätsprüfung:** meldet Fehler bei Füßen, Gewichtswechsel, Takt und Anschlüssen
+- **Figuren-Qualitätsprüfung:** meldet Fehler bei Startfuß, Endfuß, Gewichtswechsel, Takt und Anschlüssen – für alle Figuren auf Knopfdruck und für die gerade bearbeitete Figur direkt im Editor
 - **Realistische Bewegung:** Gewichtsverlagerung, Fußabrollen, Heben und Senken im Walzer, Hüftbewegung in Latein, Federn im Jive
 - **Tanzhaltungen:** geschlossen, Promenade, offen, eine Hand, Arm hoch, Kreuzhand, Körbchen, Schattenposition, Fächer
 - **Die Dame tanzt eigene Schritte** bei Solodrehungen, Platzwechseln, New Yorker usw. – sonst gegengleich
