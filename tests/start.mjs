@@ -43,6 +43,11 @@ try{
     const p0=herr.j.haL.position.clone(); return new Promise(r=>setTimeout(()=>{ const d=herr.j.haL.position.distanceTo(p0); r({ok:d>.01&&isFinite(d),info:'linke Hand des Herrn bewegt sich '+d.toFixed(2)+' m'}); },4000)); })()`;
   await pruef('Armführung: New Yorker (Linie)',arme('b_c_ny'));
   await pruef('Armführung: Rope Spinning (Hand kreist über dem Kopf)',arme('b_c_rope'));
+  await pruef('Einwickeln: ins Körbchen führt ein Händepaar über den Kopf, normaler Wechsel nur kleiner Bogen',`(()=>{ const sty=Object.values(STYLES)[0]; 
+    const a=handTargets('zu',sty,herr,dame), e=handTargets('korb',sty,herr,dame), w=wickelWeg(handTargets('korb',sty,herr,dame),a,.5,'zu','korb',herr,dame);
+    const n=wickelWeg(handTargets('offen',sty,herr,dame),handTargets('zu',sty,herr,dame),.5,'zu','offen',herr,dame);
+    const kopf=Math.min(herr.headPos.y,dame.headPos.y), hoch=Math.max(...Object.values(w).map(v=>v.y)), nh=Math.max(...Object.values(n).map(v=>v.y));
+    return {ok:hoch>kopf&&nh<kopf,info:'Körbchen '+hoch.toFixed(2)+' m, offen '+nh.toFixed(2)+' m, Kopf '+kopf.toFixed(2)+' m'}; })()`);
   await pruef('Takt: Cha-Cha beginnt auf 2 – Einzählen endet auf der „1“',`(()=>{ const s=document.getElementById('source'); s.value='fig:b_c_gs'; s.dispatchEvent(new Event('change'));
     const r=[einzaehl(-5,true),einzaehl(-2,true),einzaehl(-1,true),taktZaehl(0),taktZaehl(3)].join(); return {ok:r==='5,8,1,2,1',info:r}; })()`);
   await pruef('Takt: betonte Eins läuft über Discofox-Figurenwechsel weiter',`(()=>{ const s=document.getElementById('source'); s.value='seq:k_disco1'; s.dispatchEvent(new Event('change'));

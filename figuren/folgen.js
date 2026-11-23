@@ -143,3 +143,16 @@ folge('k_rumba3','Kursfolge Rumba – Bronze',100,[['b_r_box'],['b_r_ny'],['b_r_
 folge('k_rumba4','Kursfolge Rumba – Gold',100,[['b_r_box'],['b_r_rtop'],['b_r_closedhip'],['b_r_hockey'],['b_r_fence'],['b_r_curl'],['b_r_alemana']]);
 folge('k_tango4','Kursfolge Tango – Silber',128,[['b_t_geh'],['b_t_link'],['b_t_plink'],['b_t_roswivel'],['b_t_vier'],['b_t_oprom'],['b_t_corte']]);
 folge('k_walzer4','Kursfolge Langsamer Walzer – Gold',90,[['b_w_vw'],['b_w_kreisel'],['b_w_tlockr'],['b_w_chasse'],['b_w_hcorte'],['b_w_contra'],['b_w_wpp'],['b_w_cwing'],['b_w_rev']]);
+
+/* Lückenschluss: Gold für Jive, Quickstep, Slowfox, Salsa; Silber für Samba; Paso Doble und Wiener Walzer.
+   Jede Folge ist schleifbar und hält beim Wiederholen mindestens 18 cm Abstand zwischen den Partnern. */
+folge('k_jive4','Kursfolge Jive – Gold',150,[['b_j_gs'],['b_j_pw'],['b_j_curly'],['b_j_simplespin'],['b_j_miami'],['b_j_toeheel'],['b_j_link'],['b_j_gs']]);
+folge('k_samba3','Kursfolge Samba – Silber',100,[['b_sa_gs'],['b_sa_volta'],['b_sa_bota'],['b_sa_ccvolta'],['b_sa_rolloff'],['b_sa_plait'],['b_sa_swalk'],['b_sa_wisch']]);
+folge('k_quick3','Kursfolge Quickstep – Gold',200,[['b_q_viertel'],['b_q_lock'],['b_q_tipsyl'],['b_q_npivot'],['b_q_ffnat'],['b_q_rcross'],['b_q_hcorte'],['b_q_qor'],['b_q_tipsy'],['b_q_links']]);
+folge('k_slowfox3','Kursfolge Slowfox – Gold',116,[['b_sf_feder'],['b_sf_links'],['b_sf_rfeder'],['b_sf_ntwist'],['b_sf_wpp'],['b_sf_frsp'],['b_sf_cod'],['b_sf_cfeder'],['b_sf_dreier']]);
+folge('k_salsa3','Kursfolge Salsa (kubanischer Stil) – Gold',170,[['b_s_rueckb'],['b_s_dile'],['b_s_ench'],['b_s_setenta'],['b_s_kentucky'],['b_s_adios'],['b_s_tumba'],['b_s_montana'],['b_s_dile']]);
+folge('k_paso1','Kursfolge Paso Doble – Bronze',120,[['b_pd_marsch'],['b_pd_appel'],['b_pd_chasse'],['b_pd_sep'],['b_pd_huit'],['b_pd_sixteen'],['b_pd_platz']]);
+folge('k_paso2','Kursfolge Paso Doble – Silber',120,[['b_pd_marsch'],['b_pd_appel'],['b_pd_sep'],['b_pd_lapasse'],['b_pd_banderillas'],['b_pd_ecart'],['b_pd_gcircle'],['b_pd_spanish'],['b_pd_platz']]);
+folge('k_paso3','Kursfolge Paso Doble – Gold',120,[['b_pd_marsch'],['b_pd_appel'],['b_pd_coup'],['b_pd_syncsep'],['b_pd_flamenco'],['b_pd_farol'],['b_pd_fregolina'],['b_pd_platz']]);
+folge('k_wwalzer1','Kursfolge Wiener Walzer – Bronze',174,[['b_ww_rechts'],['b_ww_wr'],['b_ww_links'],['b_ww_wl']]);
+folge('k_wwalzer2','Kursfolge Wiener Walzer – Silber',174,[['b_ww_rechts'],['b_ww_wr'],['b_ww_links'],['b_ww_check'],['b_ww_links'],['b_ww_rfleckerl'],['b_ww_wl'],['b_ww_rechts'],['b_ww_fleckerl']]);

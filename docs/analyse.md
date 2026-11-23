@@ -4,7 +4,7 @@ Diese Datei wird mit `node tests/doku.js` aus den Figurendaten erzeugt. Bitte ni
 
 ## Bestand
 
-- **31 Tänze**, **551 Figuren**, **130 Beispiel- und Kursfolgen**
+- **31 Tänze**, **551 Figuren**, **140 Beispiel- und Kursfolgen**
 - Vollständige Zuordnung jeder Figur (Tanz, Startfuß, Endfuß, Haltung, Schwierigkeit): [figurenkatalog.md](figurenkatalog.md)
 
 | Tanz | Figuren | Stufe festgelegt | Stufe geschätzt |

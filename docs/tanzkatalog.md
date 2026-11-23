@@ -5,21 +5,21 @@ Diese Datei wird mit `node tests/doku.js` aus den Figurendaten erzeugt. Bitte ni
 | Tanz | Takt | Zählschema | Phrase (Schläge) | Tempo (Schläge/min) | Stil | Figuren | Folgen | Einsteiger | Bronze | Silber | Gold | Goldstar | Turnier | Freies Tanzen |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | Langsamer Walzer (Standard) | 3/4 | 1 2 3 | 3 | 90 | Schwungtanz mit Heben und Senken | 51 | 9 | 11 | 10 | 14 | 9 | 2 | 5 | 0 |
-| Wiener Walzer (Standard) | 3/4 | 1 2 3 | 3 | 174 | Schwungtanz mit Heben und Senken | 12 | 3 | 0 | 9 | 3 | 0 | 0 | 0 | 0 |
+| Wiener Walzer (Standard) | 3/4 | 1 2 3 | 3 | 174 | Schwungtanz mit Heben und Senken | 12 | 5 | 0 | 9 | 3 | 0 | 0 | 0 | 0 |
 | Tango (Standard) | 4/4 | S Q | 2 | 128 | Standard ohne Heben und Senken | 35 | 8 | 5 | 9 | 11 | 6 | 1 | 3 | 0 |
-| Slowfox (Standard) | 4/4 | S Q | 2 | 116 | Schwungtanz mit Heben und Senken | 34 | 6 | 1 | 11 | 11 | 6 | 3 | 2 | 0 |
-| Quickstep (Standard) | 4/4 | S Q | 2 | 200 | Schwungtanz mit Heben und Senken | 29 | 5 | 1 | 13 | 6 | 5 | 3 | 1 | 0 |
+| Slowfox (Standard) | 4/4 | S Q | 2 | 116 | Schwungtanz mit Heben und Senken | 34 | 7 | 1 | 11 | 11 | 6 | 3 | 2 | 0 |
+| Quickstep (Standard) | 4/4 | S Q | 2 | 200 | Schwungtanz mit Heben und Senken | 29 | 6 | 1 | 13 | 6 | 5 | 3 | 1 | 0 |
 | Cha-Cha-Cha | 4/4 | 2 3 4 & 1 | 4 | 120 | Latein mit Hüftaktion | 36 | 11 | 7 | 11 | 10 | 6 | 2 | 0 | 0 |
 | Rumba | 4/4 | 2 3 4-1 | 4 | 100 | Latein mit Hüftaktion | 34 | 9 | 10 | 7 | 8 | 7 | 2 | 0 | 0 |
-| Samba | 4/4 | 1 a 2 | 2 | 100 | federnd | 24 | 5 | 3 | 5 | 8 | 6 | 2 | 0 | 0 |
-| Jive | 4/4 | 1 2 3 a 4 5 a 6 | 2 | 150 | federnd | 28 | 6 | 7 | 5 | 9 | 4 | 3 | 0 | 0 |
-| Paso Doble | 4/4 | 1–8 | 2 | 120 | Standard ohne Heben und Senken | 24 | 3 | 4 | 10 | 5 | 5 | 0 | 0 | 0 |
+| Samba | 4/4 | 1 a 2 | 2 | 100 | federnd | 24 | 6 | 3 | 5 | 8 | 6 | 2 | 0 | 0 |
+| Jive | 4/4 | 1 2 3 a 4 5 a 6 | 2 | 150 | federnd | 28 | 7 | 7 | 5 | 9 | 4 | 3 | 0 | 0 |
+| Paso Doble | 4/4 | 1–8 | 2 | 120 | Standard ohne Heben und Senken | 24 | 6 | 4 | 10 | 5 | 5 | 0 | 0 | 0 |
 | Foxtrott | 4/4 | S Q | 2 | 120 | Schwungtanz mit Heben und Senken | 17 | 4 | 9 | 6 | 0 | 2 | 0 | 0 | 0 |
 | Discofox | 4/4 | 1 2 3 (Schritt, Schritt, Tap) | 3 | 120 | Gesellschaftstanz | 35 | 11 | 17 | 7 | 7 | 4 | 0 | 0 | 0 |
 | Blues | 4/4 | 1–4 | 2 | 80 | Gesellschaftstanz | 10 | 3 | 5 | 4 | 0 | 1 | 0 | 0 | 0 |
 | Rock'n'Roll | 4/4 | 1–6 | 2 | 150 | federnd | 7 | 3 | 5 | 1 | 0 | 1 | 0 | 0 | 0 |
 | Polka | 4/4 | 1 & 2 | 2 | 120 | federnd | 9 | 3 | 0 | 7 | 2 | 0 | 0 | 0 | 0 |
-| Salsa | 4/4 | 1 2 3 – 5 6 7 | 4 | 170 | Latein mit Hüftaktion | 25 | 6 | 3 | 10 | 7 | 5 | 0 | 0 | 0 |
+| Salsa | 4/4 | 1 2 3 – 5 6 7 | 4 | 170 | Latein mit Hüftaktion | 25 | 7 | 3 | 10 | 7 | 5 | 0 | 0 | 0 |
 | Bachata | 4/4 | 1 2 3 Tap | 4 | 125 | Latein mit Hüftaktion | 12 | 3 | 10 | 0 | 0 | 2 | 0 | 0 | 0 |
 | Merengue | 4/4 | 1–8 | 2 | 130 | Latein mit Hüftaktion | 12 | 3 | 7 | 3 | 0 | 2 | 0 | 0 | 0 |
 | Boogie-Woogie | 4/4 | 1–6 | 2 | 160 | federnd | 10 | 3 | 7 | 2 | 0 | 1 | 0 | 0 | 0 |

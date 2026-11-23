@@ -39,7 +39,7 @@ tanz('Langsamer Walzer',90,{
      [S('L','kreuzSeit',30,1,'1',-30),S('R','seit',30,1,'2',-30),S('L','kreuzSeit',22,1,'3',-30)]],
   b_w_contra:['Contra Check',[T_(S('L','vor',30,1,'1'),'Kontra-Check: Körper dreht gegen die Schrittrichtung, Knie weich'),S('R','platz',0,1,'2'),S('L','seit',24,1,'3',0,'prom')]],
   b_w_hcorte:['Hover Corté',[S('R','rueck',34,1,'1',45),T_(S('L','seit',24,1,'2',45),'Hover: hoch auf die Ballen'),S('R','platz',0,1,'3')]],
-  b_w_dbl:['Double Reverse Spin',[S('L','vor',38,1,'1',75),S('R','seit',26,1,'2',75),T_(S('L','tap',0,1,'3',60),'Der linke Fuß schließt ohne Gewicht, auf dem rechten Ballen weiterdrehen')]],
+  b_w_dbl:['Double Reverse Spin',[S('L','vor',38,1,'1',75),S('R','seit',26,1,'2',105),T_(S('L','tap',0,1,'3',30),'Der linke Fuß schließt ohne Gewicht, auf dem rechten Ballen weiterdrehen')]],
   b_w_ospin:['Outside Spin',[S('L','rueck',20,1,'1',-60),S('R','vor',30,1,'2',-75),S('L','seit',22,1,'3',-45)]],
   b_w_tlock:['Turning Lock',[S('R','rueck',30,1,'1'),S('L','rueck',24,.5,'2'),S('R','kreuz',10,.5,'&',45),S('L','seit',26,1,'3',45)]],
   b_w_drag:['Drag Hesitation',[S('L','vor',36,1,'1',45),S('R','seit',28,1,'2',45),T_(S('L','tap',0,1,'3'),'Der linke Fuß wird ohne Gewicht herangezogen')]],

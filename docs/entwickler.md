@@ -106,11 +106,10 @@ Steht die Dame am Anfang einer Figur mit eigenen Schritten mehr als 15 cm näher
 
 Jede Haltung in `HOLDS` (`js/basis.js`) hat eine Geometrie in `holdGeo` (`js/engine.js`) und Handziele in `haltungsHaende` (`js/szene.js`). Für eine neue Haltung braucht man alle drei Einträge, dazu einen Führungshinweis in `HOLD_TIP`, eine Haltungsart in `HALT_ART` (`js/figurdaten.js`) und die gefassten Hände in `GEFASST`.
 
-**Armführung innerhalb einer Haltung:** Ein Schritt kann das Feld `arm` tragen (`ARME` in `js/basis.js`): `aus` = Linie (freier Arm seitlich gestreckt), `zug` = die gefasste Hand holt die Dame heran, `stopp` = die gefasste Hand hält dagegen. `armFuehrung()` in `js/szene.js` verschiebt die Handziele über den Schritt (Ein- und Ausblenden). In der Haltung „Arm hoch“ steht die Hand über dem Kopf dessen, der sich gerade dreht, und kreist mit seiner Drehung. Die Zuordnung zu Figuren steht in `figuren/arme.js`; im Schritt-Editor gibt es dafür die Auswahl „Armführung“.
+**Armführung innerhalb einer Haltung:** Ein Schritt kann das Feld `arm` tragen (`ARME` in `js/basis.js`): `aus` = Linie (freier Arm seitlich gestreckt), `zug` = die gefasste Hand holt die Dame heran, `stopp` = die gefasste Hand hält dagegen. `armFuehrung()` in `js/szene.js` verschiebt die Handziele über den Schritt (Ein- und Ausblenden). In der Haltung „Arm hoch“ steht die Hand über dem Kopf dessen, der sich gerade dreht, und kreist mit seiner Drehung. Beim Ein- und Auswickeln (Haltungswechsel in oder aus `WICKEL`: Körbchen, Hammerlock, Brezel, Schal, Schatten) führt `wickelWeg()` jedes weit wandernde Händepaar in einem Bogen über den Kopf dessen, um den gewickelt wird; andere Wechsel nehmen einen kleinen Bogen. Die Zuordnung zu Figuren steht in `figuren/arme.js`; im Schritt-Editor gibt es dafür die Auswahl „Armführung“.
 
 ## Offene Folgeaufgaben
 
 - Figurgenaue Technikdaten: Belegt sind 22 Figuren (`TECHNIK_DATEN`), alle übrigen Technikangaben sind abgeleitet.
-- Armführung: drei Armaktionen und die kreisende Hand über dem Kopf; Einwickeln und Auswickeln selbst sind weiter Haltungswechsel mit Überblendung.
 - Die 73 Figuren aus `figuren/lehrplan.js` sind schematisch und sollten mit einem Technikbuch abgeglichen werden.
 - Weitere Figuren der Abgleichliste: siehe `docs/figurenluecken.md` (mit Gründen bei bewusst offen gelassenen Figuren).

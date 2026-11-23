@@ -577,8 +577,7 @@ function drawPair(h,d,tlx,dt){
     h.update(pH,sty,dt,beat,{prom:.3*prom,closed}); d.update(pD,sty,dt,beat,{prom:-.3*prom,closed});
     aimHead(h,d,sty,closed,prom,.35,.75,dt); aimHead(d,h,sty,closed,prom,.5,-.75,dt);
     const t=handTargets(s.hold,sty,h,d,s.arm?{arm:s.arm,u:pH.u}:null);
-    if(s.holdPrev!==s.hold&&hb<1){ // Haltungswechsel: Hände wandern in einem kleinen Bogen statt auf gerader Linie
-      const a=handTargets(s.holdPrev,sty,h,d), arc=Math.sin(Math.PI*hb)*.07; for(const k in t){ t[k]=a[k].lerp(t[k],hb); t[k].y+=arc; } }
+    if(s.holdPrev!==s.hold&&hb<1) wickelWeg(t,handTargets(s.holdPrev,sty,h,d),hb,s.holdPrev,s.hold,h,d);
     // Hände folgen ihrem Ziel leicht verzögert (relativ zum Paar), das macht Armwege bei Drehungen weich
     const pc=h.P.clone().add(d.P).multiplyScalar(.5), ka=1-Math.exp(-dt/.085);
     if(!h.hs||!d.hs){ h.hs={}; d.hs={}; for(const k in t) (k[0]==='H'?h:d).hs[k]=t[k].clone().sub(pc); }

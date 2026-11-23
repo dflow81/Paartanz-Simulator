@@ -663,7 +663,7 @@ Quelle: http://dance.djurredeboer.nl/standard/waltz/spin_turn.html
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | 1 | L | L / R | HT | ● | ● |  |  | am Ende | – | ● |  | C | gerade |
-| 2 | 2 | R | R / L | T |  | ● |  |  | hebt | – |  |  | DC gegen LOD | links |
+| 2 | 2 | R | R / L | T |  | ● |  |  | hebt | – |  |  | gegen LOD | links |
 | 3 | 3 | L | R / L | T |  | ● |  |  | oben | am Ende |  |  | DW gegen LOD | gerade |
 
 **Dame**
@@ -671,7 +671,7 @@ Quelle: http://dance.djurredeboer.nl/standard/waltz/spin_turn.html
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | 1 | R | R / L | TH | ● | ● |  |  | am Ende | – | ● |  | W | gerade |
-| 2 | 2 | L | L / R | T |  | ● |  |  | hebt | – |  |  | DW | links |
+| 2 | 2 | L | L / R | T |  | ● |  |  | hebt | – |  |  | LOD | links |
 | 3 | 3 | R | L / R | T |  | ● |  |  | oben | am Ende |  |  | DC | gerade |
 
 ## Outside Spin

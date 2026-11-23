@@ -347,6 +347,19 @@ function armFuehrung(t,hold,herr,dame,fx){
     const v=dame.P.clone().sub(herr.P).setY(0); if(v.lengthSq()>1e-6) v.normalize(); for(const k of paar){ t[k].addScaledVector(v,.08*w); t[k].y+=.04*w; } }
   return t;
 }
+/* Haltungswechsel: Die Hände wandern von der alten zur neuen Haltung. Normal in einem kleinen Bogen; beim Ein- und Auswickeln
+   (Körbchen, Hammerlock, Brezel, Schal, Schatten) führt ein weit wanderndes Händepaar über den Kopf dessen, um den gewickelt wird. */
+const WICKEL={korb:1,hammer:1,brezel:1,schal:1,schatten:1};
+function wickelWeg(t,a,hb,von,nach,herr,dame){
+  const wickel=WICKEL[nach]||WICKEL[von], ein=!!WICKEL[nach];
+  for(const k in t){ const e=t[k], s=a[k], weit=wickel&&s.distanceTo(e)>.25;
+    if(!weit){ t[k]=s.clone().lerp(e,hb); t[k].y+=Math.sin(Math.PI*hb)*.07; continue; }
+    const ziel=ein?e:s, P=ziel.distanceTo(herr.P)<ziel.distanceTo(dame.P)?herr:dame;   // um ihn oder um sie
+    const top=s.clone().add(e).multiplyScalar(.5); top.x+=(P.headPos.x-top.x)*.6; top.z+=(P.headPos.z-top.z)*.6; top.y=P.headPos.y+.18*P.k;
+    const c=top.multiplyScalar(2).addScaledVector(s,-.5).addScaledVector(e,-.5), q=1-hb;    // Bogen durch den Punkt über dem Kopf
+    t[k]=s.clone().multiplyScalar(q*q).addScaledVector(c,2*q*hb).addScaledVector(e,hb*hb); }
+  return t;
+}
 function haltungsHaende(hold,sty,herr,dame){
   const hr=.54*herr.k, dr=.54*dame.k;
   const join=(a,b)=>{ const p=a.clone().add(b).multiplyScalar(.5); p.y=dame.P.y+.14; return reach(p,a,hr,b,dr); };

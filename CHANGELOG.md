@@ -1,5 +1,17 @@
 # Änderungsprotokoll
 
+## 2026-11-23 (Abend): Kurslücken geschlossen, Einwickeln
+
+**Neu**
+- Zehn feste Kursfolgen: Gold für Jive, Quickstep, Slowfox und Salsa (kubanischer Stil), Silber für Samba, Bronze/Silber/Gold für Paso Doble, Bronze/Silber für Wiener Walzer. Alle schleifbar, innerhalb ihrer Stufe und mit mindestens 18 cm Abstand beim Wiederholen.
+- Ein- und Auswickeln als Armbewegung: Beim Wechsel in oder aus Körbchen, Hammerlock, Brezel, Schal und Schatten führt das gefasste Händepaar über den Kopf dessen, um den gewickelt wird (`wickelWeg()` in `js/szene.js`).
+
+**Behoben**
+- Double Reverse Spin (Langsamer Walzer): Drehung anders verteilt (75°/105°/30° statt 75°/75°/60°), zweimal hintereinander kommen sich die Partner nicht mehr näher als 24 cm (vorher 15 cm).
+
+**Bekannt**
+- Paso Doble Twist Turn kommt der Dame nach manchen Figuren zu nahe; er ist deshalb in keiner Kursfolge.
+
 ## 2026-11-23: Lehrplan vollständig, Armführung
 
 **Neu**
