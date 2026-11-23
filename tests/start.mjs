@@ -56,6 +56,8 @@ try{
       if(performance.now()-t0>6000){ clearInterval(iv); setPlaying(false); res({ok:w>-.05,info:'kleinster Abstand Arm–Partner '+(w*100).toFixed(0)+' cm (Kontakt bis −5 cm erlaubt)'}); } },40); })`;
   await pruef('Arme gehen nicht durch den Partner: Rope Spinning',durch('b_c_rope'));
   await pruef('Arme gehen nicht durch den Partner: Körbchen',durch('b_d_korb'));
+  await pruef('An der Wand entlang: Slowfox beginnt an der langen Seite, Herr schaut zur Wand',`(()=>{ const s=document.getElementById('source'); s.value='seq:k_slowfox1'; s.dispatchEvent(new Event('change'));
+    const a=evalRaw(tl.H,0); return {ok:WAND.an&&document.getElementById('wandOn').checked&&a.sup[1]>0.3&&Math.abs(Math.cos(a.h)-1)<.05,info:'Start bei z='+a.sup[1].toFixed(2)+' m, Blick '+Math.round(a.h*57.3)+'°'}; })()`);
   await pruef('Takt: Cha-Cha beginnt auf 2 – Einzählen endet auf der „1“',`(()=>{ const s=document.getElementById('source'); s.value='fig:b_c_gs'; s.dispatchEvent(new Event('change'));
     const r=[einzaehl(-5,true),einzaehl(-2,true),einzaehl(-1,true),taktZaehl(0),taktZaehl(3)].join(); return {ok:r==='5,8,1,2,1',info:r}; })()`);
   await pruef('Takt: betonte Eins läuft über Discofox-Figurenwechsel weiter',`(()=>{ const s=document.getElementById('source'); s.value='seq:k_disco1'; s.dispatchEvent(new Event('change'));

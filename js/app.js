@@ -17,7 +17,8 @@ function danceBpm(){ if(!hasMusic()||!mBpm||!src) return 0; let best=mBpm, e=9;
 function setSource(s){
   src=s; blocks=flatten(s);
   if(!blocks.length){tl=null;$('seqlist').innerHTML='<div>Diese Folge enthält keine Schritte.</div>';return;}
-  tl=simulate(blocks,{H:startH()}); taktBasis=0; beat=$('countIn').checked?-tl.H[0].meter-tl.H[0].off:0; slow.clear(); exItem=-1; extra.forEach((p,i)=>{ if(p.on){ p.tl=simulate(blocks,{H:startH(...startPos(i))}); p.H.reset(); p.D.reset(); } }); lastH=lastD=-1; lastBeatIdx=-99; stepTarget=null; curItem=-1; lastSaid=-1; clearPrints(); clearDiagram(); herr.reset(); dame.reset();
+  const wand=wandHier(blocks[0].F);   // an der Wand entlang: Start an der langen Seite, weitere Paare an den anderen Seiten
+  tl=simulate(blocks,{H:wand?startWand(0):startH()}); taktBasis=0; beat=$('countIn').checked?-tl.H[0].meter-tl.H[0].off:0; slow.clear(); exItem=-1; extra.forEach((p,i)=>{ if(p.on){ p.tl=simulate(blocks,{H:wand?startWand(i+1):startH(...startPos(i))}); p.H.reset(); p.D.reset(); } }); lastH=lastD=-1; lastBeatIdx=-99; stepTarget=null; curItem=-1; lastSaid=-1; clearPrints(); clearDiagram(); herr.reset(); dame.reset();
   const figs=allFigs(), warn=new Set(tl.H.concat(tl.D).filter(r=>r.warn).map(r=>r.item));
   $('seqlist').innerHTML=s.items.map((it,i)=>`<div data-i="${i}">${i+1}. ${figs[it.fig]?esc(figLabel(figs[it.fig])):'(fehlt)'}${it.rep>1?' ×'+it.rep:''}${warn.has(i)?' <span title="Ein Schritt beginnt mit dem Fuß, auf dem gerade das Gewicht steht.">⚠ falscher Fuß</span>':''}<span class="turtle" data-slow="${i}" title="Diese Figur in Zeitlupe tanzen (halbes Tempo)">🐢</span></div>`).join('')
     +(sp=>sp.ok?'':`<div class="loopbad" title="${esc(sp.gruende.join('; '))}">↻ ⚠ Beim Neubeginn passt der Anschluss nicht (${esc(sp.gruende[0]||'')})</div>`)(schleifePruefen(s.items));
@@ -27,6 +28,12 @@ function setSource(s){
 const baseBpm=()=>danceBpm()||(src?src.bpm:0);
 const updBpm=()=>{$('speedv').textContent=speedEl.value; $('bpmv').textContent=src?Math.round(baseBpm()*speedEl.value/100)+(danceBpm()?' Schläge/min, Musik gibt das Tempo vor':' Schläge/min'):'';};
 speedEl.oninput=updBpm;
+/* An der Wand entlang in Tanzrichtung: Einstellung merken (Standard: an, Start mit Blick zur Wand) */
+WAND.an=true; try{ Object.assign(WAND,JSON.parse(localStorage.getItem('tanzsim_wand'))||{}); }catch(e){}
+$('wandOn').checked=WAND.an; $('wandStart').value=WAND.start;
+$('wandOn').onchange=$('wandStart').onchange=()=>{ WAND.an=$('wandOn').checked; WAND.start=$('wandStart').value; $('wandStart').disabled=!WAND.an;
+  try{ localStorage.setItem('tanzsim_wand',JSON.stringify({an:WAND.an,start:WAND.start})); }catch(e){} if(src) setSource(src); };
+$('wandStart').disabled=!WAND.an;
 $('room').onchange=()=>{ const [w,d]=$('room').value.split('x').map(Number); buildRoom(w,d); if(src) setSource(src); };
 const playBtn=$('play');
 const setPlaying=p=>{playing=p;stepTarget=null;playBtn.textContent=p?'⏸ Pause':'▶ Start';};

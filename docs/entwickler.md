@@ -115,6 +115,10 @@ Lenkt die Engine das Paar vom Rand weg (Zusatzdrehung `extra` je Schritt des Her
 
 **Schrittrichtung der Dame (`dd`):** Bei gegengleich geführter Dame bestimmt sonst die Haltung ihre Schrittrichtung (gespiegelt, in Körbchen und Schatten gleich wie der Herr). Mit `dd` am Schritt des Herrn wird nur die Richtung der Dame festgelegt; ihr Platz folgt weiter der Haltung (Beispiel: Körbchen mit Drehung, Herr vor, Dame rück).
 
+## An der Wand entlang (Tanzrichtung)
+
+`WAND` in `js/engine.js` (`an`, `start`: `W`/`DW`/`LOD`, Gewichte `kv`, `kb`, `ko`). Für Tänze in `FORTSCHREITEND` startet das Paar mit `startWand(i)` an der langen Seite (weitere Paare an den Seiten C und B). In `simulate()` bewertet die Raumlenkung dann statt der Nähe zur Mitte das Vorankommen entlang `lodVon(p)` (Tanzrichtung der nächsten Wand), den Abstand zur Bahn `BAHN()` und den kleinsten Partnerabstand in der nächsten Figur. Die App schaltet das über `#wandOn`/`#wandStart` ein (gespeichert unter `tanzsim_wand`); die Node-Tests rechnen ohne, außer dem eigenen Test dafür.
+
 ## Offene Folgeaufgaben
 
 - Figurgenaue Technikdaten: Belegt sind 72 Figuren (`TECHNIK_DATEN`), alle übrigen Technikangaben sind abgeleitet.

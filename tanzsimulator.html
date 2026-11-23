@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#1b1d24">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
-<link rel="stylesheet" href="tanzsimulator.css?v=2611240330">
+<link rel="stylesheet" href="tanzsimulator.css?v=2611240400">
 </head>
 <body>
 <div id="ui">
@@ -81,6 +81,9 @@
         <div style="flex:3"><label>Tanzfläche</label><select id="room" class="full"><option value="5x4">klein (5 × 4 m)</option><option value="8x6" selected>mittel (8 × 6 m)</option><option value="12x9">groß (12 × 9 m)</option></select></div>
         <div style="flex:2"><label>Paare</label><select id="pairsN" class="full" title="Weitere Paare tanzen dieselbe Folge an anderer Stelle"><option value="1">1 Paar</option><option value="2">2 Paare</option><option value="3">3 Paare</option></select></div>
       </div>
+      <div class="chk"><input type="checkbox" id="wandOn" checked><span>An der Wand entlang in Tanzrichtung (Walzer, Tango, Slowfox, Quickstep, Foxtrott …)</span></div>
+      <label>Start des Herrn</label>
+      <select id="wandStart" class="full" title="Wo der Herr am Anfang hinschaut; das Paar beginnt an der langen Seite der Fläche"><option value="W">mit Blick zur Wand</option><option value="DW">diagonal zur Wand</option><option value="LOD">in Tanzrichtung</option></select>
       <label>Kleidung</label>
       <select id="outfit" class="full"><option value="auto">passend zum Tanz</option><option value="standard">Standard: Anzug und langes Ballkleid</option><option value="latein">Latein: Hemd und kurzes Kleid</option><option value="freizeit">Freizeit: Hemd, Jeans und Sommerkleid</option></select>
       <div class="row" style="align-items:center;font-size:12px;color:#bbb">
@@ -264,36 +267,36 @@
   <span class="dot" style="background:#ff4d6d"></span>Dame &nbsp;|&nbsp; Maus: drehen / zoomen</div>
 
 <!-- Figuren-Bibliothek und Schritt-Engine (normale Skripte, damit die Seite auch direkt von der Festplatte läuft) -->
-<script src="js/basis.js?v=2611240330"></script>
-<script src="figuren/standard.js?v=2611240330"></script>
-<script src="figuren/latein.js?v=2611240330"></script>
-<script src="figuren/gesellschaft.js?v=2611240330"></script>
-<script src="figuren/karibik.js?v=2611240330"></script>
-<script src="figuren/weitere.js?v=2611240330"></script>
-<script src="figuren/mehr.js?v=2611240330"></script>
-<script src="figuren/wtp.js?v=2611240330"></script>
-<script src="figuren/neu.js?v=2611240330"></script>
-<script src="figuren/kurs.js?v=2611240330"></script>
-<script src="figuren/profi.js?v=2611240330"></script>
-<script src="figuren/belegt.js?v=2611240330"></script>
-<script src="figuren/folgen.js?v=2611240330"></script>
-<script src="figuren/info.js?v=2611240330"></script>
-<script src="figuren/lehrplan.js?v=2611240330"></script>
-<script src="figuren/quellen.js?v=2611240330"></script>
-<script src="figuren/arme.js?v=2611240330"></script>
-<script src="figuren/syllabus.js?v=2611240330"></script>
-<script src="js/speicher.js?v=2611240330"></script>
-<script src="js/engine.js?v=2611240330"></script>
-<script src="js/figurdaten.js?v=2611240330"></script>
-<script src="js/technik.js?v=2611240330"></script>
-<script src="lib/three.js?v=2611240330"></script>
-<script src="lib/OrbitControls.js?v=2611240330"></script>
-<script src="lib/Reflector.js?v=2611240330"></script>
-<script src="js/szene.js?v=2611240330"></script>
-<script src="js/app.js?v=2611240330"></script>
-<script src="js/lernen.js?v=2611240330"></script>
-<script src="js/profi.js?v=2611240330"></script>
-<script src="js/stream.js?v=2611240330"></script>
-<script src="js/editor.js?v=2611240330"></script>
+<script src="js/basis.js?v=2611240400"></script>
+<script src="figuren/standard.js?v=2611240400"></script>
+<script src="figuren/latein.js?v=2611240400"></script>
+<script src="figuren/gesellschaft.js?v=2611240400"></script>
+<script src="figuren/karibik.js?v=2611240400"></script>
+<script src="figuren/weitere.js?v=2611240400"></script>
+<script src="figuren/mehr.js?v=2611240400"></script>
+<script src="figuren/wtp.js?v=2611240400"></script>
+<script src="figuren/neu.js?v=2611240400"></script>
+<script src="figuren/kurs.js?v=2611240400"></script>
+<script src="figuren/profi.js?v=2611240400"></script>
+<script src="figuren/belegt.js?v=2611240400"></script>
+<script src="figuren/folgen.js?v=2611240400"></script>
+<script src="figuren/info.js?v=2611240400"></script>
+<script src="figuren/lehrplan.js?v=2611240400"></script>
+<script src="figuren/quellen.js?v=2611240400"></script>
+<script src="figuren/arme.js?v=2611240400"></script>
+<script src="figuren/syllabus.js?v=2611240400"></script>
+<script src="js/speicher.js?v=2611240400"></script>
+<script src="js/engine.js?v=2611240400"></script>
+<script src="js/figurdaten.js?v=2611240400"></script>
+<script src="js/technik.js?v=2611240400"></script>
+<script src="lib/three.js?v=2611240400"></script>
+<script src="lib/OrbitControls.js?v=2611240400"></script>
+<script src="lib/Reflector.js?v=2611240400"></script>
+<script src="js/szene.js?v=2611240400"></script>
+<script src="js/app.js?v=2611240400"></script>
+<script src="js/lernen.js?v=2611240400"></script>
+<script src="js/profi.js?v=2611240400"></script>
+<script src="js/stream.js?v=2611240400"></script>
+<script src="js/editor.js?v=2611240400"></script>
 </body>
 </html>

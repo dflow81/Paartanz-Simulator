@@ -165,6 +165,20 @@ const STEER=[0,8,-8,16,-16,24,-24,32,-32,42,-42];
 let lastSteer=0;
 const pairCtr=(H,D)=>[(H.L[0]+H.R[0]+D.L[0]+D.R[0])/4,(H.L[1]+H.R[1]+D.L[1]+D.R[1])/4];
 const outside=p=>Math.max(0,Math.abs(p[0])-(ROOM.w/2-ROOM.margin))+Math.max(0,Math.abs(p[1])-(ROOM.d/2-ROOM.margin));
+/* Entlang der Wand in Tanzrichtung (Foxtrott, Tango, Slowfox …): Tanzrichtung gegen den Uhrzeigersinn, die Wand liegt rechts vom Herrn,
+   wenn er in Tanzrichtung schaut. In fortschreitenden Tänzen bevorzugt die Raumlenkung dann Wege, die entlang der Tanzrichtung vorankommen,
+   in einer Bahn etwa BAHN() Meter von der Wand; an den Ecken wird links herum weitergetanzt. Start an der langen Seite, Blick zur Wand
+   (oder diagonal zur Wand bzw. in Tanzrichtung). Die App schaltet das ein (WAND.an), die Tests rechnen ohne. */
+const WAND={an:false,start:'W',kv:.06,kb:.03,ko:10};   // kv: Vorankommen, kb: Bahn, ko: Rand (Gewichte der Raumlenkung)
+const FORTSCHREITEND=new Set(['Langsamer Walzer','Wiener Walzer','Tango','Slowfox','Quickstep','Foxtrott','Marschfox','Tango Americano','Nordic Tango','Tangowalzer','Walzer-Musette','Polka','Two Step','Tango Argentino']);   // Samba und Paso Doble werden hier überwiegend am Platz getanzt
+const wandAbst=p=>Math.min(ROOM.w/2-Math.abs(p[0]),ROOM.d/2-Math.abs(p[1]));
+const BAHN=()=>Math.min(1.7,Math.min(ROOM.w,ROOM.d)/2-.3);
+function lodVon(p){ const s=[[ROOM.d/2-p[1],[1,0]],[ROOM.w/2-p[0],[0,-1]],[p[1]+ROOM.d/2,[-1,0]],[p[0]+ROOM.w/2,[0,1]]]; return s.reduce((a,b)=>b[0]<a[0]?b:a)[1]; }
+const wandHier=F=>WAND.an&&FORTSCHREITEND.has(F&&F.dance);
+/* Startplatz: Paar 0 an der langen Seite A, weitere Paare an den Seiten C und B; Blickrichtung nach WAND.start */
+function startWand(i=0){ const b=Math.min(BAHN()+(WAND.start==='W'?.6:0),Math.min(ROOM.w,ROOM.d)/2-.2), r=Math.min(Math.max(b+.6,2.2),ROOM.w/2-.3);   // so weit von der Ecke, dass die lange Seite die nächste Wand ist   // mit Blick zur Wand etwas weiter innen: die erste Figur geht auf die Wand zu
+  const [x,z,lod]=[[-ROOM.w/2+r,ROOM.d/2-b,Math.PI/2],[ROOM.w/2-r,-ROOM.d/2+b,-Math.PI/2],[ROOM.w/2-b,ROOM.d/2-Math.min(1.8,ROOM.d/2-.4),Math.PI]][i%3];
+  return startH(x,z,lod-(WAND.start==='W'?Math.PI/2:WAND.start==='DW'?Math.PI/4:0)); }
 function simBlock(b,H,D,beat,extra,hs,ds){
   const F=b.F, sty=styleOf(F.dance), c0=parseInt(F.steps[0].c);
   // Takt: Die Figur beginnt auf Zählzeit c0 (z. B. Cha-Cha auf „2“), betont wird die „1“ jedes Takts
@@ -258,11 +272,12 @@ function simulate(blocks,st){
   const D=st.D?structuredClone(st.D):startD(H,styleOf(F0.dance),HOLDS[F0.steps[0].hold]?F0.steps[0].hold:'zu');
   const hs=[],ds=[]; let beat=0;
   for(let i=0;i<blocks.length;i++){
-    let best=0, bc=Infinity;
+    let best=0, bc=Infinity; const wand=wandHier(blocks[i].F), p0=pairCtr(H,D), lod=wand?lodVon(p0):null;
     for(const e of st.noSteer?[0]:STEER){   // noSteer: schnelle Probe ohne Raumlenkung (Folgen-Generator)
       const h=structuredClone(H), d=structuredClone(D); let c=Math.abs(e)*.002+(e*lastSteer<0?.03:0);
-      for(let k=0;k<3;k++) c+=simBlock(blocks[(i+k)%blocks.length],h,d,0,e,[],[]).out*(k?5:10);   // Annahme: die Kurve wird beibehalten
-      const p=pairCtr(h,d); c+=Math.hypot(p[0],p[1])*.004;
+      for(let k=0;k<3;k++){ const hh=[],dd=[]; c+=simBlock(blocks[(i+k)%blocks.length],h,d,0,e,hh,dd).out*(k?5:10)*(wand?WAND.ko/10:1);
+        if(wand&&!k){ let mn=9; for(let b=0;b<hh.at(-1).start+hh.at(-1).d;b+=.25){ const a=evalRaw(hh,b),q=evalRaw(dd,b); mn=Math.min(mn,Math.hypot(a.sup[0]-q.sup[0],a.sup[1]-q.sup[1])); } c+=Math.max(0,.2-mn)*20; } }   // an der Wand: Lenkungen meiden, bei denen sich die Partner zu nahe kommen   // Annahme: die Kurve wird beibehalten
+      const p=pairCtr(h,d); c+=wand?-WAND.kv*dot(sub(p,p0),lod)+WAND.kb*Math.abs(wandAbst(p)-BAHN()):Math.hypot(p[0],p[1])*.004;   // an der Wand: vorankommen in Tanzrichtung, in der Bahn bleiben
       if(c<bc-1e-9){ bc=c; best=e; }
     }
     if(best) lastSteer=best;

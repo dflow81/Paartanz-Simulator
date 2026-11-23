@@ -1,5 +1,12 @@
 # Änderungsprotokoll
 
+## 2026-11-24: An der Wand entlang in Tanzrichtung
+
+- Neue Einstellung unter „Raum und Kleidung“: **An der Wand entlang in Tanzrichtung** (Standard: an). In den fortschreitenden Tänzen (Langsamer und Wiener Walzer, Tango, Slowfox, Quickstep, Foxtrott, Marschfox, Tango Americano, Nordic Tango, Tangowalzer, Walzer-Musette, Polka, Two Step, Tango Argentino) beginnt das Paar an der langen Seite der Fläche und tanzt gegen den Uhrzeigersinn an der Wand entlang, an den Ecken links herum.
+- **Start des Herrn** wählbar: mit Blick zur Wand (Standard), diagonal zur Wand oder in Tanzrichtung. Weitere Paare beginnen an den anderen Seiten.
+- Engine: Die Raumlenkung bewertet dann Vorankommen in Tanzrichtung, eine Bahn etwa 1,7 m von der Wand und den Partnerabstand in der nächsten Figur (unter 20 cm wird gemieden).
+- Ergebnis: 77 von 85 Folgen dieser Tänze laufen in Tanzrichtung um die Fläche, keine kommt der Wand näher als 60 cm oder den Partnern näher als 20 cm. Zwei Folgen laufen noch falsch herum (Tango – Beispielfolge 4, Übungsfolge Langsamer Walzer 3), sechs bewegen sich kaum (am Platz getanzte Figuren).
+
 ## 2026-11-24: Discofox Push & Pull, Körbchen mit Drehung
 
 - Engine: Neues Schrittfeld `dd` legt die Schrittrichtung der Dame fest, ohne ihren Platz in der Haltung zu ändern (Import und geteilte Links übernehmen es).

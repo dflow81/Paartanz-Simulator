@@ -27,6 +27,7 @@ Ein 3D-Simulator im Browser zum Lernen und Üben von Paartänzen. Herr und Dame 
 - **Grafischer Figuren-Editor:** Schritte im Schrittplan von oben mit der Maus setzen und ziehen
 - **Führungshinweise** beim Tanzen („Herr hebt die linke Hand – die Dame dreht darunter"), auch eigene je Schritt
 - **Tempo-Trainer:** eine Figur in Schleife, jede Runde etwas schneller
+- **An der Wand entlang in Tanzrichtung:** In Walzer, Tango, Slowfox, Quickstep, Foxtrott und den anderen fortschreitenden Tänzen tanzt das Paar gegen den Uhrzeigersinn um die Fläche; der Herr beginnt mit Blick zur Wand (einstellbar)
 - **Teilen per Link:** Eine Tanzfolge steckt in der Adresse – der Tanzpartner öffnet sie einfach im Browser
 - **Export und Import** eigener Figuren und Folgen als Datei
 - **Übungsmusik:** ein einfacher Rhythmus passend zum Tanz, ganz ohne eigene Musikdatei; bei eigener Musik schlägt der Simulator Tänze vor, die zum Tempo passen
