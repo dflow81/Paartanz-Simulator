@@ -198,8 +198,9 @@ function simBlock(b,H,D,beat,extra,hs,ds){
       let dh=wrap(r.hA+g.face-D.h);
       if(Math.abs(Math.abs(dh)-Math.PI)<.5){ const sp=g.spin||-(D.spin||0)||Math.sign(r.hA-r.hB); if(sp) dh=sp*Math.abs(dh); }
       D.spin=g.spin||0;
+      // dd: Schrittrichtung der Dame (nur Richtung, sie bleibt an ihrem Platz in der Haltung, z. B. rück beim Drehen im Körbchen)
       // df: besondere Fußarbeit der Dame bei diesem Schritt (z. B. 'ferse' = Fersendrehung: sie schließt, statt mitzugehen; der nächste Schritt holt sie wieder heran)
-      ds.push(Object.assign(doStep(D,{f:r.o,dir:s.df||(g.face===0?r.dir:(MIRROR[r.dir]||r.dir)),len:s.len,turn:s.turn,c:s.c},sty,r.start,d,{to:s.df?null:to,h2:D.h+dh}),meta));
+      ds.push(Object.assign(doStep(D,{f:r.o,dir:s.df||s.dd||(g.face===0?r.dir:(MIRROR[r.dir]||r.dir)),len:s.len,turn:s.turn,c:s.c},sty,r.start,d,{to:s.df?null:to,h2:D.h+dh}),meta));
       tD=tH; out=Math.max(out,outside(pairCtr(H,D)));
     }
   }

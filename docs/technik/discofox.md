@@ -967,11 +967,11 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 | 4 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 | 5 | 5 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 | 6 | 6 | R | L / R | T |  | ● |  |  | – | – |  |  | LOD | – |
-| 7 | 1 | R | R / L | HF | ● |  |  | ● | – | – |  |  | W | – |
-| 8 | 2 | L | L / R | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
+| 7 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  |  | W | – |
+| 8 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 | 9 | 3 | R | L / R | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
-| 10 | 4 | R | R / L | HF | ● |  |  | ● | – | – |  |  | C | – |
-| 11 | 5 | L | L / R | HF | ● |  |  | ● | – | – |  |  | LOD | – |
+| 10 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | C | – |
+| 11 | 5 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 | 12 | 6 | R | L / R | T |  | ● |  |  | – | – |  |  | LOD | – |
 | 13 | 1 | R | R / L | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
 | 14 | 2 | L | L / R | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |

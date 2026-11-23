@@ -113,6 +113,8 @@ Jede Haltung in `HOLDS` (`js/basis.js`) hat eine Geometrie in `holdGeo` (`js/eng
 
 Lenkt die Engine das Paar vom Rand weg (Zusatzdrehung `extra` je Schritt des Herrn), tanzt eine Dame mit eigenen Schritten diese im Schatten ohne Lenkung; ihre Lage relativ zum Herrn wird dann mit seiner Zusatzdrehung mitgedreht (`mit()` in `simBlock`). Beginnt eine solche Figur in der Promenade, steht die Dame in der V-Stellung (Blick ¼ links vom Herrn), damit „vor und über Kreuz“ aus der Quelle richtig läuft. Der Anfangsausgleich verteilt den Gesamtversatz auf die ersten echten Schritte (mit `F.ganz` auf die ersten zwei); Platz-Schritte holen nur den Rückstand zum anderen Fuß auf (`shift.platz`, dabei keine Fußwarnung).
 
+**Schrittrichtung der Dame (`dd`):** Bei gegengleich geführter Dame bestimmt sonst die Haltung ihre Schrittrichtung (gespiegelt, in Körbchen und Schatten gleich wie der Herr). Mit `dd` am Schritt des Herrn wird nur die Richtung der Dame festgelegt; ihr Platz folgt weiter der Haltung (Beispiel: Körbchen mit Drehung, Herr vor, Dame rück).
+
 ## Offene Folgeaufgaben
 
 - Figurgenaue Technikdaten: Belegt sind 72 Figuren (`TECHNIK_DATEN`), alle übrigen Technikangaben sind abgeleitet.
