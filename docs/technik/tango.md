@@ -414,143 +414,163 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 | 1 | S | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 | 2 | S | L | R / L | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
 
-## Offene Linksdrehung (Open Reverse Turn)
+## Offene Linksdrehung (Open Reverse Turn) †
+
+Quelle: http://dance.djurredeboer.nl/standard/tango/open_reverse_turn.html
 
 **Herr**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | Q | L | L / R | HF | ● |  |  | ● | – | – | ● |  | DC | – |
-| 2 | Q | R | R / L | BF |  |  | ● | ● | – | – |  |  | C | – |
-| 3 | S | L | L / R | BF |  |  | ● | ● | – | – | ● |  | DC gegen LOD | – |
-| 4 | Q | R | R / L | BF |  |  | ● | ● | – | – |  |  | DC gegen LOD | – |
-| 5 | Q | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 6 | S | R | R / L | HF | ● |  |  | ● | – | – |  | ● | gegen LOD | – |
+| 1 | Q | L | L / R | HF | ● |  |  | ● | – | – |  | ● | LOD | – |
+| 2 | Q | R | R / L | BH | ● |  | ● |  | – | – |  |  | C | – |
+| 3 | S | L | L / R | BH | ● |  | ● |  | – | – | ● | ● | DC gegen LOD | – |
+| 4 | Q | R | R / L | BH | ● |  | ● |  | – | – |  |  | DC gegen LOD | – |
+| 5 | Q | L | L / R | i/e WF |  |  |  | ● | – | – |  |  | W | – |
+| 6 | S | R | R / L | WF |  |  |  | ● | – | – |  |  | W | – |
 
 **Dame**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | Q | R | R / L | BF |  |  | ● | ● | – | – | ● |  | DW gegen LOD | – |
-| 2 | Q | L | L / R | BF |  |  | ● | ● | – | – |  |  | W | – |
-| 3 | S | R | R / L | HF | ● |  |  | ● | – | – | ● |  | DW | – |
+| 1 | Q | R | R / L | BH | ● |  | ● |  | – | – |  | ● | gegen LOD | – |
+| 2 | Q | L | L / R | WF |  |  |  | ● | – | – |  |  | W | – |
+| 3 | S | R | R / L | HF | ● |  |  | ● | – | – | ● | ● | DW | – |
 | 4 | Q | L | L / R | HF | ● |  |  | ● | – | – |  |  | DW | – |
-| 5 | Q | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 6 | S | L | L / R | BF |  |  | ● | ● | – | – |  | ● | LOD | – |
+| 5 | Q | R | R / L | i/e BH | ● |  | ● |  | – | – |  |  | C | – |
+| 6 | S | L | L / R | WF |  |  |  | ● | – | – |  |  | C | – |
 
-## Rückwärts offene Promenade
+## Rückwärts offene Promenade †
 
-**Herr**
-
-| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 2 | Q | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 3 | Q | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 4 | S | R | R / L | BF |  |  | ● | ● | – | – |  | ● | LOD | – |
-
-**Dame**
-
-| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | R | R / L | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
-| 2 | Q | L | L / R | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
-| 3 | Q | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 4 | S | L | L / R | BF |  |  | ● | ● | – | – |  | ● | gegen LOD | – |
-
-## Outside Swivel
-
-**Herr**
-
-| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 2 | S | R | R / L | BF |  |  | ● | ● | – | – |  | ● | LOD | – |
-
-**Dame**
-
-| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | R | R / L | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
-| 2 | S | L | L / R | BF |  |  | ● | ● | – | – |  | ● | gegen LOD | – |
-
-## Natural Twist Turn
-
-**Herr**
-
-| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | R | R / L | BF |  |  | ● | ● | – | – |  | ● | LOD | – |
-| 2 | Q | L | L / R | BF |  |  | ● | ● | – | – |  |  | DW | – |
-| 3 | Q | R | R / L | BF |  |  | ● | ● | – | – |  | ● | W | – |
-| 4 | S | L | L / R | BF |  |  | ● | ● | – | – |  |  | DW gegen LOD | – |
-
-**Dame**
-
-| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | L | L / R | BF |  |  | ● | ● | – | – |  | ● | gegen LOD | – |
-| 2 | Q | R | R / L | BF |  |  | ● | ● | – | – |  |  | DC gegen LOD | – |
-| 3 | Q | L | L / R | BF |  |  | ● | ● | – | – |  | ● | C | – |
-| 4 | S | R | R / L | BF |  |  | ● | ● | – | – |  |  | DC | – |
-
-## Natural Promenade Turn
-
-**Herr**
-
-| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 2 | S | R | R / L | HF | ● |  |  | ● | – | – | ● |  | W | – |
-| 3 | Q | L | L / R | BF |  |  | ● | ● | – | – |  |  | DW gegen LOD | – |
-| 4 | Q | R | R / L | BF |  |  | ● | ● | – | – |  |  | DW gegen LOD | – |
-
-**Dame**
-
-| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 2 | S | L | L / R | BF |  |  | ● | ● | – | – | ● |  | C | – |
-| 3 | Q | R | R / L | BF |  |  | ● | ● | – | – |  |  | DC | – |
-| 4 | Q | L | L / R | BF |  |  | ● | ● | – | – |  |  | DC | – |
-
-## Contra Check
+Quelle: http://dance.djurredeboer.nl/standard/tango/back_open_promenade.html
 
 **Herr**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | S | L | L / R | HF | ● |  |  | ● | – | – |  |  | LOD | – |
-| 2 | Q | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 3 | Q | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 2 | Q | R | R / L | HF | ● |  |  | ● | – | – |  | ● | LOD | – |
+| 3 | Q | L | L / R | BH | ● |  | ● |  | – | – |  |  | W | – |
+| 4 | S | R | R / L | BH | ● |  | ● |  | – | – |  |  | W | – |
 
 **Dame**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 2 | Q | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 3 | Q | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 1 | S | R | R / L | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
+| 2 | Q | L | L / R | HF | ● |  |  | ● | – | – |  | ● | gegen LOD | – |
+| 3 | Q | R | R / L | BH | ● |  | ● |  | – | – |  |  | C | – |
+| 4 | S | L | L / R | WF |  |  |  | ● | – | – |  |  | C | – |
 
-## Fallaway Four Step
+## Outside Swivel †
+
+Quelle: http://dance.djurredeboer.nl/standard/tango/outside_swivel.html
 
 **Herr**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | Q | L | L / R | HF | ● |  |  | ● | – | – |  |  | LOD | – |
-| 2 | Q | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 3 | Q | L | L / R | BF |  |  | ● | ● | – | – |  | ● | LOD | – |
-| 4 | Q | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 1 | S | L | L / R | BH | ● |  | ● |  | – | – | ● | ● | DW | – |
+| 2 | Q | R | R / L | HF | ● |  |  | ● | – | – |  | ● | LOD | – |
+| 3 | Q | L | R / L | i/e B |  |  | ● |  | – | – |  |  | LOD | – |
 
 **Dame**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | Q | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 2 | Q | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 3 | Q | R | R / L | BF |  |  | ● | ● | – | – |  | ● | gegen LOD | – |
-| 4 | Q | L | L / R | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
+| 1 | S | R | R / L | HB | ● |  | ● |  | – | – |  | ● | gegen LOD | – |
+| 2 | Q | L | L / R | HB | ● |  | ● |  | – | – |  | ● | DC | – |
+| 3 | Q | R | L / R | i/e B |  |  | ● |  | – | – |  |  | gegen LOD | – |
+
+## Natural Twist Turn †
+
+Quelle: http://dance.djurredeboer.nl/standard/tango/twist_turn.html
+
+**Herr**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | S | L | L / R | HF | ● |  |  | ● | – | – |  |  | LOD | – |
+| 2 | Q | R | R / L | HF | ● |  |  | ● | – | – |  | ● | LOD | – |
+| 3 | Q | L | L / R | BH | ● |  | ● |  | – | – |  |  | W | – |
+| 4 | S | R | R / L | B |  |  | ● |  | – | – |  | ● | DW gegen LOD | – |
+| 5 | Q | L | L / R | B/H | ● |  | ● |  | – | – |  |  | C | – |
+| 6 | Q | R | R / L | F |  |  |  | ● | – | – |  |  | LOD | – |
+
+**Dame**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | S | R | R / L | HF | ● |  |  | ● | – | – |  |  | C | – |
+| 2 | Q | L | L / R | HF | ● |  |  | ● | – | – |  | ● | DC | – |
+| 3 | Q | R | R / L | HF | ● |  |  | ● | – | – |  |  | DC | – |
+| 4 | S | L | L / R | HF | ● |  |  | ● | – | – | ● |  | LOD | – |
+| 5 | Q | R | R / L | HB | ● |  | ● |  | – | – | ● | ● | DW | – |
+| 6 | Q | L | L / R | BH | ● |  | ● |  | – | – | ● |  | DC gegen LOD | – |
+
+## Natural Promenade Turn †
+
+Quelle: http://dance.djurredeboer.nl/standard/tango/promenade_turn.html
+
+**Herr**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | S | L | L / R | HF | ● |  |  | ● | – | – |  |  | LOD | – |
+| 2 | Q | R | R / L | HF | ● |  |  | ● | – | – |  | ● | LOD | – |
+| 3 | Q | L | L / R | BHB | ● |  | ● |  | – | – |  |  | DW gegen LOD | – |
+| 4 | S | R | R / L | HF | ● |  |  | ● | – | – | ● |  | C | – |
+
+**Dame**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | S | R | R / L | HF | ● |  |  | ● | – | – |  |  | C | – |
+| 2 | Q | L | L / R | HF | ● |  |  | ● | – | – |  | ● | C | – |
+| 3 | Q | R | R / L | HB | ● |  | ● |  | – | – | ● |  | DC | – |
+| 4 | S | L | L / R | BH | ● |  | ● |  | – | – |  |  | gegen LOD | – |
+
+## Contra Check †
+
+Quelle: http://dance.djurredeboer.nl/standard/tango/contra_check.html
+
+**Herr**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | S | L | L / R | HF | ● |  |  | ● | – | – | ● | ● | DC | – |
+| 2 | Q | R | R / L | BH | ● |  | ● |  | – | – |  |  | LOD | – |
+| 3 | Q | L | R / L | i/e B |  |  | ● |  | – | – |  |  | LOD | – |
+
+**Dame**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | S | R | R / L | B |  |  | ● |  | – | – | ● | ● | DW gegen LOD | – |
+| 2 | Q | L | L / R | F |  |  |  | ● | – | – |  |  | gegen LOD | – |
+| 3 | Q | R | L / R | i/e B |  |  | ● |  | – | – |  |  | gegen LOD | – |
+
+## Fallaway Four Step †
+
+Quelle: http://dance.djurredeboer.nl/standard/tango/fallaway_four_step.html
+
+**Herr**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Q | L | L / R | HF | ● |  |  | ● | – | – |  | ● | LOD | – |
+| 2 | Q | R | R / L | BH | ● |  | ● |  | – | – |  |  | C | – |
+| 3 | Q | L | L / R | BH | ● |  | ● |  | – | – |  | ● | C | – |
+| 4 | Q | R | R / L | BH | ● |  | ● |  | – | – |  |  | C | – |
+
+**Dame**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Q | R | R / L | BH | ● |  | ● |  | – | – |  | ● | gegen LOD | – |
+| 2 | Q | L | L / R | BH | ● |  | ● |  | – | – | ● |  | W | – |
+| 3 | Q | R | R / L | HB | ● |  | ● |  | – | – |  | ● | W | – |
+| 4 | Q | L | L / R | BH | ● |  | ● |  | – | – |  |  | W | – |
 
 ## Oversway
 

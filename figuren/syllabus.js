@@ -7,7 +7,7 @@
    SYLLABUS[Tanz] = { Stufe: ['Figurenname=figurId', 'Figurenname ohne Umsetzung', ...] }   Stufen: 2 Bronze, 3 Silber, 4 Gold, 5 Goldstar, 6 Turnier */
 const SYLLABUS={
 'Langsamer Walzer':{
-  2:['Closed Change=w_vw','Natural Turn=w_nat','Reverse Turn=w_rev','Natural Spin Turn=w_kreisel','Whisk=w_wisch','Chassé from Promenade=w_chasse','Closed Impetus=w_impetus','Hesitation Change=w_zwechsel','Outside Change=w_aussen','Reverse Corté=w_rcorte','Back Whisk=w_bwhisk','Basic Weave=w_weave','Double Reverse Spin=w_dbl','Reverse Pivot','Back Lock=w_rlock','Progressive Chassé to Right=w_pcr'],
+  2:['Closed Change=w_vw','Natural Turn=w_nat','Reverse Turn=w_rev','Natural Spin Turn=w_kreisel','Whisk=w_wisch','Chassé from Promenade=w_chasse','Closed Impetus=w_impetus','Hesitation Change=w_zwechsel','Outside Change=w_aussen','Reverse Corté=w_rcorte','Back Whisk=w_bwhisk','Basic Weave=w_weave','Double Reverse Spin=w_dbl','Reverse Pivot=w_rpivot','Back Lock=w_rlock','Progressive Chassé to Right=w_pcr'],
   3:['Weave from Promenade=w_wpp','Closed Telemark=w_telemark','Open Telemark=w_otelemark','Cross Hesitation=w_cross','Wing=w_wing','Open Impetus=w_oimpetus','Outside Spin=w_ospin','Turning Lock=w_tlock','Drag Hesitation=w_drag'],
   4:['Contra Check=w_contra','Closed Wing=w_cwing','Turning Lock to Right=w_tlockr','Left Whisk=w_lwhisk','Fallaway Reverse and Slip Pivot=w_frsp','Hover Corté=w_hcorte','Fallaway Whisk=w_fwhisk'],
   5:['Hover Telemark=w_hover','Hinge Line=w_hinge','Curved Feather=w_cfeder'],
@@ -80,7 +80,6 @@ const SYLLABUS={
 };
 /* Bewusst offen gelassen, mit Grund (wird im Lückenbericht angezeigt) */
 const OFFEN_GRUND={
-  'Langsamer Walzer|Reverse Pivot':'wird auf „&“ aus dem vorigen Takt getanzt und ist als eigene Figur nicht taktgerecht darstellbar',
   'Cha-Cha-Cha|Sweetheart':'Diagramm der Quelle widersprüchlich (Dame: Schritt 26/27 zweimal links belastet); am 2026-11-23 keine zweite frei zugängliche Quelle gefunden',
   'Cha-Cha-Cha|Follow My Leader':'Diagramm der Quelle widersprüchlich (Dame: derselbe Fuß zweimal hintereinander belastet); am 2026-11-23 keine zweite frei zugängliche Quelle gefunden',
 };

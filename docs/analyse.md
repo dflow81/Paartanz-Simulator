@@ -4,12 +4,12 @@ Diese Datei wird mit `node tests/doku.js` aus den Figurendaten erzeugt. Bitte ni
 
 ## Bestand
 
-- **31 Tänze**, **552 Figuren**, **185 Beispiel- und Kursfolgen**
+- **31 Tänze**, **553 Figuren**, **190 Beispiel- und Kursfolgen**
 - Vollständige Zuordnung jeder Figur (Tanz, Startfuß, Endfuß, Haltung, Schwierigkeit): [figurenkatalog.md](figurenkatalog.md)
 
 | Tanz | Figuren | Stufe festgelegt | Stufe geschätzt |
 |---|---|---|---|
-| Langsamer Walzer | 52 | 52 | 0 |
+| Langsamer Walzer | 53 | 53 | 0 |
 | Wiener Walzer | 12 | 8 | 4 |
 | Tango | 35 | 35 | 0 |
 | Slowfox | 34 | 29 | 5 |
@@ -69,6 +69,39 @@ Dubletten wurden nicht gelöscht, weil gespeicherte eigene Folgen auf diese Figu
 - Langsamer Walzer – Rechtsdrehung (6 Schritte): http://dance.djurredeboer.nl/standard/waltz/natural_turn.html
 - Langsamer Walzer – Linksdrehung (6 Schritte): http://dance.djurredeboer.nl/standard/waltz/reverse_turn.html
 - Langsamer Walzer – Rechtskreisel (Spin Turn): http://dance.djurredeboer.nl/standard/waltz/spin_turn.html
+- Slowfox – Open Impetus (in die Promenade): http://dance.djurredeboer.nl/standard/foxtrot/open_impetus.html
+- Slowfox – Hover Feather: http://dance.djurredeboer.nl/standard/foxtrot/hover_feather.html
+- Slowfox – Bounce Fallaway mit Weave-Ende: http://dance.djurredeboer.nl/standard/foxtrot/bounce_fallaway.html
+- Slowfox – Natural Weave: http://dance.djurredeboer.nl/standard/foxtrot/natural_weave.html
+- Slowfox – Weave aus der Promenade: http://dance.djurredeboer.nl/standard/foxtrot/weave_from_pp.html
+- Slowfox – Open Telemark: http://dance.djurredeboer.nl/standard/foxtrot/open_telemark.html
+- Quickstep – Fishtail: http://dance.djurredeboer.nl/standard/quickstep/fishtail.html
+- Quickstep – V6: http://dance.djurredeboer.nl/standard/quickstep/v6.html
+- Quickstep – Running Right Turn: http://dance.djurredeboer.nl/standard/quickstep/running_right_turn.html
+- Quickstep – Running Finish: http://dance.djurredeboer.nl/standard/quickstep/running_finish.html
+- Quickstep – Cross Swivel: http://dance.djurredeboer.nl/standard/quickstep/cross_swivel.html
+- Quickstep – Quick Open Reverse: http://dance.djurredeboer.nl/standard/quickstep/quick_open_reverse.html
+- Quickstep – Hover Corté: http://dance.djurredeboer.nl/standard/quickstep/hover_corte.html
+- Langsamer Walzer – Open Telemark: http://dance.djurredeboer.nl/standard/waltz/open_telemark.html
+- Langsamer Walzer – Wing: http://dance.djurredeboer.nl/standard/waltz/wing.html
+- Langsamer Walzer – Contra Check: http://dance.djurredeboer.nl/standard/waltz/contra_check.html
+- Langsamer Walzer – Hover Corté: http://dance.djurredeboer.nl/standard/waltz/hover_corte.html
+- Langsamer Walzer – Double Reverse Spin: http://dance.djurredeboer.nl/standard/waltz/double_reverse.html
+- Langsamer Walzer – Outside Spin: http://dance.djurredeboer.nl/standard/waltz/outside_spin.html
+- Langsamer Walzer – Turning Lock: http://dance.djurredeboer.nl/standard/waltz/turning_lock.html
+- Langsamer Walzer – Drag Hesitation: http://dance.djurredeboer.nl/standard/waltz/drag_hesitation.html
+- Langsamer Walzer – Back Whisk: http://dance.djurredeboer.nl/standard/waltz/back_whisk.html
+- Langsamer Walzer – Reverse Corté: http://dance.djurredeboer.nl/standard/waltz/reverse_corte.html
+- Langsamer Walzer – Weave aus der Promenade: http://dance.djurredeboer.nl/standard/waltz/weave_from_pp.html
+- Langsamer Walzer – Progressives Chassé nach rechts: http://dance.djurredeboer.nl/standard/waltz/chasse_right.html
+- Langsamer Walzer – Cross Hesitation: http://dance.djurredeboer.nl/standard/waltz/cross_hesitation.html
+- Tango – Offene Linksdrehung (Open Reverse Turn): http://dance.djurredeboer.nl/standard/tango/open_reverse_turn.html
+- Tango – Rückwärts offene Promenade: http://dance.djurredeboer.nl/standard/tango/back_open_promenade.html
+- Tango – Outside Swivel: http://dance.djurredeboer.nl/standard/tango/outside_swivel.html
+- Tango – Natural Twist Turn: http://dance.djurredeboer.nl/standard/tango/twist_turn.html
+- Tango – Natural Promenade Turn: http://dance.djurredeboer.nl/standard/tango/promenade_turn.html
+- Tango – Contra Check: http://dance.djurredeboer.nl/standard/tango/contra_check.html
+- Tango – Fallaway Four Step: http://dance.djurredeboer.nl/standard/tango/fallaway_four_step.html
 - Rumba – Fencing: http://dance.djurredeboer.nl/latin/rumba/fencing.html
 - Slowfox – Basic Weave: http://dance.djurredeboer.nl/standard/foxtrot/basic_weave.html
 - Quickstep – Natural Pivot Turn: http://dance.djurredeboer.nl/standard/quickstep/pivot_turn.html
@@ -93,6 +126,9 @@ Dubletten wurden nicht gelöscht, weil gespeicherte eigene Folgen auf diese Figu
 - Rumba – Reverse Top (aus dem Grundschritt): http://dance.djurredeboer.nl/latin/rumba/reverse_top.html (Darstellung schematisch)
 - Rumba – Curl (in den Fächer): http://dance.djurredeboer.nl/latin/rumba/curl.html (Darstellung schematisch)
 - Rumba – Closed Hip Twist (in den Fächer): http://dance.djurredeboer.nl/latin/rumba/closed_hip.html (Darstellung schematisch)
+- Langsamer Walzer – Fallaway Reverse and Slip Pivot: http://dance.djurredeboer.nl/standard/waltz/fallaway_reverse.html
+- Wiener Walzer – Reverse Fleckerl (Drehung am Platz, links): http://dance.djurredeboer.nl/standard/viennese/reverse_fleckerl.html
+- Slowfox – Fallaway Reverse and Slip Pivot: http://dance.djurredeboer.nl/standard/foxtrot/fallaway_reverse.html
 - Cha-Cha-Cha – Rope Spinning: http://dance.djurredeboer.nl/latin/cha_cha/rope_spinning.html
 - Rumba – Rope Spinning: http://dance.djurredeboer.nl/latin/rumba/rope_spinning.html
 - Rumba – Three Threes (drei Damendrehungen): http://dance.djurredeboer.nl/latin/rumba/three_threes.html
@@ -111,14 +147,15 @@ Dubletten wurden nicht gelöscht, weil gespeicherte eigene Folgen auf diese Figu
 - Paso Doble – Coup de Pique: http://dance.djurredeboer.nl/latin/paso/coup_de_pique.html
 - Paso Doble – Flamenco Taps: http://dance.djurredeboer.nl/latin/paso/flamenco_taps.html
 - Langsamer Walzer – Fallaway Whisk: https://www.dancecentral.info/ballroom/international-style/waltz/fallaway-whisk (Darstellung schematisch)
+- Langsamer Walzer – Reverse Pivot (nach halber Linksdrehung, 1 2 3 &): http://dance.djurredeboer.nl/standard/waltz/reverse_pivot.html
 
 ## Unvollständige Figuren
 
 - Figuren ohne Schritte, Startfuß oder Endfuß: **0** (wird von `node tests/test.js` geprüft)
-- Figuren ohne festgelegte Kursstufe (Stufe wird geschätzt): **205** von 552
+- Figuren ohne festgelegte Kursstufe (Stufe wird geschätzt): **205** von 553
 
 ## Inkonsistente Figuren (Figuren-Qualitätsprüfung)
 
-552 Figuren geprüft: **0 Fehler, 0 Warnungen**.
+553 Figuren geprüft: **0 Fehler, 0 Warnungen**.
 
 Keine Auffälligkeiten.

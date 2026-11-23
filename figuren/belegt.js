@@ -16,7 +16,7 @@ q('b_sf_bweave','standard/foxtrot/basic_weave.html',{H:{fuss:['HT','T','T','T','
 /* Quickstep Natural Pivot Turn (PreBronze/Bronze) und Reverse Pivot (Bronze) */
 tanz('Quickstep',200,{
   b_q_npivot:['Natural Pivot Turn',[S('R','vor',38,2,'S',-45),S('L','seit',26,1,'Q',-60),S('R','schliessen',0,1,'Q',-30),{...S('L','rueck',18,1,'S',-90),tip:'Pivot: linker Fuß zurück, Spitze einwärts, ½ Rechtsdrehung'},S('L','platz',0,1,'S',-90)]],   // der Pivot wird als ein Schritt mit fortgesetzter Drehung dargestellt
-  b_q_rpivot:['Reverse Pivot',[{...S('R','kreuzHinter',15,1,'S',90),tip:'Kleiner Schritt rück in CBMP, Spitze einwärts, ½ Linksdrehung'},S('R','platz',0,1,'S',90)]],
+  b_q_rpivot:['Reverse Pivot',[{...S('R','rueckAussen',15,1,'S',90),tip:'Kleiner Schritt rück in CBMP, Spitze einwärts, ½ Linksdrehung'},S('R','platz',0,1,'S',90)]],
 });
 q('b_q_npivot','standard/quickstep/pivot_turn.html',{H:{fuss:['HT','T','TH','THT','(Pivot)'],sway:['gerade','rechts','rechts','gerade','gerade']},D:{fuss:['TH','T','TH','HTH','(Pivot)'],sway:['gerade','links','links','gerade','gerade']}});
 q('b_q_rpivot','standard/quickstep/reverse_pivot.html',{H:{fuss:['THT','(Pivot)'],sway:['gerade','gerade']},D:{fuss:['TH','(Pivot)'],sway:['gerade','gerade']}});

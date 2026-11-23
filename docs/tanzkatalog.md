@@ -4,11 +4,11 @@ Diese Datei wird mit `node tests/doku.js` aus den Figurendaten erzeugt. Bitte ni
 
 | Tanz | Takt | Zählschema | Phrase (Schläge) | Tempo (Schläge/min) | Stil | Figuren | Folgen | Einsteiger | Bronze | Silber | Gold | Goldstar | Turnier | Freies Tanzen |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Langsamer Walzer (Standard) | 3/4 | 1 2 3 | 3 | 90 | Schwungtanz mit Heben und Senken | 52 | 17 | 11 | 10 | 14 | 10 | 2 | 5 | 0 |
+| Langsamer Walzer (Standard) | 3/4 | 1 2 3 | 3 | 90 | Schwungtanz mit Heben und Senken | 53 | 19 | 11 | 11 | 14 | 10 | 2 | 5 | 0 |
 | Wiener Walzer (Standard) | 3/4 | 1 2 3 | 3 | 174 | Schwungtanz mit Heben und Senken | 12 | 6 | 0 | 9 | 3 | 0 | 0 | 0 | 0 |
-| Tango (Standard) | 4/4 | S Q | 2 | 128 | Standard ohne Heben und Senken | 35 | 13 | 5 | 9 | 11 | 6 | 1 | 3 | 0 |
-| Slowfox (Standard) | 4/4 | S Q | 2 | 116 | Schwungtanz mit Heben und Senken | 34 | 10 | 1 | 11 | 11 | 6 | 3 | 2 | 0 |
-| Quickstep (Standard) | 4/4 | S Q | 2 | 200 | Schwungtanz mit Heben und Senken | 29 | 9 | 1 | 13 | 6 | 5 | 3 | 1 | 0 |
+| Tango (Standard) | 4/4 | S Q | 2 | 128 | Standard ohne Heben und Senken | 35 | 14 | 5 | 9 | 11 | 6 | 1 | 3 | 0 |
+| Slowfox (Standard) | 4/4 | S Q | 2 | 116 | Schwungtanz mit Heben und Senken | 34 | 11 | 1 | 11 | 11 | 6 | 3 | 2 | 0 |
+| Quickstep (Standard) | 4/4 | S Q | 2 | 200 | Schwungtanz mit Heben und Senken | 29 | 10 | 1 | 13 | 6 | 5 | 3 | 1 | 0 |
 | Cha-Cha-Cha | 4/4 | 2 3 4 & 1 | 4 | 120 | Latein mit Hüftaktion | 36 | 16 | 7 | 11 | 10 | 6 | 2 | 0 | 0 |
 | Rumba | 4/4 | 2 3 4-1 | 4 | 100 | Latein mit Hüftaktion | 34 | 12 | 10 | 7 | 8 | 7 | 2 | 0 | 0 |
 | Samba | 4/4 | 1 a 2 | 2 | 100 | federnd | 24 | 9 | 3 | 5 | 8 | 6 | 2 | 0 | 0 |
@@ -43,55 +43,55 @@ Je Medaillenstufe automatisch erzeugt, mit gültigen Übergängen. In der App er
 ### Slowfox
 
 - **Bronze:** Dreierschritt → Rechtsdrehung → Rückwärts-Dreierschritt → Links vorbei mit Linksdrehung, dann zurück → Rechtsdrehung mit Fersendrehung → Feather Finish
-- **Silber:** Open Telemark → Weave aus der Promenade → Dreierschritt → Hover Feather → Ein Schritt rück, dann Federschritt → Links vorbei mit Linksdrehung, dann zurück → Rechtsdrehung → Hover Cross
-- **Gold:** Natural Twist Turn → Weave aus der Promenade → Fallaway Reverse and Slip Pivot → Bounce Fallaway mit Weave-Ende → Wellenschritt → Hover-Telemark → Rückwärts-Federschritt → Natural Weave → Open Telemark → Natural Zig-Zag aus der Promenade → Dreierschritt
-- **Goldstar:** Curved Feather → Rückwärts-Federschritt → Natural Twist Turn → Natural Zig-Zag aus der Promenade → Tumble Turn → Open Telemark → Weave aus der Promenade → Fallaway Reverse and Slip Pivot → Top Spin → Hover-Telemark → Extended Reverse Wave → Hover Feather → Wellenschritt → Bounce Fallaway mit Weave-Ende → Dreierschritt
+- **Silber:** Federschritt → Hover Feather → Linksdrehung → Richtungswechsel → Natural Weave → Wellenschritt → Links vorbei mit Linksdrehung, dann zurück → Rückwärts-Dreierschritt → Open Telemark → Weave aus der Promenade → Dreierschritt
+- **Gold:** Open Telemark → Natural Zig-Zag aus der Promenade → Fallaway Reverse and Slip Pivot → Wellenschritt → Open Impetus → Weave aus der Promenade → Rückwärts-Federschritt → Natural Telemark → Hover-Telemark → Hover Feather
+- **Goldstar:** Rechts, seit, ran mit Rechtsdrehung → Extended Reverse Wave → Natural Telemark → Hover-Telemark → Hover Feather → Open Impetus → Natural Zig-Zag aus der Promenade → Bounce Fallaway mit Weave-Ende → Open Telemark → Weave aus der Promenade → Wellenschritt → Fallaway Reverse and Slip Pivot → Ein Schritt rück, dann Federschritt → Top Spin → Rückwärts-Federschritt
 
 ### Quickstep
 
-- **Bronze:** Rechtsdrehung → Running Finish → Linksdrehung mit Chassé → Reverse Pivot → Fortschreitendes Chassé → Kreuzschritt rückwärts → Fortschreitendes Chassé → Kreuzschritt rückwärts → Linksdrehung mit Chassé
-- **Silber:** Kreuzschritt vorwärts → Rechtsdrehung → Progressives Chassé → Six Quick Run → Running Finish → Fortschreitendes Chassé → Cross Swivel → V6 → Quick Open Reverse → Linksdrehung mit Chassé
-- **Gold:** Fallaway Natural Turn → Six Quick Run → Tipsy nach links → Running Right Turn → Tipple-Chassé rechts → Fishtail → Rumba Cross → Rechtskreisel → Hover Corté → Cross Swivel → Quick Open Reverse → Tipsy nach rechts → Linksdrehung mit Chassé
-- **Goldstar:** Pfeffermühle → Hüpfer vorwärts → Tipsy nach rechts → Cross Swivel → Quick Open Reverse → V6 → Linksdrehung mit Chassé → Fallaway Natural Turn → Hover Corté → Fortschreitendes Chassé → Hüpfer vorwärts → Kreuzschritt rückwärts
+- **Bronze:** Rechtsdrehung mit Zögern → Fortschreitendes Chassé → Linksdrehung mit Chassé → Kreuzschritt vorwärts → Rechtsdrehung → Tipple-Chassé rechts
+- **Silber:** Rechtsdrehung → Tipple-Chassé rechts → Reverse Pivot → Kreuzschritt rückwärts → Running Finish → Natural Pivot Turn → Fishtail → Running Right Turn
+- **Gold:** Six Quick Run → Fishtail → Fallaway Natural Turn → Running Right Turn → Rumba Cross → Hover Corté → Cross Swivel → Tipsy nach links → Vierteldrehung und Chassé → Quick Open Reverse
+- **Goldstar:** Fishtail → Running Right Turn → Six Quick Run → Quick Open Reverse → Tipsy nach links → Hover Corté → V6 → Rumba Cross → Fallaway Natural Turn → Progressives Chassé → Vierteldrehung und Chassé → Rechtsdrehung mit Zögern → Pfeffermühle → Tipsy nach rechts → Cross Swivel
 
 ### Tango
 
-- **Bronze:** Linksdrehung → Rück-Corté → Progressive Link → Promenade → Rock zurück → Rock zurück
-- **Silber:** Rechts-Wiegedrehung → Rückwärts offene Promenade → Offene Promenade → Viererschritt → Natural Promenade Turn → Promenade Link → Außenseitiger Wechsel → Rock zurück
-- **Gold:** Außenseitiger Wechsel → Outside Swivel → Promenade Link → Fallaway Four Step → Offene Promenade → Contra Check → Natural Twist Turn → Rechts-Wiegedrehung → Fünferschritt → The Chase → Fallaway-Promenade
-- **Goldstar:** Rechts-Wiegedrehung → Fallaway Four Step → Fallaway-Promenade → Viererschritt → Natural Promenade Turn → The Chase → Offene Promenade → Rückwärts offene Promenade → Promenade Link → Outside Swivel → Spanish Drag → Natural Twist Turn
+- **Bronze:** Linksdrehung → Progressive Link → Promenade → Gehschritte rückwärts → Offene Linksdrehung → Rock zurück → Rock zurück
+- **Silber:** Outside Swivel → Offene Linksdrehung → Rück-Corté → Progressive Link → Offene Promenade → Reverse Outside Swivel → Außenseitiger Wechsel → Linksdrehung
+- **Gold:** Viererschritt → Offene Promenade → Brush Tap → Reverse Outside Swivel → Fünferschritt → Natural Twist Turn → Promenade Link → Fallaway Four Step → Fallaway-Promenade → Außenseitiger Wechsel
+- **Goldstar:** Fünferschritt → Natural Promenade Turn → Promenade Link → Fallaway Four Step → The Chase → Fallaway-Promenade → Contra Check → Natural Twist Turn → Rückwärts offene Promenade → Außenseitiger Wechsel → Reverse Outside Swivel → Gehschritte vorwärts
 
 ### Langsamer Walzer
 
-- **Bronze:** Linksdrehung → Back Whisk → Chassé aus der Promenade → Reverse Corté → Rechtsdrehung → Rückwärts-Wechsel mit rechts
-- **Silber:** Rechtsdrehung mit Impetus → Reverse Corté → Rechtsdrehung → Rechtskreisel mit Chassé → Zögerwechsel → Zögerschritt → Seitliche Balance → Back Whisk → Cross Hesitation
-- **Gold:** Fallaway Reverse and Slip Pivot → Open Impetus → Cross Hesitation → Closed Wing → Drag Hesitation → Schwebeschritt → Fallaway Whisk → Weave aus der Promenade → Rechtskreisel → Rechtsdrehung mit Impetus → Hover Corté
-- **Goldstar:** Kreuzschritt vorwärts → Turning Lock nach rechts → Wing → Outside Spin → Zögerwechsel → Fallaway Whisk → Weave aus der Promenade → Rechtskreisel mit Chassé → Left Whisk → Open Impetus → Chassé aus der Promenade → Flechtschritt
+- **Bronze:** Rückwärts-Wechsel mit rechts → Vorwärts-Wechsel mit links → Rechtsdrehung → Reverse Corté → Außenseitlicher Wechsel → Vorwärts-Wechsel mit rechts → Pendelschritt → Double Reverse Spin → Rückwärts-Wechsel mit links
+- **Silber:** Zögerwechsel → Open Telemark → Weave aus der Promenade → Rechtskreisel mit Chassé → Rechtsdrehung mit Impetus → Kreuzschritt vorwärts → Reverse Corté → Außenseitlicher Wechsel
+- **Gold:** Hover Corté → Fallaway Whisk → Weave aus der Promenade → Kreuzschritt vorwärts → Turning Lock nach rechts → Cross Hesitation → Telemark → Fallaway Reverse and Slip Pivot → Outside Spin → Rechtskreisel
+- **Goldstar:** Closed Wing → Fallaway Reverse and Slip Pivot → Schwebeschritt → Telemark → Open Telemark → Wing → Contra Check → Cross Hesitation → Hinge Line → Turning Lock → Rechtskreisel → Turning Lock nach rechts → Weave aus der Promenade
 
 ### Cha-Cha-Cha
 
-- **Bronze:** Damendrehung rechts unter dem Arm → Fächer → Hockeystick → New Yorker → Grundschritt in offener Haltung → Hand to Hand → Platzdrehung → Schulter an Schulter
-- **Silber:** Closed Hip Twist → Hockeystick → Offener Hip Twist → Alemana → Reverse Top → Drei Cha-Cha-Chas → Schulter an Schulter → Spiral → Curl → Alemana
-- **Gold:** Reverse Top → Drei Cha-Cha-Chas → Fächer → Hockeystick → Advanced Hip Twist → Alemana → Grundschritt mit Kreuz-Chassé → Spiral → Hip Twist Spiral → Hockeystick → Sliding Doors → Curl → Alemana
-- **Goldstar:** Spiral → Aida → Kubanische Brüche → Grundschritt in offener Haltung → Advanced Hip Twist → Alemana → Drei Cha-Cha-Chas → Reverse Top → Rechtskreisel → Rückwärts-Lock → Cross Basic → Closed Hip Twist → Hockeystick → Fencing → Rope Spinning
+- **Bronze:** Fächer → Alemana → Damendrehung rechts unter dem Arm → Closed Hip Twist → Hockeystick → New Yorker → Seitliches Chassé
+- **Silber:** Closed Hip Twist → Hockeystick → Curl → Alemana → Schulter an Schulter → Spiral → New Yorker → Kubanische Brüche → Offene Basic → Rückwärts-Lock
+- **Gold:** Spiral → Offener Hip Twist → Hockeystick → Hip Twist Spiral → Alemana → Reverse Top → Drei Cha-Cha-Chas → Rechtskreisel → Kubanische Brüche → Curl → Hockeystick → Fencing → Opening Out
+- **Goldstar:** Reverse Top → Spiral → Advanced Hip Twist → Hockeystick → Fencing → Sliding Doors → Offener Hip Twist → Alemana → Fächer → Hockeystick → Aida → Kubanische Brüche → Hip Twist Spiral → Hockeystick → Three Threes
 
 ### Rumba
 
-- **Bronze:** Damendrehung rechts unter dem Arm → Fächer → Alemana → Schulter an Schulter → Closed Hip Twist → Hockeystick → New Yorker → Gehschritte vor und rück
-- **Silber:** Spiral → Aida → Opening Out → Opening Out from Reverse Top → Reverse Top → Fächer → Hockeystick → Offener Hip Twist → Alemana
-- **Gold:** Rechtskreisel → Reverse Top → Opening Out from Reverse Top → Spiral → Advanced Hip Twist → Hockeystick → Aida → Offene Basic → Hip Twist Spiral → Three Alemanas
-- **Goldstar:** Spiral → Aida → Three Threes → Opening Out from Reverse Top → Reverse Top → Closed Hip Twist → Three Alemanas → Rechtskreisel → Seit-Wiegeschritt → Fächer → Fencing → Cross Basic
+- **Bronze:** Schulter an Schulter → Fächer → Hockeystick → Closed Hip Twist → Hockeystick → New Yorker → Platzdrehung → Offene Basic → Damendrehung rechts unter dem Arm
+- **Silber:** Reverse Top → Closed Hip Twist → Hockeystick → Aida → Opening Out → Spiral → Offener Hip Twist → Alemana
+- **Gold:** Spiral → Offener Hip Twist → Three Alemanas → Reverse Top → Rechtskreisel → Opening Out from Reverse Top → Schulter an Schulter → Grundschritt → Closed Hip Twist → Alemana
+- **Goldstar:** Rechtskreisel → Spiral → Offener Hip Twist → Three Alemanas → Reverse Top → Opening Out from Reverse Top → Closed Hip Twist → Fencing → Gehschritte vor und rück → Fächer → Three Alemanas → Grundschritt am Platz
 
 ### Salsa
 
-- **Bronze:** Damendrehung rechts → Platzwechsel mit Damendrehung → Dile que no → Damendrehung links → Grundschritt → Platzwechsel
-- **Silber:** Sácala → Cumbia-Schritt → Damendrehung links → Platzwechsel → Copa → Exhíbela → Setenta → Vacílala → Platzwechsel mit Damendrehung → Dile que no → Damendrehung rechts
-- **Gold:** Setenta → Adiós → Cumbia-Schritt → Sácala → Exhíbela → Sombrero → Kentucky → Tumba Francesa → Grundschritt in offener Haltung → Vacílala → Herrendrehung rechts
-- **Goldstar:** Copa → Cumbia-Schritt → Kentucky → Adiós → Herrendrehung rechts → Montaña → Vacílala → Sombrero → Grundschritt in offener Haltung → Sácala → Exhíbela → Tumba Francesa → Damendrehung links
+- **Bronze:** Platzwechsel mit Damendrehung → Cumbia-Schritt → Platzwechsel → Dile que no → Damendrehung links → Grundschritt rückwärts
+- **Silber:** Dile que no → Platzwechsel mit Damendrehung → Sácala → Platzwechsel → Damendrehung rechts → Damendrehung links → Grundschritt → Setenta → Exhíbela → Sombrero → Suzie Q
+- **Gold:** Montaña → Sombrero → Copa → Vacílala → Adiós → Setenta → Kentucky → Sácala → Herrendrehung rechts → Grundschritt
+- **Goldstar:** Montaña → Adiós → Cumbia-Schritt → Grundschritt in offener Haltung → Exhíbela → Tumba Francesa → Herrendrehung rechts → Setenta → Vacílala → Grundschritt in Kreuzhandfassung → Sácala → Kentucky → Copa → Platzwechsel
 
 ### Discofox
 
-- **Bronze:** Grundschritt mit Linksdrehung → Schattenposition → Offene Haltung rückwärts → Damendrehung links → Rückführung in die geschlossene Haltung → Grundschritt mit Kick
-- **Silber:** Grundschritt mit Kick → Promenade → Grundschritt am Platz → Tunnel → Grundschritt in offener Haltung → Schattenposition → Offene Haltung rückwärts → Herrensolo → Doppelte Damendrehung rechts → Schal → Rückführung in die geschlossene Haltung
-- **Gold:** Grundschritt am Platz → Lasso → Sliding Doors → Schal → Rückführung in die geschlossene Haltung → Grundschritt mit Rechtsdrehung → Seilwurf → Doppelte Damendrehung rechts → Brezel → Tunnel → He Goes – She Goes → Hammerlock → Grundschritt mit Linksdrehung
-- **Goldstar:** Schulterfasser → Sliding Doors → Schal → Rückführung in die geschlossene Haltung → Grundschritt mit Linksdrehung → Tunnel → Grundschritt in offener Haltung → Brezel → He Goes – She Goes → Handwechsel hinter dem Rücken → Seilwurf → Doppelte Damendrehung rechts → Grundschritt mit Kick
+- **Bronze:** Grundschritt am Platz → Wickler → Offene Haltung rückwärts → Damensolo rechts → Rückführung in die geschlossene Haltung → Schattenposition → Grundschritt in offener Haltung → Herrensolo → Seitschritt nach rechts
+- **Silber:** Grundschritt mit Kick → Wickler → Schulterfasser → Schal → Doppelte Damendrehung rechts → Herrensolo → He Goes – She Goes → Hammerlock → Handwechsel hinter dem Rücken → Platzwechsel → Rückführung in die geschlossene Haltung
+- **Gold:** Seitschritte links und rechts → Handwechsel hinter dem Rücken → Schal → Sliding Doors → Tunnel → He Goes – She Goes → Seilwurf → Brezel → Rückführung in die geschlossene Haltung → Grundschritt mit Rechtsdrehung
+- **Goldstar:** Grundschritt am Platz → Tunnel → Sliding Doors → Handwechsel hinter dem Rücken → Schal → Rückführung in die geschlossene Haltung → Grundschritt am Platz → He Goes – She Goes → Lasso → Doppelte Damendrehung rechts → Seilwurf → Schulterfasser → Hammerlock → Sliding Doors → Grundschritt rückwärts

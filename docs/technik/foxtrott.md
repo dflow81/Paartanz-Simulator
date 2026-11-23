@@ -331,10 +331,10 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | R | R / L | T |  | ● |  |  | – | – |  |  | gegen LOD | gerade |
-| 2 | S | L | L / R | T |  | ● |  |  | am Ende | – |  | ● | gegen LOD | gerade |
-| 3 | Q | R | R / L | TH | ● | ● |  |  | oben | – | ● |  | LOD | rechts |
-| 4 | Q | L | L / R | HT | ● | ● |  |  | oben | am Ende | ● |  | gegen LOD | rechts |
+| 1 | S | R | R / L | T |  | ● |  |  | – | – |  |  | C | gerade |
+| 2 | S | L | L / R | T |  | ● |  |  | am Ende | – |  | ● | C | gerade |
+| 3 | Q | R | R / L | TH | ● | ● |  |  | oben | – | ● |  | W | rechts |
+| 4 | Q | L | L / R | HT | ● | ● |  |  | oben | am Ende | ● |  | C | rechts |
 
 ## Viertelkarree rechts herum
 

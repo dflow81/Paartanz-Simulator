@@ -1,5 +1,21 @@
 # Änderungsprotokoll
 
+## 2026-11-24: Standardfiguren mit Quelle, Reverse Pivot
+
+**Neu**
+- 36 Standardfiguren nach den Schritttabellen von BallroomGuide neu aufgebaut, nicht mehr schematisch, mit Fußarbeit: Langsamer Walzer (Open Telemark, Wing, Contra Check, Hover Corté, Double Reverse Spin, Outside Spin, Turning Lock, Drag Hesitation, Back Whisk, Reverse Corté, Weave aus der Promenade, Progressives Chassé nach rechts, Cross Hesitation, Fallaway Reverse and Slip Pivot), Quickstep (Fishtail, V6, Running Right Turn, Running Finish, Cross Swivel, Quick Open Reverse, Hover Corté), Slowfox (Open Impetus, Hover Feather, Natural Weave, Weave aus der Promenade, Open Telemark, Fallaway Reverse and Slip Pivot, Bounce Fallaway), Tango (Open Reverse Turn, Back Open Promenade, Outside Swivel, Natural Twist Turn, Natural Promenade Turn, Contra Check, Fallaway Four Step), Wiener Walzer (Reverse Fleckerl).
+- Langsamer Walzer **Reverse Pivot** als Kombination mit den ersten drei Schritten der Linksdrehung (1 2 3 &). Offen bleiben nur Sweetheart und Follow My Leader.
+- Engine: Figuren mit eigenen Damenschritten, die in der Promenade beginnen, stellen die Dame in die V-Stellung.
+- 84 Figuren mit Quelle, 72 mit belegter Fußarbeit; 85 noch schematisch.
+
+**Geändert**
+- Quickstep-Kursfolgen Bronze, Silber, Gold und 14 Übungsfolgen neu zusammengestellt, weil sich Start- und Endfuß einiger Figuren nach der Quelle geändert haben; fünf neue Übungsfolgen.
+- Pivots (halbe Drehung auf einem Schlag) in zwei Vierteln, damit das Paar um seine Mitte dreht; Quickstep Reverse Pivot rück außenseitlich (CBMP).
+- Spanish Drag (Tango) endet geschlossen.
+
+**Nicht übernommen**
+- Six Quick Run, Tipsy nach links, Top Spin, Slowfox Natural Twist Turn (Quelldaten widersprüchlich), Tango Oversway (mit der Fersendrehung der Dame zu eng), Paso Spanish Lines (Dame müsste danach im Bogen um den Herrn gehen).
+
 ## 2026-11-23 (Nacht): Abstände, Quellenabgleich, Übungsfolgen, Arme
 
 **Behoben**

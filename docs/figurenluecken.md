@@ -12,9 +12,8 @@ Sortiert nach gewünschter Tanz-Priorität und Stufe (niedrige Stufen zuerst).
 
 | Nr. | Tanz | Figur | Stufe |
 |---|---|---|---|
-| 1 | Langsamer Walzer | Reverse Pivot – offen: wird auf „&“ aus dem vorigen Takt getanzt und ist als eigene Figur nicht taktgerecht darstellbar | Bronze |
-| 2 | Cha-Cha-Cha | Sweetheart – offen: Diagramm der Quelle widersprüchlich (Dame: Schritt 26/27 zweimal links belastet); am 2026-11-23 keine zweite frei zugängliche Quelle gefunden | Gold |
-| 3 | Cha-Cha-Cha | Follow My Leader – offen: Diagramm der Quelle widersprüchlich (Dame: derselbe Fuß zweimal hintereinander belastet); am 2026-11-23 keine zweite frei zugängliche Quelle gefunden | Gold |
+| 1 | Cha-Cha-Cha | Sweetheart – offen: Diagramm der Quelle widersprüchlich (Dame: Schritt 26/27 zweimal links belastet); am 2026-11-23 keine zweite frei zugängliche Quelle gefunden | Gold |
+| 2 | Cha-Cha-Cha | Follow My Leader – offen: Diagramm der Quelle widersprüchlich (Dame: derselbe Fuß zweimal hintereinander belastet); am 2026-11-23 keine zweite frei zugängliche Quelle gefunden | Gold |
 
 ## Slowfox
 
@@ -54,11 +53,11 @@ Abgedeckt: **28 von 28** Figuren der Abgleichliste (100 %).
 
 ## Langsamer Walzer
 
-Abgedeckt: **39 von 40** Figuren der Abgleichliste (98 %).
+Abgedeckt: **40 von 40** Figuren der Abgleichliste (100 %).
 
 | Stufe | vorhanden | fehlend |
 |---|---|---|
-| Bronze | Closed Change, Natural Turn, Reverse Turn, Natural Spin Turn, Whisk, Chassé from Promenade, Closed Impetus, Hesitation Change, Outside Change, Reverse Corté, Back Whisk, Basic Weave, Double Reverse Spin, Back Lock, Progressive Chassé to Right | Reverse Pivot – offen: wird auf „&“ aus dem vorigen Takt getanzt und ist als eigene Figur nicht taktgerecht darstellbar |
+| Bronze | Closed Change, Natural Turn, Reverse Turn, Natural Spin Turn, Whisk, Chassé from Promenade, Closed Impetus, Hesitation Change, Outside Change, Reverse Corté, Back Whisk, Basic Weave, Double Reverse Spin, Reverse Pivot, Back Lock, Progressive Chassé to Right | – |
 | Silber | Weave from Promenade, Closed Telemark, Open Telemark, Cross Hesitation, Wing, Open Impetus, Outside Spin, Turning Lock, Drag Hesitation | – |
 | Gold | Contra Check, Closed Wing, Turning Lock to Right, Left Whisk, Fallaway Reverse and Slip Pivot, Hover Corté, Fallaway Whisk | – |
 | Goldstar | Hover Telemark, Hinge Line, Curved Feather | – |

@@ -172,7 +172,10 @@ function simBlock(b,H,D,beat,extra,hs,ds){
   const own=Array.isArray(F.dame)&&F.dame.length>0, tw=s=>extra&&s.dir!=='halt'?{...s,turn:(+s.turn||0)+extra}:s;
   if(own){ // Figur beginnt in einer festen Stellung (z. B. aus dem Fächer): Steht die Dame ganz woanders, etwa beim Üben in Schleife, beginnt sie dort
     const h0=HOLDS[F.steps[0].hold]?F.steps[0].hold:'zu', g0=holdGeo(h0,sty);
-    if(g0.exact||g0.face===0){ const want=startD(H,sty,h0), c=lerp(D.L,D.R,.5), w=lerp(want.L,want.R,.5); if(Math.hypot(c[0]-w[0],c[1]-w[1])>.4) Object.assign(D,want); } }
+    if(g0.exact||g0.face===0){ const want=startD(H,sty,h0), c=lerp(D.L,D.R,.5), w=lerp(want.L,want.R,.5); if(Math.hypot(c[0]-w[0],c[1]-w[1])>.4) Object.assign(D,want); }
+    /* Beginnt die Figur in der Promenade, steht die Dame nicht frontal vor dem Herrn, sondern in der V-Stellung: Blick ¼ links von seinem
+       (Herr Diagonale Wand, Dame Diagonale Mitte). Ihre Schritte aus der Quelle (vor und über Kreuz …) beziehen sich auf diese Blickrichtung. */
+    if(h0==='prom') D.h=H.h+Math.PI/2; }
   let tH=beat,tD=beat,out=0;
   const anf=own?{c:lerp(H.L,H.R,.5),h:H.h,hold:HOLDS[F.steps[0].hold]?F.steps[0].hold:'zu'}:null;   // Stellung des Herrn am Anfang (Abstandsausgleich)
   /* Raumlenkung bei eigenen Damenschritten: Der Herr dreht zusätzlich um `extra` je Schritt. Die Dame tanzt ihre Schritte gedanklich ohne Lenkung

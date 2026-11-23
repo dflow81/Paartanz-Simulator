@@ -57,7 +57,7 @@ tanz('Langsamer Walzer',90,{
 
 /* ---------- Tango ---------- */
 tanz('Tango',128,{
-  b_t_drag:['Spanish Drag',[T_(S('L','seit',45,2,'S',0,'prom'),'Langer Schritt zur Seite'),T_(S('R','tap',0,2,'S',0,'prom'),'Der rechte Fuß wird langsam ohne Gewicht herangezogen')]],
+  b_t_drag:['Spanish Drag',[T_(S('L','seit',45,2,'S',0,'prom'),'Langer Schritt zur Seite'),T_(S('R','tap',0,2,'S',0,'zu'),'Der rechte Fuß wird langsam ohne Gewicht herangezogen, zurück in die geschlossene Haltung')]],
   b_t_orev:['Offene Linksdrehung (Open Reverse Turn)',[S('L','vor',35,1,'Q',45),S('R','seit',26,1,'Q',45),S('L','rueck',28,2,'S',45),S('R','rueck',30,1,'Q'),S('L','seit',26,1,'Q',45),S('R','vorAussen',32,2,'S')]],
   b_t_bopr:['Rückwärts offene Promenade',[S('L','rueck',32,2,'S'),S('R','rueck',26,1,'Q'),S('L','seit',28,1,'Q',0,'prom'),S('R','kreuzSeit',24,2,'S',0,'prom')]],
   b_t_oswivel:['Outside Swivel',[S('L','rueck',30,2,'S'),T_(S('R','kreuz',12,2,'S',0,'prom'),'Swivel: die Dame dreht zur Promenade, der rechte Fuß kreuzt ohne Eile')]],

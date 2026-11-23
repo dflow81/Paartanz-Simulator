@@ -1,21 +1,21 @@
 # Technikquellen für die Figuren des Paartanz-Simulators
 
-Stand 23. November 2026 (Zahlen nach dem Quellenabgleich aktualisiert). Die [Figurenmatrix als CSV](technikquellen-figuren.csv) enthält alle **552 eingebauten Figuren aus 31 Tänzen** mit Figuren-ID, Quellenlink, Fundstelle und Belegstatus. Bei 301 Figuren gibt es eine Fundstelle auf Figurenebene, einen Lehrplaneintrag oder eine verwandte Variante. Für 251 Figuren fehlt ein solcher Einzelbeleg. Eine Fundstelle ist der Einstieg in den Abgleich von Zählung, Fußarbeit und Führung beider Rollen.
+Stand 23. November 2026 (Zahlen nach dem Quellenabgleich aktualisiert). Die [Figurenmatrix als CSV](technikquellen-figuren.csv) enthält alle **553 eingebauten Figuren aus 31 Tänzen** mit Figuren-ID, Quellenlink, Fundstelle und Belegstatus. Bei 302 Figuren gibt es eine Fundstelle auf Figurenebene, einen Lehrplaneintrag oder eine verwandte Variante. Für 251 Figuren fehlt ein solcher Einzelbeleg. Eine Fundstelle ist der Einstieg in den Abgleich von Zählung, Fußarbeit und Führung beider Rollen.
 
 | Belegstatus in der CSV | Figuren | Aussage |
 |---|---:|---|
-| Quelle im Repo erfasst | 47 | Die Figur ist in [`figuren/belegt.js`](../figuren/belegt.js) oder [`figuren/quellen.js`](../figuren/quellen.js) mit Quelle verlinkt. Für 36 davon sind Fußarbeitswerte aus der Quelle hinterlegt. |
-| Figurenindex mit Medien | 187 | DanceNote hat einen passenden Namenseintrag mit Medienhinweis. Die konkrete Variante und die verfügbaren Technikfelder sind je Figur zu prüfen. |
-| Figurenindex mit Namenseintrag | 8 | Der Index nennt die Figur. Die Technik muss gesondert belegt werden. |
+| Quelle im Repo erfasst | 84 | Die Figur ist in [`figuren/belegt.js`](../figuren/belegt.js) oder [`figuren/quellen.js`](../figuren/quellen.js) mit Quelle verlinkt. Für 72 davon sind Fußarbeitswerte aus der Quelle hinterlegt. |
+| Figurenindex mit Medien | 154 | DanceNote hat einen passenden Namenseintrag mit Medienhinweis. Die konkrete Variante und die verfügbaren Technikfelder sind je Figur zu prüfen. |
+| Figurenindex mit Namenseintrag | 7 | Der Index nennt die Figur. Die Technik muss gesondert belegt werden. |
 | Figurenreferenz | 12 | Die Fundstelle beschreibt oder demonstriert die benannte Figur. Der Vergleich mit den Simulatorschritten ist offen. |
-| Figur im Lehrplan | 14 | Der Lehrplan nennt den Schritt oder die Figurenfamilie. |
-| Variante oder Teilfigur | 33 | Der Link liefert Vergleichsmaterial für einen Teilablauf oder eine verwandte Ausführung. |
+| Figur im Lehrplan | 13 | Der Lehrplan nennt den Schritt oder die Figurenfamilie. |
+| Variante oder Teilfigur | 32 | Der Link liefert Vergleichsmaterial für einen Teilablauf oder eine verwandte Ausführung. |
 | Nur Tanzreferenz | 241 | Es gibt einen Ansatz für den Tanz, die einzelne Figur braucht einen eigenen Beleg. |
 | Technikquelle offen | 10 | Für Marschfox liegt ein Kursbeleg zur Einordnung vor. Eine eigenständige Technikreferenz für die konkreten Schrittfolgen fehlt. |
 
 ## Offene Figuren
 
-Der **Fallaway Whisk** ist inzwischen nach Dance Central umgesetzt (als schematisch gekennzeichnet, weil die Seite nur gekürzt vorlag). Offen bleiben drei Figuren. DanceNote lehnt automatische Abrufe ab (HTTP 403); die dortigen Einträge lassen sich nur im Browser prüfen.
+Der **Fallaway Whisk** ist inzwischen nach Dance Central umgesetzt (als schematisch gekennzeichnet, weil die Seite nur gekürzt vorlag). Der **Reverse Pivot** ist als Kombination mit den ersten drei Schritten der Linksdrehung umgesetzt (1 2 3 &). Offen bleiben Sweetheart und Follow My Leader. DanceNote lehnt automatische Abrufe ab (HTTP 403); die dortigen Einträge lassen sich nur im Browser prüfen.
 
 
 | Tanz und Figur | Was sich belegen lässt | Was vor der Umsetzung geklärt werden muss |

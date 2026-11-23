@@ -320,23 +320,25 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 | 2 | Q | R | R / L | T |  | ● |  |  | oben | – |  |  | DW | links |
 | 3 | Q | L | L / R | TH | ● | ● |  |  | oben | am Ende |  | ● | DW | links |
 
-## Open Impetus (in die Promenade)
+## Open Impetus (in die Promenade) †
+
+Quelle: http://dance.djurredeboer.nl/standard/foxtrot/open_impetus.html
 
 **Herr**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | L | L / R | TH | ● | ● |  |  | am Ende | – | ● |  | DW | gerade |
+| 1 | S | L | L / R | TH | ● | ● |  |  | am Ende | – |  |  | LOD | gerade |
 | 2 | Q | R | R / L | HT | ● | ● |  |  | oben | – |  |  | DW gegen LOD | rechts |
-| 3 | Q | L | L / R | HT | ● | ● |  |  | oben | am Ende |  |  | DW gegen LOD | rechts |
+| 3 | Q | L | L / R | TH | ● | ● |  |  | oben | am Ende |  |  | gegen LOD | rechts |
 
 **Dame**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | R | R / L | HT | ● | ● |  |  | am Ende | – | ● |  | DC gegen LOD | gerade |
-| 2 | Q | L | L / R | HT | ● | ● |  |  | oben | – |  |  | DC | rechts |
-| 3 | Q | R | R / L | TH | ● | ● |  |  | oben | am Ende |  |  | DC | rechts |
+| 1 | S | R | R / L | HT | ● | ● |  |  | am Ende | – |  |  | gegen LOD | gerade |
+| 2 | Q | L | L / R | T |  | ● |  |  | oben | – |  |  | DC | rechts |
+| 3 | Q | R | R / L | TH | ● | ● |  |  | oben | am Ende |  |  | W | rechts |
 
 ## Curved Feather
 
@@ -356,23 +358,23 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 | 2 | Q | R | R / L | TH | ● | ● |  |  | oben | – | ● |  | C | rechts |
 | 3 | Q | L | L / R | TH | ● | ● |  |  | oben | am Ende | ● | ● | DC | rechts |
 
-## Hover Feather
+## Hover Feather †
+
+Quelle: http://dance.djurredeboer.nl/standard/foxtrot/hover_feather.html
 
 **Herr**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | R | R / L | HT | ● | ● |  |  | am Ende | – |  |  | LOD | gerade |
-| 2 | Q | L | L / R | HT | ● | ● |  |  | oben | – |  |  | LOD | gerade |
-| 3 | Q | R | R / L | HT | ● | ● |  |  | oben | am Ende |  | ● | LOD | gerade |
+| 1 | Q | L | L / R | T |  | ● |  |  | oben | – |  |  | LOD | gerade |
+| 2 | Q | R | R / L | TH | ● | ● |  |  | oben | am Ende |  | ● | LOD | gerade |
 
 **Dame**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | L | L / R | TH | ● | ● |  |  | am Ende | – |  |  | gegen LOD | gerade |
-| 2 | Q | R | R / L | TH | ● | ● |  |  | oben | – |  |  | gegen LOD | gerade |
-| 3 | Q | L | L / R | TH | ● | ● |  |  | oben | am Ende |  | ● | gegen LOD | gerade |
+| 1 | Q | R | R / L | TH | ● | ● |  |  | oben | – |  |  | gegen LOD | gerade |
+| 2 | Q | L | L / R | TH | ● | ● |  |  | oben | am Ende |  | ● | gegen LOD | gerade |
 
 ## Tumble Turn
 
@@ -398,81 +400,91 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 | 5 | Q | R | R / L | T |  | ● |  |  | oben | – |  |  | DC | links |
 | 6 | Q | L | L / R | TH | ● | ● |  |  | oben | am Ende |  | ● | DC | links |
 
-## Bounce Fallaway mit Weave-Ende
+## Bounce Fallaway mit Weave-Ende †
+
+Quelle: http://dance.djurredeboer.nl/standard/foxtrot/bounce_fallaway.html
 
 **Herr**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | L | L / R | HT | ● | ● |  |  | am Ende | – | ● |  | DC | gerade |
-| 2 | Q | R | R / L | T |  | ● |  |  | oben | – |  |  | DC | links |
-| 3 | Q | L | L / R | T |  | ● |  |  | oben | – |  | ● | DC | gerade |
-| 4 | Q | R | R / L | TH | ● | ● |  |  | oben | – | ● |  | C | links |
-| 5 | Q | L | L / R | T |  | ● |  |  | oben | am Ende |  |  | DC gegen LOD | links |
-| 6 | S | R | R / L | HT | ● | ● |  |  | am Ende | – |  | ● | DC gegen LOD | links |
+| 1 | Q | L | L / R | HT | ● | ● |  |  | oben | – |  |  | LOD | gerade |
+| 2 | Q | R | R / L | T |  | ● |  |  | oben | – | ● |  | DC gegen LOD | links |
+| 3 | Q | L | L / R | T |  | ● |  |  | oben | – |  | ● | DC gegen LOD | links |
+| 4 | Q | R | R / L | T |  | ● |  |  | oben | – |  |  | DC gegen LOD | gerade |
+| 5 | Q | L | L / R | T |  | ● |  |  | oben | – | ● | ● | gegen LOD | links |
+| 6 | Q | R | R / L | T |  | ● |  |  | oben | – |  |  | gegen LOD | links |
+| 7 | Q | L | L / R | T |  | ● |  |  | oben | – |  |  | W | links |
+| 8 | Q | R | R / L | TH | ● | ● |  |  | oben | am Ende |  | ● | W | links |
 
 **Dame**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | R | R / L | TH | ● | ● |  |  | am Ende | – | ● |  | DW gegen LOD | gerade |
+| 1 | Q | R | R / L | THT | ● | ● |  |  | oben | – |  |  | gegen LOD | gerade |
 | 2 | Q | L | L / R | T |  | ● |  |  | oben | – |  |  | DW gegen LOD | links |
-| 3 | Q | R | R / L | T |  | ● |  |  | oben | – |  | ● | DW gegen LOD | gerade |
-| 4 | Q | L | L / R | HT | ● | ● |  |  | oben | – | ● |  | W | links |
-| 5 | Q | R | R / L | T |  | ● |  |  | oben | am Ende |  |  | DW | links |
-| 6 | S | L | L / R | TH | ● | ● |  |  | am Ende | – |  | ● | DW | links |
+| 3 | Q | R | R / L | T |  | ● |  |  | oben | – |  | ● | DW gegen LOD | links |
+| 4 | Q | L | L / R | T |  | ● |  |  | oben | – |  |  | DW | links |
+| 5 | Q | R | R / L | T |  | ● |  |  | oben | – | ● | ● | LOD | links |
+| 6 | Q | L | L / R | T |  | ● |  |  | oben | – |  |  | LOD | links |
+| 7 | Q | R | R / L | TH | ● | ● |  |  | oben | – |  |  | DC | links |
+| 8 | Q | L | L / R | TH | ● | ● |  |  | oben | am Ende | ● | ● | C | links |
 
-## Natural Weave
+## Natural Weave †
+
+Quelle: http://dance.djurredeboer.nl/standard/foxtrot/natural_weave.html
 
 **Herr**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | R | R / L | HT | ● | ● |  |  | am Ende | – | ● |  | DW | gerade |
+| 1 | S | R | R / L | HT | ● | ● |  |  | am Ende | – |  |  | LOD | gerade |
 | 2 | Q | L | L / R | T |  | ● |  |  | oben | – |  |  | W | rechts |
-| 3 | Q | R | R / L | TH | ● | ● |  |  | oben | – | ● |  | DW gegen LOD | rechts |
-| 4 | Q | L | L / R | TH | ● | ● |  |  | oben | – |  |  | DW gegen LOD | rechts |
-| 5 | Q | R | R / L | TH | ● | ● |  |  | oben | – | ● |  | W | links |
-| 6 | Q | L | L / R | T |  | ● |  |  | oben | – |  |  | DW | links |
-| 7 | Q | R | R / L | HT | ● | ● |  |  | oben | am Ende |  | ● | DW | links |
+| 3 | Q | R | R / L | T |  | ● |  |  | oben | – |  |  | W | rechts |
+| 4 | Q | L | L / R | T |  | ● |  |  | oben | – |  | ● | W | rechts |
+| 5 | Q | R | R / L | T |  | ● |  |  | oben | – | ● |  | DW | links |
+| 6 | Q | L | L / R | T |  | ● |  |  | oben | – |  |  | LOD | links |
+| 7 | Q | R | R / L | TH | ● | ● |  |  | oben | am Ende |  | ● | LOD | links |
 
 **Dame**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | L | L / R | TH | ● | ● |  |  | am Ende | – | ● |  | DC gegen LOD | gerade |
-| 2 | Q | R | R / L | T |  | ● |  |  | oben | – |  |  | C | rechts |
-| 3 | Q | L | L / R | HT | ● | ● |  |  | oben | – | ● |  | DC | rechts |
-| 4 | Q | R | R / L | HT | ● | ● |  |  | oben | – |  |  | DC | rechts |
-| 5 | Q | L | L / R | HT | ● | ● |  |  | oben | – | ● |  | C | links |
-| 6 | Q | R | R / L | T |  | ● |  |  | oben | – |  |  | DC gegen LOD | links |
-| 7 | Q | L | L / R | TH | ● | ● |  |  | oben | am Ende |  | ● | DC gegen LOD | links |
+| 1 | S | L | L / R | TH | ● | ● |  |  | am Ende | – |  |  | gegen LOD | gerade |
+| 2 | Q | R | R / L | HT | ● | ● |  |  | oben | – |  |  | C | rechts |
+| 3 | Q | L | L / R | T |  | ● |  |  | oben | – |  |  | C | rechts |
+| 4 | Q | R | R / L | T |  | ● |  |  | oben | – |  | ● | C | rechts |
+| 5 | Q | L | L / R | T |  | ● |  |  | oben | – | ● |  | DC gegen LOD | links |
+| 6 | Q | R | R / L | TH | ● | ● |  |  | oben | – |  |  | gegen LOD | links |
+| 7 | Q | L | L / R | TH | ● | ● |  |  | oben | am Ende |  | ● | gegen LOD | links |
 
-## Weave aus der Promenade
+## Weave aus der Promenade †
+
+Quelle: http://dance.djurredeboer.nl/standard/foxtrot/weave_from_pp.html
 
 **Herr**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | R | R / L | T |  | ● |  |  | am Ende | – |  | ● | LOD | gerade |
-| 2 | Q | L | L / R | HT | ● | ● |  |  | oben | – | ● |  | DC | links |
-| 3 | Q | R | R / L | T |  | ● |  |  | oben | – |  |  | C | links |
-| 4 | Q | L | L / R | TH | ● | ● |  |  | oben | – |  |  | C | links |
-| 5 | Q | R | R / L | TH | ● | ● |  |  | oben | – | ● |  | DC gegen LOD | links |
-| 6 | Q | L | L / R | T |  | ● |  |  | oben | – |  |  | gegen LOD | links |
-| 7 | Q | R | R / L | HT | ● | ● |  |  | oben | am Ende |  | ● | gegen LOD | links |
+| 1 | S | R | R / L | HT | ● | ● |  |  | am Ende | – |  | ● | DC | gerade |
+| 2 | Q | L | L / R | T |  | ● |  |  | oben | – | ● |  | C | links |
+| 3 | Q | R | R / L | T |  | ● |  |  | oben | – |  |  | gegen LOD | links |
+| 4 | Q | L | L / R | T |  | ● |  |  | oben | – | ● | ● | DW gegen LOD | links |
+| 5 | Q | R | R / L | T |  | ● |  |  | oben | – |  |  | DW gegen LOD | links |
+| 6 | Q | L | L / R | T |  | ● |  |  | oben | – |  |  | DW | links |
+| 7 | Q | R | R / L | TH | ● | ● |  |  | oben | am Ende |  | ● | DW | links |
 
 **Dame**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | L | L / R | T |  | ● |  |  | am Ende | – |  | ● | gegen LOD | gerade |
-| 2 | Q | R | R / L | TH | ● | ● |  |  | oben | – | ● |  | DW gegen LOD | links |
-| 3 | Q | L | L / R | T |  | ● |  |  | oben | – |  |  | W | links |
-| 4 | Q | R | R / L | HT | ● | ● |  |  | oben | – |  |  | W | links |
-| 5 | Q | L | L / R | HT | ● | ● |  |  | oben | – | ● |  | DW | links |
-| 6 | Q | R | R / L | T |  | ● |  |  | oben | – |  |  | LOD | links |
-| 7 | Q | L | L / R | TH | ● | ● |  |  | oben | am Ende |  | ● | LOD | links |
+| 1 | S | L | L / R | HT | ● | ● |  |  | am Ende | – |  | ● | C | gerade |
+| 2 | Q | R | R / L | T |  | ● |  |  | oben | – |  |  | DW gegen LOD | links |
+| 3 | Q | L | L / R | T |  | ● |  |  | oben | – |  |  | LOD | links |
+| 4 | Q | R | R / L | T |  | ● |  |  | oben | – |  | ● | LOD | links |
+| 5 | Q | L | L / R | T |  | ● |  |  | oben | – |  |  | LOD | gerade |
+| 6 | Q | R | R / L | TH | ● | ● |  |  | oben | – |  |  | C | links |
+| 7 | Q | L | L / R | TH | ● | ● |  |  | oben | am Ende | ● | ● | DC gegen LOD | links |
 
 ## Top Spin
 
@@ -494,23 +506,25 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 | 3 | Q | R | R / L | T |  | ● |  |  | oben | – |  |  | DW | links |
 | 4 | Q | L | L / R | TH | ● | ● |  |  | oben | am Ende |  | ● | DW | links |
 
-## Open Telemark
+## Open Telemark †
+
+Quelle: http://dance.djurredeboer.nl/standard/foxtrot/open_telemark.html
 
 **Herr**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | S | L | L / R | HT | ● | ● |  |  | am Ende | – | ● |  | DC | gerade |
-| 2 | Q | R | R / L | T |  | ● |  |  | oben | – |  |  | DC gegen LOD | links |
-| 3 | Q | L | L / R | HT | ● | ● |  |  | oben | am Ende |  |  | DC gegen LOD | links |
+| 2 | Q | R | R / L | T |  | ● |  |  | oben | – |  |  | gegen LOD | links |
+| 3 | Q | L | L / R | TH | ● | ● |  |  | oben | am Ende |  |  | DW gegen LOD | links |
 
 **Dame**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | S | R | R / L | TH | ● | ● |  |  | am Ende | – | ● |  | DW gegen LOD | gerade |
-| 2 | Q | L | L / R | HT | ● | ● |  |  | oben | – |  |  | DW | links |
-| 3 | Q | R | R / L | TH | ● | ● |  |  | oben | am Ende |  |  | DW | links |
+| 2 | Q | L | L / R | HT | ● | ● |  |  | oben | – |  |  | LOD | links |
+| 3 | Q | R | R / L | TH | ● | ● |  |  | oben | am Ende |  |  | DC | links |
 
 ## Natural Twist Turn
 
@@ -638,25 +652,27 @@ Quelle: http://dance.djurredeboer.nl/standard/foxtrot/zig_zag.html
 | 4 | Q | R | R / L | TH | ● | ● |  |  | oben | – |  |  | gegen LOD | links |
 | 5 | Q | L | L / R | TH | ● | ● |  |  | oben | am Ende |  | ● | gegen LOD | links |
 
-## Fallaway Reverse and Slip Pivot
+## Fallaway Reverse and Slip Pivot †
+
+Quelle: http://dance.djurredeboer.nl/standard/foxtrot/fallaway_reverse.html
 
 **Herr**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | L | L / R | HT | ● | ● |  |  | am Ende | – | ● |  | DC | gerade |
-| 2 | Q | R | R / L | T |  | ● |  |  | oben | – |  |  | C | links |
-| 3 | Q | L | L / R | T |  | ● |  |  | oben | am Ende |  | ● | C | links |
-| 4 | S | R | R / L | TH | ● | ● |  |  | am Ende | – | ● |  | gegen LOD | links |
+| 1 | Q | L | L / R | HT | ● | ● |  |  | oben | – |  |  | LOD | gerade |
+| 2 | Q | R | R / L | T |  | ● |  |  | oben | – | ● |  | DC gegen LOD | links |
+| 3 | Q | L | L / R | TH | ● | ● |  |  | oben | – | ● | ● | gegen LOD | links |
+| 4 | Q | R | R / L | THT | ● | ● |  |  | oben | am Ende | ● |  | DW | links |
 
 **Dame**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | S | R | R / L | TH | ● | ● |  |  | am Ende | – | ● |  | DW gegen LOD | gerade |
-| 2 | Q | L | L / R | T |  | ● |  |  | oben | – |  |  | W | links |
-| 3 | Q | R | R / L | T |  | ● |  |  | oben | am Ende |  | ● | W | links |
-| 4 | S | L | L / R | HT | ● | ● |  |  | am Ende | – | ● |  | LOD | links |
+| 1 | Q | R | R / L | TH | ● | ● |  |  | oben | – |  |  | gegen LOD | gerade |
+| 2 | Q | L | L / R | T |  | ● |  |  | oben | – |  |  | DW gegen LOD | links |
+| 3 | Q | R | R / L | T |  | ● |  |  | oben | – | ● |  | DC | links |
+| 4 | Q | L | L / R | TH | ● | ● |  |  | oben | am Ende | ● |  | DC gegen LOD | links |
 
 ## Extended Reverse Wave
 

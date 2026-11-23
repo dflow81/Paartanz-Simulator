@@ -138,6 +138,89 @@ tanz('Langsamer Walzer',90,{
 QUELLEN.b_w_fwhisk='https://www.dancecentral.info/ballroom/international-style/waltz/fallaway-whisk';
 INFO.b_w_fwhisk=[4,'prom','Fallaway Whisk: rück mit Rechtsdrehung, seit und etwas rück, dann kreuzt der linke Fuß locker hinter – Herr und Dame stehen im Fallaway (Promenade rückwärts). Danach eine Figur aus der Promenade.','s'];
 
+
+/* ==================== Standardtänze nach BallroomGuide ====================
+   Herrenschritte nach der Quelle; die Dame tanzt gegengleich (Fersendrehungen der Dame als df:'ferse'), wo ihre Schritte nicht einfach
+   gespiegelt sind, hat sie eigene Schritte. Drehung „zwischen a und b“ liegt auf Schritt b; positive Werte = links, negative = rechts. */
+const fe=st=>({...st,df:'ferse',tip:st.tip||'Dame: Fersendrehung – Füße schließen, auf den Fersen drehen'});
+const W=(f,dir,len,d,c,t=0,h)=>S(f,dir,len,d,c,t,h);
+tanz('Langsamer Walzer',90,{
+  b_w_otelemark:['Open Telemark',[W('L','vor',35,1,'1',30),fe(W('R','seit',30,1,'2',135)),tip(W('L','seit',25,1,'3',45,'prom'),'Öffnen in die Promenade')]],
+  b_w_wing:['Wing',[W('R','kreuz',30,1,'1',45,'prom'),tip(W('L','tap',0,1,'2',0),'Linken Fuß langsam heranziehen, die Dame geht links um den Herrn herum'),W('L','tap',0,1,'3')],
+    [W('L','kreuz',25,1,'1'),W('R','vor',25,1,'2',45),tip(W('L','vorAussen',25,1,'3',90),'Die Dame endet außen links vom Herrn')]],
+  b_w_contra:['Contra Check',[tip(W('L','vorAussen',20,1,'1',45),'Contra Check: links vor in CBMP, Knie gebeugt, Körper dreht stark links'),W('R','platz',0,1,'2',-45),W('L','seit',20,1,'3',0,'prom')]],
+  b_w_hcorte:['Hover Corté',[W('R','rueck',25,1,'1',30),tip(W('L','seit',20,1,'2',105),'Hover: hochkommen, Sway nach rechts'),W('R','platz',0,1,'3')]],
+  b_w_dbl:['Double Reverse Spin',[W('L','vor',35,1,'1',30),W('R','seit',26,.5,'2',90),tip(W('L','tap',0,.5,'&',135),'Linker Fuß schließt ohne Gewicht, auf dem rechten Ballen weiterdrehen'),W('R','platz',0,1,'3',90)],
+    [W('R','rueck',30,1,'1',30),fe(W('L','ferse',0,.5,'2',135)),W('R','seit',20,.5,'&',90),W('L','kreuz',8,1,'3',90)]],
+  b_w_ospin:['Outside Spin',[tip(W('L','rueck',15,1,'1',-135),'Kleiner Schritt rück in CBMP, Spitze einwärts – Pivot'),W('R','vorAussen',30,1,'2'),tip(W('L','seit',25,1,'3',-270),'Seit und weiter drehen, endet links rück')],
+    [W('R','vorAussen',30,1,'1'),W('L','schliessen',0,1,'2',-225),W('R','vor',25,1,'3',-180)]],
+  b_w_tlock:['Turning Lock',[W('R','rueck',25,.5,'1'),W('L','kreuz',10,.5,'&'),W('R','rueck',20,1,'2',30),W('L','seit',25,1,'3',60)]],
+  b_w_drag:['Drag Hesitation',[W('L','vor',30,1,'1',30),W('R','seit',30,1,'2',60),tip(W('L','tap',0,1,'3',45),'Linker Fuß schließt ohne Gewicht (Drag)')]],
+  b_w_bwhisk:['Back Whisk',[W('L','rueck',30,1,'1'),W('R','diagRueck',25,1,'2'),tip(W('L','kreuzHinter',15,1,'3',0,'prom'),'Links kreuzt hinter – in die Promenade')]],
+  b_w_rcorte:['Reverse Corté',[W('R','rueck',30,1,'1',30),tip(W('L','tap',0,1,'2',105),'Links schließt ohne Gewicht, Fersendrehung auf dem rechten Fuß'),W('L','halt',0,1,'3')],
+    [W('L','vor',30,1,'1',30),W('R','seit',25,1,'2',90),W('L','schliessen',0,1,'3',45)]],
+  b_w_wpp:['Weave aus der Promenade',[W('R','kreuz',30,1,'1',45,'prom'),W('L','vor',30,1,'2'),W('R','seit',25,1,'3',90),W('L','rueckAussen',30,1,'1',45),W('R','rueck',25,1,'2'),W('L','seit',25,1,'3',135)],
+    [W('L','kreuz',30,1,'1'),W('R','seit',25,1,'2',135),W('L','seit',25,1,'3',135),W('R','vorAussen',30,1,'1'),W('L','vor',30,1,'2'),W('R','seit',25,1,'3',135)]],
+  b_w_pcr:['Progressives Chassé nach rechts',[W('L','vor',30,1,'1',30),W('R','seit',25,.5,'2',45),W('L','schliessen',0,.5,'&',45),W('R','seit',25,1,'3')]],
+  b_w_cross:['Cross Hesitation',[W('R','kreuz',30,1,'1',45,'prom'),tip(W('L','tap',0,1,'2'),'Linker Fuß schließt ohne Gewicht'),W('L','halt',0,1,'3')],
+    [W('L','kreuz',30,1,'1'),W('R','seit',25,1,'2',90),W('L','schliessen',0,1,'3',45)]],
+  b_w_frsp:['Fallaway Reverse and Slip Pivot',[W('L','vor',30,.5,'1',20),W('R','rueck',20,.5,'&',115,'prom'),W('L','rueckAussen',20,1,'2',45,'prom'),tip(W('R','rueck',10,1,'3',135),'Slip Pivot: rechts rück, linker Fuß bleibt in CBMP')],
+    [W('R','rueck',30,.5,'1',20),W('L','rueck',20,.5,'&',25),W('R','rueck',10,1,'2',180),W('L','vor',15,1,'3',90)]],
+  /* Reverse Pivot: wird auf „&“ am Ende einer Figur getanzt – hier als Kombination mit den ersten drei Schritten der Linksdrehung (1 2 3 &) */
+  b_w_rpivot:['Reverse Pivot (nach halber Linksdrehung, 1 2 3 &)',[W('L','vor',35,1,'1',45),W('R','seit',30,1,'2',90),W('L','schliessen',0,.5,'3',45),
+    tip(W('R','rueck',10,.25,'&',90),'Reverse Pivot: kleiner Schritt rück in CBMP, Spitze einwärts, ½ Linksdrehung'),W('R','platz',0,.25,'a',90)]],   // Pivot in zwei Vierteln, damit das Paar um seine Mitte dreht
+});
+tanz('Quickstep',200,{
+  b_q_fishtail:['Fishtail',[W('R','vorAussen',30,2,'S'),W('L','kreuzHinter',10,1,'Q'),W('R','vor',15,1,'Q',-45),W('L','diagVor',25,1,'Q',-45),W('R','kreuzHinter',10,1,'Q'),W('L','diagVor',25,2,'S')]],
+  b_q_v6:['V6',[W('L','rueck',30,2,'S'),W('R','rueck',25,1,'Q'),W('L','kreuz',10,1,'Q'),W('R','diagRueck',25,2,'S'),W('L','rueckAussen',30,2,'S'),W('R','rueck',25,1,'Q',30),W('L','seit',25,1,'Q',60)]],
+  b_q_rrturn:['Running Right Turn',[W('R','vor',35,2,'S',-20),W('L','seit',30,1,'Q',-70),W('R','schliessen',0,1,'Q',-45),tip(W('L','rueck',15,1,'S',-90),'Pivot: links rück, Spitze einwärts, ½ Rechtsdrehung'),W('L','platz',0,1,'&',-90),
+    W('R','vorAussen',30,2,'S',-20),fe(W('L','seit',30,2,'S',-115)),W('R','rueck',25,2,'S',-45),W('L','rueckAussen',25,1,'Q',-20),W('R','seit',25,1,'Q',-115),W('L','vor',30,2,'S')]],
+  b_q_rfinish:['Running Finish',[W('L','rueckAussen',30,2,'S',-20),W('R','seit',25,1,'Q',-115),tip(W('L','vor',25,1,'Q'),'Links vor, linke Seite führt')]],
+  b_q_swivel:['Cross Swivel',[W('L','vor',30,2,'S',60),tip(W('R','tap',0,2,'S',30),'Rechter Fuß schließt etwas hinter ohne Gewicht – Swivel')]],
+  b_q_qor:['Quick Open Reverse',[W('R','vorAussen',30,2,'S'),W('L','vor',30,2,'S',30),W('R','seit',25,1,'Q',60),W('L','rueckAussen',15,1,'Q',45)]],
+  b_q_hcorte:['Hover Corté',[W('R','rueck',25,2,'S',30),tip(W('L','seit',20,2,'S',105),'Hover: hochkommen, Sway nach rechts'),W('R','platz',0,2,'S')]],
+});
+tanz('Slowfox',116,{
+  b_sf_oimp:['Open Impetus (in die Promenade)',[W('L','rueck',35,2,'S',-20),tip(W('R','ferse',0,1,'Q',-120),'Herr: Fersendrehung, Füße geschlossen'),W('L','seit',25,1,'Q',-40,'prom')],
+    [W('R','vor',35,2,'S',-20),W('L','seit',30,1,'Q',-125),W('R','seit',25,1,'Q',-125)]],
+  b_sf_hfeder:['Hover Feather',[tip(W('L','diagVor',25,1,'Q'),'Hover: hoch, linke Seite führt'),W('R','vorAussen',30,1,'Q')]],
+  b_sf_nweave:['Natural Weave',[W('R','vor',35,2,'S',-10),fe(W('L','seit',30,1,'Q',-70)),W('R','rueck',25,1,'Q',-10),W('L','rueckAussen',25,1,'Q'),W('R','rueck',25,1,'Q',30),W('L','seit',25,1,'Q',60),W('R','vorAussen',30,1,'Q')]],
+  b_sf_wpp:['Weave aus der Promenade',[W('R','kreuz',30,2,'S',45,'prom'),W('L','vor',25,1,'Q',45),W('R','seit',25,1,'Q',90),W('L','rueckAussen',25,1,'Q',45),W('R','rueck',25,1,'Q'),W('L','seit',25,1,'Q',90),W('R','vorAussen',30,1,'Q')],
+    [W('L','kreuz',30,2,'S'),W('R','seit',25,1,'Q',135),W('L','seit',25,1,'Q',135),W('R','vorAussen',30,1,'Q'),W('L','vor',25,1,'Q'),W('R','seit',25,1,'Q',90),W('L','rueckAussen',25,1,'Q',45)]],
+  b_sf_otelemark:['Open Telemark',[W('L','vor',35,2,'S',30),fe(W('R','seit',30,1,'Q',135)),tip(W('L','seit',25,1,'Q',45,'prom'),'Öffnen in die Promenade')]],
+  b_sf_frsp:['Fallaway Reverse and Slip Pivot',[W('L','vor',30,1,'Q',20),W('R','rueck',20,1,'Q',115,'prom'),W('L','rueckAussen',20,1,'Q',45,'prom'),tip(W('R','rueck',10,1,'Q',135),'Slip Pivot: rechts rück, linker Fuß bleibt in CBMP')],
+    [W('R','rueck',30,1,'Q',20),W('L','rueck',20,1,'Q',25),W('R','rueck',10,1,'Q',180),W('L','vor',15,1,'Q',90)]],
+  b_sf_bounce:['Bounce Fallaway mit Weave-Ende',[W('L','vor',30,1,'Q',20),W('R','rueck',20,1,'Q',115,'prom'),W('L','rueckAussen',20,1,'Q',0,'prom'),W('R','seit',20,1,'Q'),W('L','rueckAussen',25,1,'Q',45),W('R','rueck',25,1,'Q'),W('L','seit',25,1,'Q',90),W('R','vorAussen',30,1,'Q')],
+    [W('R','rueck',30,1,'Q',20),W('L','rueck',20,1,'Q',25),W('R','rueckAussen',20,1,'Q'),W('L','seit',20,1,'Q',90),W('R','vorAussen',25,1,'Q',45),W('L','vor',25,1,'Q'),W('R','seit',25,1,'Q',45),W('L','rueckAussen',25,1,'Q',45)]],
+});
+tanz('Tango',128,{
+  b_t_orev:['Offene Linksdrehung (Open Reverse Turn)',[W('L','vorAussen',30,1,'Q',20),W('R','seit',25,1,'Q',90),W('L','rueckAussen',25,2,'S',45),W('R','rueck',25,1,'Q'),W('L','seit',20,1,'Q',115),W('R','schliessen',0,2,'S')]],
+  b_t_bopr:['Rückwärts offene Promenade',[W('L','seit',30,2,'S',0,'prom'),W('R','kreuz',25,1,'Q',0,'prom'),W('L','seit',20,1,'Q',-90),W('R','rueck',25,2,'S')]],
+  b_t_oswivel:['Outside Swivel',[tip(W('L','rueckAussen',20,2,'S',-45),'Links rück in CBMP, Spitze einwärts, rechter Fuß bleibt vorn'),W('R','kreuz',20,1,'Q',45,'prom'),W('L','tapSeit',0,1,'Q')],
+    [W('R','vorAussen',15,2,'S'),W('L','kreuz',20,1,'Q',-135),W('R','tapSeit',0,1,'Q',135)]],
+  b_t_ntwist:['Natural Twist Turn',[W('L','seit',30,2,'S',0,'prom'),W('R','kreuz',25,1,'Q',0,'prom'),W('L','seit',20,1,'Q',-90),tip(W('R','kreuzHinter',10,2,'S',-45),'Rechts kreuzt hinter, Gewicht geteilt'),
+    tip(W('L','platz',0,1,'Q',-115),'Twist: auf beiden Füßen rechts aufdrehen, die Füße lösen sich'),W('R','platz',0,1,'Q',-110,'prom')],
+    [W('R','seit',30,2,'S'),W('L','kreuz',25,1,'Q',-45),W('R','vor',25,1,'Q'),W('L','vor',15,2,'S',-45),W('R','vorAussen',15,1,'Q',-45),W('L','vor',12,1,'Q',-180)]],
+  b_t_npt:['Natural Promenade Turn',[W('L','seit',30,2,'S',0,'prom'),W('R','kreuz',25,1,'Q',0,'prom'),W('L','seit',20,1,'Q',-135),tip(W('R','vor',25,2,'S',-135,'prom'),'Rechts vor und in die Promenade drehen – der Seitschritt links beginnt die nächste Figur')],
+    [W('R','seit',30,2,'S'),W('L','kreuz',25,1,'Q'),W('R','vor',25,1,'Q',-45),W('L','seit',20,2,'S',-225)]],
+  b_t_contra:['Contra Check',[tip(W('L','vorAussen',20,2,'S',45),'Contra Check: links vor in CBMP, Knie gebeugt'),W('R','platz',0,1,'Q',-45),W('L','tapSeit',0,1,'Q',0,'prom')]],
+  b_t_fall4:['Fallaway Four Step',[W('L','vorAussen',25,1,'Q',20),W('R','diagRueck',20,1,'Q',70,'prom'),W('L','rueckAussen',20,1,'Q',0,'prom'),W('R','schliessen',0,1,'Q',0,'prom')]],
+});
+tanz('Wiener Walzer',174,{
+  b_ww_rfleckerl:['Reverse Fleckerl (Drehung am Platz, links)',[W('L','vor',5,1,'1',90),W('R','seit',10,1,'2',135),tip(W('L','kreuz',5,1,'3',135),'Links kreuzt vor rechts'),W('R','seit',10,1,'1',45),W('L','kreuzHinter',5,1,'2',180),W('R','seit',10,1,'3',135)],
+    [W('R','seit',10,1,'1',45),W('L','kreuzHinter',5,1,'2',180),W('R','seit',10,1,'3',135),W('L','kreuz',5,1,'1',90),W('R','seit',10,1,'2',135),W('L','kreuz',5,1,'3',135)]],
+});
+for(const [id,pfad] of Object.entries({b_w_otelemark:'waltz/open_telemark',b_w_wing:'waltz/wing',b_w_contra:'waltz/contra_check',b_w_hcorte:'waltz/hover_corte',b_w_dbl:'waltz/double_reverse',
+  b_w_ospin:'waltz/outside_spin',b_w_tlock:'waltz/turning_lock',b_w_drag:'waltz/drag_hesitation',b_w_bwhisk:'waltz/back_whisk',b_w_rcorte:'waltz/reverse_corte',b_w_wpp:'waltz/weave_from_pp',
+  b_w_pcr:'waltz/chasse_right',b_w_cross:'waltz/cross_hesitation',b_w_frsp:'waltz/fallaway_reverse',b_w_rpivot:'waltz/reverse_pivot',
+  b_q_fishtail:'quickstep/fishtail',b_q_v6:'quickstep/v6',b_q_rrturn:'quickstep/running_right_turn',b_q_rfinish:'quickstep/running_finish',b_q_swivel:'quickstep/cross_swivel',
+  b_q_qor:'quickstep/quick_open_reverse',b_q_hcorte:'quickstep/hover_corte',b_sf_oimp:'foxtrot/open_impetus',b_sf_hfeder:'foxtrot/hover_feather',b_sf_nweave:'foxtrot/natural_weave',
+  b_sf_wpp:'foxtrot/weave_from_pp',b_sf_otelemark:'foxtrot/open_telemark',b_sf_frsp:'foxtrot/fallaway_reverse',b_sf_bounce:'foxtrot/bounce_fallaway',
+  b_t_orev:'tango/open_reverse_turn',b_t_bopr:'tango/back_open_promenade',b_t_oswivel:'tango/outside_swivel',b_t_ntwist:'tango/twist_turn',b_t_npt:'tango/promenade_turn',
+  b_t_contra:'tango/contra_check',b_t_fall4:'tango/fallaway_four_step',b_ww_rfleckerl:'viennese/reverse_fleckerl'})) belegt(id,'standard/'+pfad+'.html');
+INFO.b_w_rpivot=[2,'dreh','Reverse Pivot: nach den ersten drei Schritten der Linksdrehung auf „&“ ein kleiner Schritt rück in CBMP mit ½ Linksdrehung auf dem Ballen. Endet vorwärts, bereit für die nächste Linksdrehung.'];
+
+
 /* Fußarbeit aus den Schritttabellen der Quelle (B = Ballen, F = flach, H = Ferse, T = Spitze, W = ganzer Fuß, i/e = Innenkante) */
 const fw=(id,H,D=H)=>{ const z=x=>x.split(' ').map(y=>y.replace(/-/g,' ')); TECHNIK_DATEN[id]={H:{fuss:z(H)},D:{fuss:z(D)}}; };
 fw('b_j_toeheel','BF BF T H BF T H BF T H BF T H BF');
@@ -154,4 +237,19 @@ fw('b_pd_sep','WF HF HB B B B B BF','WF BF BF B B B B BF');
 fw('b_pd_twist','WF HF HF BF B B-beider-Füße,-dann-F B/BF B/BF','WF HF HF HF HF HB,-dann-F B/BF B/BF');
 fw('b_pd_coup','i/e-T T BF B B');
 fw('b_w_fwhisk','TH TH TH','HT TH TH');
+
+/* Standard: Fußarbeit nach BallroomGuide (Herr; Dame) */
+fw('b_w_otelemark','TH T TH','TH HT TH'); fw('b_w_wing','HT F F','HT T TH'); fw('b_w_contra','HF T TH','TH T TH'); fw('b_w_hcorte','TH T TH','HT T TH');
+fw('b_w_dbl','HT T T TH','TH HT T TH'); fw('b_w_ospin','THT HT TH','HT T TH'); fw('b_w_tlock','T T T TH'); fw('b_w_drag','HT T TH','TH T TH');
+fw('b_w_bwhisk','TH T TH','HT T TH'); fw('b_w_rcorte','TH HT TH','HT T TH'); fw('b_w_wpp','HT T TH TH T TH','HT T TH HT T TH'); fw('b_w_pcr','HT T T TH','TH T T TH');
+fw('b_w_cross','HT T TH'); fw('b_w_frsp','HT T TH THT','TH T T TH');
+fw('b_q_fishtail','HT T T T T TH','T T T T T TH'); fw('b_q_v6','TH T T TH TH T TH','HT T T TH HT T TH');
+fw('b_q_rrturn','HT T TH THT Pivot HT T TH T T TH','TH T TH HT Pivot TH HT TH HT T TH'); fw('b_q_rfinish','TH T TH','HT T TH');
+fw('b_q_swivel','HT i/e-T','TH i/e-T'); fw('b_q_qor','HT HT T TH','TH TH T TH'); fw('b_q_hcorte','TH T TH','HT T TH');
+fw('b_sf_oimp','TH HT TH','HT T TH'); fw('b_sf_hfeder','T TH','TH TH'); fw('b_sf_nweave','HT T T T T T TH','TH HT T T T TH TH');
+fw('b_sf_wpp','HT T T T T T TH','HT T T T T TH TH'); fw('b_sf_otelemark','HT T TH','TH HT TH'); fw('b_sf_frsp','HT T TH THT','TH T T TH');
+fw('b_sf_bounce','HT T T T T T T TH','THT T T T T T TH TH');
+fw('b_t_orev','HF BH BH BH i/e-WF WF','BH WF HF HF i/e-BH WF'); fw('b_t_bopr','HF HF BH BH','HF HF BH WF'); fw('b_t_oswivel','BH HF i/e-B','HB HB i/e-B');
+fw('b_t_ntwist','HF HF BH B B/H F','HF HF HF HF HB BH'); fw('b_t_npt','HF HF BHB HF','HF HF HB BH'); fw('b_t_contra','HF BH i/e-B','B F i/e-B'); fw('b_t_fall4','HF BH BH BH','BH BH HB BH');
+fw('b_ww_rfleckerl','HB B BH BHB B BH','BHB B BH BHB B BH');
 }

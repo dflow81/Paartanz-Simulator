@@ -232,27 +232,29 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 | 5 | 2 | L | L / R | T |  | ● |  |  | hebt | – |  | ● | DW gegen LOD | rechts |
 | 6 | 3 | R | R / L | BF |  |  | ● | ● | oben | am Ende |  |  | gegen LOD | rechts |
 
-## Reverse Fleckerl (Drehung am Platz, links)
+## Reverse Fleckerl (Drehung am Platz, links) †
+
+Quelle: http://dance.djurredeboer.nl/standard/viennese/reverse_fleckerl.html
 
 **Herr**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 1 | L | L / R | BF |  |  | ● | ● | am Ende | – |  |  | DC | gerade |
-| 2 | 2 | R | R / L | T |  | ● |  |  | hebt | – |  | ● | DC gegen LOD | links |
-| 3 | 3 | L | L / R | BF |  |  | ● | ● | oben | am Ende |  |  | gegen LOD | links |
-| 4 | 1 | R | R / L | BF |  |  | ● | ● | am Ende | – |  |  | DW gegen LOD | links |
-| 5 | 2 | L | L / R | T |  | ● |  |  | hebt | – |  | ● | DW | links |
-| 6 | 3 | R | R / L | BF |  |  | ● | ● | oben | am Ende |  |  | LOD | links |
+| 1 | 1 | L | L / R | HB | ● |  | ● |  | am Ende | – | ● |  | C | gerade |
+| 2 | 2 | R | R / L | B |  |  | ● |  | hebt | – |  |  | DW gegen LOD | links |
+| 3 | 3 | L | L / R | BH | ● |  | ● |  | oben | am Ende |  | ● | LOD | links |
+| 4 | 1 | R | R / L | BHB | ● |  | ● |  | am Ende | – |  |  | DC | links |
+| 5 | 2 | L | L / R | B |  |  | ● |  | hebt | – |  | ● | DW gegen LOD | links |
+| 6 | 3 | R | R / L | BH | ● |  | ● |  | oben | am Ende |  |  | LOD | links |
 
 **Dame**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 1 | R | R / L | BF |  |  | ● | ● | am Ende | – |  |  | DW gegen LOD | gerade |
-| 2 | 2 | L | L / R | T |  | ● |  |  | hebt | – |  | ● | DW | links |
-| 3 | 3 | R | R / L | BF |  |  | ● | ● | oben | am Ende |  |  | LOD | links |
-| 4 | 1 | L | L / R | BF |  |  | ● | ● | am Ende | – |  |  | DC | links |
-| 5 | 2 | R | R / L | T |  | ● |  |  | hebt | – |  | ● | DC gegen LOD | links |
-| 6 | 3 | L | L / R | BF |  |  | ● | ● | oben | am Ende |  |  | gegen LOD | links |
+| 1 | 1 | R | R / L | BHB | ● |  | ● |  | am Ende | – |  |  | DW gegen LOD | gerade |
+| 2 | 2 | L | L / R | B |  |  | ● |  | hebt | – |  | ● | DC | links |
+| 3 | 3 | R | R / L | BH | ● |  | ● |  | oben | am Ende |  |  | gegen LOD | links |
+| 4 | 1 | L | L / R | BHB | ● |  | ● |  | am Ende | – |  | ● | W | links |
+| 5 | 2 | R | R / L | B |  |  | ● |  | hebt | – |  |  | DC | links |
+| 6 | 3 | L | L / R | BH | ● |  | ● |  | oben | am Ende |  | ● | gegen LOD | links |
 
