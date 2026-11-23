@@ -26,7 +26,7 @@ Jede Figur hat für **jeden Schritt von Herr und Dame**: Belastungsfuß, freier 
 - [Slowfox](technik/slowfox.md) – 34 Figuren, davon 4 mit belegter Fußarbeit
 - [Quickstep](technik/quickstep.md) – 29 Figuren, davon 4 mit belegter Fußarbeit
 - [Tango](technik/tango.md) – 35 Figuren, davon 5 mit belegter Fußarbeit
-- [Langsamer Walzer](technik/langsamer-walzer.md) – 51 Figuren, davon 9 mit belegter Fußarbeit
+- [Langsamer Walzer](technik/langsamer-walzer.md) – 52 Figuren, davon 10 mit belegter Fußarbeit
 - [Cha-Cha-Cha](technik/cha-cha-cha.md) – 36 Figuren
 - [Rumba](technik/rumba.md) – 34 Figuren
 - [Salsa](technik/salsa.md) – 25 Figuren

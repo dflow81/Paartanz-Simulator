@@ -4,12 +4,12 @@ Diese Datei wird mit `node tests/doku.js` aus den Figurendaten erzeugt. Bitte ni
 
 ## Bestand
 
-- **31 Tänze**, **551 Figuren**, **185 Beispiel- und Kursfolgen**
+- **31 Tänze**, **552 Figuren**, **185 Beispiel- und Kursfolgen**
 - Vollständige Zuordnung jeder Figur (Tanz, Startfuß, Endfuß, Haltung, Schwierigkeit): [figurenkatalog.md](figurenkatalog.md)
 
 | Tanz | Figuren | Stufe festgelegt | Stufe geschätzt |
 |---|---|---|---|
-| Langsamer Walzer | 51 | 51 | 0 |
+| Langsamer Walzer | 52 | 52 | 0 |
 | Wiener Walzer | 12 | 8 | 4 |
 | Tango | 35 | 35 | 0 |
 | Slowfox | 34 | 29 | 5 |
@@ -110,14 +110,15 @@ Dubletten wurden nicht gelöscht, weil gespeicherte eigene Folgen auf diese Figu
 - Paso Doble – Twist Turn: http://dance.djurredeboer.nl/latin/paso/twist_turn.html
 - Paso Doble – Coup de Pique: http://dance.djurredeboer.nl/latin/paso/coup_de_pique.html
 - Paso Doble – Flamenco Taps: http://dance.djurredeboer.nl/latin/paso/flamenco_taps.html
+- Langsamer Walzer – Fallaway Whisk: https://www.dancecentral.info/ballroom/international-style/waltz/fallaway-whisk (Darstellung schematisch)
 
 ## Unvollständige Figuren
 
 - Figuren ohne Schritte, Startfuß oder Endfuß: **0** (wird von `node tests/test.js` geprüft)
-- Figuren ohne festgelegte Kursstufe (Stufe wird geschätzt): **205** von 551
+- Figuren ohne festgelegte Kursstufe (Stufe wird geschätzt): **205** von 552
 
 ## Inkonsistente Figuren (Figuren-Qualitätsprüfung)
 
-551 Figuren geprüft: **0 Fehler, 0 Warnungen**.
+552 Figuren geprüft: **0 Fehler, 0 Warnungen**.
 
 Keine Auffälligkeiten.

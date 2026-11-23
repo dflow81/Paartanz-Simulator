@@ -2,7 +2,7 @@
 
 Diese Datei wird mit `node tests/doku.js` aus den Figurendaten erzeugt. Bitte nicht von Hand bearbeiten.
 
-Stand: 551 Figuren in 31 Tänzen.
+Stand: 552 Figuren in 31 Tänzen.
 
 **Kursstufen:** 1 = Einsteiger (WTP 1), 2 = Bronze, 3 = Silber, 4 = Gold, 5 = Goldstar, 6 = Turnier, 7 = Freies Tanzen. Sie sind eine Orientierung am Aufbau üblicher Kurse, keine offizielle Zuordnung eines Verbands. Mit * markierte Stufen sind aus dem Schwierigkeitsgrad geschätzt.
 
@@ -125,34 +125,34 @@ Stand: 551 Figuren in 31 Tänzen.
 
 | Figur | Stufe | Schwierigkeit | Typ | Zählzeiten (Schläge) | Füße H / D | Haltung | Anschlüsse | Status |
 |---|---|---|---|---|---|---|---|---|
-| Grundschritt (Karree) | 1 | ★ | Grundschritt | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Grundschritt (Karree) | 1 | ★ | Grundschritt | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
 | Vorwärts-Wechsel mit links | 1 | ★ | Verbindung und Wechsel | 1 2 3 (3) | L→L / R→R | geschlossen | 23: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/waltz/closed_change_LF.html) |
-| Vorwärts-Wechsel mit rechts | 1 | ★ | Verbindung und Wechsel | 1 2 3 (3) | R→R / L→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/waltz/closed_change_RF.html) |
-| Rückwärts-Wechsel mit rechts | 1 | ★ | Verbindung und Wechsel | 1 2 3 (3) | R→R / L→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Vorwärts-Wechsel mit rechts | 1 | ★ | Verbindung und Wechsel | 1 2 3 (3) | R→R / L→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/waltz/closed_change_RF.html) |
+| Rückwärts-Wechsel mit rechts | 1 | ★ | Verbindung und Wechsel | 1 2 3 (3) | R→R / L→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
 | Rückwärts-Wechsel mit links | 1 | ★ | Verbindung und Wechsel | 1 2 3 (3) | L→L / R→R | geschlossen | 23: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden |
-| Pendelschritt (seit, ran) | 1 | ★ | Effekt und Variation | 1 2 1 2 (6) | L→R / R→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
-| Wiegeschritt (vor, zurück) | 1 | ★ | Grundschritt | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
-| Karree mit Linksdrehung (¼) | 1 | ★★ | Grundschritt | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
-| Karree mit Rechtsdrehung (¼) | 1 | ★★ | Grundschritt | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Pendelschritt (seit, ran) | 1 | ★ | Effekt und Variation | 1 2 1 2 (6) | L→R / R→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Wiegeschritt (vor, zurück) | 1 | ★ | Grundschritt | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Karree mit Linksdrehung (¼) | 1 | ★★ | Grundschritt | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Karree mit Rechtsdrehung (¼) | 1 | ★★ | Grundschritt | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
 | Rechtsdrehung (6 Schritte) | 1 | ★★ | Drehung | 1 2 3 4 5 6 (6) | R→L / L→R | geschlossen | 23: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/waltz/natural_turn.html) |
-| Linksdrehung (6 Schritte) | 1 | ★★ | Drehung | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/waltz/reverse_turn.html) |
+| Linksdrehung (6 Schritte) | 1 | ★★ | Drehung | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/waltz/reverse_turn.html) |
 | Wischer (in die Promenade) | 2 | ★ | Promenade und offene Figuren | 1 2 3 (3) | L→L / R→R | geschlossen → Promenade | 5: Chassé aus der Promenade, Wing, Weave aus der Promenade | vorhanden |
-| Zögerschritt | 2 | ★ | Effekt und Variation | 1 2 3 (3) | L→R / R→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Zögerschritt | 2 | ★ | Effekt und Variation | 1 2 3 (3) | L→R / R→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
 | Außenseitlicher Wechsel | 2 | ★ | Verbindung und Wechsel | 1 2 3 (3) | L→L / R→R | geschlossen | 23: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden |
-| Seitliche Balance (links und rechts) | 2 | ★ | Verbindung und Wechsel | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Seitliche Balance (links und rechts) | 2 | ★ | Verbindung und Wechsel | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
 | Back Whisk | 2 | ★ | Promenade und offene Figuren | 1 2 3 (3) | L→L / R→R | geschlossen → Promenade | 5: Chassé aus der Promenade, Wing, Weave aus der Promenade | neu, schematisch |
 | Reverse Corté | 2 | ★ | Verbindung und Wechsel | 1 2 3 (3) | R→L / L→R | geschlossen | 23: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu, schematisch |
 | Chassé aus der Promenade | 2 | ★★ | Promenade und offene Figuren | 1 2 & 3 (3) | R→L / L→R | Promenade → geschlossen | 23: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden |
-| Promenade mit Chassé | 2 | ★★ | Promenade und offene Figuren | 1 2 3 & 1 2 3 (6) | L→R / R→L | Promenade → geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
-| Double Reverse Spin | 2 | ★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
-| Progressives Chassé nach rechts | 2 | ★★ | Verbindung und Wechsel | 1 2 & 3 (3) | L→R / R→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
-| Drag Hesitation | 3 | ★ | Effekt und Variation | 1 2 3 (3) | L→R / R→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
+| Promenade mit Chassé | 2 | ★★ | Promenade und offene Figuren | 1 2 3 & 1 2 3 (6) | L→R / R→L | Promenade → geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Double Reverse Spin | 2 | ★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
+| Progressives Chassé nach rechts | 2 | ★★ | Verbindung und Wechsel | 1 2 & 3 (3) | L→R / R→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
+| Drag Hesitation | 3 | ★ | Effekt und Variation | 1 2 3 (3) | L→R / R→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
 | Cross Hesitation | 3 | ★ | Promenade und offene Figuren | 1 2 3 (3) | R→L / L→R | Promenade → geschlossen | 23: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu, schematisch |
-| Zögerwechsel (Rechtsdrehung mit Zögern) | 3 | ★★ | Drehung | 1 2 3 4 5 6 (6) | R→R / L→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Zögerwechsel (Rechtsdrehung mit Zögern) | 3 | ★★ | Drehung | 1 2 3 4 5 6 (6) | R→R / L→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
 | Kreuzschritt vorwärts (1, 2 und 3) | 3 | ★★ | Verbindung und Wechsel | 1 2 & 3 (3) | R→L / L→R | geschlossen | 23: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden |
-| Kreuzschritt rückwärts (1, 2 und 3) | 3 | ★★ | Verbindung und Wechsel | 1 2 & 3 (3) | L→R / R→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Kreuzschritt rückwärts (1, 2 und 3) | 3 | ★★ | Verbindung und Wechsel | 1 2 & 3 (3) | L→R / R→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
 | Open Telemark | 3 | ★★ | Drehung | 1 2 3 (3) | L→L / R→R | geschlossen → Promenade | 5: Chassé aus der Promenade, Wing, Weave aus der Promenade | neu, schematisch |
-| Wing | 3 | ★★ | Promenade und offene Figuren | 1 2 (3) | R→R / L→L | Promenade → geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
+| Wing | 3 | ★★ | Promenade und offene Figuren | 1 2 (3) | R→R / L→L | Promenade → geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
 | Outside Spin | 3 | ★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→L / R→R | geschlossen | 23: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu, schematisch |
 | Turning Lock | 3 | ★★ | Drehung | 1 2 & 3 (3) | R→L / L→R | geschlossen | 23: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu, schematisch |
 | Weave aus der Promenade | 3 | ★★ | Promenade und offene Figuren | 1 2 3 1 2 3 (6) | R→L / L→R | Promenade → geschlossen | 23: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu, schematisch |
@@ -160,21 +160,22 @@ Stand: 551 Figuren in 31 Tänzen.
 | Rechtskreisel (Spin Turn) | 3 | ★★★ | Drehung | 1 2 3 4 5 6 (6) | R→L / L→R | geschlossen | 23: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/waltz/spin_turn.html) |
 | Rechtsdrehung mit Impetus (Closed Impetus) | 3 | ★★★ | Drehung | 1 2 3 4 5 6 (6) | R→L / L→R | geschlossen | 23: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu |
 | Rechtskreisel mit Chassé | 3 | ★★★★ | Drehung | 1 2 3 4 5 6 1 2 & 3 (9) | R→L / L→R | geschlossen | 23: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu |
-| Schwebeschritt (Hover) | 4 | ★ | Effekt und Variation | 1 2 3 (3) | L→R / R→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Schwebeschritt (Hover) | 4 | ★ | Effekt und Variation | 1 2 3 (3) | L→R / R→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
 | Contra Check | 4 | ★ | Promenade und offene Figuren | 1 2 3 (3) | L→L / R→R | geschlossen → Promenade | 5: Chassé aus der Promenade, Wing, Weave aus der Promenade | neu, schematisch |
-| Hover Corté | 4 | ★ | Verbindung und Wechsel | 1 2 3 (3) | R→R / L→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
+| Hover Corté | 4 | ★ | Verbindung und Wechsel | 1 2 3 (3) | R→R / L→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
 | Flechtschritt (Weave) | 4 | ★★ | Effekt und Variation | 1 2 3 1 2 3 (6) | R→L / L→R | geschlossen | 23: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden |
-| Closed Wing | 4 | ★★ | Platz- und Positionswechsel | 1 2 3 (3) | R→R / L→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/waltz/closed_wing.html) |
-| Telemark (offene Linksdrehung) | 4 | ★★★ | Drehung | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
+| Closed Wing | 4 | ★★ | Platz- und Positionswechsel | 1 2 3 (3) | R→R / L→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/waltz/closed_wing.html) |
+| Fallaway Whisk | 4 | ★★ | Promenade und offene Figuren | 1 2 3 (3) | L→L / R→R | geschlossen → Promenade | 5: Chassé aus der Promenade, Wing, Weave aus der Promenade | vorhanden, schematisch, [Quelle](https://www.dancecentral.info/ballroom/international-style/waltz/fallaway-whisk) |
+| Telemark (offene Linksdrehung) | 4 | ★★★ | Drehung | 1 2 3 1 2 3 (6) | L→R / R→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden |
 | Turning Lock nach rechts | 4 | ★★★ | Verbindung und Wechsel | 1 & 2 3 (3) | R→L / L→R | geschlossen → Promenade | 5: Chassé aus der Promenade, Wing, Weave aus der Promenade | vorhanden, [Quelle](http://dance.djurredeboer.nl/standard/waltz/turning_lock_right.html) |
-| Fallaway Reverse and Slip Pivot | 4 | ★★★ | Drehung | 1 2 & 3 (3) | L→R / R→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden, schematisch |
-| Left Whisk | 4 | ★★★★★ | Drehung | 1 2 3 1 & 2 3 (6) | R→R / L→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden, schematisch, [Quelle](http://dance.djurredeboer.nl/standard/waltz/left_whisk.html) |
+| Fallaway Reverse and Slip Pivot | 4 | ★★★ | Drehung | 1 2 & 3 (3) | L→R / R→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden, schematisch |
+| Left Whisk | 4 | ★★★★★ | Drehung | 1 2 3 1 & 2 3 (6) | R→R / L→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden, schematisch, [Quelle](http://dance.djurredeboer.nl/standard/waltz/left_whisk.html) |
 | Hinge Line | 5 | ★ | Effekt und Variation | 1 2 3 (6) | L→L / R→R | geschlossen | 23: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden, schematisch |
-| Curved Feather | 5 | ★ | Verbindung und Wechsel | 1 2 3 (3) | R→R / L→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden, schematisch |
+| Curved Feather | 5 | ★ | Verbindung und Wechsel | 1 2 3 (3) | R→R / L→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | vorhanden, schematisch |
 | Oversway | 6 | ★ | Effekt und Variation | 1 (3) | L→L / R→R | geschlossen | 23: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | neu, schematisch |
-| Throwaway Oversway | 6 | ★ | Effekt und Variation | 1 2 3 (3) | L→R / R→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
-| Chair | 6 | ★ | Promenade und offene Figuren | 1 2 3 (3) | R→R / L→L | Promenade → geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
-| Same Foot Lunge | 6 | ★★ | Effekt und Variation | 1 1 2 (6) | R→R / L→L | geschlossen | 28: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
+| Throwaway Oversway | 6 | ★ | Effekt und Variation | 1 2 3 (3) | L→R / R→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
+| Chair | 6 | ★ | Promenade und offene Figuren | 1 2 3 (3) | R→R / L→L | Promenade → geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
+| Same Foot Lunge | 6 | ★★ | Effekt und Variation | 1 1 2 (6) | R→R / L→L | geschlossen | 29: Grundschritt, Karree mit Linksdrehung, Karree mit Rechtsdrehung | neu, schematisch |
 | Natural Fallaway | 6 | ★★★ | Drehung | 1 2 3 1 2 3 (6) | R→L / L→R | geschlossen | 23: Vorwärts-Wechsel mit rechts, Rückwärts-Wechsel mit rechts, Rechtsdrehung | vorhanden, schematisch |
 
 ## Cha-Cha-Cha

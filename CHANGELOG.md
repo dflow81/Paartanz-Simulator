@@ -15,8 +15,10 @@
 - Einsteigerfolgen für Samba, Paso Doble und Salsa; 42 Übungsfolgen, damit fast jede Figur in einer festen Folge vorkommt (185 Folgen).
 - Armaktionen für Dile que no, Sácala, Exhíbela, American Spin, Rolling off the Arm, Miami Special, Flamenco Taps, Three Threes; Browsertest misst, ob Arme durch den Partner gehen.
 
+- Langsamer Walzer **Fallaway Whisk** (Gold) nach Dance Central ergänzt, als schematisch gekennzeichnet, weil die Quellseite nur gekürzt vorlag.
+
 **Offen**
-- Vier Figuren der Abgleichliste bleiben offen; für Fallaway Whisk, Sweetheart und Follow My Leader wurde keine zweite frei zugängliche Quelle gefunden.
+- Drei Figuren der Abgleichliste bleiben offen: Reverse Pivot (Walzer), Sweetheart und Follow My Leader (Cha-Cha); für die beiden Cha-Cha-Figuren gibt es keine frei zugängliche Schritttafel (Laird-Technik nur als Buch).
 
 ## 2026-11-23 (Abend): Kurslücken geschlossen, Einwickeln
 

@@ -1075,3 +1075,23 @@ Quelle: http://dance.djurredeboer.nl/standard/waltz/turning_lock_right.html
 | 5 | 2 | L | L / R | T |  | ● |  |  | hebt | – |  |  | DW gegen LOD | links |
 | 6 | 3 | R | R / L | TH | ● | ● |  |  | oben | am Ende |  |  | DW gegen LOD | links |
 
+## Fallaway Whisk †
+
+Quelle: https://www.dancecentral.info/ballroom/international-style/waltz/fallaway-whisk
+
+**Herr**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | L | L / R | TH | ● | ● |  |  | am Ende | – | ● |  | DW | gerade |
+| 2 | 2 | R | R / L | TH | ● | ● |  |  | hebt | – |  |  | DW gegen LOD | rechts |
+| 3 | 3 | L | L / R | TH | ● | ● |  |  | oben | am Ende |  | ● | DW gegen LOD | rechts |
+
+**Dame**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | R | R / L | HT | ● | ● |  |  | am Ende | – | ● |  | DC gegen LOD | gerade |
+| 2 | 2 | L | L / R | TH | ● | ● |  |  | hebt | – |  |  | DC | rechts |
+| 3 | 3 | R | R / L | TH | ● | ● |  |  | oben | am Ende |  | ● | DC | rechts |
+

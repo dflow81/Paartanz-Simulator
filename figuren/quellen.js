@@ -126,6 +126,18 @@ tanz('Cha-Cha-Cha',120,{
 });
 belegt('b_r_rope','latin/rumba/rope_spinning.html'); belegt('b_r_fence','latin/rumba/fencing.html'); belegt('b_c_rope','latin/cha_cha/rope_spinning.html');
 
+
+/* ---------- Langsamer Walzer: Fallaway Whisk (Gold, ISTD-Zusatzfigur) ----------
+   Nach Dance Central (https://www.dancecentral.info/ballroom/international-style/waltz/fallaway-whisk): Herr links rück mit beginnender
+   Rechtsdrehung, rechts seit und etwas rück (⅜ rechts zwischen 1 und 2, Körper dreht weniger), links kreuzt locker hinter in den Fallaway.
+   Die Dame tanzt gegengleich (rechts vor, links seit, rechts kreuzt hinter). Die Quellseite lag nur gekürzt vor, daher bleibt die Figur
+   als schematisch gekennzeichnet. Vorher z. B. Rechtsdrehung, Back Lock, Cross Hesitation; danach Chassé oder Weave aus der Promenade, Wing. */
+tanz('Langsamer Walzer',90,{
+  b_w_fwhisk:['Fallaway Whisk',[tip(S('L','rueck',30,1,'1',-30),'Links rück, Rechtsdrehung beginnen'),S('R','seit',26,1,'2',-105),tip(S('L','kreuzHinter',15,1,'3',0,'prom'),'Links kreuzt locker hinter – Fallaway (Promenade rückwärts)')]],
+});
+QUELLEN.b_w_fwhisk='https://www.dancecentral.info/ballroom/international-style/waltz/fallaway-whisk';
+INFO.b_w_fwhisk=[4,'prom','Fallaway Whisk: rück mit Rechtsdrehung, seit und etwas rück, dann kreuzt der linke Fuß locker hinter – Herr und Dame stehen im Fallaway (Promenade rückwärts). Danach eine Figur aus der Promenade.','s'];
+
 /* Fußarbeit aus den Schritttabellen der Quelle (B = Ballen, F = flach, H = Ferse, T = Spitze, W = ganzer Fuß, i/e = Innenkante) */
 const fw=(id,H,D=H)=>{ const z=x=>x.split(' ').map(y=>y.replace(/-/g,' ')); TECHNIK_DATEN[id]={H:{fuss:z(H)},D:{fuss:z(D)}}; };
 fw('b_j_toeheel','BF BF T H BF T H BF T H BF T H BF');
@@ -141,4 +153,5 @@ fw('b_sa_nroll','HF B BF BF B BF');
 fw('b_pd_sep','WF HF HB B B B B BF','WF BF BF B B B B BF');
 fw('b_pd_twist','WF HF HF BF B B-beider-Füße,-dann-F B/BF B/BF','WF HF HF HF HF HB,-dann-F B/BF B/BF');
 fw('b_pd_coup','i/e-T T BF B B');
+fw('b_w_fwhisk','TH TH TH','HT TH TH');
 }
