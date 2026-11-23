@@ -4,7 +4,7 @@ Diese Datei wird mit `node tests/doku.js` aus den Figurendaten erzeugt. Bitte ni
 
 ## Bestand
 
-- **31 Tänze**, **556 Figuren**, **192 Beispiel- und Kursfolgen**
+- **31 Tänze**, **557 Figuren**, **192 Beispiel- und Kursfolgen**
 - Vollständige Zuordnung jeder Figur (Tanz, Startfuß, Endfuß, Haltung, Schwierigkeit): [figurenkatalog.md](figurenkatalog.md)
 
 | Tanz | Figuren | Stufe festgelegt | Stufe geschätzt |
@@ -20,7 +20,7 @@ Diese Datei wird mit `node tests/doku.js` aus den Figurendaten erzeugt. Bitte ni
 | Jive | 28 | 28 | 0 |
 | Paso Doble | 24 | 19 | 5 |
 | Foxtrott | 17 | 0 | 17 |
-| Discofox | 38 | 38 | 0 |
+| Discofox | 39 | 39 | 0 |
 | Blues | 10 | 0 | 10 |
 | Rock'n'Roll | 7 | 0 | 7 |
 | Polka | 9 | 0 | 9 |
@@ -152,10 +152,10 @@ Dubletten wurden nicht gelöscht, weil gespeicherte eigene Folgen auf diese Figu
 ## Unvollständige Figuren
 
 - Figuren ohne Schritte, Startfuß oder Endfuß: **0** (wird von `node tests/test.js` geprüft)
-- Figuren ohne festgelegte Kursstufe (Stufe wird geschätzt): **205** von 556
+- Figuren ohne festgelegte Kursstufe (Stufe wird geschätzt): **205** von 557
 
 ## Inkonsistente Figuren (Figuren-Qualitätsprüfung)
 
-556 Figuren geprüft: **0 Fehler, 0 Warnungen**.
+557 Figuren geprüft: **0 Fehler, 0 Warnungen**.
 
 Keine Auffälligkeiten.

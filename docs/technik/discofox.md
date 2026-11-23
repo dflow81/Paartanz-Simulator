@@ -968,3 +968,51 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 | 11 | 11 | L | L / R | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
 | 12 | 12 | R | L / R | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
 
+## Körbchen mit zwei Drehungen (eindrehen, zweimal gemeinsam drehen, ausdrehen)
+
+**Herr**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | L | L / R | HF | ● |  |  | ● | – | – |  |  | LOD | – |
+| 2 | 2 | R | R / L | HF | ● |  |  | ● | – | – |  |  | LOD | – |
+| 3 | 3 | L | R / L | T |  | ● |  |  | – | – |  |  | LOD | – |
+| 4 | 4 | L | L / R | HF | ● |  |  | ● | – | – |  |  | W | – |
+| 5 | 5 | R | R / L | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
+| 6 | 6 | L | R / L | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
+| 7 | 7 | L | L / R | HF | ● |  |  | ● | – | – |  |  | C | – |
+| 8 | 8 | R | R / L | HF | ● |  |  | ● | – | – |  |  | LOD | – |
+| 9 | 9 | L | R / L | T |  | ● |  |  | – | – |  |  | LOD | – |
+| 10 | 10 | L | L / R | HF | ● |  |  | ● | – | – |  |  | W | – |
+| 11 | 11 | R | R / L | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
+| 12 | 12 | L | R / L | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
+| 13 | 13 | L | L / R | HF | ● |  |  | ● | – | – |  |  | C | – |
+| 14 | 14 | R | R / L | HF | ● |  |  | ● | – | – |  |  | LOD | – |
+| 15 | 15 | L | R / L | T |  | ● |  |  | – | – |  |  | LOD | – |
+| 16 | 16 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 17 | 17 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 18 | 18 | L | R / L | T |  | ● |  |  | – | – |  |  | LOD | – |
+
+**Dame**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | R | R / L | HF | ● |  |  | ● | – | – |  |  | LOD | – |
+| 2 | 2 | L | L / R | HF | ● |  |  | ● | – | – |  |  | LOD | – |
+| 3 | 3 | R | L / R | T |  | ● |  |  | – | – |  |  | LOD | – |
+| 4 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | W | – |
+| 5 | 5 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 6 | 6 | R | L / R | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
+| 7 | 7 | R | R / L | BF |  |  | ● | ● | – | – |  |  | C | – |
+| 8 | 8 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 9 | 9 | R | L / R | T |  | ● |  |  | – | – |  |  | LOD | – |
+| 10 | 10 | R | R / L | BF |  |  | ● | ● | – | – |  |  | W | – |
+| 11 | 11 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 12 | 12 | R | L / R | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
+| 13 | 13 | R | R / L | BF |  |  | ● | ● | – | – |  |  | C | – |
+| 14 | 14 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 15 | 15 | R | L / R | T |  | ● |  |  | – | – |  |  | LOD | – |
+| 16 | 16 | R | R / L | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
+| 17 | 17 | L | L / R | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
+| 18 | 18 | R | L / R | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
+

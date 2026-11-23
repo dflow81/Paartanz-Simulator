@@ -113,7 +113,7 @@ folge('k_disco2','Kursfolge Discofox – Bronze',120,[['b_d_gs'],['b_d_pwr'],['b
 folge('k_disco3','Kursfolge Discofox – Silber',120,[['b_d_gs'],['b_d_hegoes'],['b_d_tunnel'],['b_d_hammer'],['b_d_zu'],['b_d_doppel'],['b_d_gs']]);
 folge('k_disco4','Kursfolge Discofox – Gold',120,[['b_d_gs'],['b_d_brezel'],['b_d_schal'],['b_d_handwechsel'],['b_d_zu'],['b_d_gs']]);
 folge('s_disco_push','Discofox – Push & Pull mit einer und beiden Händen',120,[['b_d_gs'],['b_d_pushpull2'],['b_d_pushpull1'],['b_d_solo'],['b_d_pushpull1'],['b_d_zu']]);
-folge('s_disco_korbdreh','Discofox – Körbchen mit Drehung',120,[['b_d_gs'],['b_d_korbdreh'],['b_d_pushpull1'],['b_d_zu'],['b_d_gs']]);
+folge('s_disco_korbdreh','Discofox – Körbchen mit einer und mit zwei Drehungen',120,[['b_d_gs'],['b_d_korbdreh'],['b_d_pushpull1'],['b_d_zu'],['b_d_korbdreh2'],['b_d_zu'],['b_d_gs']]);
 folge('k_walzer1','Kursfolge Langsamer Walzer – Einsteiger',90,[['b_w_box',2],['b_w_vw'],['b_w_nat'],['b_w_rw'],['b_w_rev']]);
 folge('k_walzer2','Kursfolge Langsamer Walzer – Bronze',90,[['b_w_vw'],['b_w_nat'],['b_w_rw'],['b_w_aussen'],['b_w_nat'],['b_w_vwr'],['b_w_wisch'],['b_w_chasse'],['b_w_rw'],['b_w_rev']]);
 folge('k_walzer3','Kursfolge Langsamer Walzer – Silber',90,[['b_w_vw'],['b_w_impetus'],['b_w_rw'],['b_w_rev'],['b_w_vw'],['b_w_kchasse'],['b_w_vwr'],['b_w_rev']]);
