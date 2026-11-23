@@ -1,5 +1,19 @@
 # Änderungsprotokoll
 
+## 2026-11-23: Lehrplan vollständig, Armführung
+
+**Neu**
+- 73 Figuren der Abgleichliste ergänzt (`figuren/lehrplan.js`), damit sind alle Figuren umgesetzt außer vier bewusst offenen (mit Grund im Lückenbericht). Alle sind schematisch (Kennzeichen „s“):
+  - Langsamer Walzer: Fallaway Reverse and Slip Pivot, Hinge Line, Curved Feather, Natural Fallaway; Wiener Walzer: Reverse Fleckerl
+  - Slowfox: Fallaway Reverse and Slip Pivot, Extended Reverse Wave, Curved Three Step, Oversway, Hover Corté
+  - Quickstep: Tipsy nach links, Fallaway Natural Turn, Scatter Chassés, Oversway; Tango: Same Foot Lunge, Throwaway Oversway
+  - Cha-Cha-Cha und Rumba: Rope Spinning, Sliding Doors, Advanced Hip Twist, Hip Twist Spiral, Three Threes; nur Cha-Cha: Turkish Towel, Chase; nur Rumba: Opening Out from Reverse Top, Three Alemanas, Continuous Hip Twist
+  - Samba (10), Jive (11), Paso Doble (11), Salsa (7), Discofox: Lasso, Seilwurf, Sliding Doors
+- Armführung innerhalb einer Haltung: Linie (freier Arm gestreckt), Zug (Hand holt heran), Stopp (Hand hält dagegen) je Schritt; bei Drehungen unter dem Arm kreist die Hand über dem Kopf dessen, der dreht. Zugeordnet u. a. für New Yorker, Hand to Hand, Fencing, Hockeystick, Alemana, Hip Twists, Cross Body Lead, Enchufla, Stop and Go, Spanish Lines.
+- Schritt-Editor: Auswahl „Armführung“; die Technik-Tabelle zeigt die Armaktion. Import und geteilte Links übernehmen sie.
+- Tests: jede neue Figur ohne Zusammenstoß (mindestens 20 cm), Abgleichliste vollständig, Armführung, Abspielen mit Armführung im Browser.
+
+
 ## 2026-11-22 (Abend): Technik je Schritt vollständig, Prüfung im Editor
 
 - Technikdaten: Heben (Rise) und Senken (Fall) getrennt, Ferse/Spitze/Ballen/ganzer Fuß einzeln. Die Regel für Heben und Senken folgt jetzt dem Höhenverlauf (Walzer: Heben am Ende von 1, weiter auf 2, Senken am Ende von 3; Slow-Quick-Tänze: S hebt am Ende, Q oben, letztes Q senkt).

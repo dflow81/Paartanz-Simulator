@@ -232,3 +232,27 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 | 5 | 2 | L | L / R | T |  | ● |  |  | hebt | – |  | ● | DW gegen LOD | rechts |
 | 6 | 3 | R | R / L | BF |  |  | ● | ● | oben | am Ende |  |  | gegen LOD | rechts |
 
+## Reverse Fleckerl (Drehung am Platz, links)
+
+**Herr**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | L | L / R | BF |  |  | ● | ● | am Ende | – |  |  | DC | gerade |
+| 2 | 2 | R | R / L | T |  | ● |  |  | hebt | – |  | ● | DC gegen LOD | links |
+| 3 | 3 | L | L / R | BF |  |  | ● | ● | oben | am Ende |  |  | gegen LOD | links |
+| 4 | 1 | R | R / L | BF |  |  | ● | ● | am Ende | – |  |  | DW gegen LOD | links |
+| 5 | 2 | L | L / R | T |  | ● |  |  | hebt | – |  | ● | DW | links |
+| 6 | 3 | R | R / L | BF |  |  | ● | ● | oben | am Ende |  |  | LOD | links |
+
+**Dame**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | R | R / L | BF |  |  | ● | ● | am Ende | – |  |  | DW gegen LOD | gerade |
+| 2 | 2 | L | L / R | T |  | ● |  |  | hebt | – |  | ● | DW | links |
+| 3 | 3 | R | R / L | BF |  |  | ● | ● | oben | am Ende |  |  | LOD | links |
+| 4 | 1 | L | L / R | BF |  |  | ● | ● | am Ende | – |  |  | DC | links |
+| 5 | 2 | R | R / L | T |  | ● |  |  | hebt | – |  | ● | DC gegen LOD | links |
+| 6 | 3 | L | L / R | BF |  |  | ● | ● | oben | am Ende |  |  | gegen LOD | links |
+

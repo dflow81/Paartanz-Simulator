@@ -680,3 +680,44 @@ Quelle: http://dance.djurredeboer.nl/standard/tango/reverse_outside_swivel.html
 | 4 | Q | L | L / R | HF | ● |  |  | ● | – | – |  | ● | C | – |
 | 5 | Q | R | L / R | i/e of BH | ● |  | ● |  | – | – |  |  | C | – |
 
+## Same Foot Lunge
+
+**Herr**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Q | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 2 | S | R | R / L | – |  |  |  |  | – | – |  |  | LOD | – |
+| 3 | Q | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 4 | Q | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 5 | Q | R | R / L | – |  |  |  |  | – | – |  |  | LOD | – |
+
+**Dame**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Q | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 2 | & | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 3 | S | R | R / L | – |  |  |  |  | – | – |  |  | gegen LOD | – |
+| 4 | Q | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 5 | Q | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 6 | Q | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+
+## Throwaway Oversway
+
+**Herr**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Q | L | L / R | HF | ● |  |  | ● | – | – | ● |  | DC | – |
+| 2 | Q | R | R / L | BF |  |  | ● | ● | – | – |  |  | DC gegen LOD | – |
+| 3 | S | L | R / L | T |  | ● |  |  | – | – |  |  | DC gegen LOD | – |
+
+**Dame**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Q | R | R / L | BF |  |  | ● | ● | – | – | ● |  | DW gegen LOD | – |
+| 2 | Q | L | L / R | BF |  |  | ● | ● | – | – |  |  | DW | – |
+| 3 | S | R | L / R | T |  | ● |  |  | – | – |  |  | DW | – |
+

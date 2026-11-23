@@ -4,27 +4,27 @@ Diese Datei wird mit `node tests/doku.js` aus den Figurendaten erzeugt. Bitte ni
 
 ## Bestand
 
-- **31 Tänze**, **478 Figuren**, **130 Beispiel- und Kursfolgen**
+- **31 Tänze**, **551 Figuren**, **130 Beispiel- und Kursfolgen**
 - Vollständige Zuordnung jeder Figur (Tanz, Startfuß, Endfuß, Haltung, Schwierigkeit): [figurenkatalog.md](figurenkatalog.md)
 
 | Tanz | Figuren | Stufe festgelegt | Stufe geschätzt |
 |---|---|---|---|
-| Langsamer Walzer | 47 | 47 | 0 |
-| Wiener Walzer | 11 | 7 | 4 |
-| Tango | 33 | 33 | 0 |
-| Slowfox | 29 | 24 | 5 |
-| Quickstep | 25 | 23 | 2 |
-| Cha-Cha-Cha | 29 | 29 | 0 |
-| Rumba | 26 | 26 | 0 |
-| Samba | 14 | 14 | 0 |
-| Jive | 17 | 17 | 0 |
-| Paso Doble | 13 | 8 | 5 |
+| Langsamer Walzer | 51 | 51 | 0 |
+| Wiener Walzer | 12 | 8 | 4 |
+| Tango | 35 | 35 | 0 |
+| Slowfox | 34 | 29 | 5 |
+| Quickstep | 29 | 27 | 2 |
+| Cha-Cha-Cha | 36 | 36 | 0 |
+| Rumba | 34 | 34 | 0 |
+| Samba | 24 | 24 | 0 |
+| Jive | 28 | 28 | 0 |
+| Paso Doble | 24 | 19 | 5 |
 | Foxtrott | 17 | 0 | 17 |
-| Discofox | 32 | 32 | 0 |
+| Discofox | 35 | 35 | 0 |
 | Blues | 10 | 0 | 10 |
 | Rock'n'Roll | 7 | 0 | 7 |
 | Polka | 9 | 0 | 9 |
-| Salsa | 18 | 13 | 5 |
+| Salsa | 25 | 20 | 5 |
 | Bachata | 12 | 0 | 12 |
 | Merengue | 12 | 0 | 12 |
 | Boogie-Woogie | 10 | 0 | 10 |
@@ -47,7 +47,7 @@ Diese Datei wird mit `node tests/doku.js` aus den Figurendaten erzeugt. Bitte ni
 
 Keine.
 
-### Gleiche Schritte im selben Tanz (6)
+### Gleiche Schritte im selben Tanz (7)
 
 - Rumba: „Seit-Wiegeschritt (Cucaracha)“ (`b_r_cuca`) = „Seitschritte (Cucaracha-Schritt seitlich, links und rechts)“ (`b_r_seitl`) – als Alias gekennzeichnet: gleiche Schritte wie die Cucaracha
 - Rumba: „Gehschritte vor und rück“ (`b_r_geh`) = „Vorwärts-Gehschritte“ (`b_r_vorgeh`) – als Alias gekennzeichnet: gleiche Schritte wie „Gehschritte vor und rück“
@@ -55,6 +55,7 @@ Keine.
 - Discofox: „Damensolo links (Drehung unter dem Arm)“ (`b_d_solol`) = „Damendrehung links (Unterarmdrehung)“ (`b_d_drehl2`) – als Alias gekennzeichnet: gleiche Schritte wie „Damensolo links“
 - Blues: „Vor – Tap, Rück – Tap“ (`b_bl_vor`) = „Vorwärts und rückwärts (Schritt, Tap)“ (`b_bl_vorr`) – als Alias gekennzeichnet: gleiche Schritte wie „Vor – Tap, Rück – Tap“
 - Bachata: „Grundschritt am Platz“ (`b_b_platz`) = „Wellenbewegung am Platz (Sensual)“ (`b_b_sensual`) – als Alias gekennzeichnet: die Füße tanzen den Grundschritt am Platz; die Wellenbewegung des Oberkörpers wird nicht dargestellt
+- Paso Doble: „Spanish Lines“ (`b_pd_spanish`) = „Farol“ (`b_pd_farol`) – **nicht gekennzeichnet**
 
 Dubletten wurden nicht gelöscht, weil gespeicherte eigene Folgen auf diese Figuren verweisen können. Sie sind als Alias gekennzeichnet (`ALIAS` in `figuren/info.js`) und im Figurenkatalog so markiert.
 
@@ -96,10 +97,10 @@ Dubletten wurden nicht gelöscht, weil gespeicherte eigene Folgen auf diese Figu
 ## Unvollständige Figuren
 
 - Figuren ohne Schritte, Startfuß oder Endfuß: **0** (wird von `node tests/test.js` geprüft)
-- Figuren ohne festgelegte Kursstufe (Stufe wird geschätzt): **205** von 478
+- Figuren ohne festgelegte Kursstufe (Stufe wird geschätzt): **205** von 551
 
 ## Inkonsistente Figuren (Figuren-Qualitätsprüfung)
 
-478 Figuren geprüft: **0 Fehler, 0 Warnungen**.
+551 Figuren geprüft: **0 Fehler, 0 Warnungen**.
 
 Keine Auffälligkeiten.

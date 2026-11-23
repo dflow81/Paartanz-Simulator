@@ -178,8 +178,8 @@ function simBlock(b,H,D,beat,extra,hs,ds){
   for(const s of F.steps){
     const d=Math.max(.25,+s.d||1), hold=HOLDS[s.hold]?s.hold:'zu';
     // Führungshinweis: eigener Text des Schritts, sonst automatisch bei Haltungswechsel oder Solodrehung des Herrn
-    const tip=s.tip||(hold!==(H.hold||'zu')?HOLD_TIP[hold]:'')||(own&&Math.abs(+s.turn||0)>=135?'Herr dreht '+(s.turn>0?'links':'rechts'):'');
-    const r=Object.assign(doStep(H,tw(s),sty,tH,d,null,null,!own&&sty.std&&(hold==='zu'||hold==='prom')?sty.gap/2:0),meta,{hold,holdPrev:H.hold||hold,turn:s.turn,tip}); H.hold=hold; hs.push(r); tH+=d;
+    const tip=s.tip||(hold!==(H.hold||'zu')?HOLD_TIP[hold]:'')||(ARM_TIP[s.arm]||'')||(own&&Math.abs(+s.turn||0)>=135?'Herr dreht '+(s.turn>0?'links':'rechts'):'');
+    const r=Object.assign(doStep(H,tw(s),sty,tH,d,null,null,!own&&sty.std&&(hold==='zu'||hold==='prom')?sty.gap/2:0),meta,{hold,holdPrev:H.hold||hold,turn:s.turn,tip},s.arm?{arm:s.arm}:{}); H.hold=hold; hs.push(r); tH+=d;
     if(!own){
       const g=holdGeo(hold,sty), v=dirv(r.hA), aus=/Aussen$/.test(r.dir)?.16:0;   // außenseitlich: der Herr geht rechts an der Dame vorbei
       let to=add(add(r.to,v.fw,g.gap),v.lf,-g.off-aus);

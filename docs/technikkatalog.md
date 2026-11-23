@@ -23,18 +23,18 @@ Jede Figur hat für **jeden Schritt von Herr und Dame**: Belastungsfuß, freier 
 
 ## Tänze
 
-- [Slowfox](technik/slowfox.md) – 29 Figuren, davon 4 mit belegter Fußarbeit
-- [Quickstep](technik/quickstep.md) – 25 Figuren, davon 4 mit belegter Fußarbeit
-- [Tango](technik/tango.md) – 33 Figuren, davon 5 mit belegter Fußarbeit
-- [Langsamer Walzer](technik/langsamer-walzer.md) – 47 Figuren, davon 9 mit belegter Fußarbeit
-- [Cha-Cha-Cha](technik/cha-cha-cha.md) – 29 Figuren
-- [Rumba](technik/rumba.md) – 26 Figuren
-- [Salsa](technik/salsa.md) – 18 Figuren
-- [Discofox](technik/discofox.md) – 32 Figuren
-- [Wiener Walzer](technik/wiener-walzer.md) – 11 Figuren
-- [Samba](technik/samba.md) – 14 Figuren
-- [Jive](technik/jive.md) – 17 Figuren
-- [Paso Doble](technik/paso-doble.md) – 13 Figuren
+- [Slowfox](technik/slowfox.md) – 34 Figuren, davon 4 mit belegter Fußarbeit
+- [Quickstep](technik/quickstep.md) – 29 Figuren, davon 4 mit belegter Fußarbeit
+- [Tango](technik/tango.md) – 35 Figuren, davon 5 mit belegter Fußarbeit
+- [Langsamer Walzer](technik/langsamer-walzer.md) – 51 Figuren, davon 9 mit belegter Fußarbeit
+- [Cha-Cha-Cha](technik/cha-cha-cha.md) – 36 Figuren
+- [Rumba](technik/rumba.md) – 34 Figuren
+- [Salsa](technik/salsa.md) – 25 Figuren
+- [Discofox](technik/discofox.md) – 35 Figuren
+- [Wiener Walzer](technik/wiener-walzer.md) – 12 Figuren
+- [Samba](technik/samba.md) – 24 Figuren
+- [Jive](technik/jive.md) – 28 Figuren
+- [Paso Doble](technik/paso-doble.md) – 24 Figuren
 - [Foxtrott](technik/foxtrott.md) – 17 Figuren
 - [Blues](technik/blues.md) – 10 Figuren
 - [Rock'n'Roll](technik/rock-n-roll.md) – 7 Figuren

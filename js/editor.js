@@ -100,7 +100,8 @@ function guiSide(){
     <label>Drehung (+ links, − rechts)</label><div class="row" style="margin-top:0"><button id="gTL" class="sec">↺ 45°</button><input id="gTurn" type="number" step="5" value="${+s.turn||0}" style="width:70px"><button id="gTR" class="sec">↻ 45°</button></div>
     <div class="row"><div style="flex:1"><label>Dauer (Schläge)</label><select id="gDur" class="full">${durs.map(d=>`<option ${d===+s.d?'selected':''}>${d}</option>`).join('')}</select></div>
       <div style="flex:1"><label>Zählung</label><input id="gCnt" class="full" value="${esc(s.c??'')}"></div></div>
-    ${who==='H'?`<label>Haltung ab diesem Schritt</label><select id="gHold" class="full">${Object.entries(HOLDS).map(([k,v])=>`<option value="${k}" ${k===(s.hold||'zu')?'selected':''}>${v[0]} – ${v[1]}</option>`).join('')}</select>`:''}
+    ${who==='H'?`<label>Haltung ab diesem Schritt</label><select id="gHold" class="full">${Object.entries(HOLDS).map(([k,v])=>`<option value="${k}" ${k===(s.hold||'zu')?'selected':''}>${v[0]} – ${v[1]}</option>`).join('')}</select>
+      <label>Armführung in diesem Schritt</label><select id="gArm" class="full"><option value="">– keine besondere –</option>${Object.entries(ARME).map(([k,v])=>`<option value="${k}" ${k===s.arm?'selected':''}>${v}</option>`).join('')}</select>`:''}
     <label>Führungshinweis (wird beim Tanzen eingeblendet)</label><input id="gTip" class="full" value="${esc(s.tip||'')}" placeholder="z. B. Herr hebt die linke Hand">
     <div class="row"><button id="gUp" class="sec">↑ früher</button><button id="gDn" class="sec">↓ später</button><button id="gDel" class="del">🗑 löschen</button></div></div>`;
   else h+='<div class="info">Einen Fuß im Plan oder einen Schritt in der Liste anklicken, um ihn zu bearbeiten. Ausgefüllte Füße tragen Gewicht, hohle sind Taps. Gestrichelt: die Ausgangsstellung.</div>';
@@ -115,6 +116,7 @@ function guiSide(){
   $('gTL').onclick=ch(()=>s.turn=(+s.turn||0)+45); $('gTR').onclick=ch(()=>s.turn=(+s.turn||0)-45); $('gTurn').onchange=ch(()=>s.turn=+$('gTurn').value||0);
   $('gDur').onchange=ch(()=>s.d=+$('gDur').value); $('gCnt').onchange=ch(()=>s.c=$('gCnt').value);
   if($('gHold')) $('gHold').onchange=ch(()=>s.hold=$('gHold').value);
+  if($('gArm')) $('gArm').onchange=ch(()=>{ const v=$('gArm').value; if(v) s.arm=v; else delete s.arm; });
   $('gTip').onchange=ch(()=>{ const v=$('gTip').value.trim(); if(v) s.tip=v; else delete s.tip; });
   const mv=d=>ch(()=>{ const j=planSel+d; if(j<0||j>=list.length) return; [list[planSel],list[j]]=[list[j],list[planSel]]; planSel=j; });
   $('gUp').onclick=mv(-1); $('gDn').onclick=mv(1);

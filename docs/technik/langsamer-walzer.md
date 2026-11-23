@@ -993,3 +993,85 @@ Quelle: http://dance.djurredeboer.nl/standard/waltz/turning_lock_right.html
 | 3 | 2 | L | L / R | T |  | ● |  |  | oben | – |  |  | LOD | gerade |
 | 4 | 3 | R | R / L | TH | ● | ● |  |  | oben | am Ende |  |  | LOD | gerade |
 
+## Fallaway Reverse and Slip Pivot
+
+**Herr**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | L | L / R | HT | ● | ● |  |  | am Ende | – | ● |  | DC | gerade |
+| 2 | 2 | R | R / L | T |  | ● |  |  | hebt | – |  |  | C | links |
+| 3 | & | L | L / R | T |  | ● |  |  | oben | – |  | ● | C | links |
+| 4 | 3 | R | R / L | TH | ● | ● |  |  | oben | am Ende | ● |  | gegen LOD | links |
+
+**Dame**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | R | R / L | TH | ● | ● |  |  | am Ende | – | ● |  | DW gegen LOD | gerade |
+| 2 | 2 | L | L / R | T |  | ● |  |  | hebt | – |  |  | W | links |
+| 3 | & | R | R / L | T |  | ● |  |  | oben | – |  | ● | W | links |
+| 4 | 3 | L | L / R | HT | ● | ● |  |  | oben | am Ende | ● |  | LOD | links |
+
+## Hinge Line
+
+**Herr**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | L | L / R | HT | ● | ● |  |  | – | – | ● |  | DC | gerade |
+| 2 | 2 | R | R / L | T |  | ● |  |  | hebt | – |  |  | C | links |
+| 3 | 3 | L | L / R | T |  | ● |  |  | oben | am Ende |  |  | C | links |
+| 4 | 1 | L | L / R | – |  |  |  |  | am Ende | – |  |  | C | gerade |
+
+**Dame**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | R | R / L | TH | ● | ● |  |  | – | – | ● |  | DW gegen LOD | gerade |
+| 2 | 2 | L | L / R | T |  | ● |  |  | hebt | – |  |  | W | links |
+| 3 | 3 | R | R / L | T |  | ● |  |  | oben | am Ende |  |  | W | links |
+| 4 | 1 | R | R / L | – |  |  |  |  | am Ende | – |  |  | W | gerade |
+
+## Curved Feather
+
+**Herr**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | R | R / L | HT | ● | ● |  |  | am Ende | – | ● |  | DW | gerade |
+| 2 | 2 | L | L / R | HT | ● | ● |  |  | hebt | – | ● |  | DW | rechts |
+| 3 | 3 | R | R / L | HT | ● | ● |  |  | oben | am Ende | ● | ● | W | rechts |
+
+**Dame**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | L | L / R | TH | ● | ● |  |  | am Ende | – | ● |  | DC gegen LOD | gerade |
+| 2 | 2 | R | R / L | TH | ● | ● |  |  | hebt | – | ● |  | DC gegen LOD | rechts |
+| 3 | 3 | L | L / R | TH | ● | ● |  |  | oben | am Ende | ● | ● | C | rechts |
+
+## Natural Fallaway
+
+**Herr**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | R | R / L | HT | ● | ● |  |  | am Ende | – | ● |  | DW | gerade |
+| 2 | 2 | L | L / R | T |  | ● |  |  | hebt | – |  |  | W | rechts |
+| 3 | 3 | R | R / L | T |  | ● |  |  | oben | am Ende |  | ● | W | rechts |
+| 4 | 1 | L | L / R | TH | ● | ● |  |  | am Ende | – | ● |  | LOD | links |
+| 5 | 2 | R | R / L | T |  | ● |  |  | hebt | – |  |  | DC | links |
+| 6 | 3 | L | L / R | TH | ● | ● |  |  | oben | am Ende |  |  | DC | links |
+
+**Dame**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | L | L / R | TH | ● | ● |  |  | am Ende | – | ● |  | DC gegen LOD | gerade |
+| 2 | 2 | R | R / L | T |  | ● |  |  | hebt | – |  |  | C | rechts |
+| 3 | 3 | L | L / R | T |  | ● |  |  | oben | am Ende |  | ● | C | rechts |
+| 4 | 1 | R | R / L | HT | ● | ● |  |  | am Ende | – | ● |  | gegen LOD | links |
+| 5 | 2 | L | L / R | T |  | ● |  |  | hebt | – |  |  | DW gegen LOD | links |
+| 6 | 3 | R | R / L | TH | ● | ● |  |  | oben | am Ende |  |  | DW gegen LOD | links |
+

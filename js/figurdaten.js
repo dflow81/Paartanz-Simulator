@@ -236,7 +236,7 @@ function schrittePruefen(st,wo,fehler){
     if(!(len>=0&&len<=100)||!Number.isFinite(turn)||Math.abs(turn)>1080){ fehler.push(p+': Länge oder Drehung ungültig'); return null; }
     if(s.hold!==undefined&&!HOLDS[s.hold]){ fehler.push(p+': unbekannte Haltung'); return null; }
     const n={f:s.f,dir:s.dir,len,d,c:String(s.c??'').slice(0,6),turn};
-    if(s.hold!==undefined) n.hold=s.hold; if(typeof s.tip==='string') n.tip=s.tip.slice(0,200); if(s.df==='ferse'||s.df==='seit') n.df=s.df;
+    if(s.hold!==undefined) n.hold=s.hold; if(typeof s.tip==='string') n.tip=s.tip.slice(0,200); if(s.df==='ferse'||s.df==='seit') n.df=s.df; if(ARME[s.arm]) n.arm=s.arm;
     out.push(n); }
   return out;
 }

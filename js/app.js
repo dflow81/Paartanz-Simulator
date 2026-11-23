@@ -576,7 +576,7 @@ function drawPair(h,d,tlx,dt){
     const hb=sm(pH.u/.6), closed=mix(isClosed(s.holdPrev),isClosed(s.hold),hb), prom=mix(isProm(s.holdPrev),isProm(s.hold),hb);
     h.update(pH,sty,dt,beat,{prom:.3*prom,closed}); d.update(pD,sty,dt,beat,{prom:-.3*prom,closed});
     aimHead(h,d,sty,closed,prom,.35,.75,dt); aimHead(d,h,sty,closed,prom,.5,-.75,dt);
-    const t=handTargets(s.hold,sty,h,d);
+    const t=handTargets(s.hold,sty,h,d,s.arm?{arm:s.arm,u:pH.u}:null);
     if(s.holdPrev!==s.hold&&hb<1){ // Haltungswechsel: Hände wandern in einem kleinen Bogen statt auf gerader Linie
       const a=handTargets(s.holdPrev,sty,h,d), arc=Math.sin(Math.PI*hb)*.07; for(const k in t){ t[k]=a[k].lerp(t[k],hb); t[k].y+=arc; } }
     // Hände folgen ihrem Ziel leicht verzögert (relativ zum Paar), das macht Armwege bei Drehungen weich

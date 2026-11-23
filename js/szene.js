@@ -331,7 +331,23 @@ const herr=new Dancer(0x2f5fd0,false), dame=new Dancer(0xe8365a,true);
 
 /* Zielpunkte der Hände je Tanzhaltung */
 function reach(p,a,ra,b,rb){ for(let i=0;i<4;i++) for(const [c,r] of [[a,ra],[b,rb]]){ const d=p.clone().sub(c), l=d.length(); if(l>r) p.copy(c).addScaledVector(d,r/l); } return p; }
-function handTargets(hold,sty,herr,dame){
+/* Hände je Haltung, dazu die Armführung innerhalb der Haltung (fx = {arm, u}: Armaktion des Schritts und Fortschritt 0…1) */
+function handTargets(hold,sty,herr,dame,fx){ const t=haltungsHaende(hold,sty,herr,dame); return fx&&fx.arm?armFuehrung(t,hold,herr,dame,fx):t; }
+/* Welche Hände sind in einer Haltung gefasst? Die übrigen sind frei. */
+const GEFASST={zu:'HL HR DL DR',prom:'HL HR DL DR',offen:'HL HR DL DR',kreuz:'HL HR DL DR',korb:'HL HR DL DR',schatten:'HL HR DL DR',hochB:'HL HR DL DR',hammer:'HL HR DL DR',brezel:'HL HR DL DR',schulter:'HL HR DL DR',
+  LR:'HL DR',faecher:'HL DR',hoch:'HL DR',schal:'HL DR',RL:'HR DL',frei:''};
+function armFuehrung(t,hold,herr,dame,fx){
+  const u=clamp(fx.u||0,0,1), w=Math.sin(Math.PI*u), ein=sm(u/.35), g=(GEFASST[hold]||'').split(' ').filter(Boolean);
+  const paar=g.length===2?g:g.length===4?['HL','DR']:[];
+  if(fx.arm==='aus'){   // Linie: der freie Arm streckt sich seitlich nach oben (New Yorker, Fencing, Spanische Linie)
+    for(const k of ['HL','HR','DL','DR']) if(!g.includes(k)){ const P=k[0]==='H'?herr:dame, sg=k[1]==='L'?1:-1, z=P.sh[k[1]].clone().addScaledVector(P.left,sg*.5*P.k).addScaledVector(P.fw,.06); z.y+=.12*P.k; t[k].lerp(z,ein); } }
+  else if(fx.arm==='zug'&&paar.length){   // Führung durch Zug: die gefasste Hand holt die Dame heran (Richtung seiner Körpermitte)
+    const z=herr.P.clone(); z.y=t[paar[0]].y-.05; for(const k of paar) t[k].lerp(z,.32*w); }
+  else if(fx.arm==='stopp'&&paar.length){   // Stopp: die gefasste Hand hält kurz dagegen (Checked Action)
+    const v=dame.P.clone().sub(herr.P).setY(0); if(v.lengthSq()>1e-6) v.normalize(); for(const k of paar){ t[k].addScaledVector(v,.08*w); t[k].y+=.04*w; } }
+  return t;
+}
+function haltungsHaende(hold,sty,herr,dame){
   const hr=.54*herr.k, dr=.54*dame.k;
   const join=(a,b)=>{ const p=a.clone().add(b).multiplyScalar(.5); p.y=dame.P.y+.14; return reach(p,a,hr,b,dr); };
   const t={HL:herr.freeHand('L',sty),HR:herr.freeHand('R',sty),DL:dame.freeHand('L',sty),DR:dame.freeHand('R',sty)};
@@ -354,7 +370,9 @@ function handTargets(hold,sty,herr,dame){
       const a=dame.sh.L.clone().addScaledVector(dame.left,.28).addScaledVector(dame.fw,.05); a.y-=.04; reach(a,herr.sh.L,hr,dame.sh.L,dr);
       const hip=dame.P.clone().addScaledVector(dame.left,-.18*dame.k); hip.y+=.14; reach(hip,herr.sh.R,hr,dame.sh.R,dr);
       return {HL:a,DL:a.clone(),HR:hip,DR:hip.clone()}; }
-    case 'hoch': { const j=dame.headPos.clone(); j.y+=.25*dame.k; reach(j,herr.sh.L,hr,dame.sh.R,dr); t.HL=j; t.DR=j.clone(); return t; }
+    case 'hoch': { // die Hand steht über dem Kopf dessen, der sich gerade dreht, und beschreibt dort einen kleinen Kreis (folgt seiner Drehung)
+      const P=(herr.spin||0)>(dame.spin||0)+.4?herr:dame, j=P.headPos.clone(); j.y+=.25*P.k; j.addScaledVector(P.fw,.09*Math.min(1,(P.spin||0)/2.5));
+      reach(j,herr.sh.L,hr,dame.sh.R,dr); t.HL=j; t.DR=j.clone(); return t; }
     case 'hochB': { // beide Hände gefasst und über dem Kopf der Dame (Tunnel)
       const y=dame.headPos.y+.2*dame.k, a=join(herr.sh.L,dame.sh.R), b=join(herr.sh.R,dame.sh.L); a.y=b.y=y; reach(a,herr.sh.L,hr,dame.sh.R,dr); reach(b,herr.sh.R,hr,dame.sh.L,dr);
       return {HL:a,DR:a.clone(),HR:b,DL:b.clone()}; }

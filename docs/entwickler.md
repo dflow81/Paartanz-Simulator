@@ -10,6 +10,8 @@ Der Simulator ist eine statische Webseite ohne Build-Schritt. Alle Skripte sind 
 | `figuren/*.js` | Figuren und Folgen | nein |
 | `figuren/info.js` | Kursstufe, Typ, Beschreibung je Figur (`INFO`) | nein |
 | `figuren/belegt.js` | Figuren mit Quelle (`QUELLEN`) und belegter Fußarbeit (`TECHNIK_DATEN`) | nein |
+| `figuren/lehrplan.js` | Lehrplan-Ergänzung: 73 schematische Figuren der Abgleichliste mit Stufe und Beschreibung (`LEHRPLAN_NEU`) | nein |
+| `figuren/arme.js` | Armaktionen je Schritt (Feld `arm`), per Regel und gezielt | nein |
 | `figuren/syllabus.js` | Abgleichliste je Tanz und Stufe (`SYLLABUS`) | nein |
 | `js/speicher.js` | eigene Figuren und Folgen im Browser | nein (`localStorage`) |
 | `js/engine.js` | Schrittsimulation von Herr und Dame, Raumlenkung | nein |
@@ -102,10 +104,13 @@ Steht die Dame am Anfang einer Figur mit eigenen Schritten mehr als 15 cm näher
 
 ## Haltungen und Arme
 
-Jede Haltung in `HOLDS` (`js/basis.js`) hat eine Geometrie in `holdGeo` (`js/engine.js`) und Handziele in `handTargets` (`js/szene.js`). Für eine neue Haltung braucht man alle drei Einträge, dazu einen Führungshinweis in `HOLD_TIP` und eine Haltungsart in `HALT_ART` (`js/figurdaten.js`).
+Jede Haltung in `HOLDS` (`js/basis.js`) hat eine Geometrie in `holdGeo` (`js/engine.js`) und Handziele in `haltungsHaende` (`js/szene.js`). Für eine neue Haltung braucht man alle drei Einträge, dazu einen Führungshinweis in `HOLD_TIP`, eine Haltungsart in `HALT_ART` (`js/figurdaten.js`) und die gefassten Hände in `GEFASST`.
+
+**Armführung innerhalb einer Haltung:** Ein Schritt kann das Feld `arm` tragen (`ARME` in `js/basis.js`): `aus` = Linie (freier Arm seitlich gestreckt), `zug` = die gefasste Hand holt die Dame heran, `stopp` = die gefasste Hand hält dagegen. `armFuehrung()` in `js/szene.js` verschiebt die Handziele über den Schritt (Ein- und Ausblenden). In der Haltung „Arm hoch“ steht die Hand über dem Kopf dessen, der sich gerade dreht, und kreist mit seiner Drehung. Die Zuordnung zu Figuren steht in `figuren/arme.js`; im Schritt-Editor gibt es dafür die Auswahl „Armführung“.
 
 ## Offene Folgeaufgaben
 
 - Figurgenaue Technikdaten: Belegt sind 22 Figuren (`TECHNIK_DATEN`), alle übrigen Technikangaben sind abgeleitet.
-- Armbewegungen innerhalb einer Haltung (z. B. das Einwickeln selbst) werden nicht einzeln choreografiert.
+- Armführung: drei Armaktionen und die kreisende Hand über dem Kopf; Einwickeln und Auswickeln selbst sind weiter Haltungswechsel mit Überblendung.
+- Die 73 Figuren aus `figuren/lehrplan.js` sind schematisch und sollten mit einem Technikbuch abgeglichen werden.
 - Weitere Figuren der Abgleichliste: siehe `docs/figurenluecken.md` (mit Gründen bei bewusst offen gelassenen Figuren).

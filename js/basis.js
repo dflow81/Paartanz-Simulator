@@ -27,6 +27,9 @@ const HOLD_TIP={zu:'Zurück in die geschlossene Tanzhaltung',prom:'Zur Promenade
   offen:'Auf Abstand gehen, beide Hände fassen',LR:'Nur seine linke Hand hält ihre rechte',RL:'Nur seine rechte Hand hält ihre linke',
   hoch:'Herr hebt die linke Hand – die Dame dreht darunter',kreuz:'Kreuzhandfassung: rechts in rechts, links in links',
   korb:'Dame ins Körbchen eindrehen, an seine rechte Seite',hochB:'Beide Arme hoch – Tunnel',hammer:'Ihr rechter Arm wird hinter ihren Rücken gewickelt',schal:'Ihre Hand gleitet auf seine Schulter (Schal)',brezel:'Arme hinter den Rücken verschränken (Brezel)',schulter:'Dame legt die Hände auf seine Schultern',schatten:'Dame vor den Herrn drehen (Schattenposition)',faecher:'Dame in den Fächer führen – sie geht an seine linke Seite, sein linker Arm öffnet sich',frei:'Hände lösen'};
+/* Armführung innerhalb einer Haltung (Schritt-Feld „arm“): Linie, Zug, Stopp */
+const ARME={aus:'Linie (freier Arm gestreckt)',zug:'Zug (Hand holt heran)',stopp:'Stopp (Hand hält dagegen)'};
+const ARM_TIP={aus:'Linie: den freien Arm seitlich strecken',zug:'Führung: die gefasste Hand holt die Dame heran',stopp:'Stopp: die gefasste Hand hält kurz dagegen'};
 const S=(f,dir,len,d,c,turn=0,hold)=>hold?{f,dir,len,d,c,turn,hold}:{f,dir,len,d,c,turn};
 const O=f=>f==='L'?'R':'L';
 /* Gegengleiche Schritte (für die Dame) */

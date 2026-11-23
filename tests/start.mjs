@@ -38,6 +38,11 @@ try{
       info:'Durchlauf '+t0+' Schläge, nach Neubeginn bei Schlag '+beat.toFixed(1)+', Takt '+taktZaehl(Math.floor(beat))}); },6000)); })()`;
   await pruef('Kursfolge Slowfox Bronze abspielen und neu beginnen',spiel('k_slowfox1'));
   await pruef('Kursfolge Salsa Bronze abspielen und neu beginnen',spiel('k_salsa1'));
+  /* Armführung: Figuren mit Linie, Zug und kreisender Hand abspielen – die Hände müssen sich bewegen, ohne Skriptfehler */
+  const arme=fig=>`(()=>{ const s=document.getElementById('source'); s.value='fig:${fig}'; s.dispatchEvent(new Event('change')); speedEl.value=150; setPlaying(true); beat=0;
+    const p0=herr.j.haL.position.clone(); return new Promise(r=>setTimeout(()=>{ const d=herr.j.haL.position.distanceTo(p0); r({ok:d>.01&&isFinite(d),info:'linke Hand des Herrn bewegt sich '+d.toFixed(2)+' m'}); },4000)); })()`;
+  await pruef('Armführung: New Yorker (Linie)',arme('b_c_ny'));
+  await pruef('Armführung: Rope Spinning (Hand kreist über dem Kopf)',arme('b_c_rope'));
   await pruef('Takt: Cha-Cha beginnt auf 2 – Einzählen endet auf der „1“',`(()=>{ const s=document.getElementById('source'); s.value='fig:b_c_gs'; s.dispatchEvent(new Event('change'));
     const r=[einzaehl(-5,true),einzaehl(-2,true),einzaehl(-1,true),taktZaehl(0),taktZaehl(3)].join(); return {ok:r==='5,8,1,2,1',info:r}; })()`);
   await pruef('Takt: betonte Eins läuft über Discofox-Figurenwechsel weiter',`(()=>{ const s=document.getElementById('source'); s.value='seq:k_disco1'; s.dispatchEvent(new Event('change'));
