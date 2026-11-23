@@ -343,16 +343,14 @@ INFO.b_d_pushpull2=[2,'eff','Push & Pull mit beiden Händen (offene Haltung): Au
 }
 
 /* Discofox Körbchen mit Drehung (schematisch): eindrehen, im Körbchen gemeinsam eine ganze Drehung rechts herum (Herr vorwärts, Dame rückwärts),
-   ausdrehen. 4 × 6 Zählzeiten. */
+   ausdrehen – nur diese drei Teile, ohne zusätzliche Grundschritte: 3 + 6 + 3 Zählzeiten. */
 {
 const t=['1','2','3','4','5','6'];
-const ein=[{...S('L','vor',28,1,t[0],0,'korb'),tip:'Körbchen: die Dame dreht links ein, seine linke Hand führt'},S('R','vor',28,1,t[1],0,'korb'),S('L','tap',0,1,t[2],0,'korb'),
-  S('L','rueck',28,1,t[3],0,'korb'),S('R','rueck',28,1,t[4],0,'korb'),S('L','tap',0,1,t[5],0,'korb')];
+const ein=[{...S('L','vor',28,1,t[0],0,'korb'),tip:'Eindrehen: die Dame dreht links ins Körbchen, seine linke Hand führt'},S('R','vor',28,1,t[1],0,'korb'),S('L','tap',0,1,t[2],0,'korb')];
 // beim Drehen geht der Herr vorwärts und die Dame rückwärts – das Paar dreht um seine gemeinsame Mitte (dd: Schrittrichtung der Dame)
-const dreh=[{...S('L','vor',25,1,t[0],-90,'korb'),dd:'rueck',tip:'Im Körbchen gemeinsam rechts herum drehen – der Herr geht vorwärts, die Dame rückwärts'},{...S('R','vor',25,1,t[1],-90,'korb'),dd:'rueck'},S('L','tap',0,1,t[2],0,'korb'),
-  {...S('L','vor',25,1,t[3],-90,'korb'),dd:'rueck'},{...S('R','vor',25,1,t[4],-90,'korb'),dd:'rueck'},S('L','tap',0,1,t[5],0,'korb')];
-const aus=[{...S('L','rueck',28,1,t[0],0,'LR'),tip:'Ausdrehen: die Dame dreht rechts heraus, der Herr gibt ihr Platz'},S('R','rueck',28,1,t[1],0,'LR'),S('L','tap',0,1,t[2],0,'LR'),
-  S('L','vor',28,1,t[3],0,'LR'),S('R','vor',28,1,t[4],0,'LR'),S('L','tap',0,1,t[5],0,'LR')];
+const dreh=[{...S('L','vor',25,1,'4',-90,'korb'),dd:'rueck',tip:'Im Körbchen gemeinsam rechts herum drehen – der Herr geht vorwärts, die Dame rückwärts'},{...S('R','vor',25,1,'5',-90,'korb'),dd:'rueck'},S('L','tap',0,1,'6',0,'korb'),
+  {...S('L','vor',25,1,'7',-90,'korb'),dd:'rueck'},{...S('R','vor',25,1,'8',-90,'korb'),dd:'rueck'},S('L','tap',0,1,'9',0,'korb')];
+const aus=[{...S('L','rueck',28,1,'10',0,'LR'),tip:'Ausdrehen: die Dame dreht rechts heraus, der Herr gibt ihr Platz'},S('R','rueck',28,1,'11',0,'LR'),S('L','tap',0,1,'12',0,'LR')];
 tanz('Discofox',120,{ b_d_korbdreh:['Körbchen mit Drehung (eindrehen, gemeinsam drehen, ausdrehen)',[...ein,...dreh,...aus]] });
 INFO.b_d_korbdreh=[2,'pos','Körbchen mit Drehung: Der Herr dreht die Dame links ein ins Körbchen, beide drehen darin gemeinsam eine ganze Drehung rechts herum – der Herr geht vorwärts, die Dame rückwärts, dann dreht die Dame rechts wieder aus.','s'];
 }
