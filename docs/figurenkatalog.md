@@ -2,7 +2,7 @@
 
 Diese Datei wird mit `node tests/doku.js` aus den Figurendaten erzeugt. Bitte nicht von Hand bearbeiten.
 
-Stand: 553 Figuren in 31 Tänzen.
+Stand: 556 Figuren in 31 Tänzen.
 
 **Kursstufen:** 1 = Einsteiger (WTP 1), 2 = Bronze, 3 = Silber, 4 = Gold, 5 = Goldstar, 6 = Turnier, 7 = Freies Tanzen. Sie sind eine Orientierung am Aufbau üblicher Kurse, keine offizielle Zuordnung eines Verbands. Mit * markierte Stufen sind aus dem Schwierigkeitsgrad geschätzt.
 
@@ -293,41 +293,44 @@ Stand: 553 Figuren in 31 Tänzen.
 
 | Figur | Stufe | Schwierigkeit | Typ | Zählzeiten (Schläge) | Füße H / D | Haltung | Anschlüsse | Status |
 |---|---|---|---|---|---|---|---|---|
-| Grundschritt | 1 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 35: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
-| Grundschritt in offener Haltung | 1 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | beide Hände | 35: Grundschritt in offener Haltung, Offene Haltung rückwärts, Grundschritt | vorhanden |
-| Grundschritt am Platz | 1 | ★ | Grundschritt | 1 2 3 (3) | L→R / R→L | geschlossen | 35: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
-| Grundschritt rückwärts (Herr rück, Dame vor) | 1 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 35: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
-| Grundschritt am Platz (seit, ran, tap) | 1 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 35: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
-| Offene Haltung rückwärts | 1 | ★ | Promenade und offene Figuren | 1 2 3 (3) | L→R / R→L | beide Hände | 35: Grundschritt in offener Haltung, Offene Haltung rückwärts, Grundschritt | vorhanden |
-| Seitschritt nach rechts | 1 | ★ | Grundschritt | 1 2 3 (3) | L→R / R→L | geschlossen | 35: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
-| Grundschritt mit Linksdrehung | 1 | ★★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 35: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
-| Grundschritt mit Rechtsdrehung | 1 | ★★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 35: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
-| Seitschritte links und rechts | 1 | ★★ | Grundschritt | 1 2 3 4 5 6 7 8 (8) | L→R / R→L | geschlossen | 35: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden, Rhythmusvariante |
-| Rückführung in die geschlossene Haltung | 1 | ★★ | Effekt und Variation | 1 2 3 4 5 6 (6) | L→R / R→L | Hand L–R → geschlossen | 35: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | neu |
-| Körbchen (eindrehen, mitgehen, ausdrehen) | 1 | ★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 1 2 3 4 5 6 (12) | L→R / R→L | Körbchen → Hand L–R | 35: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden |
-| Damensolo rechts (Drehung unter dem Arm) | 1 | ★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 35: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden |
-| Damensolo links (Drehung unter dem Arm) | 1 | ★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 35: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden |
-| Herrensolo (Linksdrehung) | 1 | ★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | ohne → beide Hände | 35: Grundschritt in offener Haltung, Offene Haltung rückwärts, Grundschritt | vorhanden |
-| Platzwechsel (Dame dreht links unter dem Arm) | 1 | ★★★★ | Platz- und Positionswechsel | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 35: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden |
-| Damendrehung links (Unterarmdrehung) | 1 | ★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 35: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden, Alias von „Damensolo links (Drehung unter dem Arm)“ |
-| Grundschritt mit Kick | 2 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 35: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
-| Grundschritt in Kreuzhandfassung | 2 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | Kreuzhand | 35: Grundschritt in Kreuzhandfassung, Grundschritt, Grundschritt mit Linksdrehung | vorhanden |
-| Promenade (seitlich hin und zurück) | 2 | ★★ | Promenade und offene Figuren | 1 2 3 4 5 6 (6) | L→R / R→L | Promenade → geschlossen | 35: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
-| Wickler (Dame eindrehen und unter dem Arm wieder ausdrehen) | 2 | ★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 (6) | L→R / R→L | Körbchen → beide Hände | 35: Grundschritt in offener Haltung, Offene Haltung rückwärts, Grundschritt | vorhanden |
-| Schattenposition (Dame vor dem Herrn) | 2 | ★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 1 2 3 4 5 6 (12) | L→R / R→L | Schatten → beide Hände | 35: Grundschritt in offener Haltung, Offene Haltung rückwärts, Grundschritt | vorhanden |
-| Herrensolo (Rechtsdrehung) | 2 | ★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | ohne → beide Hände | 35: Grundschritt in offener Haltung, Offene Haltung rückwärts, Grundschritt | vorhanden |
-| Platzwechsel (Dame dreht rechts unter dem Arm) | 2 | ★★★★ | Platz- und Positionswechsel | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 35: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | neu |
-| Schulterfasser (Grundschritt in Schulterfassung) | 3 | ★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Arm hoch → Hand L–R | 35: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | neu |
-| Handwechsel hinter dem Rücken (Herrendrehung) | 3 | ★★★★ | Platz- und Positionswechsel | 1 2 3 (3) | L→R / R→L | ohne → Hand L–R | 35: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden |
-| Doppelte Damendrehung rechts | 3 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 35: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden |
-| He Goes – She Goes (erst die Dame, dann der Herr wechselt den Platz) | 3 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 (6) | L→R / R→L | Arm hoch → Hand L–R | 35: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | neu, vereinfacht |
-| Tunnel (Dame und Herr drehen unter beiden Armen) | 3 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 (6) | L→R / R→L | beide Arme hoch → beide Hände | 35: Grundschritt in offener Haltung, Offene Haltung rückwärts, Grundschritt | neu |
-| Hammerlock (Dame links eingewickelt, Arm hinter dem Rücken) | 3 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Arm hoch → Hand L–R | 35: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | neu |
-| Schal (Herr dreht rechts, ihr Arm liegt wie ein Schal um seinen Hals) | 3 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Hand L–R | 35: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | neu |
-| Sliding Doors (Dame wechselt hinter dem Herrn die Seite) | 4 | ★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Hand L–R | 35: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden, schematisch |
-| Brezel (Körbchen, Herr dreht rechts hinein, beide drehen wieder auf) | 4 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Arm hoch → Hand L–R | 35: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | neu |
-| Lasso (Dame geht um den Herrn herum) | 4 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Arm hoch → Hand L–R | 35: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden, schematisch |
-| Seilwurf (Dame dreht hinaus und wieder herein) | 4 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Arm hoch → Hand L–R | 35: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden, schematisch |
+| Grundschritt | 1 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 38: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
+| Grundschritt in offener Haltung | 1 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | beide Hände | 38: Grundschritt in offener Haltung, Offene Haltung rückwärts, Push & Pull | vorhanden |
+| Grundschritt am Platz | 1 | ★ | Grundschritt | 1 2 3 (3) | L→R / R→L | geschlossen | 38: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
+| Grundschritt rückwärts (Herr rück, Dame vor) | 1 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 38: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
+| Grundschritt am Platz (seit, ran, tap) | 1 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 38: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
+| Offene Haltung rückwärts | 1 | ★ | Promenade und offene Figuren | 1 2 3 (3) | L→R / R→L | beide Hände | 38: Grundschritt in offener Haltung, Offene Haltung rückwärts, Push & Pull | vorhanden |
+| Seitschritt nach rechts | 1 | ★ | Grundschritt | 1 2 3 (3) | L→R / R→L | geschlossen | 38: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
+| Grundschritt mit Linksdrehung | 1 | ★★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 38: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
+| Grundschritt mit Rechtsdrehung | 1 | ★★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 38: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
+| Seitschritte links und rechts | 1 | ★★ | Grundschritt | 1 2 3 4 5 6 7 8 (8) | L→R / R→L | geschlossen | 38: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden, Rhythmusvariante |
+| Rückführung in die geschlossene Haltung | 1 | ★★ | Effekt und Variation | 1 2 3 4 5 6 (6) | L→R / R→L | Hand L–R → geschlossen | 38: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | neu |
+| Körbchen (eindrehen, mitgehen, ausdrehen) | 1 | ★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 1 2 3 4 5 6 (12) | L→R / R→L | Körbchen → Hand L–R | 38: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden |
+| Damensolo rechts (Drehung unter dem Arm) | 1 | ★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 38: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden |
+| Damensolo links (Drehung unter dem Arm) | 1 | ★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 38: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden |
+| Herrensolo (Linksdrehung) | 1 | ★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | ohne → beide Hände | 38: Grundschritt in offener Haltung, Offene Haltung rückwärts, Push & Pull | vorhanden |
+| Platzwechsel (Dame dreht links unter dem Arm) | 1 | ★★★★ | Platz- und Positionswechsel | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 38: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden |
+| Damendrehung links (Unterarmdrehung) | 1 | ★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 38: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden, Alias von „Damensolo links (Drehung unter dem Arm)“ |
+| Grundschritt mit Kick | 2 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 38: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
+| Grundschritt in Kreuzhandfassung | 2 | ★ | Grundschritt | 1 2 3 4 5 6 (6) | L→R / R→L | Kreuzhand | 38: Grundschritt in Kreuzhandfassung, Grundschritt, Grundschritt mit Linksdrehung | vorhanden |
+| Promenade (seitlich hin und zurück) | 2 | ★★ | Promenade und offene Figuren | 1 2 3 4 5 6 (6) | L→R / R→L | Promenade → geschlossen | 38: Grundschritt, Grundschritt mit Linksdrehung, Grundschritt mit Rechtsdrehung | vorhanden |
+| Wickler (Dame eindrehen und unter dem Arm wieder ausdrehen) | 2 | ★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 (6) | L→R / R→L | Körbchen → beide Hände | 38: Grundschritt in offener Haltung, Offene Haltung rückwärts, Push & Pull | vorhanden |
+| Push & Pull (mit einer Hand) | 2 | ★★ | Effekt und Variation | 1 2 3 4 5 6 (6) | L→R / R→L | Hand L–R | 38: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden, schematisch |
+| Push & Pull (mit beiden Händen) | 2 | ★★ | Effekt und Variation | 1 2 3 4 5 6 (6) | L→R / R→L | beide Hände | 38: Grundschritt in offener Haltung, Offene Haltung rückwärts, Push & Pull | vorhanden, schematisch |
+| Schattenposition (Dame vor dem Herrn) | 2 | ★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 1 2 3 4 5 6 (12) | L→R / R→L | Schatten → beide Hände | 38: Grundschritt in offener Haltung, Offene Haltung rückwärts, Push & Pull | vorhanden |
+| Herrensolo (Rechtsdrehung) | 2 | ★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | ohne → beide Hände | 38: Grundschritt in offener Haltung, Offene Haltung rückwärts, Push & Pull | vorhanden |
+| Platzwechsel (Dame dreht rechts unter dem Arm) | 2 | ★★★★ | Platz- und Positionswechsel | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 38: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | neu |
+| Körbchen mit Drehung (eindrehen, gemeinsam drehen, ausdrehen) | 2 | ★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 1 2 3 4 5 6 1 2 3 4 5 6 (18) | L→R / R→L | Körbchen → Hand L–R | 38: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden, schematisch |
+| Schulterfasser (Grundschritt in Schulterfassung) | 3 | ★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Arm hoch → Hand L–R | 38: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | neu |
+| Handwechsel hinter dem Rücken (Herrendrehung) | 3 | ★★★★ | Platz- und Positionswechsel | 1 2 3 (3) | L→R / R→L | ohne → Hand L–R | 38: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden |
+| Doppelte Damendrehung rechts | 3 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 (3) | L→R / R→L | Arm hoch → Hand L–R | 38: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden |
+| He Goes – She Goes (erst die Dame, dann der Herr wechselt den Platz) | 3 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 (6) | L→R / R→L | Arm hoch → Hand L–R | 38: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | neu, vereinfacht |
+| Tunnel (Dame und Herr drehen unter beiden Armen) | 3 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 (6) | L→R / R→L | beide Arme hoch → beide Hände | 38: Grundschritt in offener Haltung, Offene Haltung rückwärts, Push & Pull | neu |
+| Hammerlock (Dame links eingewickelt, Arm hinter dem Rücken) | 3 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Arm hoch → Hand L–R | 38: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | neu |
+| Schal (Herr dreht rechts, ihr Arm liegt wie ein Schal um seinen Hals) | 3 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Hand L–R | 38: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | neu |
+| Sliding Doors (Dame wechselt hinter dem Herrn die Seite) | 4 | ★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Hand L–R | 38: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden, schematisch |
+| Brezel (Körbchen, Herr dreht rechts hinein, beide drehen wieder auf) | 4 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Arm hoch → Hand L–R | 38: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | neu |
+| Lasso (Dame geht um den Herrn herum) | 4 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Arm hoch → Hand L–R | 38: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden, schematisch |
+| Seilwurf (Dame dreht hinaus und wieder herein) | 4 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 4 5 6 7 8 9 10 11 12 (12) | L→R / R→L | Arm hoch → Hand L–R | 38: Schal, Rückführung in die geschlossene Haltung, Sliding Doors | vorhanden, schematisch |
 
 ## Wiener Walzer
 

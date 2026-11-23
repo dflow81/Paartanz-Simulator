@@ -324,3 +324,34 @@ Object.assign(info,{
 BUILTIN.b_d_lasso.ganz=BUILTIN.b_c_towel.ganz=BUILTIN.b_c_alemana.ganz=BUILTIN.b_r_alemana.ganz=true;
 for(const [k,[st,art,text]] of Object.entries(info)){ INFO['b_'+k]=[st,art,text,'s']; LEHRPLAN_NEU.push('b_'+k); }
 }
+
+/* Discofox Push & Pull (schematisch): Auf 1-2-3 schiebt der Herr die Dame weg (sie geht zwei Schritte rück), auf 4-5-6 zieht er sie
+   wieder heran (zwei Schritte vor). Der Herr tanzt am Platz. Mit einer Hand (Hand L–R) und mit beiden Händen (offene Haltung).
+   Armführung: Stopp (Hand hält dagegen, schiebt) und Zug (Hand holt heran), siehe figuren/arme.js. */
+{
+const z1=['1','2','3'], z2=['4','5','6'];
+const herr=h=>[{...S('L','platz',0,1,z1[0],0,h),tip:'Push: die Hand gibt einen kleinen Impuls nach vorn, die Dame geht zurück',arm:'stopp'},S('R','platz',0,1,z1[1],0,h),S('L','tap',0,1,z1[2],0,h),
+  {...S('L','platz',0,1,z2[0],0,h),tip:'Pull: die Hand holt die Dame wieder heran',arm:'zug'},S('R','platz',0,1,z2[1],0,h),S('L','tap',0,1,z2[2],0,h)];
+const dame=[S('R','rueck',12,1,z1[0]),S('L','rueck',12,1,z1[1]),S('R','tap',0,1,z1[2]),S('R','vor',12,1,z2[0]),S('L','vor',12,1,z2[1]),S('R','tap',0,1,z2[2])];
+tanz('Discofox',120,{
+  b_d_pushpull1:['Push & Pull (mit einer Hand)',herr('LR'),dame],
+  b_d_pushpull2:['Push & Pull (mit beiden Händen)',herr('offen'),dame],
+});
+BUILTIN.b_d_pushpull1.ganz=BUILTIN.b_d_pushpull2.ganz=true;   // Abstand am Anfang an die offene Haltung anpassen
+INFO.b_d_pushpull1=[2,'eff','Push & Pull mit einer Hand (Hand L–R): Auf 1-2-3 schiebt der Herr die Dame mit einem kleinen Impuls weg, sie geht zwei Schritte zurück; auf 4-5-6 holt er sie wieder heran. Der Herr bleibt am Platz.','s'];
+INFO.b_d_pushpull2=[2,'eff','Push & Pull mit beiden Händen (offene Haltung): Auf 1-2-3 schiebt der Herr die Dame weg, auf 4-5-6 zieht er sie wieder heran. Beide Hände geben den Impuls gleichzeitig.','s'];
+}
+
+/* Discofox Körbchen mit Drehung (schematisch): eindrehen, im Körbchen gemeinsam eine ganze Drehung (rechts herum, die Dame innen),
+   ausdrehen. 4 × 6 Zählzeiten. */
+{
+const t=['1','2','3','4','5','6'];
+const ein=[{...S('L','vor',28,1,t[0],0,'korb'),tip:'Körbchen: die Dame dreht links ein, seine linke Hand führt'},S('R','vor',28,1,t[1],0,'korb'),S('L','tap',0,1,t[2],0,'korb'),
+  S('L','rueck',28,1,t[3],0,'korb'),S('R','rueck',28,1,t[4],0,'korb'),S('L','tap',0,1,t[5],0,'korb')];
+const dreh=[{...S('L','vor',15,1,t[0],-90,'korb'),tip:'Im Körbchen gemeinsam rechts herum drehen – der Herr geht außen, die Dame innen'},S('R','vor',15,1,t[1],-90,'korb'),S('L','tap',0,1,t[2],0,'korb'),
+  S('L','vor',15,1,t[3],-90,'korb'),S('R','vor',15,1,t[4],-90,'korb'),S('L','tap',0,1,t[5],0,'korb')];
+const aus=[{...S('L','rueck',28,1,t[0],0,'LR'),tip:'Ausdrehen: die Dame dreht rechts heraus, der Herr gibt ihr Platz'},S('R','rueck',28,1,t[1],0,'LR'),S('L','tap',0,1,t[2],0,'LR'),
+  S('L','vor',28,1,t[3],0,'LR'),S('R','vor',28,1,t[4],0,'LR'),S('L','tap',0,1,t[5],0,'LR')];
+tanz('Discofox',120,{ b_d_korbdreh:['Körbchen mit Drehung (eindrehen, gemeinsam drehen, ausdrehen)',[...ein,...dreh,...aus]] });
+INFO.b_d_korbdreh=[2,'pos','Körbchen mit Drehung: Der Herr dreht die Dame links ein ins Körbchen, beide drehen darin gemeinsam eine ganze Drehung rechts herum (der Herr geht außen, die Dame innen), dann dreht die Dame rechts wieder aus.','s'];
+}

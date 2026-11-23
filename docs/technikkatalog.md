@@ -30,7 +30,7 @@ Jede Figur hat für **jeden Schritt von Herr und Dame**: Belastungsfuß, freier 
 - [Cha-Cha-Cha](technik/cha-cha-cha.md) – 36 Figuren
 - [Rumba](technik/rumba.md) – 34 Figuren
 - [Salsa](technik/salsa.md) – 25 Figuren
-- [Discofox](technik/discofox.md) – 35 Figuren
+- [Discofox](technik/discofox.md) – 38 Figuren
 - [Wiener Walzer](technik/wiener-walzer.md) – 12 Figuren, davon 1 mit belegter Fußarbeit
 - [Samba](technik/samba.md) – 24 Figuren, davon 4 mit belegter Fußarbeit
 - [Jive](technik/jive.md) – 28 Figuren, davon 6 mit belegter Fußarbeit

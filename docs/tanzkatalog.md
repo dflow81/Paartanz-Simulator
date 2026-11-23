@@ -15,7 +15,7 @@ Diese Datei wird mit `node tests/doku.js` aus den Figurendaten erzeugt. Bitte ni
 | Jive | 4/4 | 1 2 3 a 4 5 a 6 | 2 | 150 | federnd | 28 | 10 | 7 | 5 | 9 | 4 | 3 | 0 | 0 |
 | Paso Doble | 4/4 | 1–8 | 2 | 120 | Standard ohne Heben und Senken | 24 | 8 | 4 | 10 | 5 | 5 | 0 | 0 | 0 |
 | Foxtrott | 4/4 | S Q | 2 | 120 | Schwungtanz mit Heben und Senken | 17 | 5 | 9 | 6 | 0 | 2 | 0 | 0 | 0 |
-| Discofox | 4/4 | 1 2 3 (Schritt, Schritt, Tap) | 3 | 120 | Gesellschaftstanz | 35 | 14 | 17 | 7 | 7 | 4 | 0 | 0 | 0 |
+| Discofox | 4/4 | 1 2 3 (Schritt, Schritt, Tap) | 3 | 120 | Gesellschaftstanz | 38 | 16 | 17 | 10 | 7 | 4 | 0 | 0 | 0 |
 | Blues | 4/4 | 1–4 | 2 | 80 | Gesellschaftstanz | 10 | 3 | 5 | 4 | 0 | 1 | 0 | 0 | 0 |
 | Rock'n'Roll | 4/4 | 1–6 | 2 | 150 | federnd | 7 | 3 | 5 | 1 | 0 | 1 | 0 | 0 | 0 |
 | Polka | 4/4 | 1 & 2 | 2 | 120 | federnd | 9 | 3 | 0 | 7 | 2 | 0 | 0 | 0 | 0 |
@@ -91,7 +91,7 @@ Je Medaillenstufe automatisch erzeugt, mit gültigen Übergängen. In der App er
 
 ### Discofox
 
-- **Bronze:** Grundschritt am Platz → Wickler → Offene Haltung rückwärts → Damensolo rechts → Rückführung in die geschlossene Haltung → Schattenposition → Grundschritt in offener Haltung → Herrensolo → Seitschritt nach rechts
-- **Silber:** Grundschritt mit Kick → Wickler → Schulterfasser → Schal → Doppelte Damendrehung rechts → Herrensolo → He Goes – She Goes → Hammerlock → Handwechsel hinter dem Rücken → Platzwechsel → Rückführung in die geschlossene Haltung
-- **Gold:** Seitschritte links und rechts → Handwechsel hinter dem Rücken → Schal → Sliding Doors → Tunnel → He Goes – She Goes → Seilwurf → Brezel → Rückführung in die geschlossene Haltung → Grundschritt mit Rechtsdrehung
-- **Goldstar:** Grundschritt am Platz → Tunnel → Sliding Doors → Handwechsel hinter dem Rücken → Schal → Rückführung in die geschlossene Haltung → Grundschritt am Platz → He Goes – She Goes → Lasso → Doppelte Damendrehung rechts → Seilwurf → Schulterfasser → Hammerlock → Sliding Doors → Grundschritt rückwärts
+- **Bronze:** Grundschritt am Platz → Platzwechsel → Push & Pull → Platzwechsel → Damendrehung links → Rückführung in die geschlossene Haltung
+- **Silber:** Seitschritte links und rechts → Promenade → Grundschritt am Platz → Schal → Rückführung in die geschlossene Haltung → Grundschritt mit Rechtsdrehung → Push & Pull → Hammerlock → Push & Pull → Herrensolo → Seitschritt nach rechts
+- **Gold:** Grundschritt mit Kick → Brezel → Sliding Doors → Schal → Handwechsel hinter dem Rücken → Doppelte Damendrehung rechts → He Goes – She Goes → Rückführung in die geschlossene Haltung → Grundschritt am Platz → Lasso → Push & Pull → Schulterfasser → Grundschritt rückwärts
+- **Goldstar:** Grundschritt am Platz → Schulterfasser → Hammerlock → Schal → Sliding Doors → Rückführung in die geschlossene Haltung → Grundschritt mit Kick → Handwechsel hinter dem Rücken → Tunnel → Grundschritt in offener Haltung → Push & Pull → He Goes – She Goes → Brezel → Push & Pull → Grundschritt mit Linksdrehung

@@ -884,3 +884,99 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 | 11 | 11 | L | L / R | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
 | 12 | 12 | R | L / R | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
 
+## Push & Pull (mit einer Hand)
+
+**Herr**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 2 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 3 | 3 | L | R / L | T |  | ● |  |  | – | – |  |  | LOD | – |
+| 4 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 5 | 5 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 6 | 6 | L | R / L | T |  | ● |  |  | – | – |  |  | LOD | – |
+
+**Dame**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 2 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 3 | 3 | R | L / R | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
+| 4 | 4 | R | R / L | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
+| 5 | 5 | L | L / R | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
+| 6 | 6 | R | L / R | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
+
+## Push & Pull (mit beiden Händen)
+
+**Herr**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 2 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 3 | 3 | L | R / L | T |  | ● |  |  | – | – |  |  | LOD | – |
+| 4 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 5 | 5 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 6 | 6 | L | R / L | T |  | ● |  |  | – | – |  |  | LOD | – |
+
+**Dame**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 2 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 3 | 3 | R | L / R | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
+| 4 | 4 | R | R / L | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
+| 5 | 5 | L | L / R | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
+| 6 | 6 | R | L / R | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
+
+## Körbchen mit Drehung (eindrehen, gemeinsam drehen, ausdrehen)
+
+**Herr**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | L | L / R | HF | ● |  |  | ● | – | – |  |  | LOD | – |
+| 2 | 2 | R | R / L | HF | ● |  |  | ● | – | – |  |  | LOD | – |
+| 3 | 3 | L | R / L | T |  | ● |  |  | – | – |  |  | LOD | – |
+| 4 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 5 | 5 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 6 | 6 | L | R / L | T |  | ● |  |  | – | – |  |  | LOD | – |
+| 7 | 1 | L | L / R | HF | ● |  |  | ● | – | – |  |  | W | – |
+| 8 | 2 | R | R / L | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
+| 9 | 3 | L | R / L | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
+| 10 | 4 | L | L / R | HF | ● |  |  | ● | – | – |  |  | C | – |
+| 11 | 5 | R | R / L | HF | ● |  |  | ● | – | – |  |  | LOD | – |
+| 12 | 6 | L | R / L | T |  | ● |  |  | – | – |  |  | LOD | – |
+| 13 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 14 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 15 | 3 | L | R / L | T |  | ● |  |  | – | – |  |  | LOD | – |
+| 16 | 4 | L | L / R | HF | ● |  |  | ● | – | – |  |  | LOD | – |
+| 17 | 5 | R | R / L | HF | ● |  |  | ● | – | – |  |  | LOD | – |
+| 18 | 6 | L | R / L | T |  | ● |  |  | – | – |  |  | LOD | – |
+
+**Dame**
+
+| Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1 | R | R / L | HF | ● |  |  | ● | – | – |  |  | LOD | – |
+| 2 | 2 | L | L / R | HF | ● |  |  | ● | – | – |  |  | LOD | – |
+| 3 | 3 | R | L / R | T |  | ● |  |  | – | – |  |  | LOD | – |
+| 4 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 5 | 5 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 6 | 6 | R | L / R | T |  | ● |  |  | – | – |  |  | LOD | – |
+| 7 | 1 | R | R / L | HF | ● |  |  | ● | – | – |  |  | W | – |
+| 8 | 2 | L | L / R | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
+| 9 | 3 | R | L / R | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
+| 10 | 4 | R | R / L | HF | ● |  |  | ● | – | – |  |  | C | – |
+| 11 | 5 | L | L / R | HF | ● |  |  | ● | – | – |  |  | LOD | – |
+| 12 | 6 | R | L / R | T |  | ● |  |  | – | – |  |  | LOD | – |
+| 13 | 1 | R | R / L | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
+| 14 | 2 | L | L / R | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
+| 15 | 3 | R | L / R | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
+| 16 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 17 | 5 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 18 | 6 | R | L / R | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
+

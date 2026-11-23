@@ -1,5 +1,10 @@
 # Änderungsprotokoll
 
+## 2026-11-24: Discofox Push & Pull, Körbchen mit Drehung
+
+- Neue Figur **Körbchen mit Drehung**: eindrehen, im Körbchen gemeinsam eine ganze Drehung rechts herum (Herr außen, Dame innen), ausdrehen. Schematisch, Stufe Bronze, mit Beispielfolge.
+- Neue Figuren **Push & Pull mit einer Hand** (Hand L–R) und **mit beiden Händen** (offene Haltung): auf 1-2-3 schiebt der Herr die Dame weg, auf 4-5-6 zieht er sie heran; mit Armführung Stopp und Zug. Schematisch, Stufe Bronze. Dazu die Beispielfolge „Discofox – Push & Pull mit einer und beiden Händen“.
+
 ## 2026-11-24: Standardfiguren mit Quelle, Reverse Pivot
 
 **Neu**
