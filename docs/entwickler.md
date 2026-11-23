@@ -11,6 +11,7 @@ Der Simulator ist eine statische Webseite ohne Build-Schritt. Alle Skripte sind 
 | `figuren/info.js` | Kursstufe, Typ, Beschreibung je Figur (`INFO`) | nein |
 | `figuren/belegt.js` | Figuren mit Quelle (`QUELLEN`) und belegter Fußarbeit (`TECHNIK_DATEN`) | nein |
 | `figuren/lehrplan.js` | Lehrplan-Ergänzung: 73 schematische Figuren der Abgleichliste mit Stufe und Beschreibung (`LEHRPLAN_NEU`) | nein |
+| `figuren/quellen.js` | Mit Quelle abgeglichene Figuren (BallroomGuide): ersetzen die schematischen Fassungen, mit Fußarbeit in `TECHNIK_DATEN` (`QUELLE_GEPRUEFT`) | nein |
 | `figuren/arme.js` | Armaktionen je Schritt (Feld `arm`), per Regel und gezielt | nein |
 | `figuren/syllabus.js` | Abgleichliste je Tanz und Stufe (`SYLLABUS`) | nein |
 | `js/speicher.js` | eigene Figuren und Folgen im Browser | nein (`localStorage`) |
@@ -108,8 +109,12 @@ Jede Haltung in `HOLDS` (`js/basis.js`) hat eine Geometrie in `holdGeo` (`js/eng
 
 **Armführung innerhalb einer Haltung:** Ein Schritt kann das Feld `arm` tragen (`ARME` in `js/basis.js`): `aus` = Linie (freier Arm seitlich gestreckt), `zug` = die gefasste Hand holt die Dame heran, `stopp` = die gefasste Hand hält dagegen. `armFuehrung()` in `js/szene.js` verschiebt die Handziele über den Schritt (Ein- und Ausblenden). In der Haltung „Arm hoch“ steht die Hand über dem Kopf dessen, der sich gerade dreht, und kreist mit seiner Drehung. Beim Ein- und Auswickeln (Haltungswechsel in oder aus `WICKEL`: Körbchen, Hammerlock, Brezel, Schal, Schatten) führt `wickelWeg()` jedes weit wandernde Händepaar in einem Bogen über den Kopf dessen, um den gewickelt wird; andere Wechsel nehmen einen kleinen Bogen. Die Zuordnung zu Figuren steht in `figuren/arme.js`; im Schritt-Editor gibt es dafür die Auswahl „Armführung“.
 
+## Raumlenkung und Abstandsausgleich bei eigenen Damenschritten
+
+Lenkt die Engine das Paar vom Rand weg (Zusatzdrehung `extra` je Schritt des Herrn), tanzt eine Dame mit eigenen Schritten diese im Schatten ohne Lenkung; ihre Lage relativ zum Herrn wird dann mit seiner Zusatzdrehung mitgedreht (`mit()` in `simBlock`). Der Anfangsausgleich verteilt den Gesamtversatz auf die ersten echten Schritte (mit `F.ganz` auf die ersten zwei); Platz-Schritte holen nur den Rückstand zum anderen Fuß auf (`shift.platz`, dabei keine Fußwarnung).
+
 ## Offene Folgeaufgaben
 
-- Figurgenaue Technikdaten: Belegt sind 22 Figuren (`TECHNIK_DATEN`), alle übrigen Technikangaben sind abgeleitet.
-- Die 73 Figuren aus `figuren/lehrplan.js` sind schematisch und sollten mit einem Technikbuch abgeglichen werden.
+- Figurgenaue Technikdaten: Belegt sind 35 Figuren (`TECHNIK_DATEN`), alle übrigen Technikangaben sind abgeleitet.
+- 18 Lehrplanfiguren sind mit der Quelle abgeglichen (`figuren/quellen.js`). Noch schematisch: 120 Figuren, darunter Windmill, Curly Whip, Chugging, Stalking Walks, Catapult (Jive), Plait, Rolling off the Arm, Three Step Turn, Contra Bota Fogos, Samba Locks, Criss Cross Voltas (Samba), Sixteen, Grand Circle, La Passe, Spanish Lines, Fregolina, Syncopated Separation (Paso), Sliding Doors, Three Alemanas, Continuous Hip Twist, Opening Out from Reverse Top (Rumba), Turkish Towel, Chase, Hip Twist Spiral (Cha-Cha). Gründe: Die Quelltabellen sind dort in sich widersprüchlich (Drehungen von Herr und Dame passen nicht zusammen, derselbe Fuß zweimal), oder die Figur beginnt in Promenade, Tandem oder Kontra-Stellung, die die Engine bei eigenen Damenschritten nicht als Anfangsstellung kennt.
 - Weitere Figuren der Abgleichliste: siehe `docs/figurenluecken.md` (mit Gründen bei bewusst offen gelassenen Figuren).

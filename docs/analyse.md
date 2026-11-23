@@ -4,7 +4,7 @@ Diese Datei wird mit `node tests/doku.js` aus den Figurendaten erzeugt. Bitte ni
 
 ## Bestand
 
-- **31 Tänze**, **551 Figuren**, **140 Beispiel- und Kursfolgen**
+- **31 Tänze**, **551 Figuren**, **185 Beispiel- und Kursfolgen**
 - Vollständige Zuordnung jeder Figur (Tanz, Startfuß, Endfuß, Haltung, Schwierigkeit): [figurenkatalog.md](figurenkatalog.md)
 
 | Tanz | Figuren | Stufe festgelegt | Stufe geschätzt |
@@ -47,7 +47,7 @@ Diese Datei wird mit `node tests/doku.js` aus den Figurendaten erzeugt. Bitte ni
 
 Keine.
 
-### Gleiche Schritte im selben Tanz (7)
+### Gleiche Schritte im selben Tanz (6)
 
 - Rumba: „Seit-Wiegeschritt (Cucaracha)“ (`b_r_cuca`) = „Seitschritte (Cucaracha-Schritt seitlich, links und rechts)“ (`b_r_seitl`) – als Alias gekennzeichnet: gleiche Schritte wie die Cucaracha
 - Rumba: „Gehschritte vor und rück“ (`b_r_geh`) = „Vorwärts-Gehschritte“ (`b_r_vorgeh`) – als Alias gekennzeichnet: gleiche Schritte wie „Gehschritte vor und rück“
@@ -55,7 +55,6 @@ Keine.
 - Discofox: „Damensolo links (Drehung unter dem Arm)“ (`b_d_solol`) = „Damendrehung links (Unterarmdrehung)“ (`b_d_drehl2`) – als Alias gekennzeichnet: gleiche Schritte wie „Damensolo links“
 - Blues: „Vor – Tap, Rück – Tap“ (`b_bl_vor`) = „Vorwärts und rückwärts (Schritt, Tap)“ (`b_bl_vorr`) – als Alias gekennzeichnet: gleiche Schritte wie „Vor – Tap, Rück – Tap“
 - Bachata: „Grundschritt am Platz“ (`b_b_platz`) = „Wellenbewegung am Platz (Sensual)“ (`b_b_sensual`) – als Alias gekennzeichnet: die Füße tanzen den Grundschritt am Platz; die Wellenbewegung des Oberkörpers wird nicht dargestellt
-- Paso Doble: „Spanish Lines“ (`b_pd_spanish`) = „Farol“ (`b_pd_farol`) – **nicht gekennzeichnet**
 
 Dubletten wurden nicht gelöscht, weil gespeicherte eigene Folgen auf diese Figuren verweisen können. Sie sind als Alias gekennzeichnet (`ALIAS` in `figuren/info.js`) und im Figurenkatalog so markiert.
 
@@ -70,6 +69,7 @@ Dubletten wurden nicht gelöscht, weil gespeicherte eigene Folgen auf diese Figu
 - Langsamer Walzer – Rechtsdrehung (6 Schritte): http://dance.djurredeboer.nl/standard/waltz/natural_turn.html
 - Langsamer Walzer – Linksdrehung (6 Schritte): http://dance.djurredeboer.nl/standard/waltz/reverse_turn.html
 - Langsamer Walzer – Rechtskreisel (Spin Turn): http://dance.djurredeboer.nl/standard/waltz/spin_turn.html
+- Rumba – Fencing: http://dance.djurredeboer.nl/latin/rumba/fencing.html
 - Slowfox – Basic Weave: http://dance.djurredeboer.nl/standard/foxtrot/basic_weave.html
 - Quickstep – Natural Pivot Turn: http://dance.djurredeboer.nl/standard/quickstep/pivot_turn.html
 - Quickstep – Reverse Pivot: http://dance.djurredeboer.nl/standard/quickstep/reverse_pivot.html
@@ -93,6 +93,23 @@ Dubletten wurden nicht gelöscht, weil gespeicherte eigene Folgen auf diese Figu
 - Rumba – Reverse Top (aus dem Grundschritt): http://dance.djurredeboer.nl/latin/rumba/reverse_top.html (Darstellung schematisch)
 - Rumba – Curl (in den Fächer): http://dance.djurredeboer.nl/latin/rumba/curl.html (Darstellung schematisch)
 - Rumba – Closed Hip Twist (in den Fächer): http://dance.djurredeboer.nl/latin/rumba/closed_hip.html (Darstellung schematisch)
+- Cha-Cha-Cha – Rope Spinning: http://dance.djurredeboer.nl/latin/cha_cha/rope_spinning.html
+- Rumba – Rope Spinning: http://dance.djurredeboer.nl/latin/rumba/rope_spinning.html
+- Rumba – Three Threes (drei Damendrehungen): http://dance.djurredeboer.nl/latin/rumba/three_threes.html
+- Samba – Corta Jaca: http://dance.djurredeboer.nl/latin/samba/corta_jaca.html
+- Samba – Argentine Crosses: http://dance.djurredeboer.nl/latin/samba/argentine_crosses.html
+- Samba – Maypole: http://dance.djurredeboer.nl/latin/samba/maypole.html
+- Samba – Natural Roll (Rechtsrollen): http://dance.djurredeboer.nl/latin/samba/natural_roll.html
+- Jive – Link (aus der offenen Haltung zurück in die geschlossene): http://dance.djurredeboer.nl/latin/jive/link.html
+- Jive – Spanish Arms: http://dance.djurredeboer.nl/latin/jive/spanish_arms.html
+- Jive – Rolling off the Arm: http://dance.djurredeboer.nl/latin/jive/rolling_off_arm.html
+- Jive – Toe Heel Swivels: http://dance.djurredeboer.nl/latin/jive/toe_heel.html
+- Jive – Simple Spin (Dame dreht ganz rechts): http://dance.djurredeboer.nl/latin/jive/simple_spin.html
+- Jive – Miami Special: http://dance.djurredeboer.nl/latin/jive/miami_special.html
+- Paso Doble – Separation: http://dance.djurredeboer.nl/latin/paso/separation.html
+- Paso Doble – Twist Turn: http://dance.djurredeboer.nl/latin/paso/twist_turn.html
+- Paso Doble – Coup de Pique: http://dance.djurredeboer.nl/latin/paso/coup_de_pique.html
+- Paso Doble – Flamenco Taps: http://dance.djurredeboer.nl/latin/paso/flamenco_taps.html
 
 ## Unvollständige Figuren
 

@@ -193,6 +193,7 @@ function folgeErzeugen(o){
       if(n>=L&&fertig(seq)) return seq;
       if(n>=L+3) return null;   // höchstens drei Figuren mehr, um Endfigur, Grundhaltung oder Schleife zu erreichen
       let c=n===0&&o.start?[o.start]:mische(seq.at(-1),pool);
+      if(n===0&&!o.start&&schleife) c=c.filter(k=>pool.some(p=>(o.wdh||p!==k)&&uebergang(M[p],M[k]).ok));   // Schleife: nur Startfiguren, zu denen auch eine Figur hinführt
       if(o.ende&&n>=L-1&&darf(seq.at(-1),o.ende)) c=[o.ende,...c.filter(k=>k!==o.ende)];   // erzwungen, aber nur wenn erlaubt
       else if(o.ende&&!(n===0&&o.start)) c=c.filter(k=>k!==o.ende);   // die Endfigur nicht vorzeitig verbrauchen (die Startfigur bleibt)
       for(const k of c.slice(0,12)){ used[k]=(used[k]||0)+1; const r=dfs([...seq,k]); if(r) return r; used[k]--; }

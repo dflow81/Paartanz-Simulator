@@ -107,7 +107,7 @@ tanz('Paso Doble',120,{
 tanz('Foxtrott',120,{
   b_f_check:['Rückwärts-Check und vor',[S('L','vor',35,2,'S'),{...S('R','rueck',35,2,'S'),tip:'Check: kurz stoppen und zurück'},S('L','seit',22,1,'Q'),S('R','schliessen',0,1,'Q')]],
   b_f_promdreh:['Promenade mit Damendrehung',[S('L','seit',35,2,'S',0,'prom'),S('R','kreuzSeit',30,2,'S',0,'prom'),S('L','seit',22,1,'Q',0,'hoch'),S('R','schliessen',0,1,'Q')],
-     [S('R','seit',35,2,'S'),S('L','kreuzSeit',30,2,'S'),S('R','vor',15,1,'Q',-180),S('L','vor',10,1,'Q',-180)]],
+     [S('R','seit',35,2,'S'),S('L','kreuzSeit',30,2,'S'),S('R','rueck',20,1,'Q',-180),S('L','vor',5,1,'Q',-180)]],
   b_f_viertelr:['Viertelkarree rechts herum',[S('L','vor',35,2,'S',-45),S('R','seit',25,2,'S',-45),S('L','rueck',30,1,'Q'),S('R','schliessen',0,1,'Q')]],
 });
 

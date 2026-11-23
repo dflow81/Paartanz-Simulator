@@ -81,9 +81,9 @@ const SYLLABUS={
 /* Bewusst offen gelassen, mit Grund (wird im Lückenbericht angezeigt) */
 const OFFEN_GRUND={
   'Langsamer Walzer|Reverse Pivot':'wird auf „&“ aus dem vorigen Takt getanzt und ist als eigene Figur nicht taktgerecht darstellbar',
-  'Langsamer Walzer|Fallaway Whisk':'in der Quelle nicht gefunden',
-  'Cha-Cha-Cha|Sweetheart':'Diagramm der Quelle widersprüchlich (Dame: Schritt 26/27 zweimal links belastet)',
-  'Cha-Cha-Cha|Follow My Leader':'Diagramm der Quelle widersprüchlich (Dame: derselbe Fuß zweimal hintereinander belastet)',
+  'Langsamer Walzer|Fallaway Whisk':'in der Quelle nicht gefunden; auch am 2026-11-23 keine frei zugängliche Schrittbeschreibung für Herr und Dame gefunden (nur Round-Dance-Beschreibungen ohne Damenschritte)',
+  'Cha-Cha-Cha|Sweetheart':'Diagramm der Quelle widersprüchlich (Dame: Schritt 26/27 zweimal links belastet); am 2026-11-23 keine zweite frei zugängliche Quelle gefunden',
+  'Cha-Cha-Cha|Follow My Leader':'Diagramm der Quelle widersprüchlich (Dame: derselbe Fuß zweimal hintereinander belastet); am 2026-11-23 keine zweite frei zugängliche Quelle gefunden',
 };
 /* Stufe aus der Abgleichliste übernehmen, wenn figuren/info.js für die Figur noch nichts festlegt */
 for(const stufen of Object.values(SYLLABUS)) for(const [st,liste] of Object.entries(stufen)) for(const e of liste){
@@ -93,4 +93,4 @@ for(const stufen of Object.values(SYLLABUS)) for(const [st,liste] of Object.entr
 for(const k of ['sf_ffinish','sf_oimp','sf_cfeder','sf_hfeder','sf_tumble','sf_bounce','sf_nweave','sf_wpp','sf_topspin','sf_otelemark','sf_ntwist','q_fishtail','q_v6','q_6run','q_rrturn','q_rfinish','q_swivel','q_qor','q_hcorte',
   'w_otelemark','w_wing','w_contra','w_hcorte','w_dbl','w_ospin','w_tlock','w_drag','w_bwhisk','w_rcorte','w_wpp','w_pcr','w_cross','w_oversway','w_throw','w_chair','w_lunge',
   't_drag','t_orev','t_bopr','t_oswivel','t_ntwist','t_npt','t_contra','t_fall4','t_oversway','c_cross','c_aida','c_fence','c_spiral','r_cross','r_aida','r_fence','r_spiral','s_dile','s_vacilala','s_sombrero','s_kreuzgs'])
-  if(INFO['b_'+k]) INFO['b_'+k][3]='s';
+  if(INFO['b_'+k]&&!(typeof QUELLE_GEPRUEFT!=='undefined'&&QUELLE_GEPRUEFT.includes('b_'+k))) INFO['b_'+k][3]='s';   // mit Quelle abgeglichene Figuren (figuren/quellen.js) ausgenommen

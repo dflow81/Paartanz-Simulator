@@ -996,6 +996,8 @@ Quelle: http://dance.djurredeboer.nl/latin/cha_cha/curl.html
 
 ## Rope Spinning
 
+Quelle: http://dance.djurredeboer.nl/latin/cha_cha/rope_spinning.html
+
 **Herr**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
@@ -1008,43 +1010,23 @@ Quelle: http://dance.djurredeboer.nl/latin/cha_cha/curl.html
 | 6 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 | 7 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 | 8 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 9 | & | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 9 | & | L | L / R | BF |  |  | ● | ● | – | – |  | ● | LOD | – |
 | 10 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 11 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 12 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 13 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 14 | & | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 15 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 16 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 17 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 18 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 19 | & | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 20 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 
 **Dame**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 2 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 1 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | W | – |
+| 2 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | DW gegen LOD | – |
 | 3 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 4 | & | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 5 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 6 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | DC gegen LOD | – |
-| 7 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | C | – |
-| 8 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | DC | – |
-| 9 | & | R | R / L | BF |  |  | ● | ● | – | – |  |  | DC | – |
-| 10 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 11 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | DW | – |
-| 12 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | W | – |
-| 13 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | DW gegen LOD | – |
-| 14 | & | L | L / R | BF |  |  | ● | ● | – | – |  |  | DW gegen LOD | – |
-| 15 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 16 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 17 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 18 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 19 | & | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 20 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 4 | & | L | L / R | BF |  |  | ● | ● | – | – |  | ● | DC gegen LOD | – |
+| 5 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  |  | C | – |
+| 6 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 7 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | DW | – |
+| 8 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | W | – |
+| 9 | & | R | R / L | BF |  |  | ● | ● | – | – |  | ● | DW gegen LOD | – |
+| 10 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 
 ## Sliding Doors
 

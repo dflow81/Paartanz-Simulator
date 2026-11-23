@@ -1,5 +1,23 @@
 # Änderungsprotokoll
 
+## 2026-11-23 (Nacht): Abstände, Quellenabgleich, Übungsfolgen, Arme
+
+**Behoben**
+- Engine: Bei der Raumlenkung drehte eine Dame mit eigenen Schritten um ihren eigenen Fuß statt mit dem Paar und driftete seitlich weg (z. B. Spanish Lines nach Grand Circle: 8 cm). Jetzt wird ihre Lage mit der Drehung des Herrn mitgeführt.
+- Engine: Der Anfangsausgleich ging bei Platz-Schritten verloren (z. B. Stop and Go nach dem Grundschritt: 8 cm, jetzt 31 cm); er greift schon ab 6 cm Abweichung.
+- Alle 551 Figuren mit je drei Anschlüssen geprüft: 11 zu nahe Paare behoben (Promenade mit Damendrehung, Lasso, Turkish Towel, Alemana, Sixteen, Fregolina u. a.). Gemessen am Körperschwerpunkt bleibt die Dame überall unter 3,6 m/s.
+- Generator: Eine Startfigur, zu der keine Figur hinführt, blockierte die Schleifensuche (Samba).
+- Rope Spinning: Die Dame lief durch den Herrn; jetzt steht er im Mittelpunkt ihres Bogens.
+
+**Neu**
+- 18 Lehrplanfiguren nach den Schritttabellen von BallroomGuide neu aufgebaut, nicht mehr schematisch, mit Fußarbeit: Jive Toe Heel Swivels, Link, Simple Spin, Miami Special, Rolling off the Arm, Spanish Arms; Samba Corta Jaca, Argentine Crosses, Maypole, Natural Roll; Paso Doble Separation, Twist Turn, Coup de Pique, Flamenco Taps; Rumba Three Threes, Rope Spinning, Fencing; Cha-Cha Rope Spinning (`figuren/quellen.js`). 35 Figuren haben jetzt belegte Fußarbeit (vorher 22).
+- Paso Doble Twist Turn in der Kursfolge Silber; Rumba Gold beginnt Fencing nach der Quelle aus dem Fächer.
+- Einsteigerfolgen für Samba, Paso Doble und Salsa; 42 Übungsfolgen, damit fast jede Figur in einer festen Folge vorkommt (185 Folgen).
+- Armaktionen für Dile que no, Sácala, Exhíbela, American Spin, Rolling off the Arm, Miami Special, Flamenco Taps, Three Threes; Browsertest misst, ob Arme durch den Partner gehen.
+
+**Offen**
+- Vier Figuren der Abgleichliste bleiben offen; für Fallaway Whisk, Sweetheart und Follow My Leader wurde keine zweite frei zugängliche Quelle gefunden.
+
 ## 2026-11-23 (Abend): Kurslücken geschlossen, Einwickeln
 
 **Neu**

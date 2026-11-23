@@ -6,7 +6,7 @@ Ein 3D-Simulator im Browser zum Lernen und Üben von Paartänzen. Herr und Dame 
 
 ## Was er kann
 
-- **31 Tänze, 551 Figuren und 140 Beispiel- und Kursfolgen:** Langsamer Walzer, Wiener Walzer, Tango, Slowfox, Quickstep, Foxtrott, Discofox, Blues, Rock'n'Roll, Polka, Cha-Cha-Cha, Rumba, Samba, Jive, Paso Doble, Salsa, Bachata, Merengue, Boogie-Woogie, Tango Argentino, West Coast Swing Dazu die übrigen Tänze des Welttanzprogramms: Walzer-Musette, Tangowalzer, Disco-Samba, Two Step, Bugg, Cumbia, Tango Americano, Nordic Tango, Mambo und Marschfox.
+- **31 Tänze, 551 Figuren und 185 Beispiel- und Kursfolgen:** Langsamer Walzer, Wiener Walzer, Tango, Slowfox, Quickstep, Foxtrott, Discofox, Blues, Rock'n'Roll, Polka, Cha-Cha-Cha, Rumba, Samba, Jive, Paso Doble, Salsa, Bachata, Merengue, Boogie-Woogie, Tango Argentino, West Coast Swing Dazu die übrigen Tänze des Welttanzprogramms: Walzer-Musette, Tangowalzer, Disco-Samba, Two Step, Bugg, Cumbia, Tango Americano, Nordic Tango, Mambo und Marschfox.
 - **Fertige Tanzfolgen** für jeden Tanz, dazu eigene Folgen und eigene Figuren im Editor
 - **Kursstufen** (Einsteiger/WTP 1, Bronze, Silber, Gold, Goldstar, Turnier, Freies Tanzen) und **Filter** nach Stufe, Figurentyp und Haltung – orientiert an üblichen Tanzschulkursen, keine offizielle Zuordnung
 - **Karte „Zur Figur“:** Stufe, Schwierigkeit, Zählzeiten, Start- und Endfuß, Haltung, Beschreibung und passende Anschlussfiguren
@@ -64,7 +64,7 @@ Repository herunterladen und `tanzsimulator.html` (oder `index.html`) im Browser
 | `js/engine.js` | Schritt-Engine: Fußpositionen, Gewicht, Drehungen, Raumbegrenzung |
 | `js/figurdaten.js` | Figuren-Metadaten, Übergangsprüfung und Folgen-Generator |
 | `figuren/syllabus.js` | Abgleichliste der Figuren je Stufe |
-| `figuren/lehrplan.js`, `figuren/arme.js` | Lehrplan-Ergänzung (73 schematische Figuren) und Armführung je Schritt |
+| `figuren/lehrplan.js`, `figuren/quellen.js`, `figuren/arme.js` | Lehrplan-Ergänzung (73 Figuren), davon 18 mit Quelle abgeglichen, und Armführung je Schritt |
 | `figuren/belegt.js` | Figuren mit überprüfbarer Quelle (Schrittdiagramme) und ihre Fußarbeit |
 | `js/technik.js`, `js/profi.js` | Technikdaten, Tanzlehrer, Profi-Lernmodus, Turniermodus, Qualitätsprüfung |
 | `tests/` | Tests (`node tests/test.js`, `node tests/start.mjs`) und Erzeugung der Kataloge (`node tests/doku.js`) |

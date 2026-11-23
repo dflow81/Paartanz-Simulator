@@ -522,26 +522,28 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 
 ## Fencing
 
+Quelle: http://dance.djurredeboer.nl/latin/rumba/fencing.html
+
 **Herr**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 | 2 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 3 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 4 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 5 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 3 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | DC | – |
+| 4 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  | ● | DC | – |
+| 5 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | DC | – |
 | 6 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 
 **Dame**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 2 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 3 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 4 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 5 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 1 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | W | – |
+| 2 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | W | – |
+| 3 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | DC gegen LOD | – |
+| 4 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  | ● | DC gegen LOD | – |
+| 5 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | DC gegen LOD | – |
 | 6 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 
 ## Spiral
@@ -660,6 +662,8 @@ Quelle: http://dance.djurredeboer.nl/latin/rumba/closed_hip.html
 
 ## Rope Spinning
 
+Quelle: http://dance.djurredeboer.nl/latin/rumba/rope_spinning.html
+
 **Herr**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
@@ -669,30 +673,18 @@ Quelle: http://dance.djurredeboer.nl/latin/rumba/closed_hip.html
 | 3 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 | 4 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 | 5 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 6 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 7 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 8 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 9 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 10 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 11 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 12 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 6 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  | ● | LOD | – |
 
 **Dame**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 1 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | W | – |
 | 2 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 3 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 4 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | DC gegen LOD | – |
-| 5 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | C | – |
-| 6 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 7 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | DW | – |
-| 8 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | W | – |
-| 9 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 10 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 11 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 12 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 3 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | C | – |
+| 4 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 5 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | W | – |
+| 6 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 
 ## Sliding Doors
 
@@ -780,6 +772,8 @@ Quelle: http://dance.djurredeboer.nl/latin/rumba/closed_hip.html
 
 ## Three Threes (drei Damendrehungen)
 
+Quelle: http://dance.djurredeboer.nl/latin/rumba/three_threes.html
+
 **Herr**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
@@ -801,17 +795,17 @@ Quelle: http://dance.djurredeboer.nl/latin/rumba/closed_hip.html
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 1 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 | 2 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 | 3 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 | 4 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 5 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 6 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 5 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 6 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 | 7 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 8 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 9 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 10 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 11 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 8 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 9 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  | ● | LOD | – |
+| 10 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | DC | – |
+| 11 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | DC | – |
 | 12 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 
 ## Opening Out from Reverse Top

@@ -116,8 +116,8 @@ tanz('Cha-Cha-Cha',120,{
   b_c_hipspiral:fig('Hip Twist Spiral (in den Fächer)',lat.spiral), b_c_drei3:fig('Three Threes (drei Damendrehungen)',lat.drei),
   /* Turkish Towel: die Dame geht hinter dem Herrn herum, ihre Hand gleitet über seine Schultern (wie ein Handtuch) */
   b_c_towel:['Turkish Towel',[...H(pl('L'),'hoch'),...TP('L','hoch'),...H(pl('R'),'schal'),...TP('R','schal'),...H(pl('L'),'schal'),...TP('L','schal'),...H(pl('R'),'LR'),...TP('R','LR')],
-     [tip(S('R','vor',20,1,'2',-45),'Turkish Towel: die Dame geht rechts um den Herrn herum, ihre Hand gleitet über seine Schultern'),S('L','vor',20,1,'3',-45),...TV('R'),S('L','vor',20,1,'2',-45),S('R','vor',20,1,'3',-45),...TV('L'),
-      S('R','vor',20,1,'2',-45),S('L','vor',20,1,'3',-45),...TV('R'),S('L','vor',20,1,'2',-45),S('R','vor',20,1,'3',-45),...TV('L')]],
+     [tip(S('R','vor',16,1,'2',-45),'Turkish Towel: die Dame geht rechts um den Herrn herum, ihre Hand gleitet über seine Schultern'),S('L','vor',16,1,'3',-45),...TV('R'),S('L','vor',16,1,'2',-45),S('R','vor',16,1,'3',-45),...TV('L'),
+      S('R','vor',16,1,'2',-45),S('L','vor',16,1,'3',-45),...TV('R'),S('L','vor',16,1,'2',-45),S('R','vor',16,1,'3',-45),...TV('L')]],
   /* Chase: erst dreht der Herr ½ nach rechts weg und die Dame folgt, dann dreht er zurück */
   b_c_chase:['Chase (Verfolgung)',[tip(S('L','platz',0,1,'2',-180,'frei'),'Chase: der Herr dreht sich weg, die Dame folgt ihm'),S('R','platz',0,1,'3',0,'frei'),S('L','vor',14,.5,'4',0,'frei'),S('R','kreuzHinter',6,.5,'&',0,'frei'),S('L','vor',14,1,'1',0,'frei'),
      tip(S('R','vor',10,1,'2',180,'frei'),'Der Herr dreht sich wieder zur Dame'),S('L','platz',0,1,'3',0,'frei'),S('R','schliessen',0,.5,'4',0,'offen'),S('L','platz',0,.5,'&',0,'offen'),S('R','platz',0,1,'1',0,'offen')],
@@ -244,7 +244,7 @@ tanz('Paso Doble',120,{
   b_pd_lapasse:['La Passe',[tip(S('R','platz',0,1,'1'),'Appell'),S('L','seit',30,1,'2',0,'prom'),S('R','kreuzSeit',25,1,'3',0,'prom'),S('L','seit',25,1,'4',0,'prom'),S('R','kreuzSeit',25,1,'5',-45,'prom'),S('L','seit',20,1,'6',-45),S('R','schliessen',0,1,'7',-45),S('L','platz',0,1,'8',-45)]],
   b_pd_twist:['Twist Turn',[tip(S('R','kreuzHinter',12,1,'1'),'Der rechte Fuß kreuzt hinter den linken'),tip(S('L','platz',0,1,'2',-120,'hoch'),'Twist: auf beiden Füßen nach rechts aufdrehen'),S('R','platz',0,1,'3',-120,'hoch'),S('L','platz',0,1,'4',-120),
      ...[5,6,7,8].map(n=>S(n%2?'R':'L','platz',0,1,String(n)))]],
-  b_pd_spanish:['Spanish Lines',[tip(S('R','platz',0,1,'1'),'Appell'),S('L','vor',25,1,'2'),S('R','platz',0,1,'3',0,'hoch'),S('L','platz',0,1,'4',0,'hoch'),tip(S('R','rueck',25,1,'5',0,'LR'),'Spanische Linie: beide strecken sich zur Seite'),S('L','schliessen',0,1,'6',0,'LR'),S('R','platz',0,1,'7'),S('L','platz',0,1,'8')],
+  b_pd_spanish:['Spanish Lines',[tip(S('R','platz',0,1,'1'),'Appell'),S('L','vor',25,1,'2'),S('R','platz',0,1,'3',0,'hoch'),S('L','platz',0,1,'4',0,'hoch'),tip(S('R','rueck',25,1,'5',0,'LR'),'Spanische Linie: beide strecken sich zur Seite'),S('L','schliessen',0,1,'6',0,'LR'),tip(S('R','schliessen',0,1,'7'),'Füße schließen, zurück in die geschlossene Haltung'),S('L','platz',0,1,'8')],
      [S('L','platz',0,1,'1'),S('R','rueck',25,1,'2'),tip(S('L','vor',10,1,'3',-180),'Die Dame dreht unter seinem Arm in die Linie'),S('R','vor',10,1,'4',-180),S('L','platz',0,1,'5'),S('R','platz',0,1,'6'),S('L','platz',0,1,'7'),S('R','platz',0,1,'8')]],
   b_pd_coup:['Coup de Pique',[tip(S('R','tap',0,1,'1'),'Coup de Pique: die Fußspitze sticht kurz in den Boden'),S('R','seit',20,1,'2'),S('L','schliessen',0,1,'3'),S('R','platz',0,1,'4'),S('L','tap',0,1,'5'),S('L','seit',20,1,'6'),S('R','schliessen',0,1,'7'),S('L','platz',0,1,'8')]],
   b_pd_flamenco:['Flamenco Taps',[tip(S('R','platz',0,1,'1'),'Appell'),tip(S('L','tapRueck',12,1,'2'),'Die Fußspitze tippt hinten (Flamenco-Tap)'),S('L','tap',0,1,'3'),S('L','platz',0,1,'4'),S('R','tapRueck',12,1,'5'),S('R','tap',0,1,'6'),S('R','platz',0,1,'7'),S('L','platz',0,1,'8')]],
@@ -309,7 +309,7 @@ const dVor=(z,l=22,t=0)=>[S('R','vor',l,1,z[0],t),S('L','vor',l,1,z[1],t),S('R',
 const dRueck=(z,l=22)=>[S('R','rueck',l,1,z[0]),S('L','rueck',l,1,z[1]),S('R','tap',0,1,z[2])];
 tanz('Discofox',120,{
   b_d_lasso:['Lasso (Dame geht um den Herrn herum)',[...amPl(Z[0],'hoch','hoch',-45),...amPl(Z[1],'hoch','hoch',-45),...amPl(Z[2],'hoch','hoch',-45),...amPl(Z[3],'hoch','LR',-45)],
-     [tip(S('R','vor',25,1,'1',-45),'Lasso: die Dame geht rechts herum um den Herrn, seine Hand kreist über seinem Kopf'),S('L','vor',25,1,'2',-45),S('R','tap',0,1,'3'),...dVor(Z[1],25,-45),...dVor(Z[2],25,-45),...dVor(Z[3],25,-45)]],
+     [tip(S('R','vor',20,1,'1',-45),'Lasso: die Dame geht rechts herum um den Herrn, seine Hand kreist über seinem Kopf'),S('L','vor',20,1,'2',-45),S('R','tap',0,1,'3'),...dVor(Z[1],20,-45),...dVor(Z[2],20,-45),...dVor(Z[3],20,-45)]],
   b_d_seilwurf:['Seilwurf (Dame dreht hinaus und wieder herein)',[...amPl(Z[0],'hoch','LR'),...amPl(Z[1],'LR'),...amPl(Z[2],'hoch','LR'),...amPl(Z[3],'LR')],
      [...dDrehD(Z[0],-360),...dRueck(Z[1],18),...dDrehD(Z[2],360),...dRueck(Z[3],18)]],
   b_d_sliding:['Sliding Doors (Dame wechselt hinter dem Herrn die Seite)',[...vorH(Z[0],'LR',15),...amPl(Z[1],'schatten'),...amPl(Z[2],'schatten'),...rueckH(Z[3],'LR',15)]],
@@ -320,5 +320,7 @@ Object.assign(info,{
   d_sliding:[4,'pos','Sliding Doors: in der Schattenstellung wechselt die Dame hinter dem Herrn von einer Seite auf die andere.'],
 });
 
+/* Lasso, Turkish Towel, Alemana: Die Dame geht um den Herrn herum bzw. dreht unter seinem Arm – endet die vorige Figur eng, gleicht sie den Abstand in den ersten Schritten ganz aus */
+BUILTIN.b_d_lasso.ganz=BUILTIN.b_c_towel.ganz=BUILTIN.b_c_alemana.ganz=BUILTIN.b_r_alemana.ganz=true;
 for(const [k,[st,art,text]] of Object.entries(info)){ INFO['b_'+k]=[st,art,text,'s']; LEHRPLAN_NEU.push('b_'+k); }
 }

@@ -140,7 +140,7 @@ folge('k_salsa2','Kursfolge Salsa (kubanischer Stil) – Silber',170,[['b_s_ruec
 folge('k_chacha3','Kursfolge Cha-Cha-Cha – Bronze',120,[['b_c_gs'],['b_c_ny'],['b_c_hand'],['b_c_fan'],['b_c_hockey'],['b_c_closedhip'],['b_c_alemana']]);
 folge('k_chacha4','Kursfolge Cha-Cha-Cha – Gold',120,[['b_c_gs'],['b_c_rtop'],['b_c_closedhip'],['b_c_hockey'],['b_c_fence'],['b_c_curl'],['b_c_alemana']]);
 folge('k_rumba3','Kursfolge Rumba – Bronze',100,[['b_r_box'],['b_r_ny'],['b_r_hand'],['b_r_fan'],['b_r_hockey'],['b_r_closedhip'],['b_r_alemana']]);
-folge('k_rumba4','Kursfolge Rumba – Gold',100,[['b_r_box'],['b_r_rtop'],['b_r_closedhip'],['b_r_hockey'],['b_r_fence'],['b_r_curl'],['b_r_alemana']]);
+folge('k_rumba4','Kursfolge Rumba – Gold',100,[['b_r_box'],['b_r_rtop'],['b_r_closedhip'],['b_r_fence'],['b_r_fan'],['b_r_hockey'],['b_r_curl'],['b_r_alemana']]);   // Fencing beginnt nach der Quelle im Fächer
 folge('k_tango4','Kursfolge Tango – Silber',128,[['b_t_geh'],['b_t_link'],['b_t_plink'],['b_t_roswivel'],['b_t_vier'],['b_t_oprom'],['b_t_corte']]);
 folge('k_walzer4','Kursfolge Langsamer Walzer – Gold',90,[['b_w_vw'],['b_w_kreisel'],['b_w_tlockr'],['b_w_chasse'],['b_w_hcorte'],['b_w_contra'],['b_w_wpp'],['b_w_cwing'],['b_w_rev']]);
 
@@ -152,7 +152,57 @@ folge('k_quick3','Kursfolge Quickstep – Gold',200,[['b_q_viertel'],['b_q_lock'
 folge('k_slowfox3','Kursfolge Slowfox – Gold',116,[['b_sf_feder'],['b_sf_links'],['b_sf_rfeder'],['b_sf_ntwist'],['b_sf_wpp'],['b_sf_frsp'],['b_sf_cod'],['b_sf_cfeder'],['b_sf_dreier']]);
 folge('k_salsa3','Kursfolge Salsa (kubanischer Stil) – Gold',170,[['b_s_rueckb'],['b_s_dile'],['b_s_ench'],['b_s_setenta'],['b_s_kentucky'],['b_s_adios'],['b_s_tumba'],['b_s_montana'],['b_s_dile']]);
 folge('k_paso1','Kursfolge Paso Doble – Bronze',120,[['b_pd_marsch'],['b_pd_appel'],['b_pd_chasse'],['b_pd_sep'],['b_pd_huit'],['b_pd_sixteen'],['b_pd_platz']]);
-folge('k_paso2','Kursfolge Paso Doble – Silber',120,[['b_pd_marsch'],['b_pd_appel'],['b_pd_sep'],['b_pd_lapasse'],['b_pd_banderillas'],['b_pd_ecart'],['b_pd_gcircle'],['b_pd_spanish'],['b_pd_platz']]);
+folge('k_paso2','Kursfolge Paso Doble – Silber',120,[['b_pd_marsch'],['b_pd_appel'],['b_pd_sep'],['b_pd_lapasse'],['b_pd_banderillas'],['b_pd_twist'],['b_pd_platz'],['b_pd_ecart'],['b_pd_gcircle'],['b_pd_spanish'],['b_pd_platz']]);
 folge('k_paso3','Kursfolge Paso Doble – Gold',120,[['b_pd_marsch'],['b_pd_appel'],['b_pd_coup'],['b_pd_syncsep'],['b_pd_flamenco'],['b_pd_farol'],['b_pd_fregolina'],['b_pd_platz']]);
 folge('k_wwalzer1','Kursfolge Wiener Walzer – Bronze',174,[['b_ww_rechts'],['b_ww_wr'],['b_ww_links'],['b_ww_wl']]);
 folge('k_wwalzer2','Kursfolge Wiener Walzer – Silber',174,[['b_ww_rechts'],['b_ww_wr'],['b_ww_links'],['b_ww_check'],['b_ww_links'],['b_ww_rfleckerl'],['b_ww_wl'],['b_ww_rechts'],['b_ww_fleckerl']]);
+
+/* Einsteigerfolgen (nur Figuren der Stufe 1) für Samba, Paso Doble und Salsa. Quickstep, Slowfox und Wiener Walzer werden erst ab Bronze unterrichtet. */
+folge('k_samba_e','Kursfolge Samba – Einsteiger',100,[['b_sa_gs',2],['b_sa_seit'],['b_sa_platz']]);
+folge('k_paso_e','Kursfolge Paso Doble – Einsteiger',120,[['b_pd_rueck'],['b_pd_seit'],['b_pd_dreh'],['b_pd_drehr']]);
+folge('k_salsa_e','Kursfolge Salsa – Einsteiger',170,[['b_s_rueck'],['b_s_offen'],['b_s_platz']]);
+
+/* Übungsfolgen für Aufbaufiguren, die in keiner anderen festen Folge vorkommen: automatisch zusammengestellt (Generator mit Startfigur,
+   aus 30 Entwürfen der mit den meisten bisher ungenutzten Figuren), schleifbar, ohne Fußfehler, beim Wiederholen mindestens 18 cm Abstand. */
+folge('u_langsamerw1','Übungsfolge Langsamer Walzer 1 (Aufbaufiguren)',90,[['b_w_rechts'],['b_w_drag'],['b_w_rlock'],['b_w_frsp'],['b_w_oimpetus'],['b_w_cross'],['b_w_nfall'],['b_w_weave'],['b_w_zwechsel']]);
+folge('u_langsamerw2','Übungsfolge Langsamer Walzer 2 (Aufbaufiguren)',90,[['b_w_rwl'],['b_w_cfeder'],['b_w_hinge'],['b_w_vlock'],['b_w_lunge'],['b_w_throw']]);
+folge('u_langsamerw3','Übungsfolge Langsamer Walzer 3 (Aufbaufiguren)',90,[['b_w_pendel'],['b_w_rlock'],['b_w_ospin'],['b_w_lwhisk'],['b_w_frsp'],['b_w_oversway'],['b_w_weave'],['b_w_tlock'],['b_w_cfeder']]);
+folge('u_langsamerw4','Übungsfolge Langsamer Walzer 4 (Aufbaufiguren)',90,[['b_w_otelemark'],['b_w_wing'],['b_w_contra'],['b_w_chair'],['b_w_rlock'],['b_w_throw']]);
+folge('u_langsamerw5','Übungsfolge Langsamer Walzer 5 (Aufbaufiguren)',90,[['b_w_dbl'],['b_w_throw'],['b_w_oimpetus'],['b_w_cross'],['b_w_nfall'],['b_w_lwhisk']]);
+folge('u_langsamerw6','Übungsfolge Langsamer Walzer 6 (Aufbaufiguren)',90,[['b_w_bwhisk'],['b_w_cross'],['b_w_vlock'],['b_w_lwhisk'],['b_w_rlock'],['b_w_otelemark'],['b_w_chair']]);
+folge('u_langsamerw7','Übungsfolge Langsamer Walzer 7 (Aufbaufiguren)',90,[['b_w_rcorte'],['b_w_weave'],['b_w_cwing'],['b_w_contra'],['b_w_wpp'],['b_w_kchasse']]);
+folge('u_langsamerw8','Übungsfolge Langsamer Walzer 8 (Aufbaufiguren)',90,[['b_w_pcr'],['b_w_oversway'],['b_w_cwing'],['b_w_throw'],['b_w_otelemark'],['b_w_cross'],['b_w_tlockr'],['b_w_wing']]);
+folge('u_wienerwalz1','Übungsfolge Wiener Walzer 1 (Aufbaufiguren)',174,[['b_ww_pendel'],['b_ww_check'],['b_ww_balance'],['b_ww_links'],['b_ww_rfleckerl'],['b_ww_rwl'],['b_ww_rwr']]);
+folge('u_tango1','Übungsfolge Tango 1 (Aufbaufiguren)',128,[['b_t_gehr'],['b_t_fall4'],['b_t_npt'],['b_t_oprom'],['b_t_throw'],['b_t_contra'],['b_t_ntwist'],['b_t_lunge']]);
+folge('u_tango2','Übungsfolge Tango 2 (Aufbaufiguren)',128,[['b_t_wiegel'],['b_t_fall4'],['b_t_chase'],['b_t_npt'],['b_t_fallaway'],['b_t_bopr'],['b_t_drag'],['b_t_ntwist'],['b_t_lunge']]);
+folge('u_tango3','Übungsfolge Tango 3 (Aufbaufiguren)',128,[['b_t_orev'],['b_t_fall4'],['b_t_oprom'],['b_t_roswivel'],['b_t_oswivel'],['b_t_chase'],['b_t_npt'],['b_t_plink']]);
+folge('u_tango4','Übungsfolge Tango 4 (Aufbaufiguren)',128,[['b_t_oversway'],['b_t_rock'],['b_t_oswivel'],['b_t_fallaway'],['b_t_contra'],['b_t_ntwist'],['b_t_rockr']]);
+folge('u_tango5','Übungsfolge Tango 5 (Aufbaufiguren)',128,[['b_t_rockl'],['b_t_lunge'],['b_t_oversway'],['b_t_rock'],['b_t_contra'],['b_t_ntwist'],['b_t_rockr']]);
+folge('u_chachacha1','Übungsfolge Cha-Cha-Cha 1 (Aufbaufiguren)',120,[['b_c_offen'],['b_c_cuban'],['b_c_drei3'],['b_c_spiral'],['b_c_slide'],['b_c_fence']]);
+folge('u_chachacha2','Übungsfolge Cha-Cha-Cha 2 (Aufbaufiguren)',120,[['b_c_cross'],['b_c_spiral'],['b_c_fence'],['b_c_aida'],['b_c_cuban'],['b_c_rope']]);
+folge('u_chachacha3','Übungsfolge Cha-Cha-Cha 3 (Aufbaufiguren)',120,[['b_c_advhip'],['b_c_alemana'],['b_c_top'],['b_c_drei'],['b_c_spiral'],['b_c_hipspiral'],['b_c_hockey']]);
+folge('u_chachacha4','Übungsfolge Cha-Cha-Cha 4 (Aufbaufiguren)',120,[['b_c_towel'],['b_c_slide'],['b_c_curl'],['b_c_alemana'],['b_c_top'],['b_c_drei']]);
+folge('u_chachacha5','Übungsfolge Cha-Cha-Cha 5 (Aufbaufiguren)',120,[['b_c_chase'],['b_c_cuban'],['b_c_advhip'],['b_c_hockey'],['b_c_hipspiral'],['b_c_alemana']]);
+folge('u_rumba1','Übungsfolge Rumba 1 (Aufbaufiguren)',100,[['b_r_geh'],['b_r_ooroten'],['b_r_spiral'],['b_r_conthip'],['b_r_slide'],['b_r_hipspiral'],['b_r_alem3']]);
+folge('u_rumba2','Übungsfolge Rumba 2 (Aufbaufiguren)',100,[['b_r_cross'],['b_r_rtop'],['b_r_spiral'],['b_r_aida'],['b_r_drei3'],['b_r_top']]);
+folge('u_rumba3','Übungsfolge Rumba 3 (Aufbaufiguren)',100,[['b_r_rope'],['b_r_spiral'],['b_r_aida'],['b_r_conthip'],['b_r_advhip'],['b_r_alem3']]);
+folge('u_jive1','Übungsfolge Jive 1 (Aufbaufiguren)',150,[['b_j_offen'],['b_j_windmill'],['b_j_toeheel'],['b_j_catapult'],['b_j_stalking'],['b_j_spanish']]);
+folge('u_jive2','Übungsfolge Jive 2 (Aufbaufiguren)',150,[['b_j_offen2'],['b_j_chugging'],['b_j_toeheel'],['b_j_whip'],['b_j_gs'],['b_j_flicks']]);
+folge('u_jive3','Übungsfolge Jive 3 (Aufbaufiguren)',150,[['b_j_rolloff'],['b_j_miami'],['b_j_stalking'],['b_j_catapult'],['b_j_stopgo'],['b_j_curly']]);
+folge('u_pasodoble1','Übungsfolge Paso Doble 1 (Aufbaufiguren)',120,[['b_pd_rueck'],['b_pd_lapasse'],['b_pd_twist'],['b_pd_coup'],['b_pd_fregolina'],['b_pd_syncsep']]);
+folge('u_foxtrott1','Übungsfolge Foxtrott 1 (Aufbaufiguren)',120,[['b_f_kreuzh'],['b_f_rechts'],['b_f_check'],['b_f_kreuz'],['b_f_links'],['b_f_promdreh']]);
+folge('u_boogiewoog1','Übungsfolge Boogie-Woogie 1 (Aufbaufiguren)',160,[['b_bw_offen'],['b_bw_solo'],['b_bw_drehl'],['b_bw_platz'],['b_bw_gs'],['b_bw_kick']]);
+folge('u_slowfox1','Übungsfolge Slowfox 1 (Aufbaufiguren)',116,[['b_sf_geh'],['b_sf_wellen'],['b_sf_bounce'],['b_sf_oversway'],['b_sf_c3'],['b_sf_oimp'],['b_sf_zigzag']]);
+folge('u_slowfox2','Übungsfolge Slowfox 2 (Aufbaufiguren)',116,[['b_sf_rdreier'],['b_sf_oversway'],['b_sf_hcorte'],['b_sf_tumble'],['b_sf_rfeder'],['b_sf_hfeder'],['b_sf_otelemark'],['b_sf_wpp'],['b_sf_erw']]);
+folge('u_slowfox3','Übungsfolge Slowfox 3 (Aufbaufiguren)',116,[['b_sf_ntelemark'],['b_sf_erw'],['b_sf_hcross'],['b_sf_topspin'],['b_sf_oversway'],['b_sf_hcorte'],['b_sf_hover'],['b_sf_bounce'],['b_sf_cod']]);
+folge('u_twostep1','Übungsfolge Two Step 1 (Aufbaufiguren)',160,[['b_ts_rueck'],['b_ts_rechts'],['b_ts_links'],['b_ts_check'],['b_ts_solo'],['b_ts_gs']]);
+folge('u_discofox1','Übungsfolge Discofox 1 (Aufbaufiguren)',120,[['b_d_platzw'],['b_d_seilwurf'],['b_d_sliding'],['b_d_schal'],['b_d_handwechsel'],['b_d_lasso']]);
+folge('u_discofox2','Übungsfolge Discofox 2 (Aufbaufiguren)',120,[['b_d_offenrueck'],['b_d_schulter'],['b_d_sliding'],['b_d_zu'],['b_d_kick'],['b_d_hammer']]);
+folge('u_discofox3','Übungsfolge Discofox 3 (Aufbaufiguren)',120,[['b_d_seitr'],['b_d_schulter'],['b_d_sliding'],['b_d_zu'],['b_d_gs'],['b_d_doppel']]);
+folge('u_tangoargen1','Übungsfolge Tango Argentino 1 (Aufbaufiguren)',110,[['b_ta_ruecksal'],['b_ta_baldosa'],['b_ta_salida'],['b_ta_ruecksal'],['b_ta_salida'],['b_ta_baldosa']]);
+folge('u_quickstep1','Übungsfolge Quickstep 1 (Aufbaufiguren)',200,[['b_q_6run'],['b_q_tipsyl'],['b_q_hcorte'],['b_q_swivel'],['b_q_hops'],['b_q_tipsy'],['b_q_oversway']]);
+folge('u_quickstep2','Übungsfolge Quickstep 2 (Aufbaufiguren)',200,[['b_q_rpivot'],['b_q_rlock'],['b_q_hops'],['b_q_oversway'],['b_q_6run'],['b_q_tipsyl']]);
+folge('u_quickstep3','Übungsfolge Quickstep 3 (Aufbaufiguren)',200,[['b_q_scatter'],['b_q_swivel'],['b_q_qor'],['b_q_hops'],['b_q_pepper'],['b_q_v6'],['b_q_tipsy'],['b_q_oversway']]);
+folge('u_samba1','Übungsfolge Samba 1 (Aufbaufiguren)',100,[['b_sa_cjaca'],['b_sa_nroll'],['b_sa_3turn'],['b_sa_plait'],['b_sa_locks'],['b_sa_bota'],['b_sa_argcross'],['b_sa_volta'],['b_sa_maypole']]);
+folge('u_samba2','Übungsfolge Samba 2 (Aufbaufiguren)',100,[['b_sa_contrabota'],['b_sa_bota'],['b_sa_argcross'],['b_sa_wisch'],['b_sa_walk'],['b_sa_links']]);
+folge('u_salsa1','Übungsfolge Salsa 1 (Aufbaufiguren)',170,[['b_s_sacala'],['b_s_adios'],['b_s_offen'],['b_s_vacilala'],['b_s_exhibela'],['b_s_copa']]);

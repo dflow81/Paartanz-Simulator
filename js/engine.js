@@ -127,7 +127,7 @@ function doStep(st,s,sty,start,d,forced,shift,piv){
     case 'kick': kind='kick'; weight=false; break;
   }
   if(forced&&forced.to&&kind!=='halt') to=forced.to;
-  else if(shift&&kind!=='halt'&&kind!=='platz') to=add(to,shift);
+  else if(shift&&kind!=='halt'&&(kind!=='platz'||shift.platz)) to=add(to,shift);   // shift.platz: Anfangsausgleich verschiebt auch Platz-Schritte
   // Paardrehung: In enger Haltung dreht das Paar um seine gemeinsame Mitte, nicht um den Fuß des Herrn – er geht dabei ein Stück um die Dame herum
   if(piv&&!forced&&kind==='step'&&s.dir!=='schliessen'&&s.dir!=='ferse'&&h2!==h){ const f2=dirv(h2).fw; to=add(add(to,fw,piv),f2,-piv); }
   const mv=sub(to,cur), dist=Math.hypot(mv[0],mv[1]);
@@ -153,7 +153,7 @@ function doStep(st,s,sty,start,d,forced,shift,piv){
   const r={f,o,dir:s.dir,len:s.len,turn:s.turn,c:s.c,d,start,kind,weight,fe,dist,from:[...cur],to,kickAt,other:[...oth],
     yaw:[yc,yTo],oyaw:[yo,yoTo],pit:[pc,land,endP],opit:[po,oEnd],supB:st.sup,supA:weight?to:st.sup,
     sideB:st.side,sideA:weight?side:st.side,hB:h,hA:h2,rise:[st.rise,riseA],late,
-    warn:!forced&&weight&&kind==='step'&&st.side===side};
+    warn:!forced&&weight&&kind==='step'&&st.side===side&&!(shift&&shift.platz&&s.dir==='platz')};   // Nachrutschen beim Anfangsausgleich ist kein Fußfehler
   st[f]=to; st['y'+f]=yTo; st['y'+o]=yoTo; st['p'+f]=endP; st['p'+o]=oEnd; st.h=h2; st.rise=riseA;
   if(weight){ st.sup=to; st.side=side; }
   return r;
@@ -175,11 +175,17 @@ function simBlock(b,H,D,beat,extra,hs,ds){
     if(g0.exact||g0.face===0){ const want=startD(H,sty,h0), c=lerp(D.L,D.R,.5), w=lerp(want.L,want.R,.5); if(Math.hypot(c[0]-w[0],c[1]-w[1])>.4) Object.assign(D,want); } }
   let tH=beat,tD=beat,out=0;
   const anf=own?{c:lerp(H.L,H.R,.5),h:H.h,hold:HOLDS[F.steps[0].hold]?F.steps[0].hold:'zu'}:null;   // Stellung des Herrn am Anfang (Abstandsausgleich)
+  /* Raumlenkung bei eigenen Damenschritten: Der Herr dreht zusätzlich um `extra` je Schritt. Die Dame tanzt ihre Schritte gedanklich ohne Lenkung
+     (wie der Herr im Schatten), dann wird ihre Lage relativ zum Herrn mit seiner zusätzlichen Drehung mitgedreht – das Paar dreht gemeinsam,
+     statt dass jeder um den eigenen Fuß dreht und sie seitlich wegdriftet. */
+  const Hs=own&&extra?structuredClone(H):null, manC=[];
   for(const s of F.steps){
     const d=Math.max(.25,+s.d||1), hold=HOLDS[s.hold]?s.hold:'zu';
     // Führungshinweis: eigener Text des Schritts, sonst automatisch bei Haltungswechsel oder Solodrehung des Herrn
     const tip=s.tip||(hold!==(H.hold||'zu')?HOLD_TIP[hold]:'')||(ARM_TIP[s.arm]||'')||(own&&Math.abs(+s.turn||0)>=135?'Herr dreht '+(s.turn>0?'links':'rechts'):'');
-    const r=Object.assign(doStep(H,tw(s),sty,tH,d,null,null,!own&&sty.std&&(hold==='zu'||hold==='prom')?sty.gap/2:0),meta,{hold,holdPrev:H.hold||hold,turn:s.turn,tip},s.arm?{arm:s.arm}:{}); H.hold=hold; hs.push(r); tH+=d;
+    const r=Object.assign(doStep(H,tw(s),sty,tH,d,null,null,!own&&sty.std&&(hold==='zu'||hold==='prom')?sty.gap/2:0),meta,{hold,holdPrev:H.hold||hold,turn:s.turn,tip},s.arm?{arm:s.arm}:{}); H.hold=hold; hs.push(r);
+    if(Hs){ doStep(Hs,s,sty,tH,d,null,null,0); manC.push({t:tH,real:lerp(H.L,H.R,.5),sh:lerp(Hs.L,Hs.R,.5),hr:H.h,hs:Hs.h}); }
+    tH+=d;
     if(!own){
       const g=holdGeo(hold,sty), v=dirv(r.hA), aus=/Aussen$/.test(r.dir)?.16:0;   // außenseitlich: der Herr geht rechts an der Dame vorbei
       let to=add(add(r.to,v.fw,g.gap),v.lf,-g.off-aus);
@@ -201,13 +207,28 @@ function simBlock(b,H,D,beat,extra,hs,ds){
     /* Abstandsausgleich für alle Figuren mit eigenen Damenschritten: Steht die Dame am Anfang deutlich näher oder weiter weg
        (mehr als 15 cm näher als in der Anfangshaltung üblich – etwa weil die vorige Figur eng endet), gleicht sie den Abstand in der
        ersten Hälfte Schritt für Schritt aus. Mit F.ganz wird immer ausgeglichen, auch seitlich und wenn sie zu weit weg steht. */
-    let pre=null;
-    if(anf){ const v0=dirv(anf.h), g0=holdGeo(anf.hold,sty), rel=sub(lerp(D.L,D.R,.5),anf.c), k=Math.max(1,F.dame.filter((s,i)=>i<half&&s.dir!=='halt'&&s.dir!=='platz').length);
+    /* Ausgleich am Anfang: der Gesamtversatz `pre` wird auf die ersten echten Schritte verteilt (mit F.ganz auf die ersten zwei, damit
+       er vor engen Stellen wie dem Körbchen schon erreicht ist). Jeder Schritt setzt relativ zum anderen Fuß an und erbt so dessen Versatz;
+       ein Platz-Schritt bezieht sich auf den eigenen Fuß und holt deshalb nur den Rückstand zum anderen Fuß auf. */
+    let pre=null, preI=[];
+    if(anf){ const v0=dirv(anf.h), g0=holdGeo(anf.hold,sty), rel=sub(lerp(D.L,D.R,.5),anf.c);
+      preI=F.dame.map((s,i)=>i).filter(i=>i<half&&F.dame[i].dir!=='halt'&&F.dame[i].dir!=='platz'); if(F.ganz) preI=preI.slice(0,2);
       const dg=g0.gap-dot(rel,v0.fw), dl=-g0.off-dot(rel,v0.lf);
-      if(F.ganz){ const l=Math.hypot(dg,dl), m=Math.min(1,.45/Math.max(l,1e-6)); pre=add(v0.fw.map(x=>x*dg*m/k),v0.lf,dl*m/k); }
-      else if(dg>.15) pre=v0.fw.map(x=>x*Math.min(dg,.45)/k);   // nur wenn sie zu nah steht: nach hinten ausgleichen (weiter weg ist ungefährlich)
+      if(F.ganz){ const l=Math.hypot(dg,dl), m=Math.min(1,.45/Math.max(l,1e-6)); pre=add(v0.fw.map(x=>x*dg*m),v0.lf,dl*m); }
+      else if(dg>.06) pre=v0.fw.map(x=>x*Math.min(dg,.45));   // nur wenn sie zu nah steht: nach hinten ausgleichen (weiter weg ist ungefährlich)
+      if(!preI.length) pre=null;
     }
-    const run=(Dx,sh,rec)=>{ let t=beat; F.dame.forEach((s,i)=>{ const d=Math.max(.25,+s.d||1), r=doStep(Dx,tw(s),sty,t,d,null,i>=half?sh:pre); if(rec) rec.push(Object.assign(r,meta,{turn:s.turn,tip:s.tip})); t+=d; }); return t; };
+    const mit=(Dsh,Dx,s,t,d,shift)=>{   // Damenschritt ohne Lenkung im Schatten, dann mit der Zusatzdrehung des Herrn um ihn herum mitgedreht
+      const r0=doStep(Dsh,s,sty,t,d,null,shift), m=manC.findLast(q=>q.t<=t+1e-6)||manC[0], a=dirv(m.hs), b=dirv(m.hr), v=sub(r0.to,m.sh);
+      const to=add(add(m.real,b.fw,dot(v,a.fw)),b.lf,dot(v,a.lf));
+      return doStep(Dx,s,sty,t,d,s.dir==='halt'?null:{to,h2:Dsh.h+(m.hr-m.hs)}); };
+    const run=(Dx,sh,rec)=>{ let t=beat; const Dsh=manC.length?structuredClone(Dx):null, off={L:[0,0],R:[0,0]}, teil=pre&&pre.map(x=>x/preI.length);
+      F.dame.forEach((s,i)=>{ const d=Math.max(.25,+s.d||1); let sf=null;
+        if(i>=half) sf=sh;
+        else if(pre&&s.dir!=='halt'){ const f=s.f==='R'?'R':'L', o=f==='L'?'R':'L';
+          if(s.dir==='platz'){ const c=sub(off[o],off[f]); if(Math.hypot(c[0],c[1])>1e-4){ sf=c; sf.platz=true; } off[f]=[...off[o]]; }
+          else { sf=preI.includes(i)?teil:null; off[f]=sf?add(off[o],sf):[...off[o]]; } }
+        const r=Dsh?mit(Dsh,Dx,s,t,d,sf):doStep(Dx,tw(s),sty,t,d,null,sf); if(rec) rec.push(Object.assign(r,meta,{turn:s.turn,tip:s.tip})); t+=d; }); return t; };
     // Probeläufe: Landet die Dame zu weit weg, zu nah oder seitlich versetzt, werden ihre Schritte ein wenig nachgeführt
     const v=dirv(H.h), g=holdGeo(H.hold,sty), near0=g.face===0||g.exact;   // nebeneinander (Körbchen, Schatten): genau an den Platz, sonst nur grob
     const n=Math.max(1,F.dame.filter((s,i)=>i>=half&&s.dir!=='halt'&&s.dir!=='platz').length-.5);

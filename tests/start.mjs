@@ -48,6 +48,14 @@ try{
     const n=wickelWeg(handTargets('offen',sty,herr,dame),handTargets('zu',sty,herr,dame),.5,'zu','offen',herr,dame);
     const kopf=Math.min(herr.headPos.y,dame.headPos.y), hoch=Math.max(...Object.values(w).map(v=>v.y)), nh=Math.max(...Object.values(n).map(v=>v.y));
     return {ok:hoch>kopf&&nh<kopf,info:'Körbchen '+hoch.toFixed(2)+' m, offen '+nh.toFixed(2)+' m, Kopf '+kopf.toFixed(2)+' m'}; })()`);
+  const durch=fig=>`new Promise(res=>{ const s=document.getElementById('source'); s.value='fig:${fig}'; s.dispatchEvent(new Event('change')); speedEl.value=150; setPlaying(true); beat=0;
+    const segD=(p,a,b)=>{ const ab=b.clone().sub(a), t=Math.max(0,Math.min(1,p.clone().sub(a).dot(ab)/Math.max(ab.lengthSq(),1e-9))); return a.clone().addScaledVector(ab,t).distanceTo(p); };
+    const segSeg=(a,b,c,d)=>{ let m=9; for(let i=0;i<=8;i++) m=Math.min(m,segD(a.clone().lerp(b,i/8),c,d)); return m; };
+    let w=9; const t0=performance.now(); const iv=setInterval(()=>{ for(const [A,B] of [[herr,dame],[dame,herr]]){ const top=B.sh.L.clone().add(B.sh.R).multiplyScalar(.5), hip=top.clone(); hip.y-=.42*B.k;
+      for(const q of 'LR') for(const [a,b] of [[A.sh[q],A.j['el'+q].position],[A.j['el'+q].position,A.j['ha'+q].position]]) w=Math.min(w,segSeg(a,b,hip,top)-(B.fem?.12:.14)*B.k,segSeg(a,b,B.headPos,B.headPos)-.1*B.k); }
+      if(performance.now()-t0>6000){ clearInterval(iv); setPlaying(false); res({ok:w>-.05,info:'kleinster Abstand Arm–Partner '+(w*100).toFixed(0)+' cm (Kontakt bis −5 cm erlaubt)'}); } },40); })`;
+  await pruef('Arme gehen nicht durch den Partner: Rope Spinning',durch('b_c_rope'));
+  await pruef('Arme gehen nicht durch den Partner: Körbchen',durch('b_d_korb'));
   await pruef('Takt: Cha-Cha beginnt auf 2 – Einzählen endet auf der „1“',`(()=>{ const s=document.getElementById('source'); s.value='fig:b_c_gs'; s.dispatchEvent(new Event('change'));
     const r=[einzaehl(-5,true),einzaehl(-2,true),einzaehl(-1,true),taktZaehl(0),taktZaehl(3)].join(); return {ok:r==='5,8,1,2,1',info:r}; })()`);
   await pruef('Takt: betonte Eins läuft über Discofox-Figurenwechsel weiter',`(()=>{ const s=document.getElementById('source'); s.value='seq:k_disco1'; s.dispatchEvent(new Event('change'));

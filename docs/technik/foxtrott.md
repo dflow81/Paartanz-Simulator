@@ -333,7 +333,7 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | S | R | R / L | T |  | ● |  |  | – | – |  |  | gegen LOD | gerade |
 | 2 | S | L | L / R | T |  | ● |  |  | am Ende | – |  | ● | gegen LOD | gerade |
-| 3 | Q | R | R / L | HT | ● | ● |  |  | oben | – | ● |  | LOD | rechts |
+| 3 | Q | R | R / L | TH | ● | ● |  |  | oben | – | ● |  | LOD | rechts |
 | 4 | Q | L | L / R | HT | ● | ● |  |  | oben | am Ende | ● |  | gegen LOD | rechts |
 
 ## Viertelkarree rechts herum

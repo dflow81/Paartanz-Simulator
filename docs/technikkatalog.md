@@ -32,9 +32,9 @@ Jede Figur hat für **jeden Schritt von Herr und Dame**: Belastungsfuß, freier 
 - [Salsa](technik/salsa.md) – 25 Figuren
 - [Discofox](technik/discofox.md) – 35 Figuren
 - [Wiener Walzer](technik/wiener-walzer.md) – 12 Figuren
-- [Samba](technik/samba.md) – 24 Figuren
-- [Jive](technik/jive.md) – 28 Figuren
-- [Paso Doble](technik/paso-doble.md) – 24 Figuren
+- [Samba](technik/samba.md) – 24 Figuren, davon 4 mit belegter Fußarbeit
+- [Jive](technik/jive.md) – 28 Figuren, davon 6 mit belegter Fußarbeit
+- [Paso Doble](technik/paso-doble.md) – 24 Figuren, davon 3 mit belegter Fußarbeit
 - [Foxtrott](technik/foxtrott.md) – 17 Figuren
 - [Blues](technik/blues.md) – 10 Figuren
 - [Rock'n'Roll](technik/rock-n-roll.md) – 7 Figuren

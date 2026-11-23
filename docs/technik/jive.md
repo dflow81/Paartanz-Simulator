@@ -476,7 +476,9 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 | 9 | a | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 | 10 | 8 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 
-## Link (aus der offenen Haltung zurück in die geschlossene)
+## Link (aus der offenen Haltung zurück in die geschlossene) †
+
+Quelle: http://dance.djurredeboer.nl/latin/jive/link.html
 
 **Herr**
 
@@ -484,12 +486,12 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 | 2 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 3 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 4 | a | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 3 | 3 | L | L / R | B |  |  | ● |  | – | – |  |  | LOD | – |
+| 4 | a | R | R / L | B |  |  | ● |  | – | – |  |  | LOD | – |
 | 5 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 6 | 5 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 7 | a | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 8 | 6 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 6 | 1 | R | R / L | B |  |  | ● |  | – | – |  |  | LOD | – |
+| 7 | a | L | L / R | B |  |  | ● |  | – | – |  |  | LOD | – |
+| 8 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 
 **Dame**
 
@@ -497,12 +499,12 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 | 2 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 3 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 4 | a | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 3 | 3 | R | R / L | B |  |  | ● |  | – | – |  |  | gegen LOD | – |
+| 4 | a | L | L / R | B |  |  | ● |  | – | – |  |  | gegen LOD | – |
 | 5 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 6 | 5 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 7 | a | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 8 | 6 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 6 | 1 | L | L / R | B |  |  | ● |  | – | – |  |  | gegen LOD | – |
+| 7 | a | R | R / L | B |  |  | ● |  | – | – |  |  | gegen LOD | – |
+| 8 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 
 ## Windmill
 
@@ -532,7 +534,9 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 | 7 | a | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 | 8 | 6 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 
-## Spanish Arms
+## Spanish Arms †
+
+Quelle: http://dance.djurredeboer.nl/latin/jive/spanish_arms.html
 
 **Herr**
 
@@ -540,12 +544,20 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 | 2 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 3 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 4 | a | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 5 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 6 | 5 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 7 | a | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 8 | 6 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 3 | 3 | L | L / R | B |  |  | ● |  | – | – |  |  | LOD | – |
+| 4 | a | R | R / L | B |  |  | ● |  | – | – |  |  | LOD | – |
+| 5 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | DW | – |
+| 6 | 1 | R | R / L | B |  |  | ● |  | – | – |  |  | DW | – |
+| 7 | a | L | L / R | B |  |  | ● |  | – | – |  |  | DW | – |
+| 8 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | DW gegen LOD | – |
+| 9 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | DW gegen LOD | – |
+| 10 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | DW gegen LOD | – |
+| 11 | 1 | L | L / R | B |  |  | ● |  | – | – |  |  | DW gegen LOD | – |
+| 12 | a | R | R / L | B |  |  | ● |  | – | – |  |  | DW gegen LOD | – |
+| 13 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 14 | 3 | R | R / L | B |  |  | ● |  | – | – |  |  | gegen LOD | – |
+| 15 | a | L | L / R | B |  |  | ● |  | – | – |  |  | gegen LOD | – |
+| 16 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | C | – |
 
 **Dame**
 
@@ -553,14 +565,24 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 | 2 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 3 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 4 | a | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 3 | 3 | R | R / L | B |  |  | ● |  | – | – |  |  | DW | – |
+| 4 | a | L | L / R | B |  |  | ● |  | – | – |  |  | DW | – |
 | 5 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 6 | 5 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 7 | a | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 8 | 6 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 6 | 1 | L | L / R | B |  |  | ● |  | – | – |  |  | gegen LOD | – |
+| 7 | a | R | R / L | B |  |  | ● |  | – | – |  |  | gegen LOD | – |
+| 8 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | DC | – |
+| 9 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | DC | – |
+| 10 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | DC | – |
+| 11 | 1 | R | R / L | B |  |  | ● |  | – | – |  |  | gegen LOD | – |
+| 12 | a | L | L / R | B |  |  | ● |  | – | – |  |  | gegen LOD | – |
+| 13 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | W | – |
+| 14 | 3 | L | L / R | B |  |  | ● |  | – | – |  |  | DC gegen LOD | – |
+| 15 | a | R | R / L | B |  |  | ● |  | – | – |  |  | DC | – |
+| 16 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | W | – |
 
-## Rolling off the Arm
+## Rolling off the Arm †
+
+Quelle: http://dance.djurredeboer.nl/latin/jive/rolling_off_arm.html
 
 **Herr**
 
@@ -568,12 +590,14 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 | 2 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 3 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 4 | a | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 5 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 6 | 5 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 7 | a | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 8 | 6 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 3 | 3 | L | L / R | B |  |  | ● |  | – | – |  |  | LOD | – |
+| 4 | a | R | R / L | B |  |  | ● |  | – | – |  |  | LOD | – |
+| 5 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | W | – |
+| 6 | 1 | R | R / L | T |  | ● |  |  | – | – |  | ● | gegen LOD | – |
+| 7 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | C | – |
+| 8 | 3 | R | R / L | B |  |  | ● |  | – | – |  |  | C | – |
+| 9 | a | L | L / R | B |  |  | ● |  | – | – |  |  | C | – |
+| 10 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | DC | – |
 
 **Dame**
 
@@ -581,12 +605,14 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 | 2 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 3 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 4 | a | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 5 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 6 | 5 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 7 | a | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 8 | 6 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 3 | 3 | R | R / L | B |  |  | ● |  | – | – |  |  | gegen LOD | – |
+| 4 | a | L | L / R | B |  |  | ● |  | – | – |  |  | gegen LOD | – |
+| 5 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | W | – |
+| 6 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 7 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | C | – |
+| 8 | 3 | L | L / R | B |  |  | ● |  | – | – |  |  | W | – |
+| 9 | a | R | R / L | B |  |  | ● |  | – | – |  |  | W | – |
+| 10 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | DW gegen LOD | – |
 
 ## Curly Whip
 
@@ -620,7 +646,9 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 | 9 | a | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 | 10 | 8 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 
-## Toe Heel Swivels
+## Toe Heel Swivels †
+
+Quelle: http://dance.djurredeboer.nl/latin/jive/toe_heel.html
 
 **Herr**
 
@@ -628,35 +656,41 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 | 2 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 3 | 3 | L | R / L | T |  | ● |  |  | – | – |  |  | LOD | – |
-| 4 | 4 | L | R / L | T |  | ● |  |  | – | – |  |  | LOD | – |
-| 5 | 5 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 6 | a | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 7 | 6 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 8 | 7 | R | L / R | T |  | ● |  |  | – | – |  |  | LOD | – |
-| 9 | 8 | R | L / R | T |  | ● |  |  | – | – |  |  | LOD | – |
-| 10 | 9 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 11 | a | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 12 | 10 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 3 | 3 | L | R / L | T |  | ● |  |  | – | – |  |  | DW | – |
+| 4 | 4 | L | R / L | H | ● |  |  |  | – | – |  |  | DC | – |
+| 5 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  | ● | DW | – |
+| 6 | 3 | R | L / R | T |  | ● |  |  | – | – |  |  | DC | – |
+| 7 | 4 | R | L / R | H | ● |  |  |  | – | – |  |  | DW | – |
+| 8 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  | ● | DC | – |
+| 9 | 3 | L | R / L | T |  | ● |  |  | – | – |  |  | DW | – |
+| 10 | 4 | L | R / L | H | ● |  |  |  | – | – |  |  | DC | – |
+| 11 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  | ● | DW | – |
+| 12 | 2 | R | L / R | T |  | ● |  |  | – | – |  |  | DC | – |
+| 13 | 3 | R | L / R | H | ● |  |  |  | – | – |  |  | DW | – |
+| 14 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  | ● | DC | – |
 
 **Dame**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 2 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 3 | 3 | R | L / R | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
-| 4 | 4 | R | L / R | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
-| 5 | 5 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 6 | a | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 7 | 6 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 8 | 7 | L | R / L | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
-| 9 | 8 | L | R / L | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
-| 10 | 9 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 11 | a | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 12 | 10 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 1 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  |  | DC gegen LOD | – |
+| 2 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | DC gegen LOD | – |
+| 3 | 3 | R | L / R | T |  | ● |  |  | – | – |  |  | DW gegen LOD | – |
+| 4 | 4 | R | L / R | H | ● |  |  |  | – | – |  |  | DC gegen LOD | – |
+| 5 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  | ● | DW gegen LOD | – |
+| 6 | 3 | L | R / L | T |  | ● |  |  | – | – |  |  | DC gegen LOD | – |
+| 7 | 4 | L | R / L | H | ● |  |  |  | – | – |  |  | DW gegen LOD | – |
+| 8 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  | ● | DC gegen LOD | – |
+| 9 | 3 | R | L / R | T |  | ● |  |  | – | – |  |  | DW gegen LOD | – |
+| 10 | 4 | R | L / R | H | ● |  |  |  | – | – |  |  | DC gegen LOD | – |
+| 11 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  | ● | DW gegen LOD | – |
+| 12 | 2 | L | R / L | T |  | ● |  |  | – | – |  |  | DC gegen LOD | – |
+| 13 | 3 | L | R / L | H | ● |  |  |  | – | – |  |  | DW gegen LOD | – |
+| 14 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  | ● | DC gegen LOD | – |
 
-## Simple Spin (Dame dreht ganz rechts)
+## Simple Spin (Dame dreht ganz rechts) †
+
+Quelle: http://dance.djurredeboer.nl/latin/jive/simple_spin.html
 
 **Herr**
 
@@ -664,12 +698,6 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 | 2 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 3 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 4 | a | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 5 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 6 | 5 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 7 | a | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 8 | 6 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 
 **Dame**
 
@@ -677,14 +705,10 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 | 2 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 3 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 4 | a | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 5 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 6 | 5 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 7 | a | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 8 | 6 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 
-## Miami Special
+## Miami Special †
+
+Quelle: http://dance.djurredeboer.nl/latin/jive/miami_special.html
 
 **Herr**
 
@@ -692,14 +716,12 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 | 2 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 3 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 4 | a | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 5 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 6 | 5 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 7 | a | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 8 | 6 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 9 | 7 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 10 | 8 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 3 | 3 | L | L / R | B |  |  | ● |  | – | – |  |  | LOD | – |
+| 4 | a | R | R / L | B |  |  | ● |  | – | – |  |  | LOD | – |
+| 5 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | W | – |
+| 6 | 1 | R | R / L | B |  |  | ● |  | – | – |  |  | gegen LOD | – |
+| 7 | a | L | L / R | B |  |  | ● |  | – | – |  |  | gegen LOD | – |
+| 8 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 
 **Dame**
 
@@ -707,14 +729,12 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 | 2 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 3 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | C | – |
-| 4 | a | L | L / R | BF |  |  | ● | ● | – | – |  |  | DC | – |
+| 3 | 3 | R | R / L | B |  |  | ● |  | – | – |  |  | DW gegen LOD | – |
+| 4 | a | L | L / R | B |  |  | ● |  | – | – |  |  | DW gegen LOD | – |
 | 5 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 6 | 5 | L | L / R | BF |  |  | ● | ● | – | – |  |  | W | – |
-| 7 | a | R | R / L | BF |  |  | ● | ● | – | – |  |  | DW gegen LOD | – |
-| 8 | 6 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 9 | 7 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 10 | 8 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 6 | 1 | L | L / R | B |  |  | ● |  | – | – |  |  | LOD | – |
+| 7 | a | R | R / L | B |  |  | ● |  | – | – |  |  | LOD | – |
+| 8 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 
 ## Chugging
 

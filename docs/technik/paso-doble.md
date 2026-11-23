@@ -352,32 +352,34 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 | 7 | 7 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 | 8 | 8 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 
-## Separation
+## Separation †
+
+Quelle: http://dance.djurredeboer.nl/latin/paso/separation.html
 
 **Herr**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 1 | 1 | R | R / L | WF |  |  |  | ● | – | – |  |  | LOD | – |
 | 2 | 2 | L | L / R | HF | ● |  |  | ● | – | – |  |  | LOD | – |
-| 3 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 4 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 5 | 5 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 6 | 6 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 7 | 7 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 3 | 3 | R | R / L | HB | ● |  | ● |  | – | – |  |  | LOD | – |
+| 4 | 4 | L | L / R | B |  |  | ● |  | – | – |  |  | LOD | – |
+| 5 | 5 | R | R / L | B |  |  | ● |  | – | – |  |  | LOD | – |
+| 6 | 6 | L | L / R | B |  |  | ● |  | – | – |  |  | LOD | – |
+| 7 | 7 | R | R / L | B |  |  | ● |  | – | – |  |  | LOD | – |
 | 8 | 8 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
 
 **Dame**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 1 | 1 | L | L / R | WF |  |  |  | ● | – | – |  |  | gegen LOD | – |
 | 2 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 | 3 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 4 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 5 | 5 | L | L / R | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
-| 6 | 6 | R | R / L | HF | ● |  |  | ● | – | – |  |  | gegen LOD | – |
-| 7 | 7 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 4 | 4 | R | R / L | B |  |  | ● |  | – | – |  |  | gegen LOD | – |
+| 5 | 5 | L | L / R | B |  |  | ● |  | – | – |  |  | gegen LOD | – |
+| 6 | 6 | R | R / L | B |  |  | ● |  | – | – |  |  | gegen LOD | – |
+| 7 | 7 | L | L / R | B |  |  | ● |  | – | – |  |  | gegen LOD | – |
 | 8 | 8 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 
 ## Sixteen (Separation mit Damendrehung)
@@ -480,33 +482,35 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 | 7 | 7 | L | L / R | BF |  |  | ● | ● | – | – |  |  | DC | – |
 | 8 | 8 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 
-## Twist Turn
+## Twist Turn †
+
+Quelle: http://dance.djurredeboer.nl/latin/paso/twist_turn.html
 
 **Herr**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  | ● | LOD | – |
-| 2 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | DW gegen LOD | – |
-| 3 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | DC gegen LOD | – |
-| 4 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 5 | 5 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 6 | 6 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 7 | 7 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 8 | 8 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 1 | 1 | R | R / L | WF |  |  |  | ● | – | – |  |  | LOD | – |
+| 2 | 2 | L | L / R | HF | ● |  |  | ● | – | – |  |  | DC | – |
+| 3 | 3 | R | R / L | HF | ● |  |  | ● | – | – |  | ● | DC | – |
+| 4 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | W | – |
+| 5 | 5 | R | R / L | B |  |  | ● |  | – | – |  | ● | W | – |
+| 6 | 6 | L | L / R | B beider Füße, dann F |  |  | ● | ● | – | – |  |  | C | – |
+| 7 | 7 | R | R / L | B/BF |  |  | ● | ● | – | – |  |  | C | – |
+| 8 | 8 | L | L / R | B/BF |  |  | ● | ● | – | – |  |  | C | – |
 
 **Dame**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  | ● | gegen LOD | – |
-| 2 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | DC | – |
-| 3 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | DW | – |
-| 4 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 5 | 5 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 6 | 6 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 7 | 7 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 8 | 8 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 1 | 1 | L | L / R | WF |  |  |  | ● | – | – |  |  | gegen LOD | – |
+| 2 | 2 | R | R / L | HF | ● |  |  | ● | – | – |  |  | DC gegen LOD | – |
+| 3 | 3 | L | L / R | HF | ● |  |  | ● | – | – |  | ● | C | – |
+| 4 | 4 | R | R / L | HF | ● |  |  | ● | – | – |  |  | C | – |
+| 5 | 5 | L | L / R | HF | ● |  |  | ● | – | – | ● |  | DC | – |
+| 6 | 6 | R | R / L | HB, dann F | ● |  | ● | ● | – | – | ● | ● | LOD | – |
+| 7 | 7 | L | L / R | B/BF |  |  | ● | ● | – | – |  |  | W | – |
+| 8 | 8 | R | R / L | B/BF |  |  | ● | ● | – | – |  |  | W | – |
 
 ## Spanish Lines
 
@@ -536,61 +540,53 @@ Zurück zum [Technikkatalog](../technikkatalog.md).
 | 7 | 7 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 | 8 | 8 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
 
-## Coup de Pique
+## Coup de Pique †
+
+Quelle: http://dance.djurredeboer.nl/latin/paso/coup_de_pique.html
 
 **Herr**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 1 | R | L / R | T |  | ● |  |  | – | – |  |  | LOD | – |
-| 2 | 2 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 3 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 4 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 5 | 5 | L | R / L | T |  | ● |  |  | – | – |  |  | LOD | – |
-| 6 | 6 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 7 | 7 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 8 | 8 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 1 | 1 | R | L / R | i/e T |  | ● |  |  | – | – |  |  | DC | – |
+| 2 | 2 | R | R / L | T |  | ● |  |  | – | – |  |  | LOD | – |
+| 3 | 3 | L | L / R | BF |  |  | ● | ● | – | – | ● |  | DC | – |
+| 4 | & | R | R / L | B |  |  | ● |  | – | – |  |  | LOD | – |
+| 5 | 4 | L | L / R | B |  |  | ● |  | – | – |  |  | LOD | – |
 
 **Dame**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 1 | L | R / L | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
-| 2 | 2 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 3 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 4 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 5 | 5 | R | L / R | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
-| 6 | 6 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 7 | 7 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 8 | 8 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 1 | 1 | L | R / L | i/e T |  | ● |  |  | – | – |  |  | DW gegen LOD | – |
+| 2 | 2 | L | L / R | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
+| 3 | 3 | R | R / L | BF |  |  | ● | ● | – | – | ● |  | DW gegen LOD | – |
+| 4 | & | L | L / R | B |  |  | ● |  | – | – |  |  | gegen LOD | – |
+| 5 | 4 | R | R / L | B |  |  | ● |  | – | – |  |  | gegen LOD | – |
 
 ## Flamenco Taps
 
+Quelle: http://dance.djurredeboer.nl/latin/paso/flamenco_taps.html
+
 **Herr**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 2 | 2 | L | R / L | T |  | ● |  |  | – | – |  |  | LOD | – |
-| 3 | 3 | L | R / L | T |  | ● |  |  | – | – |  |  | LOD | – |
-| 4 | 4 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 5 | 5 | R | L / R | T |  | ● |  |  | – | – |  |  | LOD | – |
-| 6 | 6 | R | L / R | T |  | ● |  |  | – | – |  |  | LOD | – |
-| 7 | 7 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
-| 8 | 8 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 1 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 2 | 2 | R | L / R | T |  | ● |  |  | – | – |  |  | LOD | – |
+| 3 | & | R | L / R | T |  | ● |  |  | – | – |  |  | LOD | – |
+| 4 | 3 | R | R / L | BF |  |  | ● | ● | – | – |  |  | LOD | – |
+| 5 | 4 | L | R / L | T |  | ● |  |  | – | – |  |  | LOD | – |
 
 **Dame**
 
 | Nr. | Zähl. | Fuß | Gewicht / frei | Fußtechnik | H | T | B | F | Heben | Senken | CBM | CBMP | Ausrichtung | Sway |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 1 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 2 | 2 | R | L / R | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
-| 3 | 3 | R | L / R | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
-| 4 | 4 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 5 | 5 | L | R / L | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
-| 6 | 6 | L | R / L | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
-| 7 | 7 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
-| 8 | 8 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 1 | 1 | R | R / L | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 2 | 2 | L | R / L | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
+| 3 | & | L | R / L | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
+| 4 | 3 | L | L / R | BF |  |  | ● | ● | – | – |  |  | gegen LOD | – |
+| 5 | 4 | R | L / R | T |  | ● |  |  | – | – |  |  | gegen LOD | – |
 
 ## Farol
 

@@ -212,7 +212,7 @@ Stand: 551 Figuren in 31 Tänzen.
 | Fencing | 4 | ★★ | Effekt und Variation | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | Hand L–R | 34: New Yorker, Offener Hip Twist, Aida | neu, schematisch |
 | Rechtskreisel (Natural Top) | 4 | ★★★★ | Drehung | 2 3 4 & 1 2 3 4 & 1 2 3 4 & 1 2 3 4 & 1 (16) | L→R / R→L | geschlossen | 34: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden |
 | Sliding Doors | 4 | ★★★★ | Platz- und Positionswechsel | 2 3 4 & 1 2 3 4 & 1 2 3 4 & 1 2 3 4 & 1 (16) | L→R / R→L | Hand L–R | 34: New Yorker, Offener Hip Twist, Aida | vorhanden, schematisch |
-| Rope Spinning | 4 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 & 1 2 3 4 & 1 2 3 4 & 1 2 3 4 & 1 (16) | L→R / R→L | Hand L–R | 34: New Yorker, Offener Hip Twist, Aida | vorhanden, schematisch |
+| Rope Spinning | 4 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | Arm hoch → geschlossen | 34: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden, [Quelle](http://dance.djurredeboer.nl/latin/cha_cha/rope_spinning.html) |
 | Advanced Hip Twist (in den Fächer) | 4 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | Hand L–R → Fächer | 2: Hockeystick, Alemana | vorhanden, schematisch |
 | Hip Twist Spiral (in den Fächer) | 4 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 & 1 2 3 4 & 1 (8) | L→R / R→L | Hand L–R → Fächer | 2: Hockeystick, Alemana | vorhanden, schematisch |
 | Three Threes (drei Damendrehungen) | 5 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 & 1 2 3 4 & 1 2 3 4 & 1 2 3 4 & 1 (16) | L→R / R→L | Arm hoch → geschlossen | 34: Grundschritt, Grundschritt mit Kreuz-Chassé, Damendrehung rechts unter dem Arm | vorhanden, schematisch |
@@ -222,40 +222,40 @@ Stand: 551 Figuren in 31 Tänzen.
 
 | Figur | Stufe | Schwierigkeit | Typ | Zählzeiten (Schläge) | Füße H / D | Haltung | Anschlüsse | Status |
 |---|---|---|---|---|---|---|---|---|
-| Grundschritt | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 31: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
-| Seit-Wiegeschritt (Cucaracha) | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 31: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
-| Gehschritte vor und rück | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 31: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
-| Seitschritte (links und rechts) | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 31: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
-| Seitschritte (Cucaracha-Schritt seitlich, links und rechts) | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 31: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden, Alias von „Seit-Wiegeschritt (Cucaracha)“ |
-| Vorwärts-Gehschritte | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 31: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden, Alias von „Gehschritte vor und rück“ |
-| Offene Basic (beide Hände) | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | beide Hände | 31: Offene Basic, Grundschritt, Seit-Wiegeschritt | vorhanden |
-| Grundschritt am Platz | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 31: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
-| New Yorker (rechts und links) | 1 | ★★★★★ | Promenade und offene Figuren | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R → beide Hände | 31: Offene Basic, Grundschritt, Seit-Wiegeschritt | vorhanden |
-| Damendrehung rechts unter dem Arm | 1 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 31: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
-| Schulter an Schulter | 2 | ★ | Effekt und Variation | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 31: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
-| Fächer (Fan) | 2 | ★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen → Fächer | 3: Hockeystick, Alemana, Three Alemanas | vorhanden |
-| Hand to Hand (links und rechts) | 2 | ★★★★★ | Promenade und offene Figuren | 2 3 4 2 3 4 (8) | L→R / R→L | Hand R–L → beide Hände | 31: Offene Basic, Grundschritt, Seit-Wiegeschritt | vorhanden |
-| Platzdrehung (beide drehen solo) | 2 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 (8) | L→R / R→L | ohne → beide Hände | 31: Offene Basic, Grundschritt, Seit-Wiegeschritt | vorhanden |
-| Hockeystick (aus dem Fächer) | 2 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | Fächer → Hand L–R | 31: New Yorker, Offener Hip Twist, Aida | vorhanden |
-| Alemana (aus dem Fächer) | 2 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | Fächer → geschlossen | 31: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
-| Closed Hip Twist (in den Fächer) | 2 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen → Fächer | 3: Hockeystick, Alemana, Three Alemanas | vorhanden, schematisch, [Quelle](http://dance.djurredeboer.nl/latin/rumba/closed_hip.html) |
-| Cross Basic | 3 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 31: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | neu, schematisch |
-| Offener Hip Twist (in den Fächer) | 3 | ★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R → Fächer | 3: Hockeystick, Alemana, Three Alemanas | neu |
-| Reverse Top (aus dem Grundschritt) | 3 | ★★★★ | Drehung | 2 3 4 2 3 4 2 3 4 2 3 4 (16) | L→R / R→L | geschlossen | 31: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden, schematisch, [Quelle](http://dance.djurredeboer.nl/latin/rumba/reverse_top.html) |
-| Opening Out (rechts und links) | 3 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | Hand R–L → geschlossen | 31: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | neu |
-| Aida | 3 | ★★★★★ | Promenade und offene Figuren | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R → beide Hände | 31: Offene Basic, Grundschritt, Seit-Wiegeschritt | neu, schematisch |
-| Spiral | 3 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen → Hand L–R | 31: New Yorker, Offener Hip Twist, Aida | neu, schematisch |
-| Curl (in den Fächer) | 3 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R → Fächer | 3: Hockeystick, Alemana, Three Alemanas | vorhanden, schematisch, [Quelle](http://dance.djurredeboer.nl/latin/rumba/curl.html) |
-| Opening Out from Reverse Top | 3 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 2 3 4 2 3 4 (16) | L→R / R→L | geschlossen | 31: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden, schematisch |
-| Fencing | 4 | ★ | Effekt und Variation | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R | 31: New Yorker, Offener Hip Twist, Aida | neu, schematisch |
-| Sliding Doors | 4 | ★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 2 3 4 2 3 4 (16) | L→R / R→L | Hand L–R | 31: New Yorker, Offener Hip Twist, Aida | vorhanden, schematisch |
-| Rechtskreisel (Natural Top) | 4 | ★★★★ | Drehung | 2 3 4 2 3 4 2 3 4 2 3 4 (16) | L→R / R→L | geschlossen | 31: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
-| Rope Spinning | 4 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 2 3 4 2 3 4 (16) | L→R / R→L | Hand L–R | 31: New Yorker, Offener Hip Twist, Aida | vorhanden, schematisch |
-| Advanced Hip Twist (in den Fächer) | 4 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R → Fächer | 3: Hockeystick, Alemana, Three Alemanas | vorhanden, schematisch |
-| Hip Twist Spiral (in den Fächer) | 4 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R → Fächer | 3: Hockeystick, Alemana, Three Alemanas | vorhanden, schematisch |
-| Three Alemanas (aus dem Fächer) | 4 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 2 3 4 2 3 4 (16) | L→R / R→L | Fächer → geschlossen | 31: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden, schematisch |
-| Three Threes (drei Damendrehungen) | 5 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 2 3 4 2 3 4 (16) | L→R / R→L | Arm hoch → geschlossen | 31: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden, schematisch |
-| Continuous Hip Twist | 5 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 2 3 4 2 3 4 (16) | L→R / R→L | Hand L–R | 31: New Yorker, Offener Hip Twist, Aida | vorhanden, schematisch |
+| Grundschritt | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 30: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
+| Seit-Wiegeschritt (Cucaracha) | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 30: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
+| Gehschritte vor und rück | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 30: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
+| Seitschritte (links und rechts) | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 30: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
+| Seitschritte (Cucaracha-Schritt seitlich, links und rechts) | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 30: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden, Alias von „Seit-Wiegeschritt (Cucaracha)“ |
+| Vorwärts-Gehschritte | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 30: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden, Alias von „Gehschritte vor und rück“ |
+| Offene Basic (beide Hände) | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | beide Hände | 30: Offene Basic, Grundschritt, Seit-Wiegeschritt | vorhanden |
+| Grundschritt am Platz | 1 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 30: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
+| New Yorker (rechts und links) | 1 | ★★★★★ | Promenade und offene Figuren | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R → beide Hände | 30: Offene Basic, Grundschritt, Seit-Wiegeschritt | vorhanden |
+| Damendrehung rechts unter dem Arm | 1 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 30: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
+| Schulter an Schulter | 2 | ★ | Effekt und Variation | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 30: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
+| Fächer (Fan) | 2 | ★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen → Fächer | 4: Hockeystick, Alemana, Fencing | vorhanden |
+| Hand to Hand (links und rechts) | 2 | ★★★★★ | Promenade und offene Figuren | 2 3 4 2 3 4 (8) | L→R / R→L | Hand R–L → beide Hände | 30: Offene Basic, Grundschritt, Seit-Wiegeschritt | vorhanden |
+| Platzdrehung (beide drehen solo) | 2 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 (8) | L→R / R→L | ohne → beide Hände | 30: Offene Basic, Grundschritt, Seit-Wiegeschritt | vorhanden |
+| Hockeystick (aus dem Fächer) | 2 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | Fächer → Hand L–R | 30: New Yorker, Offener Hip Twist, Aida | vorhanden |
+| Alemana (aus dem Fächer) | 2 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | Fächer → geschlossen | 30: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
+| Closed Hip Twist (in den Fächer) | 2 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen → Fächer | 4: Hockeystick, Alemana, Fencing | vorhanden, schematisch, [Quelle](http://dance.djurredeboer.nl/latin/rumba/closed_hip.html) |
+| Cross Basic | 3 | ★ | Grundschritt | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen | 30: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | neu, schematisch |
+| Offener Hip Twist (in den Fächer) | 3 | ★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R → Fächer | 4: Hockeystick, Alemana, Fencing | neu |
+| Reverse Top (aus dem Grundschritt) | 3 | ★★★★ | Drehung | 2 3 4 2 3 4 2 3 4 2 3 4 (16) | L→R / R→L | geschlossen | 30: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden, schematisch, [Quelle](http://dance.djurredeboer.nl/latin/rumba/reverse_top.html) |
+| Opening Out (rechts und links) | 3 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | Hand R–L → geschlossen | 30: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | neu |
+| Aida | 3 | ★★★★★ | Promenade und offene Figuren | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R → beide Hände | 30: Offene Basic, Grundschritt, Seit-Wiegeschritt | neu, schematisch |
+| Spiral | 3 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 (8) | L→R / R→L | geschlossen → Hand L–R | 30: New Yorker, Offener Hip Twist, Aida | neu, schematisch |
+| Curl (in den Fächer) | 3 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R → Fächer | 4: Hockeystick, Alemana, Fencing | vorhanden, schematisch, [Quelle](http://dance.djurredeboer.nl/latin/rumba/curl.html) |
+| Opening Out from Reverse Top | 3 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 2 3 4 2 3 4 (16) | L→R / R→L | geschlossen | 30: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden, schematisch |
+| Sliding Doors | 4 | ★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 2 3 4 2 3 4 (16) | L→R / R→L | Hand L–R | 30: New Yorker, Offener Hip Twist, Aida | vorhanden, schematisch |
+| Rechtskreisel (Natural Top) | 4 | ★★★★ | Drehung | 2 3 4 2 3 4 2 3 4 2 3 4 (16) | L→R / R→L | geschlossen | 30: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden |
+| Fencing | 4 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 (8) | L→R / R→L | Fächer → geschlossen | 30: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | neu, [Quelle](http://dance.djurredeboer.nl/latin/rumba/fencing.html) |
+| Rope Spinning | 4 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 (8) | L→R / R→L | Arm hoch → geschlossen | 30: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden, [Quelle](http://dance.djurredeboer.nl/latin/rumba/rope_spinning.html) |
+| Advanced Hip Twist (in den Fächer) | 4 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R → Fächer | 4: Hockeystick, Alemana, Fencing | vorhanden, schematisch |
+| Hip Twist Spiral (in den Fächer) | 4 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 (8) | L→R / R→L | Hand L–R → Fächer | 4: Hockeystick, Alemana, Fencing | vorhanden, schematisch |
+| Three Alemanas (aus dem Fächer) | 4 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 2 3 4 2 3 4 (16) | L→R / R→L | Fächer → geschlossen | 30: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden, schematisch |
+| Three Threes (drei Damendrehungen) | 5 | ★★★★★ | Solo- und Unterarmdrehung | 2 3 4 2 3 4 2 3 4 2 3 4 (16) | L→R / R→L | Hand L–R → geschlossen | 30: Grundschritt, Seit-Wiegeschritt, Gehschritte vor und rück | vorhanden, [Quelle](http://dance.djurredeboer.nl/latin/rumba/three_threes.html) |
+| Continuous Hip Twist | 5 | ★★★★★ | Platz- und Positionswechsel | 2 3 4 2 3 4 2 3 4 2 3 4 (16) | L→R / R→L | Hand L–R | 30: New Yorker, Offener Hip Twist, Aida | vorhanden, schematisch |
 
 ## Salsa
 
@@ -348,30 +348,30 @@ Stand: 551 Figuren in 31 Tänzen.
 
 | Figur | Stufe | Schwierigkeit | Typ | Zählzeiten (Schläge) | Füße H / D | Haltung | Anschlüsse | Status |
 |---|---|---|---|---|---|---|---|---|
-| Grundschritt (vor und rück) | 1 | ★★ | Grundschritt | 1 a 2 1 a 2 (4) | L→R / R→L | geschlossen | 24: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
-| Grundschritt seitlich | 1 | ★★ | Grundschritt | 1 a 2 1 a 2 (4) | L→R / R→L | geschlossen | 24: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
-| Grundschritt am Platz | 1 | ★★ | Grundschritt | 1 a 2 1 a 2 (4) | L→R / R→L | geschlossen | 24: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
-| Wischer (links und rechts) | 2 | ★★ | Verbindung und Wechsel | 1 a 2 1 a 2 (4) | L→R / R→L | geschlossen | 24: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
-| Fortschreitender Grundschritt | 2 | ★★ | Grundschritt | 1 a 2 1 a 2 (4) | L→R / R→L | geschlossen | 24: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
-| Corta Jaca (vereinfacht) | 2 | ★★ | Effekt und Variation | 1 2 & 3 & 4 (4) | L→R / R→L | geschlossen | 24: Grundschritt, Grundschritt seitlich, Wischer | vorhanden, schematisch |
-| Samba-Gehschritte am Platz | 2 | ★★★ | Grundschritt | 1 a 2 1 a 2 (4) | L→R / R→L | geschlossen | 24: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
-| Damendrehung rechts im Wischer | 2 | ★★★★★ | Solo- und Unterarmdrehung | 1 a 2 1 a 2 (4) | L→R / R→L | Arm hoch → geschlossen | 24: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
-| Botafogos (im Wechsel) | 3 | ★★ | Promenade und offene Figuren | 1 a 2 1 a 2 (4) | L→R / R→L | geschlossen | 24: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
-| Promenaden-Läufe | 3 | ★★ | Promenade und offene Figuren | 1 a 2 1 a 2 (4) | L→R / R→L | Promenade → geschlossen | 24: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
-| Samba-Walks in der Promenade | 3 | ★★ | Grundschritt | 1 a 2 1 a 2 (4) | L→R / R→L | Promenade → geschlossen | 24: Grundschritt, Grundschritt seitlich, Wischer | neu |
-| Plait (Zopf, rückwärts) | 3 | ★★ | Verbindung und Wechsel | 1 2 3 & 4 & (4) | L→R / R→L | Hand L–R | 24: Criss Cross Volta, Plait, Contra Botafogos | vorhanden, schematisch |
-| Voltas (nach rechts und nach links) | 3 | ★★★ | Drehung | 1 a 2 a 3 a 4 1 a 2 a 3 a 4 (8) | L→R / R→L | geschlossen | 24: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
-| Linksdrehung | 3 | ★★★ | Drehung | 1 a 2 1 a 2 (4) | L→R / R→L | geschlossen | 24: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
-| Criss Cross Volta | 3 | ★★★★ | Promenade und offene Figuren | 1 a 2 a 3 a 4 1 a 2 a 3 a 4 (8) | L→R / R→L | Hand L–R | 24: Criss Cross Volta, Plait, Contra Botafogos | vorhanden, schematisch |
-| Rolling off the Arm | 3 | ★★★★★ | Solo- und Unterarmdrehung | 1 a 2 1 a 2 1 a 2 1 a 2 (8) | L→R / R→L | Arm hoch → geschlossen | 24: Grundschritt, Grundschritt seitlich, Wischer | vorhanden, schematisch |
-| Rollen (Samba-Drehung am Platz, links) | 4 | ★★★★ | Grundschritt | 1 a 2 1 a 2 1 a 2 1 a 2 (8) | L→R / R→L | geschlossen | 24: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
-| Promenaden-Botafogos | 4 | ★★★★ | Promenade und offene Figuren | 1 a 2 1 a 2 (4) | L→R / R→L | Promenade → geschlossen | 24: Grundschritt, Grundschritt seitlich, Wischer | neu |
-| Argentine Crosses | 4 | ★★★★ | Drehung | 1 a 2 1 a 2 1 a 2 1 a 2 (8) | L→R / R→L | geschlossen | 24: Grundschritt, Grundschritt seitlich, Wischer | vorhanden, schematisch |
-| Three Step Turn | 4 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 4 (4) | L→R / R→L | ohne → Hand L–R | 24: Criss Cross Volta, Plait, Contra Botafogos | vorhanden, schematisch |
-| Maypole | 4 | ★★★★★ | Solo- und Unterarmdrehung | 1 a 2 1 a 2 1 a 2 1 a 2 (8) | L→R / R→L | Arm hoch → Hand L–R | 24: Criss Cross Volta, Plait, Contra Botafogos | vorhanden, schematisch |
-| Contra Botafogos | 4 | ★★★★★ | Platz- und Positionswechsel | 1 a 2 1 a 2 1 a 2 1 a 2 (8) | L→R / R→L | Hand L–R → geschlossen | 24: Grundschritt, Grundschritt seitlich, Wischer | vorhanden, schematisch |
-| Samba Locks (Herr rückwärts) | 5 | ★★★ | Verbindung und Wechsel | 1 a 2 1 a 2 1 a 2 1 a 2 (8) | L→R / R→L | Hand L–R → geschlossen | 24: Grundschritt, Grundschritt seitlich, Wischer | vorhanden, schematisch |
-| Natural Roll (Rechtsrollen) | 5 | ★★★★ | Drehung | 1 a 2 1 a 2 1 a 2 1 a 2 (8) | L→R / R→L | geschlossen | 24: Grundschritt, Grundschritt seitlich, Wischer | vorhanden, schematisch |
+| Grundschritt (vor und rück) | 1 | ★★ | Grundschritt | 1 a 2 1 a 2 (4) | L→R / R→L | geschlossen | 22: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
+| Grundschritt seitlich | 1 | ★★ | Grundschritt | 1 a 2 1 a 2 (4) | L→R / R→L | geschlossen | 22: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
+| Grundschritt am Platz | 1 | ★★ | Grundschritt | 1 a 2 1 a 2 (4) | L→R / R→L | geschlossen | 22: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
+| Wischer (links und rechts) | 2 | ★★ | Verbindung und Wechsel | 1 a 2 1 a 2 (4) | L→R / R→L | geschlossen | 22: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
+| Fortschreitender Grundschritt | 2 | ★★ | Grundschritt | 1 a 2 1 a 2 (4) | L→R / R→L | geschlossen | 22: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
+| Samba-Gehschritte am Platz | 2 | ★★★ | Grundschritt | 1 a 2 1 a 2 (4) | L→R / R→L | geschlossen | 22: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
+| Corta Jaca | 2 | ★★★ | Effekt und Variation | 1 1 2 1 2 1 2 1 1 2 1 2 1 2 (8) | R→L / L→R | geschlossen | 4: Grundschritt am Platz, Corta Jaca, Natural Roll | vorhanden, [Quelle](http://dance.djurredeboer.nl/latin/samba/corta_jaca.html) |
+| Damendrehung rechts im Wischer | 2 | ★★★★★ | Solo- und Unterarmdrehung | 1 a 2 1 a 2 (4) | L→R / R→L | Arm hoch → geschlossen | 22: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
+| Botafogos (im Wechsel) | 3 | ★★ | Promenade und offene Figuren | 1 a 2 1 a 2 (4) | L→R / R→L | geschlossen | 22: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
+| Promenaden-Läufe | 3 | ★★ | Promenade und offene Figuren | 1 a 2 1 a 2 (4) | L→R / R→L | Promenade → geschlossen | 22: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
+| Samba-Walks in der Promenade | 3 | ★★ | Grundschritt | 1 a 2 1 a 2 (4) | L→R / R→L | Promenade → geschlossen | 22: Grundschritt, Grundschritt seitlich, Wischer | neu |
+| Plait (Zopf, rückwärts) | 3 | ★★ | Verbindung und Wechsel | 1 2 3 & 4 & (4) | L→R / R→L | Hand L–R | 22: Criss Cross Volta, Plait, Contra Botafogos | vorhanden, schematisch |
+| Voltas (nach rechts und nach links) | 3 | ★★★ | Drehung | 1 a 2 a 3 a 4 1 a 2 a 3 a 4 (8) | L→R / R→L | geschlossen | 22: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
+| Linksdrehung | 3 | ★★★ | Drehung | 1 a 2 1 a 2 (4) | L→R / R→L | geschlossen | 22: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
+| Criss Cross Volta | 3 | ★★★★ | Promenade und offene Figuren | 1 a 2 a 3 a 4 1 a 2 a 3 a 4 (8) | L→R / R→L | Hand L–R | 22: Criss Cross Volta, Plait, Contra Botafogos | vorhanden, schematisch |
+| Rolling off the Arm | 3 | ★★★★★ | Solo- und Unterarmdrehung | 1 a 2 1 a 2 1 a 2 1 a 2 (8) | L→R / R→L | Arm hoch → geschlossen | 22: Grundschritt, Grundschritt seitlich, Wischer | vorhanden, schematisch |
+| Rollen (Samba-Drehung am Platz, links) | 4 | ★★★★ | Grundschritt | 1 a 2 1 a 2 1 a 2 1 a 2 (8) | L→R / R→L | geschlossen | 22: Grundschritt, Grundschritt seitlich, Wischer | vorhanden |
+| Promenaden-Botafogos | 4 | ★★★★ | Promenade und offene Figuren | 1 a 2 1 a 2 (4) | L→R / R→L | Promenade → geschlossen | 22: Grundschritt, Grundschritt seitlich, Wischer | neu |
+| Three Step Turn | 4 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 4 (4) | L→R / R→L | ohne → Hand L–R | 22: Criss Cross Volta, Plait, Contra Botafogos | vorhanden, schematisch |
+| Argentine Crosses | 4 | ★★★★★ | Drehung | 1 & 2 1 & 2 1 & 2 1 & 2 (8) | L→R / R→L | geschlossen | 22: Grundschritt, Grundschritt seitlich, Wischer | vorhanden, [Quelle](http://dance.djurredeboer.nl/latin/samba/argentine_crosses.html) |
+| Maypole | 4 | ★★★★★ | Solo- und Unterarmdrehung | 1 a 2 a 1 a 2 (4) | L→L / R→R | Arm hoch → geschlossen | 4: Grundschritt am Platz, Corta Jaca, Natural Roll | vorhanden, [Quelle](http://dance.djurredeboer.nl/latin/samba/maypole.html) |
+| Contra Botafogos | 4 | ★★★★★ | Platz- und Positionswechsel | 1 a 2 1 a 2 1 a 2 1 a 2 (8) | L→R / R→L | Hand L–R → geschlossen | 22: Grundschritt, Grundschritt seitlich, Wischer | vorhanden, schematisch |
+| Samba Locks (Herr rückwärts) | 5 | ★★★ | Verbindung und Wechsel | 1 a 2 1 a 2 1 a 2 1 a 2 (8) | L→R / R→L | Hand L–R → geschlossen | 22: Grundschritt, Grundschritt seitlich, Wischer | vorhanden, schematisch |
+| Natural Roll (Rechtsrollen) | 5 | ★★★ | Drehung | 1 2 & 1 2 & (4) | R→L / L→R | geschlossen | 4: Grundschritt am Platz, Corta Jaca, Natural Roll | vorhanden, [Quelle](http://dance.djurredeboer.nl/latin/samba/natural_roll.html) |
 
 ## Jive
 
@@ -386,7 +386,7 @@ Stand: 551 Figuren in 31 Tänzen.
 | Platzwechsel rechts nach links (Dame dreht rechts unter dem Arm) | 1 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 a 4 5 a 6 (6) | L→R / R→L | geschlossen → Hand L–R | 28: American Spin, Stop and Go, Link | neu |
 | Kicks am Platz | 2 | ★ | Grundschritt | 1 2 3 4 (4) | L→R / R→L | geschlossen | 28: Grundschritt, Grundschritt mit Linksdrehung, Kicks am Platz | vorhanden |
 | Fallaway Rock (Rückschritt in der Promenade) | 2 | ★★★ | Promenade und offene Figuren | 1 2 3 a 4 5 a 6 (6) | L→R / R→L | Promenade → geschlossen | 28: Grundschritt, Grundschritt mit Linksdrehung, Kicks am Platz | vorhanden |
-| Link (aus der offenen Haltung zurück in die geschlossene) | 2 | ★★★ | Verbindung und Wechsel | 1 2 3 a 4 5 a 6 (6) | L→R / R→L | Hand L–R → geschlossen | 28: Grundschritt, Grundschritt mit Linksdrehung, Kicks am Platz | vorhanden, schematisch |
+| Link (aus der offenen Haltung zurück in die geschlossene) | 2 | ★★★ | Verbindung und Wechsel | 1 2 3 a 4 1 a 2 (6) | L→R / R→L | Hand L–R → geschlossen | 28: Grundschritt, Grundschritt mit Linksdrehung, Kicks am Platz | vorhanden, [Quelle](http://dance.djurredeboer.nl/latin/jive/link.html) |
 | Damensolo am Platz (Rechtsdrehung) | 2 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 a 4 5 a 6 (6) | L→R / R→L | geschlossen → beide Hände | 28: Grundschritt in offener Haltung, Grundschritt in offener Haltung, Windmill | vorhanden |
 | American Spin (Dame dreht ganz rechts) | 2 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 a 4 5 a 6 (6) | L→R / R→L | Hand L–R | 28: American Spin, Stop and Go, Link | neu |
 | Flicks (Kicks seitlich) | 3 | ★ | Effekt und Variation | 1 2 3 4 5 6 (6) | L→R / R→L | geschlossen | 28: Grundschritt, Grundschritt mit Linksdrehung, Kicks am Platz | vorhanden |
@@ -396,12 +396,12 @@ Stand: 551 Figuren in 31 Tänzen.
 | Promenaden-Chassé | 3 | ★★★ | Promenade und offene Figuren | 1 2 3 a 4 5 a 6 (6) | L→R / R→L | geschlossen | 28: Grundschritt, Grundschritt mit Linksdrehung, Kicks am Platz | vorhanden |
 | Windmill | 3 | ★★★ | Effekt und Variation | 1 2 3 a 4 5 a 6 (6) | L→R / R→L | beide Hände | 28: Grundschritt in offener Haltung, Grundschritt in offener Haltung, Windmill | vorhanden, schematisch |
 | Stop and Go (Dame dreht ein, Stopp, dreht aus) | 3 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 a 4 5 6 7 a 8 (8) | L→R / R→L | Hand L–R | 28: American Spin, Stop and Go, Link | neu, vereinfacht |
-| Spanish Arms | 3 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 a 4 5 a 6 (6) | L→R / R→L | Hand R–L | 28: Spanish Arms, Grundschritt, Grundschritt mit Linksdrehung | vorhanden, schematisch |
-| Rolling off the Arm | 3 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 a 4 5 a 6 (6) | L→R / R→L | Hand L–R | 28: American Spin, Stop and Go, Link | vorhanden, schematisch |
-| Toe Heel Swivels | 4 | ★★★ | Effekt und Variation | 1 2 3 4 5 a 6 7 8 9 a 10 (10) | L→R / R→L | geschlossen | 28: Grundschritt, Grundschritt mit Linksdrehung, Kicks am Platz | vorhanden, schematisch |
+| Spanish Arms | 3 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 a 4 1 a 2 3 4 1 a 2 3 a 4 (12) | L→R / R→L | beide Hände | 28: Grundschritt in offener Haltung, Grundschritt in offener Haltung, Windmill | vorhanden, [Quelle](http://dance.djurredeboer.nl/latin/jive/spanish_arms.html) |
+| Rolling off the Arm | 3 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 a 4 1 2 3 a 4 (8) | L→R / R→L | Hand R–L | 28: Rolling off the Arm, Miami Special, Grundschritt | vorhanden, [Quelle](http://dance.djurredeboer.nl/latin/jive/rolling_off_arm.html) |
 | Curly Whip | 4 | ★★★★ | Drehung | 1 2 3 a 4 5 6 7 a 8 (8) | L→R / R→L | geschlossen | 28: Grundschritt, Grundschritt mit Linksdrehung, Kicks am Platz | vorhanden, schematisch |
-| Simple Spin (Dame dreht ganz rechts) | 4 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 a 4 5 a 6 (6) | L→R / R→L | ohne → geschlossen | 28: Grundschritt, Grundschritt mit Linksdrehung, Kicks am Platz | vorhanden, schematisch |
-| Miami Special | 4 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 a 4 5 a 6 7 8 (8) | L→R / R→L | Hand L–R | 28: American Spin, Stop and Go, Link | vorhanden, schematisch |
+| Toe Heel Swivels | 4 | ★★★★★ | Effekt und Variation | 1 2 3 4 1 3 4 1 3 4 1 2 3 4 (16) | L→R / R→L | beide Hände → Promenade | 28: Fallaway Rock, Grundschritt, Grundschritt mit Linksdrehung | vorhanden, [Quelle](http://dance.djurredeboer.nl/latin/jive/toe_heel.html) |
+| Simple Spin (Dame dreht ganz rechts) | 4 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 (2) | L→R / R→L | ohne → Hand L–R | 28: American Spin, Stop and Go, Link | vorhanden, [Quelle](http://dance.djurredeboer.nl/latin/jive/simple_spin.html) |
+| Miami Special | 4 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 a 4 1 a 2 (6) | L→R / R→L | Hand R–L → Hand L–R | 28: American Spin, Stop and Go, Link | vorhanden, [Quelle](http://dance.djurredeboer.nl/latin/jive/miami_special.html) |
 | Chugging | 5 | ★ | Effekt und Variation | 1 2 3 4 5 6 (6) | L→R / R→L | beide Hände | 28: Grundschritt in offener Haltung, Grundschritt in offener Haltung, Windmill | vorhanden, schematisch |
 | Stalking Walks | 5 | ★★ | Effekt und Variation | 1 2 3 4 5 a 6 7 a 8 (8) | L→R / R→L | Hand L–R | 28: American Spin, Stop and Go, Link | vorhanden, schematisch |
 | Catapult (Dame wird hinaus- und zurückgeschleudert) | 5 | ★★★★★ | Platz- und Positionswechsel | 1 2 3 a 4 5 a 6 (6) | L→R / R→L | Hand L–R | 28: American Spin, Stop and Go, Link | vorhanden, schematisch |
@@ -415,23 +415,23 @@ Stand: 551 Figuren in 31 Tänzen.
 | Linksdrehung am Platz | 1* | ★★★ | Grundschritt | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden |
 | Rechtsdrehung am Platz | 1* | ★★★ | Grundschritt | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden |
 | Appell und Attacke | 2 | ★ | Effekt und Variation | 1 2 3 4 (4) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden |
-| Ecart (Appell, vor, seit, kreuzen) | 2 | ★ | Promenade und offene Figuren | 1 2 3 4 (4) | R→L / L→R | geschlossen → Promenade | 24: Grand Circle, Sur Place, Grundschritt vorwärts | vorhanden |
+| Ecart (Appell, vor, seit, kreuzen) | 2 | ★ | Promenade und offene Figuren | 1 2 3 4 (4) | R→L / L→R | geschlossen → Promenade | 24: Grand Circle, Coup de Pique, Sur Place | vorhanden |
 | Sur Place (am Platz) | 2 | ★★ | Grundschritt | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden |
 | Grundschritt vorwärts | 2 | ★★ | Grundschritt | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden |
 | Chassés nach rechts | 2 | ★★ | Verbindung und Wechsel | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden |
 | Chassés nach links | 2* | ★★ | Verbindung und Wechsel | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden |
 | Promenade | 2 | ★★★ | Promenade und offene Figuren | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden |
 | Huit (Dame schwingt vor dem Herrn) | 2 | ★★★ | Promenade und offene Figuren | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden |
-| Separation | 2 | ★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden, schematisch |
+| Separation | 2 | ★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden, [Quelle](http://dance.djurredeboer.nl/latin/paso/separation.html) |
 | Sixteen (Separation mit Damendrehung) | 2 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 (16) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden, schematisch |
 | Banderillas (am Platz mit Kicks) | 3 | ★★ | Grundschritt | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden |
 | La Passe | 3 | ★★★ | Promenade und offene Figuren | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden, schematisch |
 | Grand Circle | 3 | ★★★★ | Drehung | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | Promenade → geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden, schematisch |
-| Twist Turn | 3 | ★★★★ | Drehung | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden, schematisch |
+| Twist Turn | 3 | ★★★★★ | Drehung | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | geschlossen → Promenade | 24: Grand Circle, Coup de Pique, Sur Place | vorhanden, [Quelle](http://dance.djurredeboer.nl/latin/paso/twist_turn.html) |
 | Spanish Lines | 3 | ★★★★★ | Effekt und Variation | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden, schematisch |
-| Coup de Pique | 4 | ★★ | Effekt und Variation | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden, schematisch |
-| Flamenco Taps | 4 | ★★ | Effekt und Variation | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden, schematisch |
+| Flamenco Taps | 4 | ★★ | Effekt und Variation | 1 2 & 3 4 (4) | L→R / R→L | ohne | 18: Flamenco Taps, Sur Place, Appell und Attacke | vorhanden, [Quelle](http://dance.djurredeboer.nl/latin/paso/flamenco_taps.html) |
 | Syncopated Separation | 4 | ★★★ | Platz- und Positionswechsel | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden, schematisch |
+| Coup de Pique | 4 | ★★★★ | Effekt und Variation | 1 2 3 & 4 (4) | R→L / L→R | Promenade → geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden, [Quelle](http://dance.djurredeboer.nl/latin/paso/coup_de_pique.html) |
 | Farol | 4 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden, schematisch |
 | Fregolina | 4 | ★★★★★ | Solo- und Unterarmdrehung | 1 2 3 4 5 6 7 8 (8) | R→L / L→R | geschlossen | 24: Sur Place, Grundschritt vorwärts, Grundschritt rückwärts | vorhanden, schematisch |
 
